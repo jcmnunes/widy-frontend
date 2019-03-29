@@ -11,7 +11,7 @@ const StyledBoard = styled.div`
 
   h1 {
     font-size: 14px;
-    color: ${props => props.theme.neutral800};
+    color: ${props => props.theme.neutral700};
     margin-bottom: 16px;
   }
 `;

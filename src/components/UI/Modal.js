@@ -16,7 +16,7 @@ export const StyledModal = styled.div`
   align-items: center;
 
   .modal {
-    border: 6px solid ${props => props.theme.neutral300};
+    border: 6px solid ${props => props.theme.neutral200};
     width: 640px;
     background: white;
     box-shadow: 0 10px 20px hsla(0, 0%, 0%, 0.15), 0 3px 6px hsla(0, 0%, 0%, 0.1);
@@ -35,7 +35,7 @@ export const StyledModal = styled.div`
 
       &:focus {
         outline: none;
-        box-shadow: inset 0 0 0 4px ${props => props.theme.blue200};
+        box-shadow: inset 0 0 0 4px ${props => props.theme.blue100};
       }
     }
   }
@@ -46,12 +46,12 @@ export const StyledModal = styled.div`
     .title {
       font-size: 24px;
       margin-bottom: 16px;
-      color: ${props => props.theme.neutral800};
+      color: ${props => props.theme.neutral700};
     }
   }
 
   .footer {
-    background: ${props => props.theme.neutral100};
+    background: ${props => props.theme.neutral050};
     padding: 24px 32px;
     display: flex;
     justify-content: flex-end;

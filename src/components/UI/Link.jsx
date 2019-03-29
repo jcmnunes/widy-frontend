@@ -5,21 +5,21 @@ import styled, { css } from 'styled-components';
 
 const getColors = props => {
   const colors = {
-    text: props.theme.blue600,
+    text: props.theme.blue500,
     disabled: props.theme.blueDisabled,
   };
 
   switch (props.intent) {
     case 'secondary':
-      colors.text = props.theme.neutral600;
+      colors.text = props.theme.neutral500;
       colors.disabled = props.theme.neutralDisabled;
       break;
     case 'warning':
-      colors.text = props.theme.yellow600;
+      colors.text = props.theme.yellow500;
       colors.disabled = props.theme.yellowDisabled;
       break;
     case 'error':
-      colors.text = props.theme.red600;
+      colors.text = props.theme.red500;
       colors.disabled = props.theme.redDisabled;
       break;
     default:
@@ -41,7 +41,7 @@ const LinkStyles = css`
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 4px ${props => props.theme.blue200};
+    box-shadow: 0 0 0 4px ${props => props.theme.blue100};
   }
 
   &:disabled {

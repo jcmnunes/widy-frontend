@@ -11,7 +11,7 @@ const StyledCheckbox = styled.label`
   cursor: pointer;
   font-size: 18px;
   user-select: none;
-  color: ${props => props.theme.neutral600};
+  color: ${props => props.theme.neutral500};
 
   input {
     position: absolute;
@@ -23,13 +23,13 @@ const StyledCheckbox = styled.label`
     &:focus {
       & ~ .checkmark {
         outline: none;
-        box-shadow: 0 0 0 4px ${props => props.theme.blue200};
+        box-shadow: 0 0 0 4px ${props => props.theme.blue100};
       }
     }
 
     &:checked {
       & ~ .checkmark {
-        background-color: ${props => props.intent === 'success' ? props.theme.green600 : props.theme.blue700};
+        background-color: ${props => props.intent === 'success' ? props.theme.green500 : props.theme.blue600};
 
         &:after {
           display: block;
@@ -45,7 +45,7 @@ const StyledCheckbox = styled.label`
     left: 0;
     height: 25px;
     width: 25px;
-    background-color: ${props => props.theme.neutral200};
+    background-color: ${props => props.theme.neutral100};
 
     &:after {
       content: '';

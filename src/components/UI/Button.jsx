@@ -5,51 +5,51 @@ import Spinner from './Spinner';
 
 const getButtonColors = props => {
   const colors = {
-    text: props.disabled ? '#CAD2D9' : props.theme.neutral700,
+    text: props.disabled ? '#CAD2D9' : props.theme.neutral600,
     gradient: {
-      top: props.theme.neutral200,
+      top: props.theme.neutral100,
       topHover: '#D7DBE0',
-      bottom: props.theme.neutral200,
+      bottom: props.theme.neutral100,
       bottomHover: '#D7DBE0',
     },
-    active: props.theme.neutral300,
+    active: props.theme.neutral200,
     disabled: '#F5F7FA',
   };
   switch (props.intent) {
     case 'primary':
       colors.text = '#FFF';
-      colors.gradient.top = props.theme.blue600;
-      colors.gradient.topHover = props.theme.blue700;
-      colors.gradient.bottom = props.theme.blue700;
-      colors.gradient.bottomHover = props.theme.blue800;
-      colors.active = props.theme.blue800;
+      colors.gradient.top = props.theme.blue500;
+      colors.gradient.topHover = props.theme.blue600;
+      colors.gradient.bottom = props.theme.blue600;
+      colors.gradient.bottomHover = props.theme.blue700;
+      colors.active = props.theme.blue700;
       colors.disabled = '#A8D1EB';
       break;
     case 'error':
       colors.text = '#FFF';
-      colors.gradient.top = props.theme.red600;
-      colors.gradient.topHover = props.theme.red700;
-      colors.gradient.bottom = props.theme.red700;
-      colors.gradient.bottomHover = props.theme.red800;
-      colors.active = props.theme.red800;
+      colors.gradient.top = props.theme.red500;
+      colors.gradient.topHover = props.theme.red600;
+      colors.gradient.bottom = props.theme.red600;
+      colors.gradient.bottomHover = props.theme.red700;
+      colors.active = props.theme.red700;
       colors.disabled = '#FFBCC2';
       break;
     case 'warning':
       colors.text = '#FFF';
-      colors.gradient.top = props.theme.yellow700;
-      colors.gradient.topHover = props.theme.yellow800;
-      colors.gradient.bottom = props.theme.yellow800;
-      colors.gradient.bottomHover = props.theme.yellow900;
-      colors.active = props.theme.yellow900;
+      colors.gradient.top = props.theme.yellow600;
+      colors.gradient.topHover = props.theme.yellow700;
+      colors.gradient.bottom = props.theme.yellow700;
+      colors.gradient.bottomHover = props.theme.yellow800;
+      colors.active = props.theme.yellow800;
       colors.disabled = '#F4D2B5';
       break;
     case 'success':
       colors.text = '#FFF';
-      colors.gradient.top = props.theme.green600;
-      colors.gradient.topHover = props.theme.green700;
-      colors.gradient.bottom = props.theme.green700;
-      colors.gradient.bottomHover = props.theme.green800;
-      colors.active = props.theme.green800;
+      colors.gradient.top = props.theme.green500;
+      colors.gradient.topHover = props.theme.green600;
+      colors.gradient.bottom = props.theme.green600;
+      colors.gradient.bottomHover = props.theme.green700;
+      colors.active = props.theme.green700;
       colors.disabled = '#AFE1D5';
       break;
     default:
@@ -78,12 +78,12 @@ const StyledButton = styled.button`
   )`};
 
   &::placeholder {
-    color: ${props => props.theme.neutral400};
+    color: ${props => props.theme.neutral300};
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 4px ${props => props.theme.blue200};
+    box-shadow: 0 0 0 4px ${props => props.theme.blue100};
   }
 
   &:hover {

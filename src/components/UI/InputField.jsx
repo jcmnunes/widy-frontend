@@ -10,7 +10,7 @@ const StyledInputField = styled.div`
   margin-bottom: 16px;
 
   .form-helper {
-    color: ${props => props.theme.red500};
+    color: ${props => props.theme.red400};
     font-size: 14px;
     padding: 6px;
   }

@@ -5,30 +5,30 @@ import Icon from '../../icons/Icon';
 
 const getColors = props => {
   const colors = {
-    background: props.theme.neutral100,
-    border: props.theme.neutral400,
-    text: props.theme.neutral600,
+    background: props.theme.neutral050,
+    border: props.theme.neutral300,
+    text: props.theme.neutral500,
   };
 
   switch (props.intent) {
     case 'primary':
-      colors.background = props.theme.green600;
-      colors.border = props.theme.green700;
+      colors.background = props.theme.green500;
+      colors.border = props.theme.green600;
       colors.text = '#FFF';
       break;
     case 'success':
-      colors.background = props.theme.green600;
-      colors.border = props.theme.green700;
+      colors.background = props.theme.green500;
+      colors.border = props.theme.green600;
       colors.text = '#FFF';
       break;
     case 'warning':
-      colors.background = props.theme.yellow800;
-      colors.border = props.theme.yellow900;
+      colors.background = props.theme.yellow700;
+      colors.border = props.theme.yellow800;
       colors.text = '#FFF';
       break;
     case 'error':
-      colors.background = props.theme.red500;
-      colors.border = props.theme.red600;
+      colors.background = props.theme.red400;
+      colors.border = props.theme.red500;
       colors.text = '#FFF';
       break;
     default:

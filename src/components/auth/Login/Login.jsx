@@ -20,7 +20,7 @@ const StyledForm = styled.form`
 
 const Title = styled.h1`
   font-size: 30px;
-  color: ${props => props.theme.neutral800};
+  color: ${props => props.theme.neutral700};
   margin-bottom: 32px;
 `;
 

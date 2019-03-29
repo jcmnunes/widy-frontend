@@ -17,7 +17,7 @@ export const IconWidy = ({ todayColor, yesterdayColor, calendarColor, size }) =>
 IconWidy.defaultProps = {
   size: 200,
   todayColor: '#535F6E',
-  yesterdayColor: theme.yellow500,
+  yesterdayColor: theme.yellow400,
   calendarColor: '#535F6E',
 };
 

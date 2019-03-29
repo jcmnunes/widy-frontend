@@ -10,7 +10,7 @@ const Container = styled.div`
   left: 0;
   height: 100%;
   width: 100%;
-  background: ${props => props.theme.neutral100};
+  background: ${props => props.theme.neutral050};
   display: grid;
   grid-gap: 18px;
   align-content: center;
@@ -21,7 +21,7 @@ class PageSpinner extends Component {
   render() {
     return (
       <Container>
-        <IconWidyText size={125} textColor={theme.blue700} />
+        <IconWidyText size={125} textColor={theme.blue600} />
         <Spinner size="large" />
       </Container>
     );

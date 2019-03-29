@@ -16,8 +16,8 @@ class Logo extends Component {
   render() {
     return (
       <StyledLogo>
-        <IconWidy size={60} yesterdayColor={theme.blue700} />
-        <IconWidyText size={80} textColor={theme.blue700} />
+        <IconWidy size={60} yesterdayColor={theme.blue600} />
+        <IconWidyText size={80} textColor={theme.blue600} />
       </StyledLogo>
     );
   }

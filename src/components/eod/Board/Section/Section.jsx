@@ -28,23 +28,10 @@ const EmptyTasks = styled.div`
   border-radius: 4px;
   height: 96px;
   margin-bottom: 8px;
-  // background-color: ${props => props.theme.neutral100};
   background-color: white;
-  background-image: url("${props => props.pattern}");
-  transition: background-color 200ms ease;
-  cursor: pointer;
-  
-  &:hover {
-    background-color: ${props => props.theme.neutral100};
-  }
-  
-  .message {
-    color: ${props => props.theme.neutral300};
-    font-size: 14px;
-    padding: 8px 12px;
-    border-radius: 4px;
-    background: #ffffff64;
-  }
+  font-size: 16px;
+  color: ${props => props.theme.neutral300};
+  font-style: italic;
 `;
 
 const Tasks = styled.div`
@@ -69,17 +56,15 @@ class Section extends Component {
             {section.tasks.map(id => (
               <Task key={id}>{tasks[id].title}</Task>
             ))}
-            <Link intent="secondary" loading={false} disabled={false} onClick={this.openModal}>
-              <IconAdd primaryColor={theme.neutral600} /> Add task
-            </Link>
           </Tasks>
         ) : (
-          <EmptyTasks pattern={randomPattern()} onClick={this.openModal}>
-            <Link intent="secondary" loading={false} disabled={false} onClick={this.openModal}>
-              <IconAdd primaryColor={theme.neutral600} /> Add task
-            </Link>
+          <EmptyTasks>
+            No tasks in section "<span>{title}</span>"
           </EmptyTasks>
         )}
+        <Link intent="secondary" loading={false} disabled={false} onClick={this.openModal}>
+          <IconAdd primaryColor={theme.neutral500} /> Add task
+        </Link>
       </StyledSection>
     );
   }

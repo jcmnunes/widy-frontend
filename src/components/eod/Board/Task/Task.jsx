@@ -6,13 +6,13 @@ const StyledTask = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row;
-  border: 1px solid ${props => props.theme.neutral300};
+  border: 1px solid ${props => props.theme.neutral200};
   border-radius: 4px;
   background: white;
   padding: 8px;
   font-size: 16px;
   margin: 4px 0;
-  color: ${props => props.theme.neutral800};
+  color: ${props => props.theme.neutral700};
 
   &:last-of-type {
     margin-bottom: 12px;

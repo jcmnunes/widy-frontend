@@ -20,7 +20,7 @@ const StyledForm = styled.form`
   width: 480px;
   background: white;
   border-radius: 12px;
-  border: 2px solid ${props => props.theme.neutral400};
+  border: 2px solid ${props => props.theme.neutral300};
   padding: 48px;
   margin-top: 48px;
 `;
@@ -29,13 +29,13 @@ const Title = styled.h1`
   font-size: 30px;
   text-align: center;
   width: 100%;
-  color: ${props => props.theme.neutral800};
+  color: ${props => props.theme.neutral700};
   margin-bottom: 24px;
 `;
 
 const Helper = styled.p`
   font-size: 18px;
-  color: ${props => props.theme.neutral500};
+  color: ${props => props.theme.neutral400};
   width: 90%;
   margin: 0 auto 24px;
   text-align: center;
