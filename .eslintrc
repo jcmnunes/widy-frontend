@@ -1,0 +1,15 @@
+{
+  "extends": ["react-app", "plugin:prettier/recommended", "plugin:import/errors"],
+  "rules": {
+    "no-debugger": 2,
+    "no-alert": 2,
+    "no-console": 2
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx"]
+      }
+    }
+  }
+}
