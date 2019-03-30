@@ -8,7 +8,6 @@ import Link from '../../../UI/Link';
 import { ADD_TASK } from '../../../modals/types';
 import { IconAdd } from '../../../../icons/Icons';
 import theme from '../../../../styles/theme';
-import randomPattern from '../../../../helpers/randomPattern';
 
 const StyledSection = styled.div`
   margin: 32px 0;
