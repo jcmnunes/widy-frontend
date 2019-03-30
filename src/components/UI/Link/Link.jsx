@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link as RRLink } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 const getColors = props => {
@@ -58,7 +58,7 @@ const StyledButton = styled.button`
   margin-left: 4px;
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(RRLink)`
   ${LinkStyles}
 `;
 
@@ -66,7 +66,7 @@ const StyledAnchor = styled.a`
   ${LinkStyles}
 `;
 
-class WidyLink extends Component {
+class Link extends Component {
   render() {
     const { children, to, intent, onClick, disabled, size, ...other } = this.props;
     if (!to) {
@@ -101,7 +101,7 @@ class WidyLink extends Component {
   }
 }
 
-WidyLink.defaultProps = {
+Link.defaultProps = {
   to: null,
   intent: null,
   onClick: null,
@@ -109,7 +109,7 @@ WidyLink.defaultProps = {
   size: 'medium',
 };
 
-WidyLink.propTypes = {
+Link.propTypes = {
   children: PropTypes.node.isRequired,
   to: PropTypes.string,
   intent: PropTypes.string,
@@ -118,4 +118,4 @@ WidyLink.propTypes = {
   size: PropTypes.oneOf(['medium', 'large']),
 };
 
-export default WidyLink;
+export default Link;

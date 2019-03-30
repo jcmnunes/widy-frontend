@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { AddTask } from '../modals';
-import * as types from '../modals/types';
+import { AddTask } from '../../modals';
+import * as types from '../../modals/types';
 
 export const StyledModal = styled.div`
   position: fixed;

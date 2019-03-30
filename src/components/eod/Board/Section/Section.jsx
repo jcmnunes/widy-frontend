@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Task from '../Task/Task';
-import { openModal } from '../../../../actions/modals';
-import { storeCreateTaskData } from '../../../../actions/tasks';
 import Link from '../../../UI/Link';
 import { ADD_TASK } from '../../../modals/types';
 import { IconAdd } from '../../../../icons/Icons';
@@ -32,11 +29,13 @@ const EmptyTasks = styled.div`
   color: ${props => props.theme.neutral300};
   font-style: italic;
 `;
+EmptyTasks.displayName = 'EmptyTasks';
 
 const Tasks = styled.div`
   display: flex;
   flex-direction: column;
 `;
+Tasks.displayName = 'Tasks';
 
 class Section extends Component {
   openModal = () => {
@@ -46,10 +45,10 @@ class Section extends Component {
   };
 
   render() {
-    const { title, section, tasks } = this.props;
+    const { section, tasks } = this.props;
     return (
       <StyledSection>
-        <h1 className="title">{title}</h1>
+        <h1 className="title">{section.title}</h1>
         {section.tasks.length ? (
           <Tasks>
             {section.tasks.map(id => (
@@ -58,10 +57,10 @@ class Section extends Component {
           </Tasks>
         ) : (
           <EmptyTasks>
-            No tasks in section "<span>{title}</span>"
+            No tasks in section "<span>{section.title}</span>"
           </EmptyTasks>
         )}
-        <Link intent="secondary" loading={false} disabled={false} onClick={this.openModal}>
+        <Link intent="secondary" onClick={this.openModal}>
           <IconAdd primaryColor={theme.neutral500} /> Add task
         </Link>
       </StyledSection>
@@ -69,12 +68,4 @@ class Section extends Component {
   }
 }
 
-const mapStateToProps = (state, props) => ({
-  section: state.sections.byId[props.sectionId],
-  tasks: state.tasks.byId,
-});
-
-export default connect(
-  mapStateToProps,
-  { openModal, storeCreateTaskData },
-)(Section);
+export default Section;

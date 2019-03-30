@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { IconWidyText } from '../../icons/widy';
-import Spinner from './Spinner';
-import theme from '../../styles/theme';
+import { IconWidyText } from '../../../icons/widy';
+import Spinner from '../Spinner';
+import theme from '../../../styles/theme';
 
 const Container = styled.div`
   position: absolute;
