@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components AskName should render as expected, without crashing 1`] = `
+<styled.div>
+  <h1
+    className="title"
+  >
+    Title
+  </h1>
+  <EmptyTasks>
+    No tasks in section "
+    <span>
+      Title
+    </span>
+    "
+  </EmptyTasks>
+  <Link
+    disabled={false}
+    intent="secondary"
+    onClick={[Function]}
+    size="medium"
+    to={null}
+  >
+    <IconAdd
+      primaryColor="#616E7C"
+      size={24}
+    />
+     Add task
+  </Link>
+</styled.div>
+`;

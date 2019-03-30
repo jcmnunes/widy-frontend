@@ -18,8 +18,8 @@ export const IconChart = ({ size, primaryColor, secondaryColor }) => (
 
 IconChart.defaultProps = {
   size: 24,
-  primaryColor: theme.neutral400,
-  secondaryColor: theme.neutral500,
+  primaryColor: theme.neutral300,
+  secondaryColor: theme.neutral400,
 };
 
 IconChart.propTypes = {
@@ -43,8 +43,8 @@ export const IconLight = ({ size, primaryColor, secondaryColor }) => (
 
 IconLight.defaultProps = {
   size: 24,
-  primaryColor: theme.neutral400,
-  secondaryColor: theme.neutral500,
+  primaryColor: theme.neutral300,
+  secondaryColor: theme.neutral400,
 };
 
 IconLight.propTypes = {
@@ -65,8 +65,8 @@ export const IconTrophy = ({ size, primaryColor, secondaryColor }) => (
 
 IconTrophy.defaultProps = {
   size: 24,
-  primaryColor: theme.neutral400,
-  secondaryColor: theme.neutral500,
+  primaryColor: theme.neutral300,
+  secondaryColor: theme.neutral400,
 };
 
 IconTrophy.propTypes = {
@@ -87,7 +87,7 @@ export const IconAdd = ({ size, primaryColor }) => (
 
 IconAdd.defaultProps = {
   size: 24,
-  primaryColor: theme.neutral400,
+  primaryColor: theme.neutral300,
 };
 
 IconAdd.propTypes = {
@@ -106,7 +106,7 @@ export const IconCheveronRight = ({ size, primaryColor }) => (
 
 IconCheveronRight.defaultProps = {
   size: 24,
-  primaryColor: theme.neutral400,
+  primaryColor: theme.neutral300,
 };
 
 IconCheveronRight.propTypes = {
@@ -125,7 +125,7 @@ export const IconClose = ({ size, primaryColor }) => (
 
 IconClose.defaultProps = {
   size: 24,
-  primaryColor: theme.neutral400,
+  primaryColor: theme.neutral300,
 };
 
 IconClose.propTypes = {
@@ -148,8 +148,8 @@ export const IconUserCircle = ({ size, primaryColor, secondaryColor }) => (
 
 IconUserCircle.defaultProps = {
   size: 24,
-  primaryColor: theme.neutral700,
-  secondaryColor: theme.neutral300,
+  primaryColor: theme.neutral600,
+  secondaryColor: theme.neutral200,
 };
 
 IconUserCircle.propTypes = {

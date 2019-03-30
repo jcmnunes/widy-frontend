@@ -34,7 +34,7 @@ class AddTask extends Component {
           <form onSubmit={this.handleSubmit}>
             <div className="header">
               <span className="close" tabIndex="0" onClick={this.closeModal}>
-                <IconClose size={36} primaryColor={theme.neutral600} />
+                <IconClose size={36} primaryColor={theme.neutral500} />
               </span>
             </div>
             <div className="body">

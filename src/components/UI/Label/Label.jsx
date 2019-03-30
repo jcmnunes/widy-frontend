@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Label = styled.label`
   font-size: 18px;
-  color: ${props => props.theme.neutral600};
+  color: ${props => props.theme.neutral500};
 `;
 
 export default Label;

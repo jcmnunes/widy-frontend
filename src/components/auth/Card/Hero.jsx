@@ -20,7 +20,7 @@ const Container = styled.div`
 
   h1 {
     font-size: 24px;
-    color: ${props => props.theme.neutral800};
+    color: ${props => props.theme.neutral700};
     margin-bottom: 32px;
   }
 `;
@@ -35,7 +35,7 @@ const Item = styled.div`
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: ${props => props.theme.neutral200};
+    background: ${props => props.theme.neutral100};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -43,12 +43,12 @@ const Item = styled.div`
 
   .text {
     h2 {
-      color: ${props => props.theme.neutral600};
+      color: ${props => props.theme.neutral500};
       font-size: 18px;
     }
 
     p {
-      color: ${props => props.theme.neutral400};
+      color: ${props => props.theme.neutral300};
       font-size: 18px;
     }
   }

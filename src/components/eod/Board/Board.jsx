@@ -11,7 +11,7 @@ const StyledBoard = styled.div`
 
   h1 {
     font-size: 14px;
-    color: ${props => props.theme.neutral800};
+    color: ${props => props.theme.neutral700};
     margin-bottom: 16px;
   }
 `;
@@ -25,7 +25,7 @@ const Header = styled.div`
 class Board extends Component {
   render() {
     const {
-      sections: { byId, order, day },
+      sections: { order, day },
       dayId,
     } = this.props;
     return (
@@ -37,7 +37,7 @@ class Board extends Component {
           </div>
         </Header>
         {dayId &&
-          order.map(id => <Section key={id} title={byId[id].title} dayId={dayId} sectionId={id} />)}
+          order.map(id => <Section key={id} dayId={dayId} sectionId={id} />)}
       </StyledBoard>
     );
   }

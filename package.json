@@ -7,6 +7,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "coverage": "npm run test -- --coverage",
     "eject": "react-scripts eject",
     "sb": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
@@ -48,6 +49,9 @@
     "@storybook/addon-options": "^4.1.11",
     "@storybook/addons": "^4.1.11",
     "@storybook/react": "^4.1.11",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.11.2",
+    "enzyme-to-json": "^3.3.5",
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-prettier": "^3.0.1",
@@ -57,5 +61,10 @@
     "redux-devtools-extension": "^2.13.8",
     "storybook-react-router": "^1.0.2",
     "storybook-readme": "^4.0.5"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }

@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 const Input = styled.input`
   height: 48px;
-  background: ${props => props.theme.neutral200};
-  color: ${props => props.theme.neutral700};
+  background: ${props => props.theme.neutral100};
+  color: ${props => props.theme.neutral600};
   border-radius: 4px;
   border: none;
   font-size: 18px;
@@ -11,12 +11,12 @@ const Input = styled.input`
   padding: 12px 16px;
 
   &::placeholder {
-    color: ${props => props.theme.neutral400};
+    color: ${props => props.theme.neutral300};
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 4px ${props => props.theme.blue200};
+    box-shadow: 0 0 0 4px ${props => props.theme.blue100};
   }
 `;
 

@@ -12,8 +12,8 @@ const getColors = props => {
       };
     default:
       return {
-        border: `${props.theme.neutral200}`,
-        accent: `${props.theme.neutral300}`,
+        border: `${props.theme.neutral100}`,
+        accent: `${props.theme.neutral200}`,
       };
   }
 };

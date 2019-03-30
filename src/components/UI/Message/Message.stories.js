@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withDocs } from 'storybook-readme';
 import { withKnobs, text, select } from '@storybook/addon-knobs';
 
-import { Message, MessageReadme } from './';
+import { Message, MessageReadme } from '..';
 
 storiesOf('Miscellaneous components', module)
   .addDecorator(withKnobs)
