@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Task from '../Task/Task';
+import Task from '../Task';
 import Link from '../../../UI/Link';
 import { ADD_TASK } from '../../../modals/types';
 import { IconAdd } from '../../../../icons/Icons';
@@ -51,8 +51,8 @@ class Section extends Component {
         <h1 className="title">{section.title}</h1>
         {section.tasks.length ? (
           <Tasks>
-            {section.tasks.map(id => (
-              <Task key={id}>{tasks[id].title}</Task>
+            {section.tasks.map(taskId => (
+              <Task key={taskId} taskId={taskId}>{tasks[taskId].title}</Task>
             ))}
           </Tasks>
         ) : (

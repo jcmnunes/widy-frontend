@@ -1,6 +1,6 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { createTask } from '../../api/tasks';
-import * as types from '../../actions/tasks';
+import * as types from '../../actions/tasks/types';
 import * as modalTypes from '../../actions/modals/types';
 
 const getDayId = state => state.tasks.createTask.dayId;

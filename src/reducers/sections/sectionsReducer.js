@@ -1,5 +1,5 @@
 import * as types from '../../actions/days/types';
-import * as tasksTypes from '../../actions/tasks';
+import * as tasksTypes from '../../actions/tasks/types';
 import initialState from './initialState';
 
 const addTaskToSection = (sectionId, taskId, state) => ({
