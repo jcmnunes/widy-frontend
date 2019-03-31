@@ -2,6 +2,23 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+const getColors = props => {
+  const colors = {
+    background: props.theme.neutral300,
+  };
+  switch (props.intent) {
+    case 'primary':
+      colors.background = props.theme.blue500;
+      break;
+    case 'success':
+      colors.background = props.theme.green500;
+      break;
+    default:
+      break;
+  }
+  return colors;
+};
+
 const StyledCheckbox = styled.label`
   display: flex;
   height: 25px;
@@ -29,7 +46,7 @@ const StyledCheckbox = styled.label`
 
     &:checked {
       & ~ .checkmark {
-        background-color: ${props => props.intent === 'success' ? props.theme.green500 : props.theme.blue600};
+        background-color: ${props => getColors(props).background};
 
         &:after {
           display: block;
@@ -64,9 +81,9 @@ const StyledCheckbox = styled.label`
 
 class Checkbox extends Component {
   render() {
-    const { children, intent, ...other } = this.props;
+    const { children, intent, onClick, ...other } = this.props;
     return (
-      <StyledCheckbox intent={intent}>
+      <StyledCheckbox intent={intent} onClick={onClick}>
         {children}
         <input type="checkbox" {...other} />
         <span className="checkmark" />

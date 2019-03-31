@@ -1,4 +1,4 @@
-import * as types from '../../actions/tasks';
+import * as types from '../../actions/tasks/types';
 import * as daysTypes from '../../actions/days/types';
 import initialState from './initialState';
 
@@ -37,6 +37,11 @@ export default (state = initialState, action) => {
           ...state.createTask,
           loading: false,
         },
+      };
+    case types.STORE_SELECTED_TASK_ID:
+      return {
+        ...state,
+        selectedTaskId: action.taskId,
       };
     default:
       return state;

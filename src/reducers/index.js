@@ -5,6 +5,7 @@ import modals from './modals';
 import days from './days/daysReducer';
 import sections from './sections/sectionsReducer';
 import tasks from './tasks/tasksReducer';
+import sidebar from './sidebar/sidebarReducer';
 
 const rootReducer = combineReducers({
   auth,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   days,
   sections,
   tasks,
+  sidebar,
   notifications,
 });
 
