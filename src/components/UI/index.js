@@ -1,5 +1,7 @@
 export { default as Button } from './Button';
 export { default as ButtonReadme } from './Button/Button.md';
+export { default as RoundButton } from './RoundButton';
+export { default as RoundButtonReadme } from './RoundButton/RoundButton.md';
 export { default as Checkbox } from './Checkbox';
 export { default as CheckboxReadme } from './Checkbox/Checkbox.md';
 export { default as Input } from './Input';
