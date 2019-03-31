@@ -2,6 +2,8 @@ export { default as Button } from './Button';
 export { default as ButtonReadme } from './Button/Button.md';
 export { default as RoundButton } from './RoundButton';
 export { default as RoundButtonReadme } from './RoundButton/RoundButton.md';
+export { default as Dropdown, StyledDropdown } from './Dropdown';
+export { default as DropdownReadme } from './Dropdown/Dropdown.md';
 export { default as Checkbox } from './Checkbox';
 export { default as CheckboxReadme } from './Checkbox/Checkbox.md';
 export { default as Input } from './Input';
