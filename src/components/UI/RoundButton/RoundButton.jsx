@@ -51,7 +51,7 @@ const StyledRoundButton = styled.button`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: ${props => (props.size === 'large' ? '24px' : '18px')};
+    height: 18px;
   }
 `;
 

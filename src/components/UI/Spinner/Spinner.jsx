@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 
 const getColors = props => {
@@ -34,5 +35,15 @@ const Spinner = styled.span`
   border-top-color: ${props => getColors(props).accent};
   animation: ${spin} 500ms infinite linear;
 `;
+
+Spinner.defaultProps = {
+  size: 'small',
+  intent: 'neutral',
+};
+
+Spinner.propTypes = {
+  size: PropTypes.oneOf(['large', 'small']),
+  intent: PropTypes.oneOf(['primary', 'success', 'warning', 'error', 'secondary', 'neutral']),
+};
 
 export default Spinner;
