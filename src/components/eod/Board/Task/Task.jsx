@@ -20,11 +20,6 @@ const StyledTask = styled.div`
   &:last-of-type {
     margin-bottom: 12px;
   }
-
-  span.title {
-    text-decoration: ${props => (props.selected ? 'line-through' : 'none')};
-    color: ${props => (props.selected ? props.theme.neutral300 : props.theme.neutral700)};
-  }
 `;
 
 class Task extends Component {

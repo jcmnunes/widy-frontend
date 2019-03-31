@@ -12,6 +12,7 @@ const StyledEOD = styled.div`
   grid-template-columns: 8px 254px 1fr;
   height: 100vh;
   transition: all 0.3s ease;
+  min-width: ${props => props.theme.bp_small};
 
   @media (min-width: ${props => props.theme.bp_large}) {
     grid-template-columns: 8px 254px 3fr 2fr;
