@@ -1,1 +1,1 @@
-export { default } from './ActionsTop';
+export { default } from './ActionsTop.container';

@@ -168,7 +168,7 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-  intent: PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'error']),
+  intent: PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'error', 'dropdown']),
   size: PropTypes.oneOf(['medium', 'large']),
   loading: PropTypes.bool,
   disabled: PropTypes.bool,

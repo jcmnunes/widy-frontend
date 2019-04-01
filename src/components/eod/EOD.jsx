@@ -34,9 +34,7 @@ class EOD extends Component {
         <MainBar />
         <Navigation />
         <Board />
-        <Sidebar>
-          <button onClick={this.handleOnCLick}>Logout</button>
-        </Sidebar>
+        <Sidebar />
       </StyledEOD>
     );
   }
