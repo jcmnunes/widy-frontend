@@ -15,15 +15,9 @@
     "format": "prettier --write",
     "precommit": "lint-staged"
   },
-  "lint-staged": {
-    "src/**/*.js": [
-      "npm run lint",
-      "git add"
-    ]
-  },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged"
+      "pre-commit": "npm run precommit"
     }
   },
   "browserslist": [

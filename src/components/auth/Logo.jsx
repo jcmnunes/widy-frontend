@@ -17,7 +17,7 @@ class Logo extends Component {
     return (
       <StyledLogo>
         <IconWidy size={60} yesterdayColor={theme.blue600} />
-        <IconWidyText size={80} textColor={theme.blue600}/>
+        <IconWidyText size={80} textColor={theme.blue600} />
       </StyledLogo>
     );
   }
