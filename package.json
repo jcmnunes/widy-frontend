@@ -12,11 +12,13 @@
     "sb": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "lint": "eslint src --fix --max-warnings=0",
+    "format": "prettier --write",
     "precommit": "lint-staged"
   },
   "lint-staged": {
     "src/**/*.js": [
       "npm run lint",
+      "pretty-quick --staged",
       "git add"
     ]
   },
@@ -59,6 +61,7 @@
     "jest-styled-components": "^6.3.1",
     "lint-staged": "^8.1.4",
     "prettier": "^1.16.4",
+    "pretty-quick": "^1.10.0",
     "react-test-renderer": "^16.8.6",
     "redux-devtools-extension": "^2.13.8",
     "storybook-react-router": "^1.0.2",
