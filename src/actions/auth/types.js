@@ -9,3 +9,6 @@ export const FORGOT_REQUEST = 'auth/FORGOT_REQUEST';
 export const FORGOT_SUCCESS = 'auth/FORGOT_SUCCESS';
 export const FORGOT_FAILURE = 'auth/FORGOT_FAILURE';
 export const RESET_FORGOT_MESSAGE = 'auth/RESET_FORGOT_MESSAGE';
+export const INIT_REQUEST = 'auth/INIT_REQUEST';
+export const INIT_SUCCESS = 'auth/INIT_SUCCESS';
+export const INIT_FAILURE = 'auth/INIT_FAILURE';

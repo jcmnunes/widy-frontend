@@ -51,6 +51,12 @@ export default (state = initialState, action) => {
       return { ...state, forgot: { ...state.forgot, loading: false, error: action.error } };
     case types.RESET_FORGOT_MESSAGE:
       return { ...state, forgot: { ...state.forgot, message: '' } };
+    case types.INIT_REQUEST:
+      return { ...state, init: { ...state.init, loading: true } };
+    case types.INIT_SUCCESS:
+      return { ...state, init: { ...state.init, loading: false }, authenticated: true };
+    case types.INIT_FAILURE:
+      return { ...state, init: { ...state.init, loading: false }, authenticated: false };
     default:
       return state;
   }
