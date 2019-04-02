@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import moment from 'moment';
 import Section from './Section';
-import { IconUserCircle } from '../../../icons/Icons';
+import ActionsTop from './ActionsTop';
 
 const StyledBoard = styled.div`
   background: white;
@@ -12,7 +12,10 @@ const StyledBoard = styled.div`
   h1 {
     font-size: 14px;
     color: ${props => props.theme.neutral700};
-    margin-bottom: 16px;
+
+    .large-text {
+      font-size: 20px;
+    }
   }
 `;
 
@@ -20,6 +23,7 @@ const Header = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `;
 
 class Board extends Component {
@@ -31,13 +35,19 @@ class Board extends Component {
     return (
       <StyledBoard>
         <Header>
-          <h1>{dayId ? moment(day).format('ddd DD MMM YYYY') : 'Select a day'}</h1>
-          <div className="actions">
-            <IconUserCircle size={32} />
-          </div>
+          <h1>
+            {dayId ? (
+              <>
+                <span className="large-text">{`${moment(day).format('ddd DD')}`} </span>
+                <span>{`${moment(day).format('MMM YYYY')}`}</span>{' '}
+              </>
+            ) : (
+              'Select a day'
+            )}
+          </h1>
+          <ActionsTop />
         </Header>
-        {dayId &&
-          order.map(id => <Section key={id} dayId={dayId} sectionId={id} />)}
+        {dayId && order.map(id => <Section key={id} dayId={dayId} sectionId={id} />)}
       </StyledBoard>
     );
   }

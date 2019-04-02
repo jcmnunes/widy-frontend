@@ -32,7 +32,6 @@ class Sidebar extends Component {
     const { isOpen } = this.props;
     return (
       <StyledSidebar isOpen={isOpen}>
-        {this.props.children}
         <button onClick={this.closeSidebar}>X</button>
       </StyledSidebar>
     );

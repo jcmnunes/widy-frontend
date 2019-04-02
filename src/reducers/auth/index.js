@@ -8,6 +8,7 @@ import {
   SET_AUTH_ERROR,
   SET_AUTH_MESSAGE,
 } from '../../actions/auth';
+import * as types from '../../actions/auth/types';
 import initialState from './initialState';
 
 export default (state = initialState, action) => {
@@ -28,6 +29,12 @@ export default (state = initialState, action) => {
       return { ...state, message: action.payload };
     case UNAUTH_USER:
       return { ...state, authenticated: false };
+    case types.LOGOUT_REQUEST:
+      return { ...state, logout: { ...state.logout, loading: true } };
+    case types.LOGOUT_SUCCESS:
+      return { ...state, logout: { ...state.logout, loading: false }, authenticated: false };
+    case types.LOGOUT_FAILURE:
+      return { ...state, logout: { ...state.logout, loading: false, error: action.error } };
     default:
       return state;
   }

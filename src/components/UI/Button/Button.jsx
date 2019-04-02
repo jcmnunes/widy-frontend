@@ -52,6 +52,14 @@ const getButtonColors = props => {
       colors.active = props.theme.green700;
       colors.disabled = '#AFE1D5';
       break;
+    case 'dropdown':
+      colors.gradient.top = 'none';
+      colors.gradient.topHover = props.theme.neutral050;
+      colors.gradient.bottom = 'none';
+      colors.gradient.bottomHover = props.theme.neutral050;
+      colors.active = props.theme.neutral100;
+      colors.disabled = 'none';
+      break;
     default:
       break;
   }
@@ -70,7 +78,7 @@ const StyledButton = styled.button`
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: ${props => (props.intent === 'dropdown' ? 'flex-start' : 'center')};
   width: ${props => (props.block ? '100%' : 'auto')};
   background: ${props => `linear-gradient(to bottom,
     ${getButtonColors(props).gradient.top},
@@ -83,7 +91,8 @@ const StyledButton = styled.button`
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 4px ${props => props.theme.blue100};
+    box-shadow: ${props =>
+      props.intent === 'dropdown' ? 'none' : `0 0 0 4px ${props => props.theme.blue100}`};
   }
 
   &:hover {
@@ -106,6 +115,10 @@ const StyledButton = styled.button`
     visibility: ${props => (props.loading ? 'hidden' : 'visible')};
     display: flex;
     align-items: center;
+
+    .button-text {
+      white-space: nowrap;
+    }
   }
 
   .spinner {
@@ -135,7 +148,7 @@ class Button extends Component {
         )}
         <div className="content">
           {iconBefore && iconBefore}
-          {<span>{this.props.children}</span>}
+          {<span className="button-text">{this.props.children}</span>}
           {iconAfter && iconAfter}
         </div>
       </StyledButton>
@@ -155,7 +168,7 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-  intent: PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'error']),
+  intent: PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'error', 'dropdown']),
   size: PropTypes.oneOf(['medium', 'large']),
   loading: PropTypes.bool,
   disabled: PropTypes.bool,

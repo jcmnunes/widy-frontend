@@ -4,4 +4,8 @@ export default {
   fetching: false,
   message: '',
   error: '',
+  logout: {
+    loading: false,
+    error: '',
+  },
 };

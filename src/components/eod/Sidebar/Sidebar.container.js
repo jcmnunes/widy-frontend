@@ -8,5 +8,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { closeSidebar }
+  { closeSidebar },
 )(Sidebar);

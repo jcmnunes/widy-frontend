@@ -49,7 +49,7 @@ class AddTask extends Component {
               />
             </div>
             <div className="footer">
-              <Button intent="secondary" size="large" onClick={this.closeModal}>
+              <Button type="button" intent="secondary" size="large" onClick={this.closeModal}>
                 Cancel
               </Button>
               <Button type="submit" loading={loading} intent="primary" size="large">

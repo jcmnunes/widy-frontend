@@ -114,6 +114,25 @@ IconCheveronRight.propTypes = {
   primaryColor: PropTypes.string,
 };
 
+export const IconCheveronDown = ({ size, primaryColor }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24">
+    <path
+      fill={primaryColor}
+      d="M15.3 10.3a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4l3.3 3.29 3.3-3.3z"
+    />
+  </svg>
+);
+
+IconCheveronDown.defaultProps = {
+  size: 24,
+  primaryColor: theme.neutral600,
+};
+
+IconCheveronDown.propTypes = {
+  size: PropTypes.number,
+  primaryColor: PropTypes.string,
+};
+
 export const IconClose = ({ size, primaryColor }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24">
     <path
@@ -153,6 +172,78 @@ IconUserCircle.defaultProps = {
 };
 
 IconUserCircle.propTypes = {
+  size: PropTypes.number,
+  primaryColor: PropTypes.string,
+  secondaryColor: PropTypes.string,
+};
+
+export const IconPresentation = ({ size, primaryColor, secondaryColor }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24">
+    <path
+      fill={primaryColor}
+      d="M11 18.62l-6.55 3.27a1 1 0 0 1-.9-1.78L11 16.38V5a1 1 0 0 1 2 0v11.38l7.45 3.73a1 1 0 0 1-.9 1.78L13 18.62V21a1 1 0 0 1-2 0v-2.38z"
+    />
+    <path
+      fill={secondaryColor}
+      d="M21 14a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2V4a1 1 0 1 1 0-2h18a1 1 0 0 1 0 2v10z"
+    />
+  </svg>
+);
+
+IconPresentation.defaultProps = {
+  size: 24,
+  primaryColor: theme.neutral600,
+  secondaryColor: theme.neutral200,
+};
+
+IconPresentation.propTypes = {
+  size: PropTypes.number,
+  primaryColor: PropTypes.string,
+  secondaryColor: PropTypes.string,
+};
+
+export const IconDoorExit = ({ size, primaryColor, secondaryColor }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24">
+    <path
+      fill={primaryColor}
+      d="M11 4h3a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V6h-2v12h2v-2a1 1 0 0 1 2 0v3a1 1 0 0 1-1 1h-3v1a1 1 0 0 1-1.27.96l-6.98-2A1 1 0 0 1 2 19V5a1 1 0 0 1 .75-.97l6.98-2A1 1 0 0 1 11 3v1z"
+    />
+    <path
+      fill={secondaryColor}
+      d="M18.59 11l-1.3-1.3c-.94-.94.47-2.35 1.42-1.4l3 3a1 1 0 0 1 0 1.4l-3 3c-.95.95-2.36-.46-1.42-1.4l1.3-1.3H14a1 1 0 0 1 0-2h4.59z"
+    />
+  </svg>
+);
+
+IconDoorExit.defaultProps = {
+  size: 24,
+  primaryColor: theme.neutral200,
+  secondaryColor: theme.neutral600,
+};
+
+IconDoorExit.propTypes = {
+  size: PropTypes.number,
+  primaryColor: PropTypes.string,
+  secondaryColor: PropTypes.string,
+};
+
+export const IconUser = ({ size, primaryColor, secondaryColor }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24">
+    <path fill={primaryColor} d="M12 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" />
+    <path
+      fill={secondaryColor}
+      d="M21 20v-1a5 5 0 0 0-5-5H8a5 5 0 0 0-5 5v1c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2z"
+    />
+  </svg>
+);
+
+IconUser.defaultProps = {
+  size: 24,
+  primaryColor: theme.neutral200,
+  secondaryColor: theme.neutral600,
+};
+
+IconUser.propTypes = {
   size: PropTypes.number,
   primaryColor: PropTypes.string,
   secondaryColor: PropTypes.string,

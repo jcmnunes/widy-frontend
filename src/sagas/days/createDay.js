@@ -11,7 +11,6 @@ export function* createDaySaga(action) {
     yield put({ type: types.CREATE_DAY_SUCCESS, day });
     yield put({ type: types.GET_DAY_REQUEST, payload: day._id });
   } catch (error) {
-    console.error('error', error);
     yield put({ type: types.CREATE_DAY_FAILURE, error });
   }
 }
