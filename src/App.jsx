@@ -23,7 +23,7 @@ class App extends Component {
 }
 
 export const mapStateToProps = state => ({
-  loading: state.auth.loading,
+  loading: state.auth.init.loading,
   notifications: state.notifications,
 });
 

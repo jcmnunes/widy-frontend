@@ -30,7 +30,7 @@ class Task extends Component {
   };
 
   handleTaskCheckboxChange = e => {
-    console.log('e.target.checked', e.target.checked);
+    // TODO
   };
 
   handleTaskCheckboxClick = e => {

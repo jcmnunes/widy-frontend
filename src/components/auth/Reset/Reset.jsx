@@ -38,9 +38,8 @@ const Helper = styled.p`
   font-size: 18px;
   color: ${props => props.theme.neutral400};
   width: 90%;
-  margin: 0 auto;
   text-align: center;
-  margin-bottom: 24px;
+  margin: 0 auto 24px;
 `;
 
 const Footer = styled.div`
@@ -61,7 +60,7 @@ class Reset extends Component {
     // Reset errors from BE
     const { error } = this.props;
     if (error.length > 0) {
-      this.props.setAuthError('');
+      this.props.resetResetError();
     }
 
     // Reset sync validation
@@ -78,17 +77,13 @@ class Reset extends Component {
     });
   };
 
-  handleOnBlur = () => {
-    this.validate();
-  };
-
   handleSubmit = e => {
     e.preventDefault();
     this.validate(() => {
       if (this.isFormValid()) {
         const { password, confirm } = this.state;
         const { token } = this.props.match.params;
-        this.props.resetThunk({ password, confirm, token });
+        this.props.reset({ password, confirm, token });
       }
     });
   };
@@ -122,11 +117,11 @@ class Reset extends Component {
   };
 
   componentWillUnmount() {
-    this.props.setAuthError('');
+    this.props.resetResetError();
   }
 
   render() {
-    const { fetching, error } = this.props;
+    const { loading, error } = this.props;
     const { passwordError, confirmError } = this.state;
     return (
       <Container>
@@ -146,7 +141,6 @@ class Reset extends Component {
             type="password"
             error={passwordError}
             onChange={this.handleOnChange}
-            onBlur={this.handleOnBlur}
           />
           <InputField
             placeholder="Confirm new password"
@@ -155,9 +149,8 @@ class Reset extends Component {
             type="password"
             error={confirmError}
             onChange={this.handleOnChange}
-            onBlur={this.handleOnBlur}
           />
-          <Button type="submit" intent="primary" size="large" loading={fetching} block>
+          <Button type="submit" intent="primary" size="large" loading={loading} block>
             Change password
           </Button>
           <Footer>

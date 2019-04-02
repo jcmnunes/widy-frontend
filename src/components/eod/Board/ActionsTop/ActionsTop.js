@@ -21,7 +21,7 @@ const StyledActionsTop = styled.div`
 
 class ActionsTop extends Component {
   render() {
-    const { loading } = this.props.logout;
+    const { loading } = this.props.logoutState;
     return (
       <StyledActionsTop>
         <RoundButton iconAfter={<IconPresentation />}>Standup</RoundButton>
@@ -38,7 +38,7 @@ class ActionsTop extends Component {
               loading={loading}
               intent="dropdown"
               iconBefore={<IconDoorExit />}
-              onClick={this.props.logoutThunk}
+              onClick={this.props.logout}
             >
               Log out
             </Button>

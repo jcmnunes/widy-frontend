@@ -43,7 +43,15 @@ Spinner.defaultProps = {
 
 Spinner.propTypes = {
   size: PropTypes.oneOf(['large', 'small']),
-  intent: PropTypes.oneOf(['primary', 'success', 'warning', 'error', 'secondary', 'neutral']),
+  intent: PropTypes.oneOf([
+    'primary',
+    'success',
+    'warning',
+    'error',
+    'secondary',
+    'neutral',
+    'dropdown',
+  ]),
 };
 
 export default Spinner;
