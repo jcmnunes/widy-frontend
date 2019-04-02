@@ -18,9 +18,13 @@
   "lint-staged": {
     "src/**/*.js": [
       "npm run lint",
-      "pretty-quick --staged",
       "git add"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   },
   "browserslist": [
     ">0.2%",
