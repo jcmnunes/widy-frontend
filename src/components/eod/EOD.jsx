@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import styled from 'styled-components';
 import MainBar from './MainBar/MainBar';
 import Navigation from './Navigation';
 import Board from './Board';
 import Sidebar from './Sidebar';
-import logoutThunk from '../../thunks/logout';
 
 const StyledEOD = styled.div`
   display: grid;
@@ -24,10 +22,6 @@ const StyledEOD = styled.div`
 `;
 
 class EOD extends Component {
-  handleOnCLick = () => {
-    this.props.logoutThunk();
-  };
-
   render() {
     return (
       <StyledEOD>
@@ -40,7 +34,4 @@ class EOD extends Component {
   }
 }
 
-export default connect(
-  null,
-  { logoutThunk },
-)(EOD);
+export default EOD;

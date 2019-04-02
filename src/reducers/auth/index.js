@@ -29,12 +29,28 @@ export default (state = initialState, action) => {
       return { ...state, message: action.payload };
     case UNAUTH_USER:
       return { ...state, authenticated: false };
+    case types.LOGIN_REQUEST:
+      return { ...state, login: { ...state.login, loading: true } };
+    case types.LOGIN_SUCCESS:
+      return { ...state, login: { ...state.login, loading: false }, authenticated: true };
+    case types.LOGIN_FAILURE:
+      return { ...state, login: { ...state.login, loading: false, error: action.error } };
+    case types.RESET_LOGIN_ERROR:
+      return { ...state, login: { ...state.login, error: '' } };
     case types.LOGOUT_REQUEST:
       return { ...state, logout: { ...state.logout, loading: true } };
     case types.LOGOUT_SUCCESS:
       return { ...state, logout: { ...state.logout, loading: false }, authenticated: false };
     case types.LOGOUT_FAILURE:
       return { ...state, logout: { ...state.logout, loading: false, error: action.error } };
+    case types.FORGOT_REQUEST:
+      return { ...state, forgot: { ...state.forgot, loading: true } };
+    case types.FORGOT_SUCCESS:
+      return { ...state, forgot: { ...state.forgot, loading: false, message: action.message } };
+    case types.FORGOT_FAILURE:
+      return { ...state, forgot: { ...state.forgot, loading: false, error: action.error } };
+    case types.RESET_FORGOT_MESSAGE:
+      return { ...state, forgot: { ...state.forgot, message: '' } };
     default:
       return state;
   }

@@ -54,7 +54,7 @@ class Forgot extends Component {
   };
 
   componentWillUnmount() {
-    this.props.setAuthMessage('');
+    this.props.resetForgotMessage();
   }
 
   handleOnChange = e => {
@@ -72,16 +72,12 @@ class Forgot extends Component {
     });
   };
 
-  handleOnBlur = () => {
-    this.validate();
-  };
-
   handleSubmit = e => {
     e.preventDefault();
     this.validate(() => {
       if (this.isFormValid()) {
         const { email } = this.state;
-        this.props.forgotThunk({ email });
+        this.props.forgot({ email });
       }
     });
   };
@@ -103,7 +99,7 @@ class Forgot extends Component {
   };
 
   render() {
-    const { fetching, message } = this.props;
+    const { loading, message } = this.props;
     const { emailError } = this.state;
     return (
       <Container>
@@ -125,9 +121,8 @@ class Forgot extends Component {
             type="text"
             error={emailError}
             onChange={this.handleOnChange}
-            onBlur={this.handleOnBlur}
           />
-          <Button type="submit" intent="primary" size="large" loading={fetching} block>
+          <Button type="submit" intent="primary" size="large" loading={loading} block>
             Reset password
           </Button>
           <Footer>

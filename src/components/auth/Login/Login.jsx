@@ -38,14 +38,14 @@ class Login extends Component {
   };
 
   componentWillUnmount() {
-    this.props.setAuthError('');
+    this.props.resetLoginError();
   }
 
   handleOnChange = e => {
     // Reset errors from BE
     const { error } = this.props;
     if (error.length > 0) {
-      this.props.setAuthError('');
+      this.props.resetLoginError();
     }
 
     // Reset sync validation
@@ -66,7 +66,7 @@ class Login extends Component {
     e.preventDefault();
     this.validate(() => {
       if (this.isFormValid()) {
-        this.props.loginThunk({
+        this.props.login({
           email: this.state.email,
           password: this.state.password,
         });
@@ -99,7 +99,7 @@ class Login extends Component {
   };
 
   render() {
-    const { fetching, error } = this.props;
+    const { loading, error } = this.props;
     const { emailError, passwordError } = this.state;
     return (
       <FormContainer>
@@ -126,7 +126,7 @@ class Login extends Component {
             error={passwordError}
             onChange={this.handleOnChange}
           />
-          <Button type="submit" intent="primary" size="large" loading={fetching}>
+          <Button type="submit" intent="primary" size="large" loading={loading}>
             Login
           </Button>
         </StyledForm>
@@ -141,10 +141,9 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  fetching: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
   error: PropTypes.string.isRequired,
-  loginThunk: PropTypes.func.isRequired,
-  setAuthError: PropTypes.func.isRequired,
+  resetLoginError: PropTypes.func.isRequired,
 };
 
 export default Login;

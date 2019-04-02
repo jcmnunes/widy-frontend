@@ -1,3 +1,11 @@
+export const LOGIN_REQUEST = 'auth/LOGIN_REQUEST';
+export const LOGIN_SUCCESS = 'auth/LOGIN_SUCCESS';
+export const LOGIN_FAILURE = 'auth/LOGIN_FAILURE';
+export const RESET_LOGIN_ERROR = 'auth/RESET_LOGIN_ERROR';
 export const LOGOUT_REQUEST = 'auth/LOGOUT_REQUEST';
 export const LOGOUT_SUCCESS = 'auth/LOGOUT_SUCCESS';
 export const LOGOUT_FAILURE = 'auth/LOGOUT_FAILURE';
+export const FORGOT_REQUEST = 'auth/FORGOT_REQUEST';
+export const FORGOT_SUCCESS = 'auth/FORGOT_SUCCESS';
+export const FORGOT_FAILURE = 'auth/FORGOT_FAILURE';
+export const RESET_FORGOT_MESSAGE = 'auth/RESET_FORGOT_MESSAGE';

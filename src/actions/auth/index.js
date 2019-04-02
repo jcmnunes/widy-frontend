@@ -1,3 +1,5 @@
+import * as types from './types';
+
 export const SET_AUTH_LOADING = 'auth/SET_AUTH_LOADING';
 export const SET_AUTH_NOT_LOADING = 'auth/SET_AUTH_NOT_LOADING';
 export const SET_AUTH_FETCHING = 'auth/SET_AUTH_FETCHING';
@@ -39,4 +41,26 @@ export const authUser = () => ({
 
 export const unauthUser = () => ({
   type: UNAUTH_USER,
+});
+
+export const login = params => ({
+  type: types.LOGIN_REQUEST,
+  params,
+});
+
+export const logout = () => ({
+  type: types.LOGOUT_REQUEST,
+});
+
+export const forgot = params => ({
+  type: types.FORGOT_REQUEST,
+  params,
+});
+
+export const resetLoginError = () => ({
+  type: types.RESET_LOGIN_ERROR,
+});
+
+export const resetForgotMessage = () => ({
+  type: types.RESET_FORGOT_MESSAGE,
 });
