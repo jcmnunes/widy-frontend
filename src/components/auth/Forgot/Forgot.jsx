@@ -13,7 +13,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: ${props => props.theme.neutral100};
+  background: ${props => props.theme.neutral050};
 `;
 
 const StyledForm = styled.form`
