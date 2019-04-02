@@ -1,9 +1,5 @@
 export default {
   authenticated: false,
-  loading: true,
-  fetching: false,
-  message: '',
-  error: '',
   login: {
     loading: false,
     error: '',
@@ -15,6 +11,13 @@ export default {
   forgot: {
     loading: false,
     message: '',
+    error: '',
+  },
+  init: {
+    loading: false,
+  },
+  reset: {
+    loading: false,
     error: '',
   },
 };

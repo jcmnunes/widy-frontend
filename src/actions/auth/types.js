@@ -12,3 +12,7 @@ export const RESET_FORGOT_MESSAGE = 'auth/RESET_FORGOT_MESSAGE';
 export const INIT_REQUEST = 'auth/INIT_REQUEST';
 export const INIT_SUCCESS = 'auth/INIT_SUCCESS';
 export const INIT_FAILURE = 'auth/INIT_FAILURE';
+export const RESET_REQUEST = 'auth/RESET_REQUEST';
+export const RESET_SUCCESS = 'auth/RESET_SUCCESS';
+export const RESET_FAILURE = 'auth/RESET_FAILURE';
+export const RESET_RESET_ERROR = 'auth/RESET_RESET_ERROR';

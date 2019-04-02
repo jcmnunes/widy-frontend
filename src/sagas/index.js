@@ -6,6 +6,7 @@ import createTask from './tasks/createTask';
 import login from './auth/login';
 import logout from './auth/logout';
 import forgot from './auth/forgot';
+import reset from './auth/reset';
 import init from './auth/init';
 
 export default function* rootSaga() {
@@ -17,6 +18,7 @@ export default function* rootSaga() {
     login(),
     logout(),
     forgot(),
+    reset(),
     init(),
   ]);
 }
