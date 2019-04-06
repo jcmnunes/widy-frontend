@@ -8,7 +8,7 @@ describe('EOD Components', () => {
   describe('ActionsTop', () => {
     const props = {
       ...fixture,
-      logoutThunk: jest.fn(),
+      logout: jest.fn(),
     };
 
     it('should render as expected, without crashing', () => {
