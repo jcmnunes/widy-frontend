@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledSidebar = styled.div`
@@ -32,10 +33,17 @@ class Sidebar extends Component {
     const { isOpen } = this.props;
     return (
       <StyledSidebar isOpen={isOpen}>
-        <button onClick={this.closeSidebar}>X</button>
+        <button type="button" onClick={this.closeSidebar}>
+          X
+        </button>
       </StyledSidebar>
     );
   }
 }
+
+Sidebar.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  closeSidebar: PropTypes.func.isRequired,
+};
 
 export default Sidebar;

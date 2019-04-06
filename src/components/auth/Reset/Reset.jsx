@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import Logo from '../Logo';
 import { InputField, Button, Link, Message } from '../../UI';
 
@@ -55,6 +56,10 @@ class Reset extends Component {
     passwordError: '',
     confirmError: '',
   };
+
+  componentWillUnmount() {
+    this.props.resetResetError();
+  }
 
   handleOnChange = e => {
     // Reset errors from BE
@@ -116,10 +121,6 @@ class Reset extends Component {
     );
   };
 
-  componentWillUnmount() {
-    this.props.resetResetError();
-  }
-
   render() {
     const { loading, error } = this.props;
     const { passwordError, confirmError } = this.state;
@@ -163,5 +164,21 @@ class Reset extends Component {
     );
   }
 }
+
+Reset.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.string.isRequired,
+  resetResetError: PropTypes.func.isRequired,
+  match: PropTypes.shape({
+    match: PropTypes.object,
+    isExact: PropTypes.bool,
+    params: PropTypes.shape({
+      token: PropTypes.string,
+    }),
+    path: PropTypes.string,
+    url: PropTypes.string,
+  }).isRequired,
+  reset: PropTypes.func.isRequired,
+};
 
 export default withRouter(Reset);

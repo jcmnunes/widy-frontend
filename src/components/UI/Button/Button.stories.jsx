@@ -13,7 +13,9 @@ storiesOf('Miscellaneous components', module)
   .addDecorator(withKnobs)
   .addDecorator(withDocs(ButtonReadme))
   .add('Button', () => {
-    let label, options, defaultValue;
+    let label;
+    let options;
+    let defaultValue;
 
     label = 'intent';
     options = {

@@ -10,7 +10,8 @@ storiesOf('UI components', module)
   .addDecorator(withKnobs)
   .addDecorator(withDocs(RoundButtonReadme))
   .add('RoundButton', () => {
-    let label, defaultValue;
+    let label;
+    let defaultValue;
 
     label = 'text';
     defaultValue = 'Standup';

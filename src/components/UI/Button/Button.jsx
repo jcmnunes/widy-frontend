@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Spinner from '../Spinner';
@@ -92,7 +92,7 @@ const StyledButton = styled.button`
   &:focus {
     outline: none;
     box-shadow: ${props =>
-      props.intent === 'dropdown' ? 'none' : `0 0 0 4px ${props => props.theme.blue100}`};
+      props.intent === 'dropdown' ? 'none' : `0 0 0 4px ${props.theme.blue100}`};
   }
 
   &:hover {
@@ -118,6 +118,8 @@ const StyledButton = styled.button`
 
     .button-text {
       white-space: nowrap;
+      margin-left: ${props => (props.iconBefore ? '8px' : 'auto')};
+      margin-right: ${props => (props.iconAfter ? '8px' : 'auto')};
     }
   }
 
@@ -130,31 +132,53 @@ const StyledButton = styled.button`
   }
 `;
 
-class Button extends Component {
-  render() {
-    const { loading, disabled, iconBefore, iconAfter, intent, size, ...other } = this.props;
-    return (
-      <StyledButton
-        disabled={disabled || loading}
-        loading={loading}
-        intent={intent}
-        size={size}
-        {...other}
-      >
-        {loading && (
-          <span className="spinner">
-            <Spinner size={size} intent={intent} />
-          </span>
-        )}
-        <div className="content">
-          {iconBefore && iconBefore}
-          {<span className="button-text">{this.props.children}</span>}
-          {iconAfter && iconAfter}
-        </div>
-      </StyledButton>
-    );
-  }
-}
+const Button = ({
+  loading,
+  disabled,
+  iconBefore,
+  iconAfter,
+  intent,
+  size,
+  onClick,
+  children,
+  ...other
+}) => {
+  const handleClick = () => {
+    if (!onClick) return;
+    onClick();
+  };
+
+  const handleKeyDown = e => {
+    if (!onClick) return;
+    if (e.key === 'Enter') {
+      onClick();
+    }
+  };
+  return (
+    <StyledButton
+      disabled={disabled || loading}
+      loading={loading}
+      intent={intent}
+      size={size}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+      iconBefore={iconBefore}
+      iconAfter={iconAfter}
+      {...other}
+    >
+      {loading && (
+        <span className="spinner">
+          <Spinner size={size} intent={intent} />
+        </span>
+      )}
+      <div className="content">
+        {iconBefore && iconBefore}
+        {<span className="button-text">{children}</span>}
+        {iconAfter && iconAfter}
+      </div>
+    </StyledButton>
+  );
+};
 
 Button.defaultProps = {
   loading: false,
@@ -165,6 +189,8 @@ Button.defaultProps = {
   size: 'medium',
   type: 'button',
   block: false,
+  children: '',
+  onClick: null,
 };
 
 Button.propTypes = {
@@ -176,6 +202,8 @@ Button.propTypes = {
   iconAfter: PropTypes.element,
   type: PropTypes.string,
   block: PropTypes.bool,
+  children: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 export default Button;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Checkbox } from '../../../UI';
 
@@ -38,14 +39,22 @@ class Task extends Component {
   };
 
   render() {
-    const { taskId, selectedTaskId } = this.props;
+    const { taskId, selectedTaskId, children } = this.props;
     return (
       <StyledTask selected={taskId === selectedTaskId} onClick={this.handleTaskClick}>
         <Checkbox onChange={this.handleTaskCheckboxChange} onClick={this.handleTaskCheckboxClick} />
-        <span className="title">{this.props.children}</span>
+        <span className="title">{children}</span>
       </StyledTask>
     );
   }
 }
+
+Task.propTypes = {
+  taskId: PropTypes.string.isRequired,
+  selectedTaskId: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
+  storeSelectedTaskId: PropTypes.func.isRequired,
+  openSidebar: PropTypes.func.isRequired,
+};
 
 export default Task;

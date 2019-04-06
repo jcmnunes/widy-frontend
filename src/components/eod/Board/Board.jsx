@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import moment from 'moment';
@@ -26,32 +27,32 @@ const Header = styled.div`
   align-items: center;
 `;
 
-class Board extends Component {
-  render() {
-    const {
-      sections: { order, day },
-      dayId,
-    } = this.props;
-    return (
-      <StyledBoard>
-        <Header>
-          <h1>
-            {dayId ? (
-              <>
-                <span className="large-text">{`${moment(day).format('ddd DD')}`} </span>
-                <span>{`${moment(day).format('MMM YYYY')}`}</span>{' '}
-              </>
-            ) : (
-              'Select a day'
-            )}
-          </h1>
-          <ActionsTop />
-        </Header>
-        {dayId && order.map(id => <Section key={id} dayId={dayId} sectionId={id} />)}
-      </StyledBoard>
-    );
-  }
-}
+const Board = ({ sections: { order, day }, dayId }) => (
+  <StyledBoard>
+    <Header>
+      <h1>
+        {dayId ? (
+          <>
+            <span className="large-text">{`${moment(day).format('ddd DD')}`} </span>
+            <span>{`${moment(day).format('MMM YYYY')}`}</span>{' '}
+          </>
+        ) : (
+          'Select a day'
+        )}
+      </h1>
+      <ActionsTop />
+    </Header>
+    {dayId && order.map(id => <Section key={id} dayId={dayId} sectionId={id} />)}
+  </StyledBoard>
+);
+
+Board.propTypes = {
+  sections: PropTypes.shape({
+    order: PropTypes.array,
+    day: PropTypes.string,
+  }).isRequired,
+  dayId: PropTypes.string.isRequired,
+};
 
 const mapStateToProps = state => ({
   sections: state.sections,

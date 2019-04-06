@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Task from '../Task';
 import Link from '../../../UI/Link';
@@ -52,12 +53,14 @@ class Section extends Component {
         {section.tasks.length ? (
           <Tasks>
             {section.tasks.map(taskId => (
-              <Task key={taskId} taskId={taskId}>{tasks[taskId].title}</Task>
+              <Task key={taskId} taskId={taskId}>
+                {tasks[taskId].title}
+              </Task>
             ))}
           </Tasks>
         ) : (
           <EmptyTasks>
-            No tasks in section "<span>{section.title}</span>"
+            No tasks in section &quot;<span>{section.title}</span>&quot;
           </EmptyTasks>
         )}
         <Link intent="secondary" onClick={this.openModal}>
@@ -67,5 +70,19 @@ class Section extends Component {
     );
   }
 }
+
+Section.propTypes = {
+  dayId: PropTypes.string.isRequired,
+  sectionId: PropTypes.string.isRequired,
+  storeCreateTaskData: PropTypes.func.isRequired,
+  openModal: PropTypes.func.isRequired,
+  section: PropTypes.shape({
+    tasks: PropTypes.array,
+    title: PropTypes.string,
+  }).isRequired,
+  tasks: PropTypes.shape({
+    [PropTypes.string]: PropTypes.object,
+  }).isRequired,
+};
 
 export default Section;

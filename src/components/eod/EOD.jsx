@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import MainBar from './MainBar/MainBar';
 import Navigation from './Navigation';
@@ -21,17 +21,13 @@ const StyledEOD = styled.div`
   }
 `;
 
-class EOD extends Component {
-  render() {
-    return (
-      <StyledEOD>
-        <MainBar />
-        <Navigation />
-        <Board />
-        <Sidebar />
-      </StyledEOD>
-    );
-  }
-}
+const EOD = () => (
+  <StyledEOD>
+    <MainBar />
+    <Navigation />
+    <Board />
+    <Sidebar />
+  </StyledEOD>
+);
 
 export default EOD;

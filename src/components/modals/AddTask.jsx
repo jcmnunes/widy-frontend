@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { StyledModal } from '../UI';
+import { StyledModal, Button, InputField } from '../UI';
 import { IconClose } from '../../icons/Icons';
-import { Button, InputField } from '../UI';
 import { closeModal } from '../../actions/modals';
 import { startCreateTaskRequest } from '../../actions/tasks';
 import theme from '../../styles/theme';
@@ -10,8 +10,14 @@ import theme from '../../styles/theme';
 class AddTask extends Component {
   state = { title: '' };
 
-  closeModal = () => {
+  handleCloseModalClick = () => {
     this.props.closeModal();
+  };
+
+  handleCloseModalKeydown = e => {
+    if (e.key === 'Enter') {
+      this.props.closeModal();
+    }
   };
 
   handleOnChange = e => {
@@ -33,7 +39,13 @@ class AddTask extends Component {
         <div className="modal">
           <form onSubmit={this.handleSubmit}>
             <div className="header">
-              <span className="close" tabIndex="0" onClick={this.closeModal}>
+              <span
+                className="close"
+                role="button"
+                tabIndex="0"
+                onClick={this.handleCloseModalClick}
+                onKeyDown={this.handleCloseModalKeydown}
+              >
                 <IconClose size={36} primaryColor={theme.neutral500} />
               </span>
             </div>
@@ -49,7 +61,7 @@ class AddTask extends Component {
               />
             </div>
             <div className="footer">
-              <Button type="button" intent="secondary" size="large" onClick={this.closeModal}>
+              <Button type="button" intent="secondary" size="large" onClick={this.props.closeModal}>
                 Cancel
               </Button>
               <Button type="submit" loading={loading} intent="primary" size="large">
@@ -62,6 +74,12 @@ class AddTask extends Component {
     );
   }
 }
+
+AddTask.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+  startCreateTaskRequest: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+};
 
 const mapStateToProps = state => ({
   loading: state.tasks.createTask.loading,

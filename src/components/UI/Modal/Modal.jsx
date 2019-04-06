@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { AddTask } from '../../modals';
@@ -69,6 +70,10 @@ const Modal = ({ modal }) => {
     default:
       return null;
   }
+};
+
+Modal.propTypes = {
+  modal: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({

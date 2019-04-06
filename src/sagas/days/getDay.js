@@ -17,8 +17,8 @@ const normalize = data => {
     const tasksArray = tasks.map(task => task._id);
     normalized.sections.byId[id] = { title, tasks: tasksArray };
     normalized.sections.order.push(id);
-    tasks.forEach(({ title, _id: id }) => {
-      normalized.tasks.byId[id] = { title };
+    tasks.forEach(({ title: taskTitle, _id: taskId }) => {
+      normalized.tasks.byId[taskId] = { title: taskTitle };
     });
   });
 

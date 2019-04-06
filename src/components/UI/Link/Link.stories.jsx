@@ -9,10 +9,11 @@ storiesOf('Miscellaneous components', module)
   .addDecorator(withKnobs)
   .addDecorator(withDocs(LinkReadme))
   .add('Link', () => {
-    let label, options, defaultValue;
+    let label;
+    let defaultValue;
 
     label = 'intent';
-    options = {
+    const options = {
       default: null,
       success: 'success',
       warning: 'warning',
