@@ -84,10 +84,13 @@ class Navigation extends Component {
 
 Navigation.propTypes = {
   loading: PropTypes.bool.isRequired,
-  days: PropTypes.object.isRequired,
-  daysOrder: PropTypes.array.isRequired,
+  days: PropTypes.shape({
+    [PropTypes.string]: PropTypes.object,
+  }).isRequired,
+  daysOrder: PropTypes.arrayOf(PropTypes.string).isRequired,
   selected: PropTypes.string.isRequired,
   createDayLoading: PropTypes.bool.isRequired,
+  getDay: PropTypes.func.isRequired,
   getDays: PropTypes.func.isRequired,
   storeSelectedDay: PropTypes.func.isRequired,
   createDay: PropTypes.func.isRequired,

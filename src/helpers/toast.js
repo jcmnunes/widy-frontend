@@ -1,5 +1,5 @@
 import Notifications from 'react-notification-system-redux';
-import store from '../';
+import store from '..';
 
 const defaultOptions = {
   position: 'br',
@@ -7,7 +7,7 @@ const defaultOptions = {
 };
 
 export default {
-  _getOptions(notification) {
+  getOptions(notification) {
     let options = notification;
     if (typeof notification === 'string') {
       options = { message: notification };
@@ -15,15 +15,15 @@ export default {
     return { ...defaultOptions, ...options };
   },
   success(notification) {
-    store.dispatch(Notifications.success(this._getOptions(notification)));
+    store.dispatch(Notifications.success(this.getOptions(notification)));
   },
   error(notification) {
-    store.dispatch(Notifications.error(this._getOptions(notification)));
+    store.dispatch(Notifications.error(this.getOptions(notification)));
   },
   warning(notification) {
-    store.dispatch(Notifications.warning(this._getOptions(notification)));
+    store.dispatch(Notifications.warning(this.getOptions(notification)));
   },
   info(notification) {
-    store.dispatch(Notifications.info(this._getOptions(notification)));
+    store.dispatch(Notifications.info(this.getOptions(notification)));
   },
 };

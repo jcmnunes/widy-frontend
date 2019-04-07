@@ -63,6 +63,7 @@ exports[`UI Components RoundButton should render as expected, without crashing (
 
 <button
   className="c0"
+  disabled={false}
 >
   <div
     className="content"

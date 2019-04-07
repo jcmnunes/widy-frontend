@@ -3,6 +3,7 @@ import fetchDay from './days/getDay';
 import fetchDays from './days/getDays';
 import createDay from './days/createDay';
 import createTask from './tasks/createTask';
+import updateTask from './tasks/updateTask';
 import login from './auth/login';
 import logout from './auth/logout';
 import forgot from './auth/forgot';
@@ -15,6 +16,7 @@ export default function* rootSaga() {
     fetchDay(),
     createDay(),
     createTask(),
+    updateTask(),
     login(),
     logout(),
     forgot(),

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link as RRLink } from 'react-router-dom';
 import styled, { css } from 'styled-components';
@@ -51,7 +51,7 @@ const LinkStyles = css`
 `;
 
 const StyledButton = styled.button`
-  ${LinkStyles}
+  ${LinkStyles};
   border: none;
   cursor: pointer;
   padding-left: 0;
@@ -66,40 +66,37 @@ const StyledAnchor = styled.a`
   ${LinkStyles}
 `;
 
-class Link extends Component {
-  render() {
-    const { children, to, intent, onClick, disabled, size, ...other } = this.props;
-    if (!to) {
-      return (
-        <StyledButton
-          type="button"
-          intent={intent}
-          onClick={onClick}
-          disabled={disabled}
-          size={size}
-          {...other}
-        >
-          {children}
-        </StyledButton>
-      );
-    }
-    // In the code below it is assumed that an internal link will start with
-    // exactly one slash and that everything else is external.
-    const internal = /^\/(?!\/)/.test(to);
-    if (internal) {
-      return (
-        <StyledLink to={to} intent={intent} size={size} {...other}>
-          {children}
-        </StyledLink>
-      );
-    }
+const Link = ({ children, to, intent, onClick, disabled, size, ...other }) => {
+  if (!to) {
     return (
-      <StyledAnchor href={to} intent={intent} size={size} {...other}>
+      <StyledButton
+        type="button"
+        intent={intent}
+        onClick={onClick}
+        disabled={disabled}
+        size={size}
+        {...other}
+      >
         {children}
-      </StyledAnchor>
+      </StyledButton>
     );
   }
-}
+  // In the code below it is assumed that an internal link will start with
+  // exactly one slash and that everything else is external.
+  const internal = /^\/(?!\/)/.test(to);
+  if (internal) {
+    return (
+      <StyledLink to={to} intent={intent} size={size} {...other}>
+        {children}
+      </StyledLink>
+    );
+  }
+  return (
+    <StyledAnchor href={to} intent={intent} size={size} {...other}>
+      {children}
+    </StyledAnchor>
+  );
+};
 
 Link.defaultProps = {
   to: null,

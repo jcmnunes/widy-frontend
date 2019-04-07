@@ -9,14 +9,15 @@ storiesOf('Miscellaneous components', module)
   .addDecorator(withKnobs)
   .addDecorator(withDocs(CheckboxReadme))
   .add('Checkbox', () => {
-    let label, defaultValue, options;
+    let label;
+    let defaultValue;
 
     label = 'children';
     defaultValue = 'Integer posuere erat';
     const labelText = text(label, defaultValue);
 
     label = 'intent';
-    options = {
+    const options = {
       primary: 'primary',
       success: 'success',
     };

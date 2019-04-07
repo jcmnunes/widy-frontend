@@ -11,7 +11,7 @@ const icons = {
     'M7.99-.01c-4.42 0-8 3.58-8 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm1 13h-2v-2h2v2zm0-3h-2v-7h2v7z',
 };
 
-export const Icon = ({ color, size, icon }) => (
+const Icon = ({ color, size, icon }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 16 16">
     <path fill={color} d={icons[icon]} />
   </svg>

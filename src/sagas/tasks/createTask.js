@@ -11,9 +11,9 @@ export function* createTaskSaga(action) {
     const dayId = yield select(getDayId);
     const sectionId = yield select(getSectionId);
     const params = {
-      title: action.title,
       dayId,
       sectionId,
+      payload: { title: action.title },
     };
     const { data } = yield call(createTask, params);
     yield put({

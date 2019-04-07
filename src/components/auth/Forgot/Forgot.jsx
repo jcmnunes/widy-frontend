@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Logo from '../Logo';
 import { InputField, Button, Link, Message } from '../../UI';
@@ -13,7 +14,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: ${props => props.theme.neutral100};
+  background: ${props => props.theme.neutral050};
 `;
 
 const StyledForm = styled.form`
@@ -135,5 +136,12 @@ class Forgot extends Component {
     );
   }
 }
+
+Forgot.propTypes = {
+  resetForgotMessage: PropTypes.func.isRequired,
+  forgot: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  message: PropTypes.string.isRequired,
+};
 
 export default Forgot;

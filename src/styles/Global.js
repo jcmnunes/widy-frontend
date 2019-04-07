@@ -92,9 +92,15 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: black;
   }
-  button {  font-family: 'Source Sans Pro'; }
-  em { font-style: italic; }
-  pre { font-family: monospace; }
+  button {
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+  }
+  em {
+    font-style: italic;
+  }
+  pre {
+    font-family: monospace;
+  }
 `;
 
 export default GlobalStyle;

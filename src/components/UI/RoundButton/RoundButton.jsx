@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Spinner } from '..';
-import Button from '../Button';
 
 const StyledRoundButton = styled.button`
   display: flex;
@@ -23,7 +22,7 @@ const StyledRoundButton = styled.button`
   }
 
   &:hover {
-    background: ${props => props.theme.neutral050};
+    background: ${props => (props.bg ? props.bg : props.theme.neutral050)};
 
     span.children {
       text-decoration: underline;
@@ -55,40 +54,37 @@ const StyledRoundButton = styled.button`
   }
 `;
 
-class RoundButton extends Component {
-  render() {
-    const { loading, disabled, iconBefore, iconAfter, children, ...other } = this.props;
-    return (
-      <StyledRoundButton loading={loading} disabled={disabled || loading} {...other}>
-        {loading && (
-          <span className="spinner">
-            <Spinner size="small" />
-          </span>
-        )}
-        <div className="content">
-          {iconBefore && iconBefore}
-          {children && <span className="children">{children}</span>}
-          {iconAfter && iconAfter}
-        </div>
-      </StyledRoundButton>
-    );
-  }
-}
+const RoundButton = ({ loading, disabled, iconBefore, iconAfter, children, bg, ...other }) => (
+  <StyledRoundButton loading={loading} disabled={disabled || loading} {...other} bg={bg}>
+    {loading && (
+      <span className="spinner">
+        <Spinner size="small" />
+      </span>
+    )}
+    <div className="content">
+      {iconBefore && iconBefore}
+      {children && <span className="children">{children}</span>}
+      {iconAfter && iconAfter}
+    </div>
+  </StyledRoundButton>
+);
 
-Button.defaultProps = {
+RoundButton.defaultProps = {
   loading: false,
   disabled: false,
   iconBefore: null,
   iconAfter: null,
   children: null,
+  bg: null,
 };
 
-Button.propTypes = {
+RoundButton.propTypes = {
   loading: PropTypes.bool,
   disabled: PropTypes.bool,
   iconBefore: PropTypes.element,
   iconAfter: PropTypes.element,
   children: PropTypes.node,
+  bg: PropTypes.string,
 };
 
 export default RoundButton;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { IconWidyText } from '../../../icons/widy';
 import Spinner from '../Spinner';
@@ -17,15 +17,11 @@ const Container = styled.div`
   justify-items: center;
 `;
 
-class PageSpinner extends Component {
-  render() {
-    return (
-      <Container>
-        <IconWidyText size={125} textColor={theme.blue600} />
-        <Spinner size="large" />
-      </Container>
-    );
-  }
-}
+const PageSpinner = () => (
+  <Container>
+    <IconWidyText size={125} textColor={theme.blue600} />
+    <Spinner size="large" />
+  </Container>
+);
 
 export default PageSpinner;

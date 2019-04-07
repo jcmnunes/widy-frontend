@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 import Icon from '../../../icons/Icon';
@@ -80,19 +80,14 @@ const StyledMessage = styled.div`
   }
 `;
 
-class Message extends Component {
-  render() {
-    const { intent, children, ...other } = this.props;
-    return (
-      <StyledMessage intent={intent} {...other}>
-        <span className="icon">
-          <Icon icon={intent} />
-        </span>
-        <span className="message">{children}</span>
-      </StyledMessage>
-    );
-  }
-}
+const Message = ({ intent, children, ...other }) => (
+  <StyledMessage intent={intent} {...other}>
+    <span className="icon">
+      <Icon icon={intent} />
+    </span>
+    <span className="message">{children}</span>
+  </StyledMessage>
+);
 
 Message.defaultProps = {
   intent: null,

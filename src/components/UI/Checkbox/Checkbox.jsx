@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -30,6 +30,29 @@ const StyledCheckbox = styled.label`
   user-select: none;
   color: ${props => props.theme.neutral500};
 
+  .checkmark {
+    position: absolute;
+    border-radius: 4px;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: ${props => props.theme.neutral100};
+
+    &:after {
+      content: '';
+      position: absolute;
+      display: none;
+      left: 9px;
+      top: 5px;
+      width: 7px;
+      height: 12px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      transform: rotate(45deg);
+    }
+  }
+
   input {
     position: absolute;
     opacity: 0;
@@ -54,46 +77,25 @@ const StyledCheckbox = styled.label`
       }
     }
   }
-
-  .checkmark {
-    position: absolute;
-    border-radius: 4px;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: ${props => props.theme.neutral100};
-
-    &:after {
-      content: '';
-      position: absolute;
-      display: none;
-      left: 9px;
-      top: 5px;
-      width: 7px;
-      height: 12px;
-      border: solid white;
-      border-width: 0 3px 3px 0;
-      transform: rotate(45deg);
-    }
-  }
 `;
 
-class Checkbox extends Component {
-  render() {
-    const { children, intent, onClick, ...other } = this.props;
-    return (
-      <StyledCheckbox intent={intent} onClick={onClick}>
-        {children}
-        <input type="checkbox" {...other} />
-        <span className="checkmark" />
-      </StyledCheckbox>
-    );
-  }
-}
+const Checkbox = ({ children, intent, onClick, ...other }) => (
+  <StyledCheckbox intent={intent} onClick={onClick}>
+    {children}
+    <input type="checkbox" {...other} />
+    <span className="checkmark" />
+  </StyledCheckbox>
+);
+
+Checkbox.defaultProps = {
+  children: '',
+  intent: 'neutral',
+};
 
 Checkbox.propTypes = {
   children: PropTypes.string,
+  intent: PropTypes.oneOf(['primary', 'success', 'neutral']),
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Checkbox;

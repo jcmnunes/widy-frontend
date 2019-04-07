@@ -57,7 +57,7 @@ class Dropdown extends Component {
   };
 
   handleTriggerClick = () => {
-    this.setState({ isOpen: !this.state.isOpen });
+    this.setState(prevState => ({ isOpen: !prevState.isOpen }));
   };
 
   render() {

@@ -41,7 +41,24 @@ export default (state = initialState, action) => {
     case types.STORE_SELECTED_TASK_ID:
       return {
         ...state,
-        selectedTaskId: action.taskId,
+        selected: action.taskId,
+      };
+    case daysTypes.STORE_SELECTED_DAY:
+      return {
+        ...state,
+        selected: '',
+      };
+    case types.UPDATE_TASK_SUCCESS:
+    case types.UPDATE_TASK_FAILURE:
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          [action.taskId]: {
+            ...state.byId[action.taskId],
+            ...action.payload,
+          },
+        },
       };
     default:
       return state;

@@ -13,10 +13,11 @@ storiesOf('UI components', module)
       <RoundButton iconBefore={<IconCheveronDown />} iconAfter={<IconUserCircle />} />
     );
 
-    let label, defaultValue, options;
+    let label;
+    let defaultValue;
 
     label = 'position';
-    options = {
+    const options = {
       left: 'left',
       right: 'right',
     };

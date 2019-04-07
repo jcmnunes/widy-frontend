@@ -15,3 +15,9 @@ export const storeSelectedTaskId = taskId => ({
   type: types.STORE_SELECTED_TASK_ID,
   taskId,
 });
+
+export const updateTask = (taskId, payload) => ({
+  type: types.UPDATE_TASK_REQUEST,
+  taskId,
+  payload,
+});

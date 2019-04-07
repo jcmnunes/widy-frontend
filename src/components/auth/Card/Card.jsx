@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Hero from './Hero';
 import Login from '../Login';
@@ -60,22 +60,18 @@ const Form = styled.div`
   }
 `;
 
-class Card extends Component {
-  render() {
-    return (
-      <Container>
-        <div className="logo">
-          <Logo />
-        </div>
-        <StyledCard>
-          <Hero />
-          <Form>
-            <Login />
-          </Form>
-        </StyledCard>
-      </Container>
-    );
-  }
-}
+const Card = () => (
+  <Container>
+    <div className="logo">
+      <Logo />
+    </div>
+    <StyledCard>
+      <Hero />
+      <Form>
+        <Login />
+      </Form>
+    </StyledCard>
+  </Container>
+);
 
 export default Card;

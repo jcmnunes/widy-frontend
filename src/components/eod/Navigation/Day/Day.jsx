@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { IconCheveronRight } from '../../../../icons/Icons';
 import theme from '../../../../styles/theme';
@@ -35,18 +36,25 @@ class Day extends Component {
   };
 
   render() {
+    const { onClick, selected, children } = this.props;
     return (
       <StyledDay
         tabIndex="0"
-        selected={this.props.selected}
-        onClick={this.props.onClick}
+        selected={selected}
+        onClick={onClick}
         onKeyPress={this.hanldeOnKeyPress}
       >
-        <span>{this.props.children}</span>
+        <span>{children}</span>
         <IconCheveronRight primaryColor={theme.neutral700} />
       </StyledDay>
     );
   }
 }
+
+Day.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  selected: PropTypes.bool.isRequired,
+  children: PropTypes.string.isRequired,
+};
 
 export default Day;
