@@ -53,7 +53,7 @@ class Section extends Component {
         {section.tasks.length ? (
           <Tasks>
             {section.tasks.map(taskId => (
-              <Task key={taskId} taskId={taskId}>
+              <Task key={taskId} taskId={taskId} sectionId={section.id}>
                 {tasks[taskId].title}
               </Task>
             ))}

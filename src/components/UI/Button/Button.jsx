@@ -66,15 +66,42 @@ const getButtonColors = props => {
   return colors;
 };
 
+const getDimensions = props => {
+  const dimensions = {
+    height: '22px',
+    fontSize: '14px',
+    padding: '0 4px',
+    spinnerHeight: '16px',
+  };
+
+  switch (props.size) {
+    case 'medium':
+      dimensions.height = '32px';
+      dimensions.fontSize = '16px';
+      dimensions.padding = '4px 12px';
+      dimensions.spinnerHeight = '18px';
+      break;
+    case 'large':
+      dimensions.height = '48px';
+      dimensions.fontSize = '18px';
+      dimensions.padding = '12px 16px';
+      dimensions.spinnerHeight = '24px';
+      break;
+    default:
+      break;
+  }
+  return dimensions;
+};
+
 const StyledButton = styled.button`
   position: relative;
-  height: ${props => (props.size === 'large' ? '48px' : '32px')};
+  height: ${props => getDimensions(props).height};
   color: ${props => getButtonColors(props).text};
   border-radius: 4px;
   border: none;
-  font-size: ${props => (props.size === 'large' ? '18px' : '16px')};
+  font-size: ${props => getDimensions(props).fontSize};
   font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
-  padding: ${props => (props.size === 'large' ? '12px 16px' : '4px 12px')};
+  padding: ${props => getDimensions(props).padding};
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -128,7 +155,7 @@ const StyledButton = styled.button`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: ${props => (props.size === 'large' ? '24px' : '18px')};
+    height: ${props => getDimensions(props).spinnerHeight};
   }
 `;
 
@@ -195,14 +222,14 @@ Button.defaultProps = {
 
 Button.propTypes = {
   intent: PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'error', 'dropdown']),
-  size: PropTypes.oneOf(['medium', 'large']),
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
   loading: PropTypes.bool,
   disabled: PropTypes.bool,
   iconBefore: PropTypes.element,
   iconAfter: PropTypes.element,
   type: PropTypes.string,
   block: PropTypes.bool,
-  children: PropTypes.string,
+  children: PropTypes.node,
   onClick: PropTypes.func,
 };
 

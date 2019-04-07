@@ -3,6 +3,7 @@
 exports[`EOD Components ActionsTop should render as expected, without crashing 1`] = `
 <styled.div>
   <RoundButton
+    bg={null}
     disabled={false}
     iconAfter={
       <IconPresentation
@@ -21,6 +22,7 @@ exports[`EOD Components ActionsTop should render as expected, without crashing 1
     position="right"
     trigger={
       <RoundButton
+        bg={null}
         disabled={false}
         iconAfter={
           <IconUserCircle

@@ -248,3 +248,44 @@ IconUser.propTypes = {
   primaryColor: PropTypes.string,
   secondaryColor: PropTypes.string,
 };
+
+export const IconEdit = ({ size, primaryColor, secondaryColor, ...other }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" {...other}>
+    <path
+      fill={primaryColor}
+      d="M4 14a1 1 0 0 1 .3-.7l11-11a1 1 0 0 1 1.4 0l3 3a1 1 0 0 1 0 1.4l-11 11a1 1 0 0 1-.7.3H5a1 1 0 0 1-1-1v-3z"
+    />
+    <rect fill={secondaryColor} width="20" height="2" x="2" y="20" rx="1" />
+  </svg>
+);
+
+IconEdit.defaultProps = {
+  size: 24,
+  primaryColor: theme.neutral400,
+  secondaryColor: theme.neutral400,
+};
+
+IconEdit.propTypes = {
+  size: PropTypes.number,
+  primaryColor: PropTypes.string,
+  secondaryColor: PropTypes.string,
+};
+
+export const IconCheck = ({ size, primaryColor, ...other }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" {...other}>
+    <path
+      fill={primaryColor}
+      d="M10 14.59l6.3-6.3a1 1 0 0 1 1.4 1.42l-7 7a1 1 0 0 1-1.4 0l-3-3a1 1 0 0 1 1.4-1.42l2.3 2.3z"
+    />
+  </svg>
+);
+
+IconCheck.defaultProps = {
+  size: 24,
+  primaryColor: theme.green400,
+};
+
+IconCheck.propTypes = {
+  size: PropTypes.number,
+  primaryColor: PropTypes.string,
+};

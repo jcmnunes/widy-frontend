@@ -56,7 +56,7 @@ class AddTask extends Component {
                 type="text"
                 name="title"
                 placeholder="Task name"
-                value={this.state.value}
+                value={this.state.title}
                 onChange={this.handleOnChange}
               />
             </div>

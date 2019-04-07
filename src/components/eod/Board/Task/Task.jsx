@@ -25,7 +25,8 @@ const StyledTask = styled.div`
 
 class Task extends Component {
   handleTaskClick = () => {
-    const { taskId } = this.props;
+    const { sectionId, taskId } = this.props;
+    this.props.storeSelectedSectionId(sectionId);
     this.props.storeSelectedTaskId(taskId);
     this.props.openSidebar();
   };
@@ -50,10 +51,12 @@ class Task extends Component {
 }
 
 Task.propTypes = {
+  sectionId: PropTypes.string.isRequired,
   taskId: PropTypes.string.isRequired,
   selectedTaskId: PropTypes.string.isRequired,
   children: PropTypes.string.isRequired,
   storeSelectedTaskId: PropTypes.func.isRequired,
+  storeSelectedSectionId: PropTypes.func.isRequired,
   openSidebar: PropTypes.func.isRequired,
 };
 

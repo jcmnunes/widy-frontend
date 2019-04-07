@@ -22,7 +22,7 @@ const StyledRoundButton = styled.button`
   }
 
   &:hover {
-    background: ${props => props.theme.neutral050};
+    background: ${props => (props.bg ? props.bg : props.theme.neutral050)};
 
     span.children {
       text-decoration: underline;
@@ -54,8 +54,8 @@ const StyledRoundButton = styled.button`
   }
 `;
 
-const RoundButton = ({ loading, disabled, iconBefore, iconAfter, children, ...other }) => (
-  <StyledRoundButton loading={loading} disabled={disabled || loading} {...other}>
+const RoundButton = ({ loading, disabled, iconBefore, iconAfter, children, bg, ...other }) => (
+  <StyledRoundButton loading={loading} disabled={disabled || loading} {...other} bg={bg}>
     {loading && (
       <span className="spinner">
         <Spinner size="small" />
@@ -75,6 +75,7 @@ RoundButton.defaultProps = {
   iconBefore: null,
   iconAfter: null,
   children: null,
+  bg: null,
 };
 
 RoundButton.propTypes = {
@@ -83,6 +84,7 @@ RoundButton.propTypes = {
   iconBefore: PropTypes.element,
   iconAfter: PropTypes.element,
   children: PropTypes.node,
+  bg: PropTypes.string,
 };
 
 export default RoundButton;
