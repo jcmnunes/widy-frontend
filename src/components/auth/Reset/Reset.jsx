@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import Logo from '../Logo';
 import { InputField, Button, Link, Message } from '../../UI';
 
@@ -14,14 +15,14 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: ${props => props.theme.neutral100};
+  background: ${props => props.theme.neutral050};
 `;
 
 const StyledForm = styled.form`
   width: 480px;
   background: white;
   border-radius: 12px;
-  border: 2px solid ${props => props.theme.neutral400};
+  border: 2px solid ${props => props.theme.neutral300};
   padding: 48px;
   margin-top: 48px;
 `;
@@ -30,17 +31,16 @@ const Title = styled.h1`
   font-size: 30px;
   text-align: center;
   width: 100%;
-  color: ${props => props.theme.neutral800};
+  color: ${props => props.theme.neutral700};
   margin-bottom: 24px;
 `;
 
 const Helper = styled.p`
   font-size: 18px;
-  color: ${props => props.theme.neutral500};
+  color: ${props => props.theme.neutral400};
   width: 90%;
-  margin: 0 auto;
   text-align: center;
-  margin-bottom: 24px;
+  margin: 0 auto 24px;
 `;
 
 const Footer = styled.div`
@@ -57,11 +57,15 @@ class Reset extends Component {
     confirmError: '',
   };
 
+  componentWillUnmount() {
+    this.props.resetResetError();
+  }
+
   handleOnChange = e => {
     // Reset errors from BE
     const { error } = this.props;
     if (error.length > 0) {
-      this.props.setAuthError('');
+      this.props.resetResetError();
     }
 
     // Reset sync validation
@@ -78,17 +82,13 @@ class Reset extends Component {
     });
   };
 
-  handleOnBlur = () => {
-    this.validate();
-  };
-
   handleSubmit = e => {
     e.preventDefault();
     this.validate(() => {
       if (this.isFormValid()) {
         const { password, confirm } = this.state;
         const { token } = this.props.match.params;
-        this.props.resetThunk({ password, confirm, token });
+        this.props.reset({ password, confirm, token });
       }
     });
   };
@@ -121,12 +121,8 @@ class Reset extends Component {
     );
   };
 
-  componentWillUnmount() {
-    this.props.setAuthError('');
-  }
-
   render() {
-    const { fetching, error } = this.props;
+    const { loading, error } = this.props;
     const { passwordError, confirmError } = this.state;
     return (
       <Container>
@@ -146,7 +142,6 @@ class Reset extends Component {
             type="password"
             error={passwordError}
             onChange={this.handleOnChange}
-            onBlur={this.handleOnBlur}
           />
           <InputField
             placeholder="Confirm new password"
@@ -155,9 +150,8 @@ class Reset extends Component {
             type="password"
             error={confirmError}
             onChange={this.handleOnChange}
-            onBlur={this.handleOnBlur}
           />
-          <Button type="submit" intent="primary" size="large" loading={fetching} block>
+          <Button type="submit" intent="primary" size="large" loading={loading} block>
             Change password
           </Button>
           <Footer>
@@ -170,5 +164,21 @@ class Reset extends Component {
     );
   }
 }
+
+Reset.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.string.isRequired,
+  resetResetError: PropTypes.func.isRequired,
+  match: PropTypes.shape({
+    match: PropTypes.object,
+    isExact: PropTypes.bool,
+    params: PropTypes.shape({
+      token: PropTypes.string,
+    }),
+    path: PropTypes.string,
+    url: PropTypes.string,
+  }).isRequired,
+  reset: PropTypes.func.isRequired,
+};
 
 export default withRouter(Reset);

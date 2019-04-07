@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Logo from '../Logo';
 import { InputField, Button, Link, Message } from '../../UI';
@@ -13,14 +14,14 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: ${props => props.theme.neutral100};
+  background: ${props => props.theme.neutral050};
 `;
 
 const StyledForm = styled.form`
   width: 480px;
   background: white;
   border-radius: 12px;
-  border: 2px solid ${props => props.theme.neutral400};
+  border: 2px solid ${props => props.theme.neutral300};
   padding: 48px;
   margin-top: 48px;
 `;
@@ -29,13 +30,13 @@ const Title = styled.h1`
   font-size: 30px;
   text-align: center;
   width: 100%;
-  color: ${props => props.theme.neutral800};
+  color: ${props => props.theme.neutral700};
   margin-bottom: 24px;
 `;
 
 const Helper = styled.p`
   font-size: 18px;
-  color: ${props => props.theme.neutral500};
+  color: ${props => props.theme.neutral400};
   width: 90%;
   margin: 0 auto 24px;
   text-align: center;
@@ -54,7 +55,7 @@ class Forgot extends Component {
   };
 
   componentWillUnmount() {
-    this.props.setAuthMessage('');
+    this.props.resetForgotMessage();
   }
 
   handleOnChange = e => {
@@ -72,16 +73,12 @@ class Forgot extends Component {
     });
   };
 
-  handleOnBlur = () => {
-    this.validate();
-  };
-
   handleSubmit = e => {
     e.preventDefault();
     this.validate(() => {
       if (this.isFormValid()) {
         const { email } = this.state;
-        this.props.forgotThunk({ email });
+        this.props.forgot({ email });
       }
     });
   };
@@ -103,7 +100,7 @@ class Forgot extends Component {
   };
 
   render() {
-    const { fetching, message } = this.props;
+    const { loading, message } = this.props;
     const { emailError } = this.state;
     return (
       <Container>
@@ -125,9 +122,8 @@ class Forgot extends Component {
             type="text"
             error={emailError}
             onChange={this.handleOnChange}
-            onBlur={this.handleOnBlur}
           />
-          <Button type="submit" intent="primary" size="large" loading={fetching} block>
+          <Button type="submit" intent="primary" size="large" loading={loading} block>
             Reset password
           </Button>
           <Footer>
@@ -140,5 +136,12 @@ class Forgot extends Component {
     );
   }
 }
+
+Forgot.propTypes = {
+  resetForgotMessage: PropTypes.func.isRequired,
+  forgot: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  message: PropTypes.string.isRequired,
+};
 
 export default Forgot;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import moment from 'moment';
@@ -10,24 +10,21 @@ const StyledDays = styled.div`
   grid-gap: 8px;
 `;
 
-class Days extends Component {
-  render() {
-    const { days, order, selected, onClick } = this.props;
-    return (
-      <StyledDays>
-        {order.map(id => (
-          <Day key={id} onClick={() => onClick(id)} selected={id === selected}>
-            {moment(days[id].day).format('ddd DD MMM YYYY')}
-          </Day>
-        ))}
-      </StyledDays>
-    );
-  }
-}
+const Days = ({ days, order, selected, onClick }) => (
+  <StyledDays>
+    {order.map(id => (
+      <Day key={id} onClick={() => onClick(id)} selected={id === selected}>
+        {moment(days[id].day).format('ddd DD MMM YYYY')}
+      </Day>
+    ))}
+  </StyledDays>
+);
 
 Days.propTypes = {
-  days: PropTypes.object.isRequired,
-  order: PropTypes.array.isRequired,
+  days: PropTypes.shape({
+    [PropTypes.string]: PropTypes.object,
+  }).isRequired,
+  order: PropTypes.arrayOf(PropTypes.string).isRequired,
   selected: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
 };

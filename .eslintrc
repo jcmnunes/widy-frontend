@@ -1,9 +1,12 @@
 {
-  "extends": ["react-app", "plugin:prettier/recommended", "plugin:import/errors"],
+  "extends": ["airbnb", "react-app", "plugin:prettier/recommended", "plugin:import/errors"],
   "rules": {
     "no-debugger": 2,
     "no-alert": 2,
-    "no-console": 2
+    "no-console": 2,
+    "react/destructuring-assignment": 0,
+    "no-underscore-dangle": 0,
+    "react/jsx-one-expression-per-line": 0
   },
   "settings": {
     "import/resolver": {

@@ -8,24 +8,24 @@ export default {
       padding: '14px',
     },
     success: {
-      border: `1px solid ${theme.green700}`,
-      backgroundColor: theme.green600,
+      border: `1px solid ${theme.green600}`,
+      backgroundColor: theme.green500,
       color: '#FFFFFF',
     },
     error: {
-      border: `1px solid ${theme.red900}`,
-      backgroundColor: theme.red200,
-      color: theme.red900,
+      border: `1px solid ${theme.red800}`,
+      backgroundColor: theme.red100,
+      color: theme.red800,
     },
     warning: {
-      border: `1px solid ${theme.yellow900}`,
-      backgroundColor: theme.yellow200,
-      color: theme.yellow900,
+      border: `1px solid ${theme.yellow800}`,
+      backgroundColor: theme.yellow100,
+      color: theme.yellow800,
     },
     info: {
-      border: `1px solid ${theme.blue900}`,
-      backgroundColor: theme.blue200,
-      color: theme.blue900,
+      border: `1px solid ${theme.blue800}`,
+      backgroundColor: theme.blue100,
+      color: theme.blue800,
     },
   },
 
@@ -40,15 +40,15 @@ export default {
     },
 
     error: {
-      color: theme.red900,
+      color: theme.red800,
     },
 
     warning: {
-      color: theme.yellow900,
+      color: theme.yellow800,
     },
 
     info: {
-      color: theme.blue900,
+      color: theme.blue800,
     },
   },
 
@@ -68,7 +68,7 @@ export default {
       right: '6px',
       lineHeight: '15px',
       backgroundColor: 'none',
-      color: theme.neutral800,
+      color: theme.neutral700,
       width: '14px',
       height: '14px',
       fontWeight: 'normal',
@@ -76,19 +76,19 @@ export default {
     },
 
     success: {
-      color: theme.green900,
+      color: theme.green800,
     },
 
     error: {
-      color: theme.red900,
+      color: theme.red800,
     },
 
     warning: {
-      color: theme.yellow900,
+      color: theme.yellow800,
     },
 
     info: {
-      color: theme.blue900,
+      color: theme.blue800,
     },
   },
 
@@ -104,22 +104,22 @@ export default {
     },
 
     success: {
-      backgroundColor: theme.green300,
-      color: theme.green900,
+      backgroundColor: theme.green200,
+      color: theme.green800,
     },
 
     error: {
-      backgroundColor: theme.red600,
+      backgroundColor: theme.red500,
       color: '#ffffff',
     },
 
     warning: {
-      backgroundColor: theme.yellow600,
+      backgroundColor: theme.yellow500,
       color: '#ffffff',
     },
 
     info: {
-      backgroundColor: theme.blue600,
+      backgroundColor: theme.blue500,
       color: '#ffffff',
     },
   },

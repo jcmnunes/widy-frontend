@@ -1,41 +1,33 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import styled from 'styled-components';
 import MainBar from './MainBar/MainBar';
 import Navigation from './Navigation';
 import Board from './Board';
-import SideBar from './SideBar';
-import logoutThunk from '../../thunks/logout';
+import Sidebar from './Sidebar';
 
 const StyledEOD = styled.div`
   display: grid;
-  grid-template-columns: 8px 254px 1fr 1fr;
+  grid-template-columns: 8px 254px 1fr;
   height: 100vh;
   transition: all 0.3s ease;
+  min-width: ${props => props.theme.bp_small};
+
+  @media (min-width: ${props => props.theme.bp_large}) {
+    grid-template-columns: 8px 254px 3fr 2fr;
+  }
+
+  @media (min-width: ${props => props.theme.bp_xlarge}) {
+    grid-template-columns: 8px 254px 1fr 1fr;
+  }
 `;
 
-class EOD extends Component {
-  state = { isOpen: false };
+const EOD = () => (
+  <StyledEOD>
+    <MainBar />
+    <Navigation />
+    <Board />
+    <Sidebar />
+  </StyledEOD>
+);
 
-  handleOnCLick = () => {
-    this.props.logoutThunk();
-  };
-
-  render() {
-    return (
-      <StyledEOD isOpen={this.state.isOpen}>
-        <MainBar />
-        <Navigation />
-        <Board />
-        <SideBar>
-          <button onClick={this.handleOnCLick}>Logout</button>
-        </SideBar>
-      </StyledEOD>
-    );
-  }
-}
-
-export default connect(
-  null,
-  { logoutThunk },
-)(EOD);
+export default EOD;

@@ -14,6 +14,8 @@ export const sectionsFixture = {
 };
 
 export default {
+  loading: false,
+  selected: '',
   byId: {},
   order: [],
 };

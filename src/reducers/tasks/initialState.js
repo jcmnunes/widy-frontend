@@ -12,6 +12,7 @@ export const tasksFixture = {
       title: 'This is another task title',
     },
   },
+  selected: '5c7c2acdd21c2eb57ee8d1b4',
 };
 
 export default {
@@ -21,4 +22,5 @@ export default {
     sectionId: '',
     loading: false,
   },
+  selected: '',
 };

@@ -11,7 +11,7 @@ import { storeSelectedDay, getDays, getDay, createDay } from '../../../actions/d
 import theme from '../../../styles/theme';
 
 const StyledNavigation = styled.div`
-  background: ${props => props.theme.neutral100};
+  background: ${props => props.theme.neutral050};
   padding: 36px 24px 24px;
 
   .header {
@@ -24,7 +24,7 @@ const StyledNavigation = styled.div`
     h2 {
       font-weight: bold;
       font-size: 16px;
-      color: ${props => props.theme.neutral800};
+      color: ${props => props.theme.neutral700};
       text-transform: uppercase;
     }
   }
@@ -57,8 +57,8 @@ class Navigation extends Component {
     return (
       <StyledNavigation>
         <Brand>
-          <IconWidy size={30} yesterdayColor={theme.blue700} />
-          <IconWidyText size={60} textColor={theme.blue700} />
+          <IconWidy size={30} yesterdayColor={theme.blue600} />
+          <IconWidyText size={60} textColor={theme.blue600} />
         </Brand>
         <div className="header">
           <h2>Days</h2>
@@ -84,10 +84,13 @@ class Navigation extends Component {
 
 Navigation.propTypes = {
   loading: PropTypes.bool.isRequired,
-  days: PropTypes.object.isRequired,
-  daysOrder: PropTypes.array.isRequired,
+  days: PropTypes.shape({
+    [PropTypes.string]: PropTypes.object,
+  }).isRequired,
+  daysOrder: PropTypes.arrayOf(PropTypes.string).isRequired,
   selected: PropTypes.string.isRequired,
   createDayLoading: PropTypes.bool.isRequired,
+  getDay: PropTypes.func.isRequired,
   getDays: PropTypes.func.isRequired,
   storeSelectedDay: PropTypes.func.isRequired,
   createDay: PropTypes.func.isRequired,

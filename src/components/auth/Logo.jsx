@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { IconWidy, IconWidyText } from '../../icons/widy';
 import theme from '../../styles/theme';
@@ -12,15 +12,11 @@ const StyledLogo = styled.div`
   grid-gap: 16px;
 `;
 
-class Logo extends Component {
-  render() {
-    return (
-      <StyledLogo>
-        <IconWidy size={60} yesterdayColor={theme.blue700} />
-        <IconWidyText size={80} textColor={theme.blue700} />
-      </StyledLogo>
-    );
-  }
-}
+const Logo = () => (
+  <StyledLogo>
+    <IconWidy size={60} yesterdayColor={theme.blue600} />
+    <IconWidyText size={80} textColor={theme.blue600} />
+  </StyledLogo>
+);
 
 export default Logo;

@@ -1,4 +1,4 @@
-import * as types from '../../actions/tasks';
+import * as types from '../../actions/tasks/types';
 import * as daysTypes from '../../actions/days/types';
 import initialState from './initialState';
 
@@ -36,6 +36,28 @@ export default (state = initialState, action) => {
         createTask: {
           ...state.createTask,
           loading: false,
+        },
+      };
+    case types.STORE_SELECTED_TASK_ID:
+      return {
+        ...state,
+        selected: action.taskId,
+      };
+    case daysTypes.STORE_SELECTED_DAY:
+      return {
+        ...state,
+        selected: '',
+      };
+    case types.UPDATE_TASK_SUCCESS:
+    case types.UPDATE_TASK_FAILURE:
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          [action.taskId]: {
+            ...state.byId[action.taskId],
+            ...action.payload,
+          },
         },
       };
     default:

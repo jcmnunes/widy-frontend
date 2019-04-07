@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Hero from './Hero';
 import Login from '../Login';
@@ -14,7 +14,7 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background: ${props => props.theme.neutral100};
+  background: ${props => props.theme.neutral050};
 
   .logo {
     display: none;
@@ -32,8 +32,8 @@ const Container = styled.div`
 const StyledCard = styled.div`
   width: 1000px;
   height: 640px;
-  background: ${props => props.theme.neutral100};
-  border: 2px solid ${props => props.theme.neutral400};
+  background: ${props => props.theme.neutral050};
+  border: 2px solid ${props => props.theme.neutral300};
   border-radius: 12px;
   display: flex;
   position: relative;
@@ -51,7 +51,7 @@ const Form = styled.div`
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
   background: white;
-  border-left: 2px solid ${props => props.theme.neutral400};
+  border-left: 2px solid ${props => props.theme.neutral300};
   padding: 64px;
 
   @media (max-width: ${props => props.theme.bp_large}) {
@@ -60,22 +60,18 @@ const Form = styled.div`
   }
 `;
 
-class Card extends Component {
-  render() {
-    return (
-      <Container>
-        <div className="logo">
-          <Logo />
-        </div>
-        <StyledCard>
-          <Hero />
-          <Form>
-            <Login />
-          </Form>
-        </StyledCard>
-      </Container>
-    );
-  }
-}
+const Card = () => (
+  <Container>
+    <div className="logo">
+      <Logo />
+    </div>
+    <StyledCard>
+      <Hero />
+      <Form>
+        <Login />
+      </Form>
+    </StyledCard>
+  </Container>
+);
 
 export default Card;

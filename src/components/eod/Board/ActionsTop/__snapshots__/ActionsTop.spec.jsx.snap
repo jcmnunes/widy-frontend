@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EOD Components ActionsTop should render as expected, without crashing 1`] = `
+<styled.div>
+  <RoundButton
+    bg={null}
+    disabled={false}
+    iconAfter={
+      <IconPresentation
+        primaryColor="#52616D"
+        secondaryColor="#CBD2D8"
+        size={24}
+      />
+    }
+    iconBefore={null}
+    loading={false}
+  >
+    Standup
+  </RoundButton>
+  <Dropdown
+    closeOnAction={false}
+    position="right"
+    trigger={
+      <RoundButton
+        bg={null}
+        disabled={false}
+        iconAfter={
+          <IconUserCircle
+            primaryColor="#52616D"
+            secondaryColor="#CBD2D8"
+            size={24}
+          />
+        }
+        iconBefore={
+          <IconCheveronDown
+            primaryColor="#52616D"
+            size={24}
+          />
+        }
+        loading={false}
+      />
+    }
+  >
+    <styled.div>
+      <Button
+        block={true}
+        disabled={false}
+        iconAfter={null}
+        iconBefore={
+          <IconUser
+            primaryColor="#CBD2D8"
+            secondaryColor="#52616D"
+            size={24}
+          />
+        }
+        intent="dropdown"
+        loading={false}
+        onClick={null}
+        size="medium"
+        type="button"
+      >
+        Edit profile
+      </Button>
+      <Button
+        block={true}
+        disabled={false}
+        iconAfter={null}
+        iconBefore={
+          <IconDoorExit
+            primaryColor="#CBD2D8"
+            secondaryColor="#52616D"
+            size={24}
+          />
+        }
+        intent="dropdown"
+        loading={false}
+        onClick={[MockFunction]}
+        size="medium"
+        type="button"
+      >
+        Log out
+      </Button>
+    </styled.div>
+  </Dropdown>
+</styled.div>
+`;
