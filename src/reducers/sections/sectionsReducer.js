@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
     case tasksTypes.CREATE_TASK_SUCCESS:
       return {
         ...state,
-        byId: addTaskToSection(action.payload.sectionId, action.payload.task._id, state),
+        byId: addTaskToSection(action.payload.sectionId, action.payload.task.id, state),
       };
     case types.STORE_SELECTED_SECTION_ID:
       return {
