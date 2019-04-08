@@ -42,7 +42,7 @@ Spinner.defaultProps = {
 };
 
 Spinner.propTypes = {
-  size: PropTypes.oneOf(['large', 'small']),
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
   intent: PropTypes.oneOf([
     'primary',
     'success',

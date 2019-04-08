@@ -1,12 +1,13 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
+import moment from 'moment';
 import { createDay } from '../../api/days';
 import * as types from '../../actions/days/types';
 
-export function* createDaySaga(action) {
+export function* createDaySaga() {
   try {
     const {
       data: { day },
-    } = yield call(createDay, action.payload);
+    } = yield call(createDay, moment().format('YYYY-MM-DD'));
 
     yield put({ type: types.CREATE_DAY_SUCCESS, day });
     yield put({ type: types.GET_DAY_REQUEST, payload: day._id });
