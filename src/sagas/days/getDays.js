@@ -8,14 +8,14 @@ const normalize = data => {
     order: [],
   };
   data.forEach(({ day, _id: id }) => {
-    normalized.byId[id] = { day };
+    normalized.byId[id] = { id, day };
     normalized.order.push(id);
   });
 
   return normalized;
 };
 
-export function* getDaysSaga(action) {
+export function* getDaysSaga() {
   try {
     const { data } = yield call(getDays);
     const { byId, order } = normalize(data);

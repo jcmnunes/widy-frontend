@@ -21,7 +21,10 @@ export function* createTaskSaga(action) {
       payload: {
         dayId,
         sectionId,
-        task: data.task,
+        task: {
+          id: data.task._id,
+          title: data.task.title,
+        },
       },
     });
     yield put({

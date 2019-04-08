@@ -31,7 +31,7 @@ export default (state = initialState, action) => {
         ...state,
         byId: {
           ...state.byId,
-          [action.payload.task._id]: action.payload.task,
+          [action.payload.task.id]: action.payload.task,
         },
         createTask: {
           ...state.createTask,
