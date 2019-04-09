@@ -13,7 +13,10 @@ export function* createTaskSaga(action) {
     const params = {
       dayId,
       sectionId,
-      payload: { title: action.title },
+      payload: {
+        title: action.title,
+        notes: '',
+      },
     };
     const { data } = yield call(createTask, params);
     yield put({
@@ -24,6 +27,7 @@ export function* createTaskSaga(action) {
         task: {
           id: data.task._id,
           title: data.task.title,
+          notes: data.task.notes,
         },
       },
     });

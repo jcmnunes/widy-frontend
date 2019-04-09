@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import SidebarHeader from './SidebarHeader';
+import NotesEditor from './NotesEditor';
 
 const StyledSidebar = styled.div`
   background: ${props => props.theme.yellow050};
   display: ${props => (props.isOpen ? 'block' : 'none')};
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   height: 100%;
@@ -26,10 +27,19 @@ const StyledSidebar = styled.div`
   }
 `;
 
+const StyledHeading = styled.h2`
+  margin-bottom: 12px;
+  color: ${props => props.theme.neutral700};
+`;
+
 const Sidebar = ({ isOpen, selectedTaskId, closeSidebar }) => (
   <StyledSidebar isOpen={isOpen}>
     {selectedTaskId ? (
-      <SidebarHeader closeSidebar={closeSidebar} />
+      <>
+        <SidebarHeader closeSidebar={closeSidebar} />
+        <StyledHeading>Notes:</StyledHeading>
+        <NotesEditor />
+      </>
     ) : (
       <div>Select a task to see info</div>
     )}
