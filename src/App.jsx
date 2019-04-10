@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -9,14 +9,29 @@ import PageSpinner from './components/UI/PageSpinner';
 import { Modal } from './components/UI';
 import toastStyles from './styles/toast';
 
-const App = ({ loading, notifications }) => (
-  <div>
-    {loading ? <PageSpinner /> : <Routes />}
-    <Notifications notifications={notifications} style={toastStyles} />
-    <Modal />
-    <GlobalStyle />
-  </div>
-);
+class App extends Component {
+  /**
+   * Removes the static loading indicator (see public/index.html)
+   */
+  componentDidMount() {
+    const item = document.getElementById('initial-loading');
+    if (item) {
+      item.parentNode.removeChild(item);
+    }
+  }
+
+  render() {
+    const { loading, notifications } = this.props;
+    return (
+      <div>
+        {loading ? <PageSpinner /> : <Routes />}
+        <Notifications notifications={notifications} style={toastStyles} />
+        <Modal />
+        <GlobalStyle />
+      </div>
+    );
+  }
+}
 
 App.propTypes = {
   loading: PropTypes.bool.isRequired,

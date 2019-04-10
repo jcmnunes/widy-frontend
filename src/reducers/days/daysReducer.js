@@ -8,7 +8,13 @@ export default (state = initialState, action) => {
     case types.GET_DAYS_REQUEST:
       return { ...state, loading: true };
     case types.GET_DAYS_SUCCESS:
-      return { ...state, loading: false, byId: action.byId, order: action.order };
+      return {
+        ...state,
+        loading: false,
+        byId: action.byId,
+        order: action.order,
+        selected: action.order[0],
+      };
     case types.GET_DAYS_FAILURE:
       return { ...state, loading: false };
     case types.CREATE_DAY_REQUEST:
