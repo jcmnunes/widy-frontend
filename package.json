@@ -38,6 +38,7 @@
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
     "history": "^4.9.0",
+    "is-hotkey": "^0.1.4",
     "jest-styled-components": "^6.3.1",
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
@@ -52,6 +53,8 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-saga": "^1.0.1",
     "reselect": "^4.0.0",
+    "slate": "^0.45.0",
+    "slate-react": "^0.21.20",
     "storybook-readme": "^4.0.5",
     "styled-components": "^4.1.3"
   },

@@ -60,19 +60,15 @@ class EditableInput extends Component {
     return (
       <StyledEditableInput onSubmit={this.handleSubmit}>
         {editing ? (
-          <Input
-            value={value}
-            onChange={this.handleOnChange}
-            onBlur={this.handleCancel}
-            autoFocus
-          />
+          <>
+            <Input value={value} onChange={this.handleOnChange} autoFocus />
+            <YesNoButtonGroup cancelAction={this.handleCancel} />
+          </>
         ) : (
-          <Value onClick={this.startEditing}>{initialValue}</Value>
-        )}
-        {editing ? (
-          <YesNoButtonGroup cancelAction={this.handleCancel} />
-        ) : (
-          <StyledIconEdit onClick={this.startEditing} />
+          <>
+            <Value onClick={this.startEditing}>{initialValue}</Value>
+            <StyledIconEdit onClick={this.startEditing} />
+          </>
         )}
       </StyledEditableInput>
     );
