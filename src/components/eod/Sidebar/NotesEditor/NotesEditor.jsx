@@ -4,7 +4,6 @@ import styled, { withTheme } from 'styled-components';
 import { Editor } from 'slate-react';
 import { Value } from 'slate';
 import { isKeyHotkey } from 'is-hotkey';
-import { Button, Toolbar } from './components';
 import {
   IconFormatBold,
   IconFormatCode,
@@ -93,6 +92,30 @@ const StyledNotesEditor = styled.div`
     font-style: italic;
     margin: 8px 0;
   }
+`;
+
+const Button = styled.span`
+  cursor: pointer;
+  height: 28px;
+`;
+
+const Menu = styled('div')`
+  & > * {
+    display: flex;
+    align-items: center;
+  }
+
+  & > * + * {
+    margin-left: 15px;
+  }
+`;
+
+const Toolbar = styled(Menu)`
+  display: flex;
+  position: relative;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 12px;
+  height: 28px;
 `;
 
 /**
@@ -404,7 +427,7 @@ NotesEditor.propTypes = {
   selectedTask: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    notes: PropTypes.string.isRequired,
+    notes: PropTypes.string,
   }).isRequired,
 };
 
