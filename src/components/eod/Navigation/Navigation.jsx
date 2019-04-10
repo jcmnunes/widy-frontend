@@ -9,6 +9,7 @@ import { IconAdd } from '../../../icons/Icons';
 import { IconWidy, IconWidyText } from '../../../icons/widy';
 import { storeSelectedDay, getDays, getDay, createDay } from '../../../actions/days';
 import theme from '../../../styles/theme';
+import LoadingNavigation from './LoadingNavigation';
 
 const StyledNavigation = styled.div`
   background: ${props => props.theme.neutral050};
@@ -64,7 +65,7 @@ class Navigation extends Component {
           <h2>Days</h2>
           <Button
             loading={createDayLoading}
-            disabled={isTodayCreated}
+            disabled={isTodayCreated || loading}
             onClick={this.props.createDay}
             intent="primary"
             iconBefore={<IconAdd primaryColor="#fff" />}
@@ -73,7 +74,7 @@ class Navigation extends Component {
           </Button>
         </div>
         {loading ? (
-          <p>Loading...</p>
+          <LoadingNavigation />
         ) : (
           <Days days={days} order={daysOrder} selected={selected} onClick={this.handleDayClick} />
         )}

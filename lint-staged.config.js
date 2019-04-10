@@ -1,5 +1,5 @@
 module.exports = {
   linters: {
-    '**/*.+(js|jsx|md)': ['eslint --fix', 'prettier --write', 'git add'],
+    '**/*.+(js|jsx)': ['eslint --fix', 'prettier --write', 'git add'],
   },
 };

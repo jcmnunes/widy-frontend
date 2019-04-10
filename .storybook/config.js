@@ -8,7 +8,7 @@ import StoryRouter from 'storybook-react-router';
 import theme from '../src/styles/theme';
 import GlobalStyle from '../src/styles/Global';
 
-const req = require.context('../src/components', true, /\.stories\.js$/);
+const req = require.context('../src/components', true, /\.stories\.jsx$/);
 function loadStories() {
   req.keys().forEach(filename => req(filename));
 }
