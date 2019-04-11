@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Logo from '../Logo';
-import { IconChart, IconLight, IconTrophy } from '../../../icons/Icons';
+import { IconChart, IconTime, IconTrophy } from '../../../icons/Icons';
 
 const Container = styled.div`
   flex: 1;
@@ -69,11 +69,11 @@ const Hero = () => (
     </Item>
     <Item>
       <div className="icon">
-        <IconLight size={32} />
+        <IconTime size={32} />
       </div>
       <div className="text">
-        <h2>Never forget what you did</h2>
-        <p>Widy saves what you do and will always remember you.</p>
+        <h2>Stay in the flow</h2>
+        <p>Widy helps you manage your time and stay focused.</p>
       </div>
     </Item>
     <Item>
