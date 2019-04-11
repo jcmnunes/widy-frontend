@@ -8,7 +8,7 @@ import { startCreateTaskRequest } from '../../actions/tasks';
 import theme from '../../styles/theme';
 
 class AddTask extends Component {
-  state = { title: '' };
+  state = { title: '', error: '' };
 
   handleCloseModalClick = () => {
     this.props.closeModal();
@@ -21,19 +21,23 @@ class AddTask extends Component {
   };
 
   handleOnChange = e => {
-    const { name, value } = e.target;
-    this.setState({
-      [name]: value,
-    });
+    const { value } = e.target;
+    this.setState({ title: value, error: '' });
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.startCreateTaskRequest(this.state.title);
+    const { title } = this.state;
+    if (!title) {
+      this.setState({ error: 'You need to enter the task name.' });
+    } else {
+      this.props.startCreateTaskRequest(this.state.title);
+    }
   };
 
   render() {
     const { loading } = this.props;
+    const { title, error } = this.state;
     return (
       <StyledModal>
         <div className="modal">
@@ -56,8 +60,9 @@ class AddTask extends Component {
                 type="text"
                 name="title"
                 placeholder="Task name"
-                value={this.state.title}
+                value={title}
                 onChange={this.handleOnChange}
+                error={error}
               />
             </div>
             <div className="footer">
