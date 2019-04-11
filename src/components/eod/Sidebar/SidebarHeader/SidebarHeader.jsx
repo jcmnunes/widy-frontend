@@ -8,6 +8,7 @@ import EditableInput from '../../../UI/EditableInput';
 
 const StyledSidebarHeader = styled.div`
   color: ${props => props.theme.neutral700};
+  margin-bottom: 32px;
 `;
 
 const TopBar = styled.div`

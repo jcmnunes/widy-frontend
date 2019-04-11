@@ -21,6 +21,7 @@ export function* getDaysSaga() {
     const { byId, order } = normalize(data);
 
     yield put({ type: types.GET_DAYS_SUCCESS, byId, order });
+    yield put({ type: types.GET_DAY_REQUEST, payload: order[0] });
   } catch (error) {
     yield put({ type: types.GET_DAYS_FAILURE, error });
   }

@@ -95,12 +95,6 @@ const GlobalStyle = createGlobalStyle`
   button {
     font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   }
-  em {
-    font-style: italic;
-  }
-  pre {
-    font-family: monospace;
-  }
 `;
 
 export default GlobalStyle;

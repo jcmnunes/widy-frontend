@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import SidebarHeader from './SidebarHeader';
+import NotesEditor from './NotesEditor';
+import { IllustrationTodoList } from '../../../icons/Illustrations';
 
 const StyledSidebar = styled.div`
   background: ${props => props.theme.yellow050};
   display: ${props => (props.isOpen ? 'block' : 'none')};
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   height: 100%;
@@ -26,12 +28,37 @@ const StyledSidebar = styled.div`
   }
 `;
 
+const StyledHeading = styled.h2`
+  margin-bottom: 12px;
+  color: ${props => props.theme.neutral700};
+`;
+
+const EmptyState = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 48px;
+`;
+
+const Title = styled.h2`
+  font-size: 16px;
+  color: ${props => props.theme.neutral400};
+  margin-top: 24px;
+`;
+
 const Sidebar = ({ isOpen, selectedTaskId, closeSidebar }) => (
   <StyledSidebar isOpen={isOpen}>
     {selectedTaskId ? (
-      <SidebarHeader closeSidebar={closeSidebar} />
+      <>
+        <SidebarHeader closeSidebar={closeSidebar} />
+        <StyledHeading>Notes:</StyledHeading>
+        <NotesEditor />
+      </>
     ) : (
-      <div>Select a task to see info</div>
+      <EmptyState>
+        <IllustrationTodoList />
+        <Title>Select a task to see more info here</Title>
+      </EmptyState>
     )}
   </StyledSidebar>
 );
