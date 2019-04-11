@@ -47,6 +47,8 @@ class Navigation extends Component {
   }
 
   handleDayClick = id => {
+    const { selected } = this.props;
+    if (id === selected) return;
     this.props.storeSelectedDay(id);
     this.props.getDay(id);
   };
