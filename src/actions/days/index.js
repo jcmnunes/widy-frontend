@@ -1,14 +1,19 @@
 import * as types from './types';
+import { saveItem } from '../../helpers/localStorage';
 
 export const storeDays = days => ({
   type: types.STORE_DAYS,
   payload: days,
 });
 
-export const storeSelectedDay = id => ({
-  type: types.STORE_SELECTED_DAY,
-  payload: id,
-});
+export const storeSelectedDay = id => {
+  saveItem('selectedDayId', id);
+
+  return {
+    type: types.STORE_SELECTED_DAY,
+    payload: id,
+  };
+};
 
 export const getDays = () => ({
   type: types.GET_DAYS_REQUEST,

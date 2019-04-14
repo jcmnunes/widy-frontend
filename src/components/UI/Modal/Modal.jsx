@@ -15,6 +15,7 @@ export const StyledModal = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 7000;
 
   .modal {
     border: 6px solid ${props => props.theme.neutral200};

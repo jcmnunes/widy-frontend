@@ -15,6 +15,7 @@ const StyledSidebar = styled.div`
   width: 350px;
   box-shadow: 0 10px 20px hsla(0, 0%, 0%, 0.15), 0 3px 6px hsla(0, 0%, 0%, 0.1);
   padding: 32px;
+  z-index: 6000;
 
   @media (min-width: ${props => props.theme.bp_large}) {
     grid-template-columns: 8px 254px 3fr 2fr;

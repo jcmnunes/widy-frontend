@@ -78,7 +78,12 @@ const StyledNotesEditor = styled.div`
 
   pre,
   code {
-    font-family: monospace;
+    font-family: 'Hack', monospace;
+    font-size: 12px;
+    background: ${props => props.theme.neutral050};
+    border: 1px solid ${props => props.theme.neutral200};
+    border-radius: 4px;
+    padding: 2px;
   }
 
   strong {
