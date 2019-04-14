@@ -1,6 +1,6 @@
 {
   "name": "widy-frontend",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "private": true,
   "proxy": "http://localhost:5000",
   "scripts": {
@@ -28,16 +28,11 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "@storybook/addon-actions": "^4.1.11",
-    "@storybook/addon-knobs": "^4.1.11",
-    "@storybook/addon-links": "^4.1.11",
-    "@storybook/addon-options": "^4.1.11",
-    "@storybook/addons": "^4.1.11",
-    "@storybook/react": "^4.1.11",
     "axios": "^0.18.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
     "history": "^4.9.0",
+    "immutable": "^4.0.0-rc.12",
     "is-hotkey": "^0.1.4",
     "jest-styled-components": "^6.3.1",
     "moment": "^2.24.0",
@@ -62,6 +57,12 @@
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
+    "@storybook/addon-actions": "^5.1.0-alpha.27",
+    "@storybook/addon-knobs": "^5.1.0-alpha.27",
+    "@storybook/addon-links": "^5.1.0-alpha.27",
+    "@storybook/addon-options": "^5.1.0-alpha.27",
+    "@storybook/addons": "^5.1.0-alpha.27",
+    "@storybook/react": "^5.1.0-alpha.27",
     "enzyme-to-json": "^3.3.5",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.0.0",
