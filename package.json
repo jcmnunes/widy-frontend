@@ -28,12 +28,6 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "@storybook/addon-actions": "^5.1.0-alpha.27",
-    "@storybook/addon-knobs": "^5.1.0-alpha.27",
-    "@storybook/addon-links": "^5.1.0-alpha.27",
-    "@storybook/addon-options": "^5.1.0-alpha.27",
-    "@storybook/addons": "^5.1.0-alpha.27",
-    "@storybook/react": "^5.1.0-alpha.27",
     "axios": "^0.18.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
@@ -63,6 +57,12 @@
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
+    "@storybook/addon-actions": "^5.1.0-alpha.27",
+    "@storybook/addon-knobs": "^5.1.0-alpha.27",
+    "@storybook/addon-links": "^5.1.0-alpha.27",
+    "@storybook/addon-options": "^5.1.0-alpha.27",
+    "@storybook/addons": "^5.1.0-alpha.27",
+    "@storybook/react": "^5.1.0-alpha.27",
     "enzyme-to-json": "^3.3.5",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.0.0",
