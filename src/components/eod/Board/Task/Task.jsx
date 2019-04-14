@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Draggable } from 'react-beautiful-dnd';
 import { Checkbox } from '../../../UI';
 
 const StyledTask = styled.div`
@@ -40,17 +41,31 @@ class Task extends Component {
   };
 
   render() {
-    const { taskId, selectedTaskId, children } = this.props;
+    const { taskId, selectedTaskId, index, children } = this.props;
     return (
-      <StyledTask selected={taskId === selectedTaskId} onClick={this.handleTaskClick}>
-        <Checkbox onChange={this.handleTaskCheckboxChange} onClick={this.handleTaskCheckboxClick} />
-        <span className="title">{children}</span>
-      </StyledTask>
+      <Draggable draggableId={taskId} index={index}>
+        {provided => (
+          <StyledTask
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            ref={provided.innerRef}
+            selected={taskId === selectedTaskId}
+            onClick={this.handleTaskClick}
+          >
+            <Checkbox
+              onChange={this.handleTaskCheckboxChange}
+              onClick={this.handleTaskCheckboxClick}
+            />
+            <span className="title">{children}</span>
+          </StyledTask>
+        )}
+      </Draggable>
     );
   }
 }
 
 Task.propTypes = {
+  index: PropTypes.number.isRequired,
   sectionId: PropTypes.string.isRequired,
   taskId: PropTypes.string.isRequired,
   selectedTaskId: PropTypes.string.isRequired,

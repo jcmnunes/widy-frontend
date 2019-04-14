@@ -53,6 +53,28 @@ IconLight.propTypes = {
   secondaryColor: PropTypes.string,
 };
 
+export const IconTime = ({ size, primaryColor, secondaryColor }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24">
+    <circle fill={primaryColor} cx="12" cy="12" r="10" />
+    <path
+      fill={secondaryColor}
+      d="M13 11.59l3.2 3.2a1 1 0 0 1-1.4 1.42l-3.5-3.5A1 1 0 0 1 11 12V7a1 1 0 0 1 2 0v4.59z"
+    />
+  </svg>
+);
+
+IconTime.defaultProps = {
+  size: 24,
+  primaryColor: theme.neutral300,
+  secondaryColor: theme.neutral400,
+};
+
+IconTime.propTypes = {
+  size: PropTypes.number,
+  primaryColor: PropTypes.string,
+  secondaryColor: PropTypes.string,
+};
+
 export const IconTrophy = ({ size, primaryColor, secondaryColor }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24">
     <path
