@@ -13,7 +13,7 @@ export default (state = initialState, action) => {
         loading: false,
         byId: action.byId,
         order: action.order,
-        selected: action.order[0],
+        selected: action.selectedDayId,
       };
     case types.GET_DAYS_FAILURE:
       return { ...state, loading: false };

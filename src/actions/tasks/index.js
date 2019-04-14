@@ -21,3 +21,12 @@ export const updateTask = (taskId, payload) => ({
   taskId,
   payload,
 });
+
+export const moveTask = (taskId, fromSectionId, toSectionId, fromIndex, toIndex) => ({
+  type: types.MOVE_TASK_REQUEST,
+  taskId,
+  fromSectionId,
+  toSectionId,
+  fromIndex,
+  toIndex,
+});

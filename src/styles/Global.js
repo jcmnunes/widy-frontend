@@ -4,6 +4,10 @@ import sourceSansProRegular from './fonts/source-sans-pro-v11-latin-regular.woff
 import sourceSansProRegularWoff2 from './fonts/source-sans-pro-v11-latin-regular.woff2';
 import sourceSansPro700 from './fonts/source-sans-pro-v11-latin-700.woff';
 import sourceSansPro700Woff2 from './fonts/source-sans-pro-v11-latin-700.woff2';
+import HackRegularWoff from './fonts/hack-regular.woff';
+import HackRegularWoff2 from './fonts/hack-regular.woff2';
+import HackBoldWoff from './fonts/hack-bold.woff';
+import HackBoldWoff2 from './fonts/hack-bold.woff2';
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -21,6 +25,22 @@ const GlobalStyle = createGlobalStyle`
     src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'),
         url(${sourceSansPro700}) format('woff'),
         url(${sourceSansPro700Woff2}) format('woff2');
+  }
+  @font-face {
+    font-family: 'Hack';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Hack'), local('Hack-Regular'),
+         url('${HackRegularWoff2}') format('woff2'),
+         url('${HackRegularWoff}') format('woff');
+  }
+  @font-face {
+    font-family: 'Hack';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Hack Bold'), local('Hack-Bold'),
+         url('${HackBoldWoff2}') format('woff2'),
+         url('${HackBoldWoff}') format('woff');
   }
 
   /* 
