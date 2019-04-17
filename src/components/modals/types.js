@@ -1,2 +1,2 @@
-/* eslint-disable import/prefer-default-export */
 export const ADD_TASK = 'modal/ADD_TASK';
+export const LAUNCH_TASK = 'modal/LAUNCH_TASK';

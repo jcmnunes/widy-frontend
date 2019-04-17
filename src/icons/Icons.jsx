@@ -478,3 +478,83 @@ IconFormatListBullet.propTypes = {
   size: PropTypes.number,
   primaryColor: PropTypes.string,
 };
+
+export const IconRightThickArrow = ({
+  size,
+  withCircle,
+  primaryColor,
+  secondaryColor,
+  ...other
+}) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" {...other}>
+    {withCircle && <circle fill={secondaryColor} cx="12" cy="12" r="10" />}
+    <path
+      fill={primaryColor}
+      d="M12 14H7a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h5V8a1 1 0 0 1 1.7-.7l4 4a1 1 0 0 1 0 1.4l-4 4A1 1 0 0 1 12 16v-2z"
+    />
+  </svg>
+);
+
+IconRightThickArrow.defaultProps = {
+  size: 24,
+  withCircle: false,
+  primaryColor: theme.neutral700,
+  secondaryColor: theme.neutral300,
+};
+
+IconRightThickArrow.propTypes = {
+  size: PropTypes.number,
+  withCircle: PropTypes.bool,
+  primaryColor: PropTypes.string,
+  secondaryColor: PropTypes.string,
+};
+
+export const IconLaunch = ({ size, primaryColor, secondaryColor, ...other }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" {...other}>
+    <path
+      fill={primaryColor}
+      d="M14.57 6.96a2 2 0 0 1 2.47 2.47c.29.17.5.47.5.86v7.07a1 1 0 0 1-.3.71L13 22.31a1 1 0 0 1-1.7-.7v-3.58l-.49.19a1 1 0 0 1-1.17-.37 14.1 14.1 0 0 0-3.5-3.5 1 1 0 0 1-.36-1.16l.19-.48H2.39A1 1 0 0 1 1.7 11l4.24-4.24a1 1 0 0 1 .7-.3h7.08c.39 0 .7.21.86.5zM13.19 9.4l-2.15 2.15a3 3 0 0 1 .84.57 3 3 0 0 1 .57.84l2.15-2.15a2 2 0 0 1-1.4-1.41zm6.98-6.61a1 1 0 0 1 1.04 1.04c-.03.86-.13 1.71-.3 2.55-.47-.6-1.99-.19-2.55-.74-.55-.56-.14-2.08-.74-2.55.84-.17 1.7-.27 2.55-.3z"
+    />
+    <path
+      fill={secondaryColor}
+      d="M7.23 10.26A16.05 16.05 0 0 1 17.62 3.1a19.2 19.2 0 0 1 3.29 3.29 15.94 15.94 0 0 1-7.17 10.4 19.05 19.05 0 0 0-6.51-6.52zm-.86 5.5a16.2 16.2 0 0 1 1.87 1.87 1 1 0 0 1-.47 1.6c-.79.25-1.6.42-2.4.54a1 1 0 0 1-1.14-1.13c.12-.82.3-1.62.53-2.41a1 1 0 0 1 1.6-.47zm7.34-5.47a2 2 0 1 0 2.83-2.83 2 2 0 0 0-2.83 2.83z"
+    />
+  </svg>
+);
+
+IconLaunch.defaultProps = {
+  size: 24,
+  primaryColor: theme.neutral300,
+  secondaryColor: theme.neutral200,
+};
+
+IconLaunch.propTypes = {
+  size: PropTypes.number,
+  primaryColor: PropTypes.string,
+  secondaryColor: PropTypes.string,
+};
+
+export const IconTrash = ({ size, primaryColor, secondaryColor, ...other }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" {...other}>
+    <path
+      fill={primaryColor}
+      d="M5 5h14l-.89 15.12a2 2 0 0 1-2 1.88H7.9a2 2 0 0 1-2-1.88L5 5zm5 5a1 1 0 0 0-1 1v6a1 1 0 0 0 2 0v-6a1 1 0 0 0-1-1zm4 0a1 1 0 0 0-1 1v6a1 1 0 0 0 2 0v-6a1 1 0 0 0-1-1z"
+    />
+    <path
+      fill={secondaryColor}
+      d="M8.59 4l1.7-1.7A1 1 0 0 1 11 2h2a1 1 0 0 1 .7.3L15.42 4H19a1 1 0 0 1 0 2H5a1 1 0 1 1 0-2h3.59z"
+    />
+  </svg>
+);
+
+IconTrash.defaultProps = {
+  size: 24,
+  primaryColor: theme.neutral300,
+  secondaryColor: theme.neutral200,
+};
+
+IconTrash.propTypes = {
+  size: PropTypes.number,
+  primaryColor: PropTypes.string,
+  secondaryColor: PropTypes.string,
+};

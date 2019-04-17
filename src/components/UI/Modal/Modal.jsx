@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { AddTask } from '../../modals';
+import { AddTask, LaunchTask } from '../../modals';
 import * as types from '../../modals/types';
 
 export const StyledModal = styled.div`
@@ -50,6 +50,12 @@ export const StyledModal = styled.div`
       margin-bottom: 16px;
       color: ${props => props.theme.neutral700};
     }
+
+    .sub-title {
+      font-size: 18px;
+      margin-bottom: 16px;
+      color: ${props => props.theme.neutral500};
+    }
   }
 
   .footer {
@@ -68,6 +74,8 @@ const Modal = ({ modal }) => {
   switch (modal) {
     case types.ADD_TASK:
       return <AddTask />;
+    case types.LAUNCH_TASK:
+      return <LaunchTask />;
     default:
       return null;
   }

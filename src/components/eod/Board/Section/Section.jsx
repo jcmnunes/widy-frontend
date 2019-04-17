@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Droppable } from 'react-beautiful-dnd';
 import Task from '../Task';
+import PlanTask from '../PlanTask';
 import Link from '../../../UI/Link';
 import { ADD_TASK } from '../../../modals/types';
 import { IconAdd } from '../../../../icons/Icons';
@@ -26,8 +27,7 @@ const EmptyTasks = styled.div`
   border: 1px solid ${props => props.theme.neutral100};
   border-radius: 4px;
   height: 96px;
-  margin-bottom: 8px;
-  background-color: ${props => (props.isDraggingOver ? props.theme.neutral050 : 'white')};
+  background-color: ${props => (props.isDraggingOver ? props.theme.blue050 : 'white')};
   transition: background-color 0.2s ease;
   font-size: 16px;
   color: ${props => props.theme.neutral300};
@@ -41,6 +41,10 @@ const Tasks = styled.div`
 `;
 Tasks.displayName = 'Tasks';
 
+const StyledLink = styled(Link)`
+  margin-top: 12px;
+`;
+
 class Section extends Component {
   openModal = () => {
     const { dayId, sectionId } = this.props;
@@ -52,11 +56,20 @@ class Section extends Component {
     const { section, tasks } = this.props;
     return (
       <Tasks ref={provided.innerRef} {...provided.droppableProps}>
-        {section.tasks.map((taskId, index) => (
-          <Task key={taskId} taskId={taskId} index={index} sectionId={section.id}>
-            {tasks[taskId].title}
-          </Task>
-        ))}
+        {section.tasks.map((taskId, index) => {
+          if (section.title === 'Plan') {
+            return (
+              <PlanTask key={taskId} taskId={taskId} index={index} sectionId={section.id}>
+                {tasks[taskId].title}
+              </PlanTask>
+            );
+          }
+          return (
+            <Task key={taskId} taskId={taskId} index={index} sectionId={section.id}>
+              {tasks[taskId].title}
+            </Task>
+          );
+        })}
         {provided.placeholder}
       </Tasks>
     );
@@ -91,9 +104,10 @@ class Section extends Component {
               : this.renderEmptySection(provided, snapshot)
           }
         </Droppable>
-        <Link intent="secondary" onClick={this.openModal}>
-          <IconAdd primaryColor={theme.neutral500} /> Add task
-        </Link>
+        <StyledLink intent="secondary" onClick={this.openModal}>
+          <IconAdd primaryColor={theme.neutral500} />{' '}
+          {section.title === 'Plan' ? 'Add to Plan' : 'Add task'}
+        </StyledLink>
       </StyledSection>
     );
   }

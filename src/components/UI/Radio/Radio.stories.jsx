@@ -3,12 +3,12 @@ import { storiesOf } from '@storybook/react';
 import { withDocs } from 'storybook-readme';
 import { withKnobs, text, select } from '@storybook/addon-knobs';
 
-import { Checkbox, CheckboxReadme } from '..';
+import { Radio, RadioReadme } from '..';
 
 storiesOf('UI components', module)
   .addDecorator(withKnobs)
-  .addDecorator(withDocs(CheckboxReadme))
-  .add('Checkbox', () => {
+  .addDecorator(withDocs(RadioReadme))
+  .add('Radio', () => {
     let label;
     let defaultValue;
 
@@ -25,5 +25,5 @@ storiesOf('UI components', module)
     defaultValue = options.neutral;
     const intent = select(label, options, defaultValue);
 
-    return <Checkbox intent={intent}>{labelText}</Checkbox>;
+    return <Radio intent={intent}>{labelText}</Radio>;
   });

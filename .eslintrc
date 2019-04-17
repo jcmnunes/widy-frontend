@@ -10,7 +10,7 @@
     "import/no-extraneous-dependencies": [
       2,
       {
-        "devDependencies": [".storybook/**", "stories/**"]
+        "devDependencies": [".storybook/**", "src/components/UI/**/*.stories.jsx"]
       }
     ]
   },

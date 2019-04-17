@@ -8,7 +8,6 @@ const StyledTask = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row;
-  border: 1px solid ${props => props.theme.neutral200};
   border: ${props =>
     props.selected ? `1px solid ${props.theme.yellow500}` : `1px solid ${props.theme.neutral200}`};
   border-radius: 4px;
@@ -18,10 +17,6 @@ const StyledTask = styled.div`
   margin: 4px 0;
   color: ${props => props.theme.neutral700};
   cursor: pointer;
-
-  &:last-of-type {
-    margin-bottom: 12px;
-  }
 `;
 
 class Task extends Component {
