@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { InputField, ModalBase } from '../UI';
-import { closeModal } from '../../actions/modals';
 import { startCreateTaskRequest } from '../../actions/tasks';
 
 const AddTask = props => {
@@ -51,5 +50,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { closeModal, startCreateTaskRequest },
+  { startCreateTaskRequest },
 )(AddTask);

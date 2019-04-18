@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { withTheme } from 'styled-components';
 import { Draggable } from 'react-beautiful-dnd';
 import { IconEdit, IconLaunch, IconRightThickArrow, IconTrash } from '../../../../icons/Icons';
-import { LAUNCH_TASK } from '../../../modals/types';
+import { LAUNCH_TASK, RENAME_TASK } from '../../../modals/types';
 
 const Actions = styled.div`
   & > * {
@@ -60,12 +60,18 @@ class Task extends Component {
 
   handleEditClick = e => {
     e.stopPropagation();
-    // TODO - handleEditClick
+    const { sectionId, taskId } = this.props;
+    this.props.storeSelectedSectionId(sectionId);
+    this.props.storeSelectedTaskId(taskId);
+    this.props.openModal(RENAME_TASK);
   };
 
   handleTrashClick = e => {
     e.stopPropagation();
-    // TODO - handleTrashClick
+    const { sectionId, taskId } = this.props;
+    this.props.storeSelectedSectionId(sectionId);
+    this.props.storeSelectedTaskId(taskId);
+    this.props.deleteTask(taskId);
   };
 
   render() {
@@ -114,6 +120,7 @@ Task.propTypes = {
     [PropTypes.string]: PropTypes.string,
   }).isRequired,
   openModal: PropTypes.func.isRequired,
+  deleteTask: PropTypes.func.isRequired,
 };
 
 export default withTheme(Task);

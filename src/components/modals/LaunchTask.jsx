@@ -41,9 +41,8 @@ const LaunchTask = props => {
   };
 
   return (
-    <ModalBase actionText="Add task" handleSubmit={handleSubmit}>
-      <h1 className="title">Start working on the task</h1>
-      <h2 className="sub-title">Choose a section below:</h2>
+    <ModalBase actionText="Launch task" handleSubmit={handleSubmit}>
+      <h1 className="title">Choose a section:</h1>
       <Radios
         intent="primary"
         checkedId={checkedId}
