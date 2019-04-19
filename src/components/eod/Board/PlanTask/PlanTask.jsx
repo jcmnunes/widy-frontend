@@ -4,6 +4,7 @@ import styled, { withTheme } from 'styled-components';
 import { Draggable } from 'react-beautiful-dnd';
 import { IconEdit, IconLaunch, IconRightThickArrow, IconTrash } from '../../../../icons/Icons';
 import { LAUNCH_TASK, RENAME_TASK } from '../../../modals/types';
+import { Dialog } from '../../../UI';
 
 const Actions = styled.div`
   & > * {
@@ -43,7 +44,9 @@ const StyledPlanTask = styled.div`
   }
 `;
 
-class Task extends Component {
+class PlanTask extends Component {
+  state = { showDialog: false };
+
   handleTaskClick = () => {
     const { sectionId, taskId } = this.props;
     this.props.storeSelectedSectionId(sectionId);
@@ -53,7 +56,8 @@ class Task extends Component {
 
   handleLaunchClick = e => {
     e.stopPropagation();
-    const { taskId } = this.props;
+    const { sectionId, taskId } = this.props;
+    this.props.storeSelectedSectionId(sectionId);
     this.props.storeSelectedTaskId(taskId);
     this.props.openModal(LAUNCH_TASK);
   };
@@ -68,46 +72,78 @@ class Task extends Component {
 
   handleTrashClick = e => {
     e.stopPropagation();
+    this.setState({ showDialog: true });
+  };
+
+  deleteTaskOkAction = () => {
     const { sectionId, taskId } = this.props;
     this.props.storeSelectedSectionId(sectionId);
     this.props.storeSelectedTaskId(taskId);
     this.props.deleteTask(taskId);
   };
 
+  deleteTaskCancelAction = () => {
+    this.setState({ showDialog: false });
+  };
+
+  renderDialog = () => {
+    const actions = [
+      {
+        name: 'Cancel',
+        intent: 'secondary',
+        action: this.deleteTaskCancelAction,
+      },
+      {
+        name: 'Delete Task',
+        intent: 'error',
+        action: this.deleteTaskOkAction,
+      },
+    ];
+    return (
+      <Dialog actions={actions} handleClose={this.deleteTaskCancelAction}>
+        Are you sure you want to delete the task?
+      </Dialog>
+    );
+  };
+
   render() {
     const { taskId, selectedTaskId, index, theme, children } = this.props;
+    const { showDialog } = this.state;
     return (
-      <Draggable draggableId={taskId} index={index}>
-        {(provided, snapshot) => (
-          <StyledPlanTask
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-            ref={provided.innerRef}
-            selected={taskId === selectedTaskId}
-            onClick={this.handleTaskClick}
-            isDragging={snapshot.isDragging}
-          >
-            <Title>
-              <IconRightThickArrow />
-              <span className="title">{children}</span>
-            </Title>
-            <Actions>
-              <IconLaunch onClick={this.handleLaunchClick} />
-              <IconEdit
-                onClick={this.handleEditClick}
-                primaryColor={theme.neutral300}
-                secondaryColor={theme.neutral200}
-              />
-              <IconTrash onClick={this.handleTrashClick} />
-            </Actions>
-          </StyledPlanTask>
-        )}
-      </Draggable>
+      <>
+        <Draggable draggableId={taskId} index={index}>
+          {(provided, snapshot) => (
+            <StyledPlanTask
+              {...provided.draggableProps}
+              {...provided.dragHandleProps}
+              ref={provided.innerRef}
+              selected={taskId === selectedTaskId}
+              onClick={this.handleTaskClick}
+              isDragging={snapshot.isDragging}
+            >
+              <Title>
+                <IconRightThickArrow />
+                <span className="title">{children}</span>
+              </Title>
+              <Actions>
+                <IconLaunch onClick={this.handleLaunchClick} />
+                <IconEdit
+                  onClick={this.handleEditClick}
+                  primaryColor={theme.neutral300}
+                  secondaryColor={theme.neutral200}
+                />
+                <IconTrash onClick={this.handleTrashClick} />
+              </Actions>
+            </StyledPlanTask>
+          )}
+        </Draggable>
+        {showDialog && this.renderDialog()}
+      </>
     );
   }
 }
 
-Task.propTypes = {
+PlanTask.propTypes = {
   index: PropTypes.number.isRequired,
   sectionId: PropTypes.string.isRequired,
   taskId: PropTypes.string.isRequired,
@@ -123,4 +159,4 @@ Task.propTypes = {
   deleteTask: PropTypes.func.isRequired,
 };
 
-export default withTheme(Task);
+export default withTheme(PlanTask);
