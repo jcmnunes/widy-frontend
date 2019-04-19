@@ -8,6 +8,7 @@ import Link from '../../../UI/Link';
 import { ADD_TASK } from '../../../modals/types';
 import { IconAdd } from '../../../../icons/Icons';
 import theme from '../../../../styles/theme';
+import { IllustrationPlan } from '../../../../icons/Illustrations';
 
 const StyledSection = styled.div`
   margin: 32px 0;
@@ -22,11 +23,12 @@ const StyledSection = styled.div`
 const EmptyTasks = styled.div`
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   border: 1px solid ${props => props.theme.neutral100};
   border-radius: 4px;
-  height: 96px;
+  height: ${props => (props.isPlan ? '275px' : '96px')};
   background-color: ${props => (props.isDraggingOver ? props.theme.blue050 : 'white')};
   transition: background-color 0.2s ease;
   font-size: 16px;
@@ -82,12 +84,20 @@ class Section extends Component {
         ref={provided.innerRef}
         {...provided.droppableProps}
         isDraggingOver={snapshot.isDraggingOver}
+        isPlan={section.title === 'Plan'}
       >
-        {snapshot.isDraggingOver ? (
-          <span>Add task to section &quot;{section.title}&quot;</span>
-        ) : (
-          <span>No tasks in section &quot;{section.title}&quot;</span>
+        {section.title === 'Plan' && (
+          <>
+            <IllustrationPlan />
+            <span>Start by adding tasks here to plan your day.</span>
+          </>
         )}
+        {section.title !== 'Plan' &&
+          (snapshot.isDraggingOver ? (
+            <span>Add task to section &quot;{section.title}&quot;</span>
+          ) : (
+            <span>No tasks in section &quot;{section.title}&quot;</span>
+          ))}
       </EmptyTasks>
     );
   };
