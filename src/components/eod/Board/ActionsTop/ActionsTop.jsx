@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {
   IconCheveronDown,
+  IconCog,
   IconDoorExit,
   IconPresentation,
   IconUser,
@@ -30,6 +31,9 @@ const ActionsTop = ({ logoutState: { loading }, logout }) => (
       <StyledDropdown>
         <Button intent="dropdown" iconBefore={<IconUser />} block>
           Edit profile
+        </Button>
+        <Button intent="dropdown" iconBefore={<IconCog />} block>
+          Settings
         </Button>
         <Button
           block

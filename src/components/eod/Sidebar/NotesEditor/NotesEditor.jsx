@@ -140,6 +140,8 @@ class NotesEditor extends React.Component {
   }
 
   static getDerivedStateFromProps(props, state) {
+    if (!props.selectedTask) return null;
+
     if (props.selectedTask.id !== state.prevSelectedTaskId) {
       const { notes, id } = props.selectedTask;
       const existingValue = notes ? JSON.parse(notes) : null;

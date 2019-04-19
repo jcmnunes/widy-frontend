@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Label from '../Label';
-import Input from '../Input';
+import { Label, Input } from '..';
 
 const StyledInputField = styled.div`
   display: flex;

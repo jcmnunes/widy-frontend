@@ -15,6 +15,7 @@ const StyledContainer = styled.div`
     background: white;
     border-radius: 4px;
     border: 1px solid ${props => props.theme.neutral100};
+    z-index: 100;
   }
 `;
 
