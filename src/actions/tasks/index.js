@@ -30,3 +30,8 @@ export const moveTask = (taskId, fromSectionId, toSectionId, fromIndex, toIndex)
   fromIndex,
   toIndex,
 });
+
+export const deleteTask = taskId => ({
+  type: types.DELETE_TASK_REQUEST,
+  taskId,
+});

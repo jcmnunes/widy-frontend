@@ -4,12 +4,14 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import styled from 'styled-components';
 import Days from './Days';
+import LoadingNavigation from './LoadingNavigation';
 import Button from '../../UI/Button';
 import { IconAdd } from '../../../icons/Icons';
 import { IconWidy, IconWidyText } from '../../../icons/widy';
 import { storeSelectedDay, getDays, getDay, createDay } from '../../../actions/days';
+import { storeSelectedTaskId } from '../../../actions/tasks';
+import { closeSidebar } from '../../../actions/sidebar';
 import theme from '../../../styles/theme';
-import LoadingNavigation from './LoadingNavigation';
 
 const StyledNavigation = styled.div`
   background: ${props => props.theme.neutral050};
@@ -53,6 +55,12 @@ class Navigation extends Component {
     this.props.getDay(id);
   };
 
+  createDay = () => {
+    this.props.storeSelectedTaskId('');
+    this.props.closeSidebar();
+    this.props.createDay();
+  };
+
   render() {
     const { loading, days, daysOrder, selected, createDayLoading } = this.props;
     const today = moment().format('YYYY-MM-DD');
@@ -68,7 +76,7 @@ class Navigation extends Component {
           <Button
             loading={createDayLoading}
             disabled={isTodayCreated || loading}
-            onClick={this.props.createDay}
+            onClick={this.createDay}
             intent="primary"
             iconBefore={<IconAdd primaryColor="#fff" />}
           >
@@ -96,7 +104,9 @@ Navigation.propTypes = {
   getDay: PropTypes.func.isRequired,
   getDays: PropTypes.func.isRequired,
   storeSelectedDay: PropTypes.func.isRequired,
+  storeSelectedTaskId: PropTypes.func.isRequired,
   createDay: PropTypes.func.isRequired,
+  closeSidebar: PropTypes.func.isRequired,
 };
 
 export const mapStateToProps = state => ({
@@ -109,5 +119,5 @@ export const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getDays, getDay, storeSelectedDay, createDay },
+  { getDays, getDay, storeSelectedDay, createDay, storeSelectedTaskId, closeSidebar },
 )(Navigation);

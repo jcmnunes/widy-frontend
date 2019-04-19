@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { IconEdit } from '../../../icons/Icons';
-import Input from '../Input';
+import { Input } from '..';
 import YesNoButtonGroup from '../YesNoButtonGroup';
 
 const StyledEditableInput = styled.form`

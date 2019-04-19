@@ -1,2 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 export { default as AddTask } from './AddTask';
+export { default as LaunchTask } from './LaunchTask';
+export { default as RenameTask } from './RenameTask';
