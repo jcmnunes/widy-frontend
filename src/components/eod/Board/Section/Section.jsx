@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import { Droppable } from 'react-beautiful-dnd';
 import Task from '../Task';
 import PlanTask from '../PlanTask';
-import Link from '../../../UI/Link';
+import { Link } from '../../../UI';
+import { Heading2 } from '../../../UI/Typography';
 import { ADD_TASK } from '../../../modals/types';
 import { IconAdd } from '../../../../icons/Icons';
 import theme from '../../../../styles/theme';
@@ -12,12 +13,6 @@ import { IllustrationPlan } from '../../../../icons/Illustrations';
 
 const StyledSection = styled.div`
   margin: 32px 0;
-
-  h1.title {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 12px;
-  }
 `;
 
 const EmptyTasks = styled.div`
@@ -112,7 +107,7 @@ class Section extends Component {
     const { section } = this.props;
     return (
       <StyledSection>
-        <h1 className="title">{section.title}</h1>
+        <Heading2>{section.title}</Heading2>
         <Droppable droppableId={section.id}>
           {(provided, snapshot) =>
             section.tasks.length

@@ -4,7 +4,7 @@ import styled, { withTheme } from 'styled-components';
 import { Draggable } from 'react-beautiful-dnd';
 import { IconEdit, IconLaunch, IconRightThickArrow, IconTrash } from '../../../../icons/Icons';
 import { LAUNCH_TASK, RENAME_TASK } from '../../../modals/types';
-import { Dialog } from '../../../UI';
+import { DeleteTaskDialog } from '../../../Dialogs';
 
 const Actions = styled.div`
   & > * {
@@ -45,7 +45,7 @@ const StyledPlanTask = styled.div`
 `;
 
 class PlanTask extends Component {
-  state = { showDialog: false };
+  state = { showDeleteTaskDialog: false };
 
   handleTaskClick = () => {
     const { sectionId, taskId } = this.props;
@@ -70,45 +70,25 @@ class PlanTask extends Component {
     this.props.openModal(RENAME_TASK);
   };
 
-  handleTrashClick = e => {
-    e.stopPropagation();
-    this.setState({ showDialog: true });
-  };
-
-  deleteTaskOkAction = () => {
+  handleTaskDoubleClick = () => {
     const { sectionId, taskId } = this.props;
     this.props.storeSelectedSectionId(sectionId);
     this.props.storeSelectedTaskId(taskId);
-    this.props.deleteTask(taskId);
+    this.props.openModal(RENAME_TASK);
+  };
+
+  handleTrashClick = e => {
+    e.stopPropagation();
+    this.setState({ showDeleteTaskDialog: true });
   };
 
   deleteTaskCancelAction = () => {
-    this.setState({ showDialog: false });
-  };
-
-  renderDialog = () => {
-    const actions = [
-      {
-        name: 'Cancel',
-        intent: 'secondary',
-        action: this.deleteTaskCancelAction,
-      },
-      {
-        name: 'Delete Task',
-        intent: 'error',
-        action: this.deleteTaskOkAction,
-      },
-    ];
-    return (
-      <Dialog actions={actions} handleClose={this.deleteTaskCancelAction}>
-        Are you sure you want to delete the task?
-      </Dialog>
-    );
+    this.setState({ showDeleteTaskDialog: false });
   };
 
   render() {
-    const { taskId, selectedTaskId, index, theme, children } = this.props;
-    const { showDialog } = this.state;
+    const { taskId, sectionId, selectedTaskId, index, theme, children } = this.props;
+    const { showDeleteTaskDialog } = this.state;
     return (
       <>
         <Draggable draggableId={taskId} index={index}>
@@ -121,7 +101,7 @@ class PlanTask extends Component {
               onClick={this.handleTaskClick}
               isDragging={snapshot.isDragging}
             >
-              <Title>
+              <Title onDoubleClick={this.handleTaskDoubleClick}>
                 <IconRightThickArrow />
                 <span className="title">{children}</span>
               </Title>
@@ -137,7 +117,12 @@ class PlanTask extends Component {
             </StyledPlanTask>
           )}
         </Draggable>
-        {showDialog && this.renderDialog()}
+        <DeleteTaskDialog
+          show={showDeleteTaskDialog}
+          taskId={taskId}
+          sectionId={sectionId}
+          handleClose={this.deleteTaskCancelAction}
+        />
       </>
     );
   }
@@ -156,7 +141,6 @@ PlanTask.propTypes = {
     [PropTypes.string]: PropTypes.string,
   }).isRequired,
   openModal: PropTypes.func.isRequired,
-  deleteTask: PropTypes.func.isRequired,
 };
 
 export default withTheme(PlanTask);

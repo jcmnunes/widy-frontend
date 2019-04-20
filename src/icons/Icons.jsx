@@ -580,3 +580,64 @@ IconCog.propTypes = {
   primaryColor: PropTypes.string,
   secondaryColor: PropTypes.string,
 };
+
+export const IconPlay = ({ size, primaryColor, secondaryColor, ...other }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" {...other}>
+    <circle fill={primaryColor} cx="12" cy="12" r="10" />
+    <path
+      fill={secondaryColor}
+      d="M15.51 11.14a1 1 0 0 1 0 1.72l-5 3A1 1 0 0 1 9 15V9a1 1 0 0 1 1.51-.86l5 3z"
+    />
+  </svg>
+);
+
+IconPlay.defaultProps = {
+  size: 24,
+  primaryColor: theme.neutral200,
+  secondaryColor: theme.neutral600,
+};
+
+IconPlay.propTypes = {
+  size: PropTypes.number,
+  primaryColor: PropTypes.string,
+  secondaryColor: PropTypes.string,
+};
+
+export const IconStop = ({ size, primaryColor, secondaryColor, ...other }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" {...other}>
+    <circle fill={primaryColor} cx="12" cy="12" r="10" />
+    <rect fill={secondaryColor} width="7" height="7" x="8.5" y="8.5" rx="1" />
+  </svg>
+);
+
+IconStop.defaultProps = {
+  size: 24,
+  primaryColor: theme.neutral200,
+  secondaryColor: theme.neutral600,
+};
+
+IconStop.propTypes = {
+  size: PropTypes.number,
+  primaryColor: PropTypes.string,
+  secondaryColor: PropTypes.string,
+};
+
+export const IconDotsHorizontal = ({ size, primaryColor, ...other }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" {...other}>
+    <path
+      fill={primaryColor}
+      fillRule="evenodd"
+      d="M5 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm7 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm7 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+    />
+  </svg>
+);
+
+IconDotsHorizontal.defaultProps = {
+  size: 24,
+  primaryColor: theme.neutral500,
+};
+
+IconDotsHorizontal.propTypes = {
+  size: PropTypes.number,
+  primaryColor: PropTypes.string,
+};

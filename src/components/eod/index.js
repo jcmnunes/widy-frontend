@@ -1,1 +1,1 @@
-export { default } from './EOD';
+export { default } from './EOD.container';

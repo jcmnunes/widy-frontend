@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import SidebarHeader from './SidebarHeader';
 import NotesEditor from './NotesEditor';
+import Pomodoro from '../Pomodoro';
+import Stats from './Stats';
+import { Heading2 } from '../../UI/Typography';
 import { IllustrationTodoList } from '../../../icons/Illustrations';
 
 const StyledSidebar = styled.div`
@@ -54,6 +57,9 @@ const Sidebar = ({ isOpen, selectedTaskId, closeSidebar }) => (
         <SidebarHeader closeSidebar={closeSidebar} />
         <StyledHeading>Notes:</StyledHeading>
         <NotesEditor />
+        <Heading2>Time Management</Heading2>
+        <Pomodoro />
+        <Stats />
       </>
     ) : (
       <EmptyState>
