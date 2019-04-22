@@ -20,6 +20,7 @@ const RadiosExample = ({ intent }) => {
       checkedId={checkedId}
       data={[{ id: '1', label: 'Radio #1' }, { id: '2', label: 'Radio #2' }]}
       onChange={onChange}
+      error=""
     />
   );
 };

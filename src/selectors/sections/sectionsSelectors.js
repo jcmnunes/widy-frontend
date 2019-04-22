@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
 
 const sectionsByIdSelector = state => state.sections.byId;
+const selectedSectionIdSelector = state => state.sections.selected;
 const sectionsOrderSelector = state => state.sections.order;
 const selectedTaskIdSelector = state => state.tasks.selected;
 
@@ -17,6 +18,8 @@ export const normalSectionsRadiosSelector = createSelector(
 
 export const selectedTaskIndexSelector = createSelector(
   selectedTaskIdSelector,
-  sectionsOrderSelector,
-  (selectedTaskId, order) => order.indexOf(selectedTaskId),
+  selectedSectionIdSelector,
+  sectionsByIdSelector,
+  (selectedTaskId, selectedSectionId, sectionsById) =>
+    sectionsById[selectedSectionId].tasks.indexOf(selectedTaskId),
 );

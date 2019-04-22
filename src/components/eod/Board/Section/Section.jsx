@@ -29,11 +29,16 @@ const EmptyTasks = styled.div`
   border: 1px solid ${props => props.theme.neutral100};
   border-radius: 4px;
   height: ${props => (props.isPlan ? '275px' : '96px')};
-  background-color: ${props => (props.isDraggingOver ? props.theme.blue050 : 'white')};
+  background-color: ${props => (props.isDraggingOver ? props.theme.neutral050 : 'white')};
   transition: background-color 0.2s ease;
   font-size: 16px;
   color: ${props => props.theme.neutral300};
   font-style: italic;
+  cursor: pointer;
+
+  &:hover {
+    background: ${props => props.theme.neutral050};
+  }
 `;
 EmptyTasks.displayName = 'EmptyTasks';
 
@@ -85,6 +90,7 @@ class Section extends Component {
         {...provided.droppableProps}
         isDraggingOver={snapshot.isDraggingOver}
         isPlan={section.title === 'Plan'}
+        onClick={this.openModal}
       >
         {section.title === 'Plan' && (
           <>

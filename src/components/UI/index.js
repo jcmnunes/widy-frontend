@@ -19,6 +19,8 @@ export { default as Message } from './Message';
 export { default as MessageReadme } from './Message/Message.md';
 export { default as LoadingElement } from './LoadingElement';
 export { default as LoadingElementReadme } from './LoadingElement/LoadingElement.md';
+export { default as Dialog } from './Dialog';
+export { default as DialogReadme } from './Dialog/Dialog.md';
 export { default as Spinner } from './Spinner';
 export { default as Modal, StyledModal } from './Modal';
 export { default as ModalBase } from './ModalBase';

@@ -10,15 +10,16 @@ import LoadingBoard from './LoadingBoard';
 const StyledBoard = styled.div`
   background: white;
   padding: 48px;
+`;
 
-  h1 {
-    font-size: 14px;
-    color: ${props => props.theme.neutral700};
+const Title = styled.h1`
+  font-size: 14px;
+  color: ${props => props.theme.neutral700};
+}
+`;
 
-    .large-text {
-      font-size: 20px;
-    }
-  }
+const LargeText = styled.span`
+  font-size: 20px;
 `;
 
 const Header = styled.div`
@@ -64,16 +65,16 @@ class Board extends Component {
     ) : (
       <StyledBoard>
         <Header>
-          <h1>
+          <Title>
             {dayId ? (
               <>
-                <span className="large-text">{`${moment(day).format('ddd DD')}`} </span>
+                <LargeText>{`${moment(day).format('ddd DD')}`} </LargeText>
                 <span>{`${moment(day).format('MMM YYYY')}`}</span>{' '}
               </>
             ) : (
               'Select a day'
             )}
-          </h1>
+          </Title>
           <ActionsTop />
         </Header>
         <DragDropContext onDragEnd={this.onDragEnd}>
