@@ -57,6 +57,7 @@ const Sidebar = ({ isOpen, selectedTaskId, closeSidebar }) => (
       </>
     ) : (
       <EmptyState>
+        Worked
         <IllustrationTodoList />
         <Title>Select a task to see more info here</Title>
       </EmptyState>
