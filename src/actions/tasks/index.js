@@ -35,3 +35,17 @@ export const deleteTask = taskId => ({
   type: types.DELETE_TASK_REQUEST,
   taskId,
 });
+
+export const startTask = (taskId, taskTitle, taskTime, sectionId) => ({
+  type: types.START_TASK_REQUEST,
+  taskId,
+  taskTitle,
+  taskTime,
+  sectionId,
+});
+
+export const stopTask = (taskId, sectionId) => ({
+  type: types.STOP_TASK_REQUEST,
+  taskId,
+  sectionId,
+});

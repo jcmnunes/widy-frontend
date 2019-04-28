@@ -107,6 +107,7 @@ const GlobalStyle = createGlobalStyle`
     line-height: 21px;
     font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
     height: 100%;
+    color: ${props => props.theme.neutral700};
   }
   a {
     text-decoration: none;
