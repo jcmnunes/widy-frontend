@@ -4,6 +4,7 @@ import { updateActiveTask } from '../../actions/activeTask';
 
 const mapStateToProps = state => ({
   activeTaskId: state.activeTask.taskId,
+  activeTaskTitle: state.activeTask.title,
   activeTaskTime: state.activeTask.time,
   activeTaskStart: state.activeTask.start,
   inBreak: state.activeTask.inBreak,

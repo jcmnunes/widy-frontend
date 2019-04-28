@@ -3,15 +3,16 @@ import settings from './settings';
 /**
  * Returns the total number of Pomodoros
  *
- * @param {number} time - Elapsed time in minutes
+ * @param {number} time - Elapsed time in seconds
  * @returns {number} - Number of Pomodoros
  */
 export const getNumberOfPomodoros = time => {
+  const timeInMinutes = time / 60;
   const { length, shortBreak } = settings.pomodoro;
-  if (time < length) return 0;
+  if (timeInMinutes < length) return 0;
 
-  let pomodoros = Math.floor(time / (length + shortBreak));
-  if (time % (length + shortBreak) >= length) pomodoros += 1;
+  let pomodoros = Math.floor(timeInMinutes / (length + shortBreak));
+  if (timeInMinutes % (length + shortBreak) >= length) pomodoros += 1;
   return pomodoros;
 };
 
@@ -33,6 +34,15 @@ export const getCurrentPomodoroInfo = time => {
   }
 
   return info;
+};
+
+export const getTotalTime = time => {
+  const hours = Math.floor(time / 60 / 60);
+
+  return {
+    hours,
+    minutes: hours > 0 ? hours % 60 : Math.floor(time / 60),
+  };
 };
 
 export const formatTime = time => {
