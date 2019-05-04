@@ -41,6 +41,7 @@ const StyledNotesEditor = styled.div`
   background: white;
   color: ${props => props.theme.neutral700};
   min-height: 192px;
+  margin-bottom: 32px;
 
   ol {
     display: block;

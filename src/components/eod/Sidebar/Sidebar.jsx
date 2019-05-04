@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 import SidebarHeader from './SidebarHeader';
 import NotesEditor from './NotesEditor';
+import Pomodoro from '../Pomodoro';
+import { Button } from '../../UI';
+import { Heading2 } from '../../UI/Typography';
+import { IconLaunch } from '../../../icons/Icons';
 import { IllustrationTodoList } from '../../../icons/Illustrations';
+import { LAUNCH_TASK } from '../../modals/types';
 
 const StyledSidebar = styled.div`
   background: ${props => props.theme.yellow050};
@@ -47,27 +52,57 @@ const Title = styled.h2`
   margin-top: 24px;
 `;
 
-const Sidebar = ({ isOpen, selectedTaskId, closeSidebar }) => (
-  <StyledSidebar isOpen={isOpen}>
-    {selectedTaskId ? (
-      <>
-        <SidebarHeader closeSidebar={closeSidebar} />
-        <StyledHeading>Notes:</StyledHeading>
-        <NotesEditor />
-      </>
-    ) : (
-      <EmptyState>
-        <IllustrationTodoList />
-        <Title>Select a task to see more info here</Title>
-      </EmptyState>
-    )}
-  </StyledSidebar>
-);
+const Sidebar = ({
+  isOpen,
+  selectedTaskId,
+  isSelectedTaskInPlan,
+  openModal,
+  closeSidebar,
+  theme,
+}) => {
+  const handleLaunchClick = () => {
+    openModal(LAUNCH_TASK);
+  };
+
+  const renderLaunchIcon = () => (
+    <IconLaunch primaryColor={theme.neutral600} secondaryColor={theme.neutral300} />
+  );
+
+  return (
+    <StyledSidebar isOpen={isOpen}>
+      {selectedTaskId ? (
+        <>
+          <SidebarHeader closeSidebar={closeSidebar} />
+          <StyledHeading>Notes:</StyledHeading>
+          <NotesEditor />
+          <Heading2>Time Management</Heading2>
+          {isSelectedTaskInPlan ? (
+            <Button iconBefore={renderLaunchIcon()} onClick={handleLaunchClick}>
+              Launch task
+            </Button>
+          ) : (
+            <Pomodoro />
+          )}
+        </>
+      ) : (
+        <EmptyState>
+          <IllustrationTodoList />
+          <Title>Select a task to see more info here</Title>
+        </EmptyState>
+      )}
+    </StyledSidebar>
+  );
+};
 
 Sidebar.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   selectedTaskId: PropTypes.string.isRequired,
+  isSelectedTaskInPlan: PropTypes.bool.isRequired,
+  openModal: PropTypes.func.isRequired,
   closeSidebar: PropTypes.func.isRequired,
+  theme: PropTypes.shape({
+    [PropTypes.string]: PropTypes.string,
+  }).isRequired,
 };
 
-export default Sidebar;
+export default withTheme(Sidebar);

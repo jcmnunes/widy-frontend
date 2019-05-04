@@ -38,10 +38,12 @@ class Dropdown extends Component {
     const triggerHeight = this.trigger.current.clientHeight;
     this.setState({ triggerHeight });
     document.addEventListener('mousedown', this.handleDocumentClick, false);
+    document.addEventListener('keydown', this.handleDocumentKeydown, false);
   }
 
   componentWillUnmount() {
     document.removeEventListener('mousedown', this.handleDocumentClick, false);
+    document.removeEventListener('keydown', this.handleDocumentKeydown, false);
   }
 
   handleDocumentClick = e => {
@@ -50,6 +52,10 @@ class Dropdown extends Component {
       return;
     }
 
+    this.handleOutsideClick();
+  };
+
+  handleDocumentKeydown = e => {
     this.handleOutsideClick();
   };
 

@@ -32,6 +32,7 @@ const Header = styled.div`
 class Board extends Component {
   onDragEnd = result => {
     const { destination, source, draggableId } = result;
+    const { sections, activeTaskId } = this.props;
 
     if (!destination) return;
 
@@ -46,6 +47,15 @@ class Board extends Component {
     if (destination.droppableId === source.droppableId) {
       this.props.reorderTasksArray(fromSectionId, fromIndex, toIndex);
     } else {
+      const sectionsById = sections.byId;
+      // When moving a task to the Plan we should stop it
+      if (sectionsById[toSectionId].isPlan) {
+        this.props.updateTaskInStore(draggableId, { time: 0, start: null });
+        // The task was active
+        if (draggableId === activeTaskId) {
+          this.props.resetActiveTask();
+        }
+      }
       this.props.removeTask(fromSectionId, fromIndex);
       this.props.addTaskAtIndex(toSectionId, toIndex, draggableId);
     }
@@ -90,13 +100,19 @@ Board.propTypes = {
     order: PropTypes.array,
     day: PropTypes.string,
     loading: PropTypes.bool,
+    byId: PropTypes.shape({
+      [PropTypes.string]: PropTypes.object,
+    }).isRequired,
   }).isRequired,
   dayId: PropTypes.string.isRequired,
+  activeTaskId: PropTypes.string.isRequired,
   daysLoading: PropTypes.bool.isRequired,
   reorderTasksArray: PropTypes.func.isRequired,
   removeTask: PropTypes.func.isRequired,
   addTaskAtIndex: PropTypes.func.isRequired,
   moveTask: PropTypes.func.isRequired,
+  updateTaskInStore: PropTypes.func.isRequired,
+  resetActiveTask: PropTypes.func.isRequired,
 };
 
 export default Board;

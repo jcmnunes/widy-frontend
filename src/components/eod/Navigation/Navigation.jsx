@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import Days from './Days';
 import LoadingNavigation from './LoadingNavigation';
 import Button from '../../UI/Button';
+import { Heading1 } from '../../UI/Typography';
 import { IconAdd } from '../../../icons/Icons';
 import { IconWidy, IconWidyText } from '../../../icons/widy';
 import { storeSelectedDay, getDays, getDay, createDay } from '../../../actions/days';
@@ -23,13 +24,6 @@ const StyledNavigation = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-bottom: 24px;
-
-    h2 {
-      font-weight: bold;
-      font-size: 16px;
-      color: ${props => props.theme.neutral700};
-      text-transform: uppercase;
-    }
   }
 `;
 
@@ -72,7 +66,7 @@ class Navigation extends Component {
           <IconWidyText size={60} textColor={theme.blue600} />
         </Brand>
         <div className="header">
-          <h2>Days</h2>
+          <Heading1>Days</Heading1>
           <Button
             loading={createDayLoading}
             disabled={isTodayCreated || loading}

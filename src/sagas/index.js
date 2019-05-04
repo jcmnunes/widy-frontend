@@ -6,6 +6,10 @@ import createTask from './tasks/createTask';
 import updateTask from './tasks/updateTask';
 import deleteTask from './tasks/deleteTask';
 import moveTask from './tasks/moveTask';
+import startTask from './tasks/startTask';
+import stopTask from './tasks/stopTask';
+import launchTask from './tasks/launchTask';
+import getActiveTask from './activeTask/getActiveTask';
 import login from './auth/login';
 import logout from './auth/logout';
 import forgot from './auth/forgot';
@@ -21,6 +25,10 @@ export default function* rootSaga() {
     updateTask(),
     moveTask(),
     deleteTask(),
+    startTask(),
+    stopTask(),
+    launchTask(),
+    getActiveTask(),
     login(),
     logout(),
     forgot(),

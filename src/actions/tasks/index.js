@@ -22,6 +22,12 @@ export const updateTask = (taskId, payload) => ({
   payload,
 });
 
+export const updateTaskInStore = (taskId, payload) => ({
+  type: types.UPDATE_TASK_SUCCESS,
+  taskId,
+  payload,
+});
+
 export const moveTask = (taskId, fromSectionId, toSectionId, fromIndex, toIndex) => ({
   type: types.MOVE_TASK_REQUEST,
   taskId,
@@ -34,4 +40,37 @@ export const moveTask = (taskId, fromSectionId, toSectionId, fromIndex, toIndex)
 export const deleteTask = taskId => ({
   type: types.DELETE_TASK_REQUEST,
   taskId,
+});
+
+export const startTask = (taskId, taskTitle, taskTime, sectionId) => ({
+  type: types.START_TASK_REQUEST,
+  taskId,
+  taskTitle,
+  taskTime,
+  sectionId,
+});
+
+export const stopTask = (taskId, sectionId) => ({
+  type: types.STOP_TASK_REQUEST,
+  taskId,
+  sectionId,
+});
+
+export const launchTask = (
+  taskId,
+  taskTitle,
+  taskTime,
+  fromSectionId,
+  toSectionId,
+  fromIndex,
+  toIndex,
+) => ({
+  type: types.LAUNCH_TASK_REQUEST,
+  taskId,
+  taskTitle,
+  taskTime,
+  fromSectionId,
+  toSectionId,
+  fromIndex,
+  toIndex,
 });

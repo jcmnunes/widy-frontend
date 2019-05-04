@@ -13,15 +13,17 @@ const normalize = data => {
       byId: {},
     },
   };
-  data.sections.forEach(({ title, tasks, _id: id }) => {
+  data.sections.forEach(({ title, tasks, _id: id, isPlan }) => {
     const tasksArray = tasks.map(task => task._id);
-    normalized.sections.byId[id] = { id, title, tasks: tasksArray };
+    normalized.sections.byId[id] = { id, title, isPlan, tasks: tasksArray };
     normalized.sections.order.push(id);
-    tasks.forEach(({ title: taskTitle, _id: taskId, notes }) => {
+    tasks.forEach(({ title: taskTitle, _id: taskId, notes, time, start }) => {
       normalized.tasks.byId[taskId] = {
         id: taskId,
         title: taskTitle,
-        notes,
+        notes: notes || '',
+        time: time || 0,
+        start: start || null,
       };
     });
   });

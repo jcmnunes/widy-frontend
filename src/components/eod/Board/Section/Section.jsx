@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import { Droppable } from 'react-beautiful-dnd';
 import Task from '../Task';
 import PlanTask from '../PlanTask';
-import Link from '../../../UI/Link';
+import { Link } from '../../../UI';
+import { Heading2 } from '../../../UI/Typography';
 import { ADD_TASK } from '../../../modals/types';
 import { IconAdd } from '../../../../icons/Icons';
 import theme from '../../../../styles/theme';
@@ -12,12 +13,6 @@ import { IllustrationPlan } from '../../../../icons/Illustrations';
 
 const StyledSection = styled.div`
   margin: 32px 0;
-
-  h1.title {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 12px;
-  }
 `;
 
 const EmptyTasks = styled.div`
@@ -64,7 +59,7 @@ class Section extends Component {
     return (
       <Tasks ref={provided.innerRef} {...provided.droppableProps}>
         {section.tasks.map((taskId, index) => {
-          if (section.title === 'Plan') {
+          if (section.isPlan) {
             return (
               <PlanTask key={taskId} taskId={taskId} index={index} sectionId={section.id}>
                 {tasks[taskId].title}
@@ -89,16 +84,16 @@ class Section extends Component {
         ref={provided.innerRef}
         {...provided.droppableProps}
         isDraggingOver={snapshot.isDraggingOver}
-        isPlan={section.title === 'Plan'}
+        isPlan={section.isPlan}
         onClick={this.openModal}
       >
-        {section.title === 'Plan' && (
+        {section.isPlan && (
           <>
             <IllustrationPlan />
             <span>Start by adding tasks here to plan your day.</span>
           </>
         )}
-        {section.title !== 'Plan' &&
+        {!section.isPlan &&
           (snapshot.isDraggingOver ? (
             <span>Add task to section &quot;{section.title}&quot;</span>
           ) : (
@@ -112,7 +107,7 @@ class Section extends Component {
     const { section } = this.props;
     return (
       <StyledSection>
-        <h1 className="title">{section.title}</h1>
+        <Heading2>{section.title}</Heading2>
         <Droppable droppableId={section.id}>
           {(provided, snapshot) =>
             section.tasks.length
@@ -121,8 +116,7 @@ class Section extends Component {
           }
         </Droppable>
         <StyledLink intent="secondary" onClick={this.openModal}>
-          <IconAdd primaryColor={theme.neutral500} />{' '}
-          {section.title === 'Plan' ? 'Add to Plan' : 'Add task'}
+          <IconAdd primaryColor={theme.neutral500} /> {section.isPlan ? 'Add to Plan' : 'Add task'}
         </StyledLink>
       </StyledSection>
     );
