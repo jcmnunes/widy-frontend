@@ -8,6 +8,8 @@ export default (state = initialState, action) => {
         ...state,
         ...action.payload,
       };
+    case types.RESET_ACTIVE_TASK:
+      return initialState;
     case types.STORE_ACTIVE_TASK:
     case types.ACTIVE_TASK_SUCCESS:
       return action.activeTask;

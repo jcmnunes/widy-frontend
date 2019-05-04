@@ -59,7 +59,7 @@ class Section extends Component {
     return (
       <Tasks ref={provided.innerRef} {...provided.droppableProps}>
         {section.tasks.map((taskId, index) => {
-          if (section.title === 'Plan') {
+          if (section.isPlan) {
             return (
               <PlanTask key={taskId} taskId={taskId} index={index} sectionId={section.id}>
                 {tasks[taskId].title}
@@ -84,16 +84,16 @@ class Section extends Component {
         ref={provided.innerRef}
         {...provided.droppableProps}
         isDraggingOver={snapshot.isDraggingOver}
-        isPlan={section.title === 'Plan'}
+        isPlan={section.isPlan}
         onClick={this.openModal}
       >
-        {section.title === 'Plan' && (
+        {section.isPlan && (
           <>
             <IllustrationPlan />
             <span>Start by adding tasks here to plan your day.</span>
           </>
         )}
-        {section.title !== 'Plan' &&
+        {!section.isPlan &&
           (snapshot.isDraggingOver ? (
             <span>Add task to section &quot;{section.title}&quot;</span>
           ) : (
@@ -116,8 +116,7 @@ class Section extends Component {
           }
         </Droppable>
         <StyledLink intent="secondary" onClick={this.openModal}>
-          <IconAdd primaryColor={theme.neutral500} />{' '}
-          {section.title === 'Plan' ? 'Add to Plan' : 'Add task'}
+          <IconAdd primaryColor={theme.neutral500} /> {section.isPlan ? 'Add to Plan' : 'Add task'}
         </StyledLink>
       </StyledSection>
     );

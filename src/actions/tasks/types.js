@@ -10,3 +10,4 @@ export const DELETE_TASK_REQUEST = 'tasks/DELETE_TASK_REQUEST';
 export const MOVE_TASK_REQUEST = 'tasks/MOVE_TASK_REQUEST';
 export const START_TASK_REQUEST = 'tasks/START_TASK_REQUEST';
 export const STOP_TASK_REQUEST = 'tasks/STOP_TASK_REQUEST';
+export const LAUNCH_TASK_REQUEST = 'tasks/LAUNCH_TASK_REQUEST';

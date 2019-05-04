@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme } from 'styled-components';
 import uuidv4 from 'uuid/v4';
+import { getNumberOfPomodoros, getTotalTime } from '../../../../helpers/pomodoro';
 import { IconTime } from '../../../../icons/Icons';
-import { getNumberOfPomodoros } from '../../../../helpers/pomodoro';
 
 const StyledStats = styled.table`
   margin-top: 16px;
@@ -42,28 +42,25 @@ const Multiplier = styled.span`
   font-size: 14px;
 `;
 
-const Stats = ({ theme, taskTimeMinutes, taskTimeMinutesHours }) => {
-  useEffect(() => {
-    document.title = `🔶 ${taskTimeMinutesHours.minutes}/25 min`;
-  });
-
+const Stats = ({ time, theme }) => {
   const renderTime = () => {
+    const timeMinutesHours = getTotalTime(time);
     return (
       <>
-        {taskTimeMinutesHours.hours > 0 && (
+        {timeMinutesHours.hours > 0 && (
           <>
-            <Value>{taskTimeMinutesHours.hours}</Value>
+            <Value>{timeMinutesHours.hours}</Value>
             <Units>h</Units>
           </>
         )}
-        <Value>{taskTimeMinutesHours.minutes}</Value>
+        <Value>{timeMinutesHours.minutes}</Value>
         <Units>min</Units>
       </>
     );
   };
 
   const renderPomodoros = () => {
-    const numPomodoros = getNumberOfPomodoros(taskTimeMinutes);
+    const numPomodoros = getNumberOfPomodoros(time);
     if (numPomodoros === 0) return <Empty>---</Empty>;
     if (numPomodoros > 5) {
       return (
@@ -111,13 +108,9 @@ const Stats = ({ theme, taskTimeMinutes, taskTimeMinutesHours }) => {
 };
 
 Stats.propTypes = {
+  time: PropTypes.number.isRequired,
   theme: PropTypes.shape({
     [PropTypes.string]: PropTypes.string,
-  }).isRequired,
-  taskTimeMinutes: PropTypes.number.isRequired,
-  taskTimeMinutesHours: PropTypes.shape({
-    hours: PropTypes.number,
-    minutes: PropTypes.number,
   }).isRequired,
 };
 

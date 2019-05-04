@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { withTheme } from 'styled-components';
 import moment from 'moment';
 import Timer from '../Timer';
+import Stats from './Stats';
 import { getCurrentPomodoroInfo } from '../../../helpers/pomodoro';
 import settings from '../../../helpers/settings';
 
@@ -68,13 +69,16 @@ const Pomodoro = ({ taskId, sectionId, isTaskActive, selectedTask }) => {
   // console.log('time:', time);
 
   return (
-    <StyledPomodoro>
-      <Timer size={48} taskId={taskId} sectionId={sectionId} />
-      <Time>
-        {renderTime()}
-        <Units>min</Units>
-      </Time>
-    </StyledPomodoro>
+    <>
+      <StyledPomodoro>
+        <Timer size={48} taskId={taskId} sectionId={sectionId} />
+        <Time>
+          {renderTime()}
+          <Units>min</Units>
+        </Time>
+      </StyledPomodoro>
+      <Stats time={time} />
+    </>
   );
 };
 

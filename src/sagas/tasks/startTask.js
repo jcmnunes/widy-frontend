@@ -22,7 +22,7 @@ export function* startTaskSaga(action) {
     });
     const activeTask = {
       taskId: action.taskId,
-      taskTitle: action.taskTitle,
+      title: action.taskTitle,
       sectionId: action.sectionId,
       dayId,
       start: params.start,

@@ -9,3 +9,7 @@ export const storeActiveTask = activeTask => ({
   type: types.STORE_ACTIVE_TASK,
   activeTask,
 });
+
+export const resetActiveTask = () => ({
+  type: types.RESET_ACTIVE_TASK,
+});

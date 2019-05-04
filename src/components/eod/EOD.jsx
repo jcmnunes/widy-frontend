@@ -7,6 +7,9 @@ import Navigation from './Navigation';
 import Board from './Board';
 import Sidebar from './Sidebar';
 import { getCurrentPomodoroInfo } from '../../helpers/pomodoro';
+import settings from '../../helpers/settings';
+
+const { pomodoro } = settings;
 
 const StyledEOD = styled.div`
   display: grid;
@@ -26,15 +29,39 @@ const StyledEOD = styled.div`
 
 let timer = null;
 
-const EOD = ({ activeTaskId, activeTaskTime, activeTaskStart, updateActiveTask }) => {
+const EOD = ({
+  activeTaskId,
+  activeTaskTime,
+  activeTaskStart,
+  activeTaskTitle,
+  updateActiveTask,
+}) => {
+  const renderDocTitle = (inBreak, elapsedTime) => {
+    if (!activeTaskId) {
+      document.title = 'WIDY';
+      return;
+    }
+    let renderedTime;
+    let symbol;
+    renderedTime = `${elapsedTime} / ${pomodoro.length}`;
+    symbol = '🔶';
+    if (inBreak) {
+      renderedTime = `${elapsedTime} / ${pomodoro.shortBreak}`;
+      symbol = '🔷';
+    }
+    document.title = `${symbol} ${renderedTime} min • ${activeTaskTitle}`;
+  };
+
   const updateTaskState = () => {
     const time = activeTaskTime + moment().diff(activeTaskStart, 'seconds');
-    const { inBreak } = getCurrentPomodoroInfo(time);
+    const { inBreak, elapsedTime } = getCurrentPomodoroInfo(time);
+    renderDocTitle(inBreak, elapsedTime);
     updateActiveTask({ inBreak }); // TODO ➜ Dispatch only when inBreak changes
   };
 
+  updateTaskState(); // TODO ➜ This issues a warning
+
   useEffect(() => {
-    updateTaskState();
     if (timer) {
       clearInterval(timer);
       timer = null;
@@ -62,6 +89,7 @@ EOD.defaultProps = {
 EOD.propTypes = {
   activeTaskId: PropTypes.string.isRequired,
   activeTaskTime: PropTypes.number.isRequired,
+  activeTaskTitle: PropTypes.string.isRequired,
   activeTaskStart: PropTypes.string,
   updateActiveTask: PropTypes.func.isRequired,
 };
