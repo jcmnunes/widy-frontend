@@ -6,10 +6,11 @@ import MainBar from './MainBar';
 import Navigation from './Navigation';
 import Board from './Board';
 import Sidebar from './Sidebar';
+import ActiveTaskPopup from './ActiveTaskPopup';
 import { getCurrentPomodoroInfo } from '../../helpers/pomodoro';
 import settings from '../../helpers/settings';
 
-const { pomodoro } = settings;
+const { pomodoro } = settings();
 
 const StyledEOD = styled.div`
   display: grid;
@@ -78,6 +79,7 @@ const EOD = ({
       <Navigation />
       <Board />
       <Sidebar />
+      <ActiveTaskPopup />
     </StyledEOD>
   );
 };

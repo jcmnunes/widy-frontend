@@ -1,8 +1,8 @@
-export default {
+export default () => ({
   pomodoro: {
-    length: 1,
-    shortBreak: 1,
+    length: 25,
+    shortBreak: 5,
     longBreak: 15,
     longBreakAfter: 4, // Pomodoros
   },
-};
+});
