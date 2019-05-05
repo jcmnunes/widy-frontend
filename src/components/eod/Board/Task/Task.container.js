@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Task from './Task';
+import DraggableTask from './DraggableTask';
 import { openSidebar } from '../../../../actions/sidebar';
 import { storeSelectedSectionId } from '../../../../actions/sections';
 import { storeSelectedTaskId } from '../../../../actions/tasks';
@@ -13,4 +13,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { openSidebar, storeSelectedTaskId, storeSelectedSectionId, openModal },
-)(Task);
+)(DraggableTask);

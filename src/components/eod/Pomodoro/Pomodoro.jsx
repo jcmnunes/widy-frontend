@@ -7,7 +7,7 @@ import Stats from './Stats';
 import { getCurrentPomodoroInfo } from '../../../helpers/pomodoro';
 import settings from '../../../helpers/settings';
 
-const { pomodoro } = settings;
+const { pomodoro } = settings();
 
 const StyledPomodoro = styled.div`
   display: flex;
