@@ -16,10 +16,19 @@ export const storeSelectedTaskId = taskId => ({
   taskId,
 });
 
-export const updateTask = (taskId, payload) => ({
+/**
+ *
+ * @param {string} taskId - Id of the task to update
+ * @param {object} payload - Object containing the new props to update (e.g. to update the title
+ * and time of the task: payload = { title: 'new title here', time: 23 }
+ * @param {object} context - To update the task just on BE (no optimistic update on FE) pass an
+ * object with shape { sectionID, dayID }
+ */
+export const updateTask = (taskId, payload, context = null) => ({
   type: types.UPDATE_TASK_REQUEST,
   taskId,
   payload,
+  context,
 });
 
 export const updateTaskInStore = (taskId, payload) => ({
@@ -50,10 +59,8 @@ export const startTask = (taskId, taskTitle, taskTime, sectionId) => ({
   sectionId,
 });
 
-export const stopTask = (taskId, sectionId) => ({
+export const stopTask = () => ({
   type: types.STOP_TASK_REQUEST,
-  taskId,
-  sectionId,
 });
 
 export const launchTask = (

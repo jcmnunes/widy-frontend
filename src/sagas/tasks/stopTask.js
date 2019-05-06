@@ -4,19 +4,17 @@ import { stopTask } from '../../api/tasks';
 import * as types from '../../actions/tasks/types';
 import { storeActiveTask } from '../../actions/activeTask';
 
-const getDayId = state => state.days.selected;
-const getTask = state => state.tasks.byId[state.activeTask.taskId];
+const getActiveTask = state => state.activeTask;
 
-export function* startTaskSaga(action) {
-  const dayId = yield select(getDayId);
-  const { time, start } = yield select(getTask);
+export function* stopTaskSaga() {
+  const { time, start, dayId, sectionId, taskId } = yield select(getActiveTask);
 
   try {
     const newTime = time + moment().diff(start, 'seconds');
 
     yield put({
       type: types.UPDATE_TASK_SUCCESS,
-      taskId: action.taskId,
+      taskId,
       payload: { start: null, time: newTime },
     });
     const activeTask = {
@@ -32,16 +30,16 @@ export function* startTaskSaga(action) {
 
     const params = {
       dayId,
-      sectionId: action.sectionId,
+      sectionId,
       time: newTime,
     };
 
-    yield call(stopTask, action.taskId, params);
+    yield call(stopTask, taskId, params);
   } catch (error) {
     yield put({ type: types.CREATE_TASK_FAILURE, error });
   }
 }
 
-export default function* watchStartTask() {
-  yield takeLatest(types.STOP_TASK_REQUEST, startTaskSaga);
+export default function* watchStopTask() {
+  yield takeLatest(types.STOP_TASK_REQUEST, stopTaskSaga);
 }

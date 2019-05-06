@@ -18,6 +18,7 @@ export function* createTaskSaga(action) {
         notes: '',
         time: 0,
         start: null,
+        completed: false,
       },
     };
     const { data } = yield call(createTask, params);
@@ -32,6 +33,7 @@ export function* createTaskSaga(action) {
           notes: data.task.notes,
           time: data.task.time,
           start: data.task.start,
+          completed: data.task.completed,
         },
       },
     });
