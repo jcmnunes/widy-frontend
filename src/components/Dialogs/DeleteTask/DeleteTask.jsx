@@ -4,9 +4,9 @@ import { Dialog } from '../../UI';
 
 const DeleteTask = props => {
   const deleteAction = () => {
-    const { sectionId, taskId } = props;
+    const { taskId, sectionId } = props;
     props.storeSelectedSectionId(sectionId);
-    props.storeSelectedTaskId(taskId);
+    props.storeSelectedTaskId('');
     props.deleteTask(taskId);
   };
 
