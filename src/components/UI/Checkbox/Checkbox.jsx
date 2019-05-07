@@ -29,6 +29,7 @@ const CustomCheckbox = styled.span`
   height: 25px;
   width: 25px;
   background-color: ${props => props.theme.neutral100};
+  transition: background-color 0.2s ease;
 
   &:after {
     content: '';
@@ -41,6 +42,10 @@ const CustomCheckbox = styled.span`
     border: solid white;
     border-width: 0 3px 3px 0;
     transform: rotate(45deg);
+  }
+
+  &:hover {
+    background-color: ${props => props.theme.neutral200};
   }
 `;
 

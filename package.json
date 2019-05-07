@@ -1,6 +1,6 @@
 {
   "name": "widy-frontend",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "private": true,
   "proxy": "http://localhost:5000",
   "scripts": {
@@ -35,6 +35,7 @@
     "immutable": "^4.0.0-rc.12",
     "is-hotkey": "^0.1.4",
     "jest-styled-components": "^6.3.1",
+    "lodash.noop": "^3.0.1",
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.2",

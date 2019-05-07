@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
-import { Draggable } from 'react-beautiful-dnd';
+import noop from 'lodash.noop';
 import Timer from '../../Timer';
 import TaskMenu from '../TaskMenu';
 import { Checkbox } from '../../../UI';
-import { RENAME_TASK } from '../../../modals/types';
 
 const getColors = props => {
   const colors = {
@@ -13,13 +12,17 @@ const getColors = props => {
     background: 'white',
   };
 
-  if (props.selected) {
+  if (props.isSelected) {
     colors.border = props.theme.yellow500;
     colors.background = props.theme.yellow050;
   }
 
-  if (props.isTaskInBreak) {
+  if (props.isInBreak) {
     colors.border = props.theme.blue200;
+  }
+
+  if (props.isCompleted) {
+    colors.border = props.theme.neutral100;
   }
 
   return colors;
@@ -50,8 +53,8 @@ const pulseAnimationInBreak = props => keyframes`
 `;
 
 const getAnimation = props => {
-  if (props.isTaskInBreak) return pulseAnimationInBreak(props);
-  if (props.isTaskActive) return pulseAnimationIsActive(props);
+  if (props.isInBreak) return pulseAnimationInBreak(props);
+  if (props.isActive) return pulseAnimationIsActive(props);
   return null;
 };
 
@@ -65,7 +68,8 @@ const StyledTask = styled.div`
   padding: 8px;
   font-size: 16px;
   margin: 4px 0;
-  color: ${props => props.theme.neutral700};
+  color: ${props => (props.isCompleted ? props.theme.neutral300 : props.theme.neutral700)};
+  text-decoration: ${props => (props.isCompleted ? 'line-through' : 'none')};
   cursor: pointer;
   animation: ${props => getAnimation(props)};
   animation-duration: 1s;
@@ -86,79 +90,81 @@ const Controls = styled.div`
   }
 `;
 
-class Task extends Component {
-  handleTaskClick = () => {
-    const { sectionId, taskId } = this.props;
-    this.props.storeSelectedSectionId(sectionId);
-    this.props.storeSelectedTaskId(taskId);
-    this.props.openSidebar();
-  };
+const Task = ({
+  taskRef,
+  taskId,
+  sectionId,
+  isSelected,
+  isActive,
+  isInBreak,
+  isCompleted,
+  renderControls,
+  onClick,
+  onDoubleClick,
+  onCheckChange,
+  onCheckClick,
+  storeSelectedSectionId,
+  storeSelectedTaskId,
+  openModal,
+  children,
+  ...other
+}) => (
+  <StyledTask
+    ref={taskRef}
+    isSelected={isSelected}
+    isActive={isActive}
+    isInBreak={isInBreak}
+    isCompleted={isCompleted}
+    onClick={onClick}
+    storeSelectedSectionId={storeSelectedSectionId}
+    {...other}
+  >
+    <Checkbox checked={isCompleted} onChange={onCheckChange} onClick={onCheckClick} />
+    <TaskName onDoubleClick={onDoubleClick}>{children}</TaskName>
+    {renderControls && !isCompleted && (
+      <Controls>
+        <Timer taskId={taskId} sectionId={sectionId} />
+        <TaskMenu
+          taskId={taskId}
+          sectionId={sectionId}
+          storeSelectedSectionId={storeSelectedSectionId}
+          storeSelectedTaskId={storeSelectedTaskId}
+          openModal={openModal}
+        />
+      </Controls>
+    )}
+  </StyledTask>
+);
 
-  handleTaskDoubleClick = () => {
-    const { sectionId, taskId } = this.props;
-    this.props.storeSelectedSectionId(sectionId);
-    this.props.storeSelectedTaskId(taskId);
-    this.props.openModal(RENAME_TASK);
-  };
-
-  handleTaskCheckboxChange = e => {
-    // TODO ➜ Complete or reactivate a task
-  };
-
-  handleTaskCheckboxClick = e => {
-    e.stopPropagation();
-  };
-
-  render() {
-    const { taskId, sectionId, selectedTaskId, activeTask, index, children } = this.props;
-    return (
-      <Draggable draggableId={taskId} index={index}>
-        {provided => (
-          <StyledTask
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-            ref={provided.innerRef}
-            selected={taskId === selectedTaskId}
-            isTaskActive={activeTask.taskId === taskId && !activeTask.inBreak}
-            isTaskInBreak={activeTask.taskId === taskId && activeTask.inBreak}
-            onClick={this.handleTaskClick}
-          >
-            <Checkbox
-              onChange={this.handleTaskCheckboxChange}
-              onClick={this.handleTaskCheckboxClick}
-            />
-            <TaskName onDoubleClick={this.handleTaskDoubleClick}>{children}</TaskName>
-            <Controls>
-              <Timer taskId={taskId} sectionId={sectionId} />
-              <TaskMenu
-                taskId={taskId}
-                sectionId={sectionId}
-                storeSelectedSectionId={this.props.storeSelectedSectionId}
-                storeSelectedTaskId={this.props.storeSelectedTaskId}
-                openModal={this.props.openModal}
-              />
-            </Controls>
-          </StyledTask>
-        )}
-      </Draggable>
-    );
-  }
-}
+Task.defaultProps = {
+  taskRef: null,
+  renderControls: true,
+  onClick: noop,
+  onDoubleClick: noop,
+  onCheckChange: noop,
+  onCheckClick: noop,
+  storeSelectedTaskId: noop,
+  storeSelectedSectionId: noop,
+  openModal: noop,
+};
 
 Task.propTypes = {
-  index: PropTypes.number.isRequired,
-  sectionId: PropTypes.string.isRequired,
+  taskRef: PropTypes.func,
+  renderControls: PropTypes.bool,
+  isCompleted: PropTypes.bool.isRequired,
   taskId: PropTypes.string.isRequired,
-  selectedTaskId: PropTypes.string.isRequired,
-  activeTask: PropTypes.shape({
-    taskId: PropTypes.string.isRequired,
-    inBreak: PropTypes.bool.isRequired,
-  }).isRequired,
+  sectionId: PropTypes.string.isRequired,
+  isSelected: PropTypes.bool.isRequired,
+  isActive: PropTypes.bool.isRequired,
+  isInBreak: PropTypes.bool.isRequired,
   children: PropTypes.string.isRequired,
-  storeSelectedTaskId: PropTypes.func.isRequired,
-  storeSelectedSectionId: PropTypes.func.isRequired,
-  openSidebar: PropTypes.func.isRequired,
-  openModal: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
+  onDoubleClick: PropTypes.func,
+  onCheckChange: PropTypes.func,
+  onCheckClick: PropTypes.func,
+  storeSelectedTaskId: PropTypes.func,
+  storeSelectedSectionId: PropTypes.func,
+  openModal: PropTypes.func,
 };
 
 export default Task;

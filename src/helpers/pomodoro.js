@@ -8,7 +8,7 @@ import settings from './settings';
  */
 export const getNumberOfPomodoros = time => {
   const timeInMinutes = time / 60;
-  const { length, shortBreak } = settings.pomodoro;
+  const { length, shortBreak } = settings().pomodoro;
   if (timeInMinutes < length) return 0;
 
   let pomodoros = Math.floor(timeInMinutes / (length + shortBreak));
@@ -23,7 +23,7 @@ export const getNumberOfPomodoros = time => {
  */
 export const getCurrentPomodoroInfo = time => {
   const timeInMinutes = time / 60;
-  const { length, shortBreak } = settings.pomodoro;
+  const { length, shortBreak } = settings().pomodoro;
   const remainingTime = timeInMinutes % (length + shortBreak);
 
   const info = { inBreak: false, elapsedTime: formatTime(remainingTime) };

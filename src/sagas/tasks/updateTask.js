@@ -5,26 +5,37 @@ import toast from '../../helpers/toast';
 
 const getDayId = state => state.days.selected;
 const getSectionId = state => state.sections.selected;
-const getTaskId = state => state.tasks.selected;
 const getTasksById = state => state.tasks.byId;
 
 export function* updateTaskSaga(action) {
-  const dayId = yield select(getDayId);
-  const sectionId = yield select(getSectionId);
-  const taskId = yield select(getTaskId);
-  const taskById = yield select(getTasksById);
-  const selectedTask = taskById[taskId];
+  const dayId = action.context ? action.context.dayId : yield select(getDayId);
+  const sectionId = action.context ? action.context.sectionId : yield select(getSectionId);
 
   try {
     const params = { dayId, sectionId, payload: action.payload };
-    yield put({ type: types.UPDATE_TASK_SUCCESS, taskId, payload: params.payload });
+    if (!action.context) {
+      yield put({
+        type: types.UPDATE_TASK_SUCCESS,
+        taskId: action.taskId,
+        payload: params.payload,
+      });
+    }
     yield call(updateTask, action.taskId, params);
   } catch (error) {
     yield toast.error({
       title: 'Could not update the task',
       message: 'Something went wrong while updating the task.',
     });
-    yield put({ type: types.UPDATE_TASK_FAILURE, error, taskId, payload: selectedTask });
+    if (!action.context) {
+      const taskById = yield select(getTasksById);
+      const selectedTask = taskById[action.taskId];
+      yield put({
+        type: types.UPDATE_TASK_FAILURE,
+        error,
+        taskId: action.taskId,
+        payload: selectedTask,
+      });
+    }
   }
 }
 
