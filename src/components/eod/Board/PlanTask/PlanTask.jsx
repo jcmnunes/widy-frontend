@@ -13,15 +13,28 @@ const Actions = styled.div`
   }
 `;
 
-const Title = styled.div`
+const StyledIconRightThickArrow = styled(IconRightThickArrow)`
+  flex-shrink: 0;
+`;
+
+const TitleContainer = styled.div`
   display: flex;
   align-items: center;
+  flex: 1;
+`;
+
+const Title = styled.span`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 16px;
+  flex: 1;
+  width: 0;
 `;
 
 const StyledPlanTask = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
   flex-direction: row;
   border: none;
   background: ${props => (props.isDragging || props.selected ? props.theme.neutral050 : 'white')};
@@ -101,10 +114,10 @@ class PlanTask extends Component {
               onClick={this.handleTaskClick}
               isDragging={snapshot.isDragging}
             >
-              <Title onDoubleClick={this.handleTaskDoubleClick}>
-                <IconRightThickArrow />
-                <span className="title">{children}</span>
-              </Title>
+              <TitleContainer onDoubleClick={this.handleTaskDoubleClick}>
+                <StyledIconRightThickArrow />
+                <Title>{children}</Title>
+              </TitleContainer>
               <Actions>
                 <IconLaunch onClick={this.handleLaunchClick} />
                 <IconEdit

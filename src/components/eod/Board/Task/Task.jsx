@@ -79,6 +79,11 @@ const StyledTask = styled.div`
 
 const TaskName = styled.span`
   flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 0;
+  margin-right: 16px;
 `;
 
 const Controls = styled.div`
