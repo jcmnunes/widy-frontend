@@ -1,7 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import styled, { withTheme } from 'styled-components';
 import Logo from '../Logo';
-import { IconChart, IconTime, IconTrophy } from '../../../icons/Icons';
+import { IconChart, IconSurvey, IconTime } from '../../../icons/Icons';
 
 const Container = styled.div`
   flex: 1;
@@ -30,6 +31,7 @@ const Item = styled.div`
   grid-template-columns: 80px 1fr;
   grid-gap: 18px;
   margin-bottom: 16px;
+  align-items: center;
 
   .icon {
     width: 80px;
@@ -54,7 +56,7 @@ const Item = styled.div`
   }
 `;
 
-const Hero = () => (
+const Hero = ({ theme }) => (
   <Container>
     <Logo />
     <h1>What I Did Yesterday?</h1>
@@ -69,7 +71,7 @@ const Hero = () => (
     </Item>
     <Item>
       <div className="icon">
-        <IconTime size={32} />
+        <IconTime size={32} secondaryColor={theme.neutral100} />
       </div>
       <div className="text">
         <h2>Stay in the flow</h2>
@@ -78,14 +80,20 @@ const Hero = () => (
     </Item>
     <Item>
       <div className="icon">
-        <IconTrophy size={32} />
+        <IconSurvey size={32} />
       </div>
       <div className="text">
-        <h2>Be a hero in your stand-ups</h2>
-        <p>Widy will help you when the time comes to explain what you did and plan to do.</p>
+        <h2>Get handy reports easily</h2>
+        <p>Widy will generate reports for you automatically.</p>
       </div>
     </Item>
   </Container>
 );
 
-export default Hero;
+Hero.propTypes = {
+  theme: PropTypes.shape({
+    [PropTypes.string]: PropTypes.string,
+  }).isRequired,
+};
+
+export default withTheme(Hero);
