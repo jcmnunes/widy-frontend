@@ -17,13 +17,14 @@ const normalize = data => {
     const tasksArray = tasks.map(task => task._id);
     normalized.sections.byId[id] = { id, title, isPlan, tasks: tasksArray };
     normalized.sections.order.push(id);
-    tasks.forEach(({ title: taskTitle, _id: taskId, notes, time, start }) => {
+    tasks.forEach(({ title: taskTitle, _id: taskId, notes, time, start, completed }) => {
       normalized.tasks.byId[taskId] = {
         id: taskId,
         title: taskTitle,
         notes: notes || '',
         time: time || 0,
         start: start || null,
+        completed: completed || false,
       };
     });
   });

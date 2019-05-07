@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import ActiveTaskPopup from './ActiveTaskPopup';
 import { getDay, storeSelectedDay } from '../../../actions/days';
+import { stopTask, updateTask } from '../../../actions/tasks';
 
 const mapStateToProps = state => ({
   activeTask: state.activeTask,
@@ -9,5 +10,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { storeSelectedDay, getDay },
+  { storeSelectedDay, getDay, stopTask, updateTask },
 )(ActiveTaskPopup);

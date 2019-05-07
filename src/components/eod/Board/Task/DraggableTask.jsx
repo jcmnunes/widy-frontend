@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Draggable } from 'react-beautiful-dnd';
-import noop from 'lodash.noop';
 import Task from './Task';
 import { RENAME_TASK } from '../../../modals/types';
 
@@ -20,8 +19,14 @@ class DraggableTask extends Component {
     this.props.openModal(RENAME_TASK);
   };
 
-  handleTaskCheckboxChange = e => {
-    // TODO ➜ Complete or reactivate a task
+  handleTaskCheckboxChange = () => {
+    const { activeTask, sectionId, taskId, isCompleted } = this.props;
+    this.props.storeSelectedSectionId(sectionId);
+    this.props.storeSelectedTaskId(taskId);
+    if (activeTask.taskId === taskId) {
+      this.props.stopTask(taskId, sectionId);
+    }
+    this.props.updateTask(taskId, { completed: !isCompleted, start: null });
   };
 
   handleTaskCheckboxClick = e => {
@@ -29,7 +34,15 @@ class DraggableTask extends Component {
   };
 
   render() {
-    const { taskId, sectionId, selectedTaskId, activeTask, index, children } = this.props;
+    const {
+      taskId,
+      sectionId,
+      selectedTaskId,
+      activeTask,
+      index,
+      isCompleted,
+      children,
+    } = this.props;
     return (
       <Draggable draggableId={taskId} index={index}>
         {provided => (
@@ -40,6 +53,7 @@ class DraggableTask extends Component {
             taskId={taskId}
             sectionId={sectionId}
             isSelected={taskId === selectedTaskId}
+            isCompleted={isCompleted}
             isActive={activeTask.taskId === taskId && !activeTask.inBreak}
             isInBreak={activeTask.taskId === taskId && activeTask.inBreak}
             onClick={this.handleTaskClick}
@@ -58,17 +72,8 @@ class DraggableTask extends Component {
   }
 }
 
-DraggableTask.defaultProps = {
-  index: 0,
-  isDragDisabled: false,
-  storeSelectedTaskId: noop,
-  storeSelectedSectionId: noop,
-  openSidebar: noop,
-  openModal: noop,
-};
-
 DraggableTask.propTypes = {
-  index: PropTypes.number,
+  index: PropTypes.number.isRequired,
   sectionId: PropTypes.string.isRequired,
   taskId: PropTypes.string.isRequired,
   selectedTaskId: PropTypes.string.isRequired,
@@ -76,12 +81,14 @@ DraggableTask.propTypes = {
     taskId: PropTypes.string.isRequired,
     inBreak: PropTypes.bool.isRequired,
   }).isRequired,
+  isCompleted: PropTypes.bool.isRequired,
   children: PropTypes.string.isRequired,
-  storeSelectedTaskId: PropTypes.func,
-  storeSelectedSectionId: PropTypes.func,
-  openSidebar: PropTypes.func,
-  openModal: PropTypes.func,
-  isDragDisabled: PropTypes.bool,
+  storeSelectedTaskId: PropTypes.func.isRequired,
+  storeSelectedSectionId: PropTypes.func.isRequired,
+  openSidebar: PropTypes.func.isRequired,
+  openModal: PropTypes.func.isRequired,
+  updateTask: PropTypes.func.isRequired,
+  stopTask: PropTypes.func.isRequired,
 };
 
 export default DraggableTask;

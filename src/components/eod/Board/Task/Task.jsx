@@ -21,6 +21,10 @@ const getColors = props => {
     colors.border = props.theme.blue200;
   }
 
+  if (props.isCompleted) {
+    colors.border = props.theme.neutral100;
+  }
+
   return colors;
 };
 
@@ -64,7 +68,8 @@ const StyledTask = styled.div`
   padding: 8px;
   font-size: 16px;
   margin: 4px 0;
-  color: ${props => props.theme.neutral700};
+  color: ${props => (props.isCompleted ? props.theme.neutral300 : props.theme.neutral700)};
+  text-decoration: ${props => (props.isCompleted ? 'line-through' : 'none')};
   cursor: pointer;
   animation: ${props => getAnimation(props)};
   animation-duration: 1s;
@@ -92,6 +97,7 @@ const Task = ({
   isSelected,
   isActive,
   isInBreak,
+  isCompleted,
   renderControls,
   onClick,
   onDoubleClick,
@@ -108,13 +114,14 @@ const Task = ({
     isSelected={isSelected}
     isActive={isActive}
     isInBreak={isInBreak}
+    isCompleted={isCompleted}
     onClick={onClick}
     storeSelectedSectionId={storeSelectedSectionId}
     {...other}
   >
-    <Checkbox onChange={onCheckChange} onClick={onCheckClick} />
+    <Checkbox checked={isCompleted} onChange={onCheckChange} onClick={onCheckClick} />
     <TaskName onDoubleClick={onDoubleClick}>{children}</TaskName>
-    {renderControls && (
+    {renderControls && !isCompleted && (
       <Controls>
         <Timer taskId={taskId} sectionId={sectionId} />
         <TaskMenu
@@ -144,6 +151,7 @@ Task.defaultProps = {
 Task.propTypes = {
   taskRef: PropTypes.func,
   renderControls: PropTypes.bool,
+  isCompleted: PropTypes.bool.isRequired,
   taskId: PropTypes.string.isRequired,
   sectionId: PropTypes.string.isRequired,
   isSelected: PropTypes.bool.isRequired,

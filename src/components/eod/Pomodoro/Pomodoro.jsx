@@ -70,13 +70,15 @@ const Pomodoro = ({ taskId, sectionId, isTaskActive, selectedTask }) => {
 
   return (
     <>
-      <StyledPomodoro>
-        <Timer size={48} taskId={taskId} sectionId={sectionId} />
-        <Time>
-          {renderTime()}
-          <Units>min</Units>
-        </Time>
-      </StyledPomodoro>
+      {!selectedTask.completed && (
+        <StyledPomodoro>
+          <Timer size={48} taskId={taskId} sectionId={sectionId} />
+          <Time>
+            {renderTime()}
+            <Units>min</Units>
+          </Time>
+        </StyledPomodoro>
+      )}
       <Stats time={time} />
     </>
   );
@@ -89,6 +91,7 @@ Pomodoro.propTypes = {
   selectedTask: PropTypes.shape({
     time: PropTypes.number.isRequired,
     start: PropTypes.string,
+    completed: PropTypes.bool.isRequired,
   }).isRequired,
 };
 
