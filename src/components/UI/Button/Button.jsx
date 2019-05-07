@@ -170,7 +170,8 @@ const Button = ({
   children,
   ...other
 }) => {
-  const handleClick = () => {
+  const handleClick = e => {
+    e.stopPropagation();
     if (!onClick) return;
     onClick();
   };

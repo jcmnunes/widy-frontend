@@ -23,7 +23,7 @@ const EmptyTasks = styled.div`
   justify-content: center;
   border: 1px solid ${props => props.theme.neutral100};
   border-radius: 4px;
-  height: ${props => (props.isPlan ? '275px' : '96px')};
+  height: ${props => (props.isPlan && props.noTasks ? '275px' : '96px')};
   background-color: ${props => (props.isDraggingOver ? props.theme.neutral050 : 'white')};
   transition: background-color 0.2s ease;
   font-size: 16px;
@@ -78,7 +78,8 @@ class Section extends Component {
   };
 
   renderEmptySection = (provided, snapshot) => {
-    const { section } = this.props;
+    const { section, tasks } = this.props;
+    const noTasks = Object.keys(tasks).length === 0;
     return (
       <EmptyTasks
         ref={provided.innerRef}
@@ -86,11 +87,16 @@ class Section extends Component {
         isDraggingOver={snapshot.isDraggingOver}
         isPlan={section.isPlan}
         onClick={this.openModal}
+        noTasks={noTasks}
       >
         {section.isPlan && (
           <>
-            <IllustrationPlan />
-            <span>Start by adding tasks here to plan your day.</span>
+            {noTasks && <IllustrationPlan />}
+            {noTasks ? (
+              <span>Start by adding tasks here to plan your day.</span>
+            ) : (
+              <span>No tasks in Plan.</span>
+            )}
           </>
         )}
         {!section.isPlan &&
