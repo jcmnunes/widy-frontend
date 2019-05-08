@@ -23,7 +23,7 @@ const StyledActionsTop = styled.div`
 
 const ActionsTop = ({ logoutState: { loading }, logout }) => (
   <StyledActionsTop>
-    <RoundButton iconAfter={<IconPresentation />}>Standup</RoundButton>
+    <RoundButton iconAfter={<IconPresentation />}>Widy Report</RoundButton>
     <Dropdown
       trigger={<RoundButton iconBefore={<IconCheveronDown />} iconAfter={<IconUserCircle />} />}
       position="right"
