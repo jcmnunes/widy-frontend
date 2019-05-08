@@ -6,6 +6,12 @@ import { IconEdit, IconLaunch, IconRightThickArrow, IconTrash } from '../../../.
 import { LAUNCH_TASK, RENAME_TASK } from '../../../modals/types';
 import { DeleteTaskDialog } from '../../../Dialogs';
 
+const getTaskBackground = props => {
+  if (props.isDragging) return props.theme.blue050;
+  if (props.selected) return props.theme.neutral075;
+  return 'white';
+};
+
 const Actions = styled.div`
   & > * {
     cursor: pointer;
@@ -37,7 +43,7 @@ const StyledPlanTask = styled.div`
   align-items: center;
   flex-direction: row;
   border: none;
-  background: ${props => (props.isDragging || props.selected ? props.theme.neutral050 : 'white')};
+  background: ${props => getTaskBackground(props)};
   padding: 8px;
   font-size: 16px;
   margin: 0;
@@ -49,7 +55,7 @@ const StyledPlanTask = styled.div`
   }
 
   &:hover {
-    background: ${props => props.theme.neutral050};
+    background: ${props => (props.selected ? props.neutral075 : props.theme.neutral050)};
 
     & ${Actions} {
       display: flex;
@@ -58,7 +64,12 @@ const StyledPlanTask = styled.div`
 `;
 
 class PlanTask extends Component {
-  state = { showDeleteTaskDialog: false };
+  state = {
+    showDeleteTaskDialog: false,
+    isLaunchHover: false,
+    isEditHover: false,
+    isTrashHover: false,
+  };
 
   handleTaskClick = () => {
     const { sectionId, taskId } = this.props;
@@ -99,9 +110,33 @@ class PlanTask extends Component {
     this.setState({ showDeleteTaskDialog: false });
   };
 
+  handleLaunchMouseEnter = () => {
+    this.setState({ isLaunchHover: true });
+  };
+
+  handleLaunchMouseLeave = () => {
+    this.setState({ isLaunchHover: false });
+  };
+
+  handleEditMouseEnter = () => {
+    this.setState({ isEditHover: true });
+  };
+
+  handleEditMouseLeave = () => {
+    this.setState({ isEditHover: false });
+  };
+
+  handleTrashMouseEnter = () => {
+    this.setState({ isTrashHover: true });
+  };
+
+  handleTrashMouseLeave = () => {
+    this.setState({ isTrashHover: false });
+  };
+
   render() {
     const { taskId, sectionId, selectedTaskId, index, theme, children } = this.props;
-    const { showDeleteTaskDialog } = this.state;
+    const { showDeleteTaskDialog, isLaunchHover, isEditHover, isTrashHover } = this.state;
     return (
       <>
         <Draggable draggableId={taskId} index={index}>
@@ -119,13 +154,27 @@ class PlanTask extends Component {
                 <Title>{children}</Title>
               </TitleContainer>
               <Actions>
-                <IconLaunch onClick={this.handleLaunchClick} />
-                <IconEdit
-                  onClick={this.handleEditClick}
-                  primaryColor={theme.neutral300}
-                  secondaryColor={theme.neutral200}
+                <IconLaunch
+                  onMouseEnter={this.handleLaunchMouseEnter}
+                  onMouseLeave={this.handleLaunchMouseLeave}
+                  onClick={this.handleLaunchClick}
+                  primaryColor={isLaunchHover ? theme.neutral400 : theme.neutral300}
+                  secondaryColor={isLaunchHover ? theme.neutral300 : theme.neutral200}
                 />
-                <IconTrash onClick={this.handleTrashClick} />
+                <IconEdit
+                  onMouseEnter={this.handleEditMouseEnter}
+                  onMouseLeave={this.handleEditMouseLeave}
+                  onClick={this.handleEditClick}
+                  primaryColor={isEditHover ? theme.neutral400 : theme.neutral300}
+                  secondaryColor={isEditHover ? theme.neutral300 : theme.neutral200}
+                />
+                <IconTrash
+                  onMouseEnter={this.handleTrashMouseEnter}
+                  onMouseLeave={this.handleTrashMouseLeave}
+                  onClick={this.handleTrashClick}
+                  primaryColor={isTrashHover ? theme.neutral400 : theme.neutral300}
+                  secondaryColor={isTrashHover ? theme.neutral300 : theme.neutral200}
+                />
               </Actions>
             </StyledPlanTask>
           )}

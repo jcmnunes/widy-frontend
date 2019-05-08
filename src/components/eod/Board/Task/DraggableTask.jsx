@@ -45,7 +45,7 @@ class DraggableTask extends Component {
     } = this.props;
     return (
       <Draggable draggableId={taskId} index={index}>
-        {provided => (
+        {(provided, snapshot) => (
           <Task
             taskRef={provided.innerRef}
             {...provided.draggableProps}
@@ -63,6 +63,7 @@ class DraggableTask extends Component {
             storeSelectedSectionId={this.props.storeSelectedSectionId}
             storeSelectedTaskId={this.props.storeSelectedTaskId}
             openModal={this.props.openModal}
+            isDragging={snapshot.isDragging}
           >
             {children}
           </Task>
