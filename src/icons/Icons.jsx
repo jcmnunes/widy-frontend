@@ -666,3 +666,22 @@ IconSurvey.propTypes = {
   primaryColor: PropTypes.string,
   secondaryColor: PropTypes.string,
 };
+
+export const IconDuplicate = ({ size, primaryColor, secondaryColor, ...other }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" {...other}>
+    <rect fill={primaryColor} width="14" height="14" x="3" y="3" rx="2" />
+    <rect fill={secondaryColor} width="14" height="14" x="7" y="7" rx="2" />
+  </svg>
+);
+
+IconDuplicate.defaultProps = {
+  size: 24,
+  primaryColor: theme.neutral300,
+  secondaryColor: theme.neutral200,
+};
+
+IconDuplicate.propTypes = {
+  size: PropTypes.number,
+  primaryColor: PropTypes.string,
+  secondaryColor: PropTypes.string,
+};

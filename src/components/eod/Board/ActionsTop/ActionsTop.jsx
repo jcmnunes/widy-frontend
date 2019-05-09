@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 import {
   IconCheveronDown,
   IconCog,
   IconDoorExit,
   IconPresentation,
+  IconSurvey,
   IconUser,
   IconUserCircle,
 } from '../../../../icons/Icons';
@@ -21,9 +22,14 @@ const StyledActionsTop = styled.div`
   }
 `;
 
-const ActionsTop = ({ logoutState: { loading }, logout }) => (
+const ActionsTop = ({ logoutState: { loading }, logout, theme }) => (
   <StyledActionsTop>
-    <RoundButton iconAfter={<IconPresentation />}>Widy Report</RoundButton>
+    <RoundButton
+      iconAfter={<IconSurvey primaryColor={theme.neutral200} secondaryColor={theme.neutral600} />}
+    >
+      Widy Report
+    </RoundButton>
+    <RoundButton iconAfter={<IconPresentation />}>Standup</RoundButton>
     <Dropdown
       trigger={<RoundButton iconBefore={<IconCheveronDown />} iconAfter={<IconUserCircle />} />}
       position="right"
@@ -54,6 +60,9 @@ ActionsTop.propTypes = {
     loading: PropTypes.bool.isRequired,
   }).isRequired,
   logout: PropTypes.func.isRequired,
+  theme: PropTypes.shape({
+    [PropTypes.string]: PropTypes.string,
+  }).isRequired,
 };
 
-export default ActionsTop;
+export default withTheme(ActionsTop);
