@@ -2,9 +2,17 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme } from 'styled-components';
 import { Draggable } from 'react-beautiful-dnd';
-import { IconEdit, IconLaunch, IconRightThickArrow, IconTrash } from '../../../../icons/Icons';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import {
+  IconDuplicate,
+  IconEdit,
+  IconLaunch,
+  IconRightThickArrow,
+  IconTrash,
+} from '../../../../icons/Icons';
 import { LAUNCH_TASK, RENAME_TASK } from '../../../modals/types';
 import { DeleteTaskDialog } from '../../../Dialogs';
+import toast from '../../../../helpers/toast';
 
 const getTaskBackground = props => {
   if (props.isDragging) return props.theme.blue050;
@@ -66,9 +74,10 @@ const StyledPlanTask = styled.div`
 class PlanTask extends Component {
   state = {
     showDeleteTaskDialog: false,
-    isLaunchHover: false,
-    isEditHover: false,
-    isTrashHover: false,
+    duplicate: false,
+    launch: false,
+    edit: false,
+    trash: false,
   };
 
   handleTaskClick = () => {
@@ -110,33 +119,19 @@ class PlanTask extends Component {
     this.setState({ showDeleteTaskDialog: false });
   };
 
-  handleLaunchMouseEnter = () => {
-    this.setState({ isLaunchHover: true });
+  handleActionMouseEnter = e => {
+    const { action } = e.target.dataset;
+    this.setState({ [action]: true });
   };
 
-  handleLaunchMouseLeave = () => {
-    this.setState({ isLaunchHover: false });
-  };
-
-  handleEditMouseEnter = () => {
-    this.setState({ isEditHover: true });
-  };
-
-  handleEditMouseLeave = () => {
-    this.setState({ isEditHover: false });
-  };
-
-  handleTrashMouseEnter = () => {
-    this.setState({ isTrashHover: true });
-  };
-
-  handleTrashMouseLeave = () => {
-    this.setState({ isTrashHover: false });
+  handleActionMouseLeave = e => {
+    const { action } = e.target.dataset;
+    this.setState({ [action]: false });
   };
 
   render() {
     const { taskId, sectionId, selectedTaskId, index, theme, children } = this.props;
-    const { showDeleteTaskDialog, isLaunchHover, isEditHover, isTrashHover } = this.state;
+    const { showDeleteTaskDialog, duplicate, launch, edit, trash } = this.state;
     return (
       <>
         <Draggable draggableId={taskId} index={index}>
@@ -154,26 +149,46 @@ class PlanTask extends Component {
                 <Title>{children}</Title>
               </TitleContainer>
               <Actions>
+                <CopyToClipboard
+                  text={children}
+                  onCopy={() =>
+                    toast.success({
+                      title: 'Success',
+                      message: 'Task title copied',
+                    })
+                  }
+                >
+                  <IconDuplicate
+                    data-action="duplicate"
+                    onMouseEnter={this.handleActionMouseEnter}
+                    onMouseLeave={this.handleActionMouseLeave}
+                    primaryColor={duplicate ? theme.neutral400 : theme.neutral300}
+                    secondaryColor={duplicate ? theme.neutral300 : theme.neutral200}
+                  />
+                </CopyToClipboard>
                 <IconLaunch
-                  onMouseEnter={this.handleLaunchMouseEnter}
-                  onMouseLeave={this.handleLaunchMouseLeave}
+                  data-action="launch"
+                  onMouseEnter={this.handleActionMouseEnter}
+                  onMouseLeave={this.handleActionMouseLeave}
                   onClick={this.handleLaunchClick}
-                  primaryColor={isLaunchHover ? theme.neutral400 : theme.neutral300}
-                  secondaryColor={isLaunchHover ? theme.neutral300 : theme.neutral200}
+                  primaryColor={launch ? theme.neutral400 : theme.neutral300}
+                  secondaryColor={launch ? theme.neutral300 : theme.neutral200}
                 />
                 <IconEdit
-                  onMouseEnter={this.handleEditMouseEnter}
-                  onMouseLeave={this.handleEditMouseLeave}
+                  data-action="edit"
+                  onMouseEnter={this.handleActionMouseEnter}
+                  onMouseLeave={this.handleActionMouseLeave}
                   onClick={this.handleEditClick}
-                  primaryColor={isEditHover ? theme.neutral400 : theme.neutral300}
-                  secondaryColor={isEditHover ? theme.neutral300 : theme.neutral200}
+                  primaryColor={edit ? theme.neutral400 : theme.neutral300}
+                  secondaryColor={edit ? theme.neutral300 : theme.neutral200}
                 />
                 <IconTrash
-                  onMouseEnter={this.handleTrashMouseEnter}
-                  onMouseLeave={this.handleTrashMouseLeave}
+                  data-action="trash"
+                  onMouseEnter={this.handleActionMouseEnter}
+                  onMouseLeave={this.handleActionMouseLeave}
                   onClick={this.handleTrashClick}
-                  primaryColor={isTrashHover ? theme.neutral400 : theme.neutral300}
-                  secondaryColor={isTrashHover ? theme.neutral300 : theme.neutral200}
+                  primaryColor={trash ? theme.neutral400 : theme.neutral300}
+                  secondaryColor={trash ? theme.neutral300 : theme.neutral200}
                 />
               </Actions>
             </StyledPlanTask>
