@@ -9,6 +9,7 @@ import Sidebar from './Sidebar';
 import ActiveTaskPopup from './ActiveTaskPopup';
 import { getCurrentPomodoroInfo } from '../../helpers/pomodoro';
 import settings from '../../helpers/settings';
+import NoDays from './NoDays';
 
 const { pomodoro } = settings();
 
@@ -36,6 +37,8 @@ const EOD = ({
   activeTaskStart,
   activeTaskTitle,
   updateActiveTask,
+  daysOrder,
+  daysLoading,
 }) => {
   const renderDocTitle = (inBreak, elapsedTime) => {
     if (!activeTaskId) {
@@ -77,7 +80,7 @@ const EOD = ({
     <StyledEOD>
       <MainBar />
       <Navigation />
-      <Board />
+      {daysOrder.length === 0 && !daysLoading ? <NoDays /> : <Board />}
       <Sidebar />
       <ActiveTaskPopup />
     </StyledEOD>
@@ -94,6 +97,8 @@ EOD.propTypes = {
   activeTaskTitle: PropTypes.string.isRequired,
   activeTaskStart: PropTypes.string,
   updateActiveTask: PropTypes.func.isRequired,
+  daysOrder: PropTypes.arrayOf(PropTypes.string).isRequired,
+  daysLoading: PropTypes.bool.isRequired,
 };
 
 export default EOD;
