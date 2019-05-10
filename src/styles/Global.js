@@ -115,6 +115,7 @@ const GlobalStyle = createGlobalStyle`
   }
   button {
     font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    background: none;
   }
 `;
 

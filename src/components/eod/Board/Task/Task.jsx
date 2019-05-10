@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 import noop from 'lodash.noop';
 import Timer from '../../Timer';
 import TaskMenu from '../TaskMenu';
+import CopyButton from './CopyButton';
 import { Checkbox } from '../../../UI';
-import { IconDuplicate } from '../../../../icons/Icons';
-import toast from '../../../../helpers/toast';
 
 const getColors = props => {
   const colors = {
@@ -66,7 +64,7 @@ const getAnimation = props => {
   return null;
 };
 
-const StyledIconDuplicate = styled(IconDuplicate)`
+const StyledCopyButton = styled(CopyButton)`
   display: none;
   cursor: pointer;
 `;
@@ -93,13 +91,13 @@ const StyledTask = styled.div`
     background-color: ${props =>
       props.isSelected ? props.theme.yellow075 : props.theme.neutral025};
 
-    ${StyledIconDuplicate} {
+    ${StyledCopyButton} {
       display: inline-block;
     }
   }
 `;
 
-const TaskName = styled.span`
+const TaskTitle = styled.span`
   flex: 1;
   white-space: nowrap;
   overflow: hidden;
@@ -161,18 +159,8 @@ const Task = ({
     {...other}
   >
     <Checkbox checked={isCompleted} onChange={onCheckChange} onClick={onCheckClick} />
-    <TaskName onDoubleClick={onDoubleClick}>{children}</TaskName>
-    <CopyToClipboard
-      text={children}
-      onCopy={() =>
-        toast.success({
-          title: 'Success',
-          message: 'Task title copied',
-        })
-      }
-    >
-      <StyledIconDuplicate />
-    </CopyToClipboard>
+    <TaskTitle onDoubleClick={onDoubleClick}>{children}</TaskTitle>
+    <StyledCopyButton taskTitle={children} />
     {renderControls && !isCompleted && (
       <Controls>
         <Timer taskId={taskId} sectionId={sectionId} />
