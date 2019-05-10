@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import { getActiveTask } from '../../api/tasks';
 import * as types from '../../actions/activeTask/types';
 

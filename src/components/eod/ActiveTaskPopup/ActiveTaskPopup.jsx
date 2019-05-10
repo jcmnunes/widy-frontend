@@ -100,6 +100,7 @@ const ActiveTaskPopup = ({
         onClick={handleTaskClick}
         onCheckClick={handleCheckClick}
         onCheckChange={handleCheckChange}
+        isDragging={false}
         data-test="task"
       >
         {activeTask.title}
