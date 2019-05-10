@@ -9,15 +9,13 @@ import Card from '../components/auth/Card/Card';
 import RedirectRoot from './RedirectRoot';
 
 const Routes = () => (
-  <div>
-    <Switch>
-      <PrivateRoute exact path="/" component={EOD} />
-      <AuthRoute exact path="/login" component={Card} />
-      <AuthRoute exact path="/forgot" component={Forgot} />
-      <AuthRoute path="/reset/:token" component={Reset} />
-      <Route component={RedirectRoot} />
-    </Switch>
-  </div>
+  <Switch>
+    <PrivateRoute exact path="/" component={EOD} />
+    <AuthRoute exact path="/login" component={Card} />
+    <AuthRoute exact path="/forgot" component={Forgot} />
+    <AuthRoute path="/reset/:token" component={Reset} />
+    <Route component={RedirectRoot} />
+  </Switch>
 );
 
 export default Routes;

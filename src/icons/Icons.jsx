@@ -641,3 +641,47 @@ IconDotsHorizontal.propTypes = {
   size: PropTypes.number,
   primaryColor: PropTypes.string,
 };
+
+export const IconSurvey = ({ size, primaryColor, secondaryColor, ...other }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" {...other}>
+    <path
+      fill={primaryColor}
+      d="M5 5h14a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7c0-1.1.9-2 2-2zm3 7a1 1 0 0 0 0 2h8a1 1 0 0 0 0-2H8zm0 4a1 1 0 0 0 0 2h4a1 1 0 0 0 0-2H8z"
+    />
+    <path
+      fill={secondaryColor}
+      d="M15 4a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V6c0-1.1.9-2 2-2 0-1.1.9-2 2-2h2a2 2 0 0 1 2 2z"
+    />
+  </svg>
+);
+
+IconSurvey.defaultProps = {
+  size: 24,
+  primaryColor: theme.neutral300,
+  secondaryColor: theme.neutral400,
+};
+
+IconSurvey.propTypes = {
+  size: PropTypes.number,
+  primaryColor: PropTypes.string,
+  secondaryColor: PropTypes.string,
+};
+
+export const IconDuplicate = ({ size, primaryColor, secondaryColor, ...other }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" {...other}>
+    <rect fill={primaryColor} width="14" height="14" x="3" y="3" rx="2" />
+    <rect fill={secondaryColor} width="14" height="14" x="7" y="7" rx="2" />
+  </svg>
+);
+
+IconDuplicate.defaultProps = {
+  size: 24,
+  primaryColor: theme.neutral300,
+  secondaryColor: theme.neutral200,
+};
+
+IconDuplicate.propTypes = {
+  size: PropTypes.number,
+  primaryColor: PropTypes.string,
+  secondaryColor: PropTypes.string,
+};

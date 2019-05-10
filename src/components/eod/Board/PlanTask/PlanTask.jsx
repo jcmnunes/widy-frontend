@@ -2,9 +2,23 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme } from 'styled-components';
 import { Draggable } from 'react-beautiful-dnd';
-import { IconEdit, IconLaunch, IconRightThickArrow, IconTrash } from '../../../../icons/Icons';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import {
+  IconDuplicate,
+  IconEdit,
+  IconLaunch,
+  IconRightThickArrow,
+  IconTrash,
+} from '../../../../icons/Icons';
 import { LAUNCH_TASK, RENAME_TASK } from '../../../modals/types';
 import { DeleteTaskDialog } from '../../../Dialogs';
+import toast from '../../../../helpers/toast';
+
+const getTaskBackground = props => {
+  if (props.isDragging) return props.theme.blue050;
+  if (props.selected) return props.theme.neutral075;
+  return 'white';
+};
 
 const Actions = styled.div`
   & > * {
@@ -13,18 +27,31 @@ const Actions = styled.div`
   }
 `;
 
-const Title = styled.div`
+const StyledIconRightThickArrow = styled(IconRightThickArrow)`
+  flex-shrink: 0;
+`;
+
+const TitleContainer = styled.div`
   display: flex;
   align-items: center;
+  flex: 1;
+`;
+
+const Title = styled.span`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 16px;
+  flex: 1;
+  width: 0;
 `;
 
 const StyledPlanTask = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
   flex-direction: row;
   border: none;
-  background: ${props => (props.isDragging || props.selected ? props.theme.neutral050 : 'white')};
+  background: ${props => getTaskBackground(props)};
   padding: 8px;
   font-size: 16px;
   margin: 0;
@@ -36,7 +63,7 @@ const StyledPlanTask = styled.div`
   }
 
   &:hover {
-    background: ${props => props.theme.neutral050};
+    background: ${props => (props.selected ? props.neutral075 : props.theme.neutral050)};
 
     & ${Actions} {
       display: flex;
@@ -45,7 +72,13 @@ const StyledPlanTask = styled.div`
 `;
 
 class PlanTask extends Component {
-  state = { showDeleteTaskDialog: false };
+  state = {
+    showDeleteTaskDialog: false,
+    duplicate: false,
+    launch: false,
+    edit: false,
+    trash: false,
+  };
 
   handleTaskClick = () => {
     const { sectionId, taskId } = this.props;
@@ -86,9 +119,19 @@ class PlanTask extends Component {
     this.setState({ showDeleteTaskDialog: false });
   };
 
+  handleActionMouseEnter = e => {
+    const { action } = e.target.dataset;
+    this.setState({ [action]: true });
+  };
+
+  handleActionMouseLeave = e => {
+    const { action } = e.target.dataset;
+    this.setState({ [action]: false });
+  };
+
   render() {
     const { taskId, sectionId, selectedTaskId, index, theme, children } = this.props;
-    const { showDeleteTaskDialog } = this.state;
+    const { showDeleteTaskDialog, duplicate, launch, edit, trash } = this.state;
     return (
       <>
         <Draggable draggableId={taskId} index={index}>
@@ -101,18 +144,52 @@ class PlanTask extends Component {
               onClick={this.handleTaskClick}
               isDragging={snapshot.isDragging}
             >
-              <Title onDoubleClick={this.handleTaskDoubleClick}>
-                <IconRightThickArrow />
-                <span className="title">{children}</span>
-              </Title>
+              <TitleContainer onDoubleClick={this.handleTaskDoubleClick}>
+                <StyledIconRightThickArrow />
+                <Title>{children}</Title>
+              </TitleContainer>
               <Actions>
-                <IconLaunch onClick={this.handleLaunchClick} />
-                <IconEdit
-                  onClick={this.handleEditClick}
-                  primaryColor={theme.neutral300}
-                  secondaryColor={theme.neutral200}
+                <CopyToClipboard
+                  text={children}
+                  onCopy={() =>
+                    toast.success({
+                      title: 'Success',
+                      message: 'Task title copied',
+                    })
+                  }
+                >
+                  <IconDuplicate
+                    data-action="duplicate"
+                    onMouseEnter={this.handleActionMouseEnter}
+                    onMouseLeave={this.handleActionMouseLeave}
+                    primaryColor={duplicate ? theme.neutral400 : theme.neutral300}
+                    secondaryColor={duplicate ? theme.neutral300 : theme.neutral200}
+                  />
+                </CopyToClipboard>
+                <IconLaunch
+                  data-action="launch"
+                  onMouseEnter={this.handleActionMouseEnter}
+                  onMouseLeave={this.handleActionMouseLeave}
+                  onClick={this.handleLaunchClick}
+                  primaryColor={launch ? theme.neutral400 : theme.neutral300}
+                  secondaryColor={launch ? theme.neutral300 : theme.neutral200}
                 />
-                <IconTrash onClick={this.handleTrashClick} />
+                <IconEdit
+                  data-action="edit"
+                  onMouseEnter={this.handleActionMouseEnter}
+                  onMouseLeave={this.handleActionMouseLeave}
+                  onClick={this.handleEditClick}
+                  primaryColor={edit ? theme.neutral400 : theme.neutral300}
+                  secondaryColor={edit ? theme.neutral300 : theme.neutral200}
+                />
+                <IconTrash
+                  data-action="trash"
+                  onMouseEnter={this.handleActionMouseEnter}
+                  onMouseLeave={this.handleActionMouseLeave}
+                  onClick={this.handleTrashClick}
+                  primaryColor={trash ? theme.neutral400 : theme.neutral300}
+                  secondaryColor={trash ? theme.neutral300 : theme.neutral200}
+                />
               </Actions>
             </StyledPlanTask>
           )}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme } from 'styled-components';
 import { IconPlay, IconStop } from '../../../icons/Icons';
@@ -19,6 +19,7 @@ const Timer = ({
   stopTask,
   size,
 }) => {
+  const [isHover, setIsHover] = useState(false);
   const handleClick = () => {
     if (activeTask.taskId === taskId) {
       stopTask(taskId, sectionId);
@@ -27,15 +28,43 @@ const Timer = ({
     }
   };
 
+  const handleMouseEnter = () => {
+    setIsHover(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHover(false);
+  };
+
   const renderPlayButton = () => {
     if (activeTask.taskId === taskId && activeTask.inBreak)
-      return <IconStop primaryColor={theme.blue100} secondaryColor={theme.blue700} size={size} />;
+      return (
+        <IconStop
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          primaryColor={isHover ? theme.blue200 : theme.blue100}
+          secondaryColor={isHover ? theme.blue800 : theme.blue700}
+          size={size}
+        />
+      );
     if (activeTask.taskId === taskId)
       return (
-        <IconStop primaryColor={theme.yellow400} secondaryColor={theme.yellow900} size={size} />
+        <IconStop
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          primaryColor={isHover ? theme.yellow500 : theme.yellow400}
+          secondaryColor={isHover ? theme.yellow900 : theme.yellow900}
+          size={size}
+        />
       );
     return (
-      <IconPlay primaryColor={theme.neutral200} secondaryColor={theme.neutral500} size={size} />
+      <IconPlay
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        primaryColor={isHover ? theme.neutral300 : theme.neutral200}
+        secondaryColor={isHover ? theme.neutral600 : theme.neutral500}
+        size={size}
+      />
     );
   };
 

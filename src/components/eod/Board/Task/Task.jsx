@@ -4,6 +4,7 @@ import styled, { keyframes } from 'styled-components';
 import noop from 'lodash.noop';
 import Timer from '../../Timer';
 import TaskMenu from '../TaskMenu';
+import CopyButton from './CopyButton';
 import { Checkbox } from '../../../UI';
 
 const getColors = props => {
@@ -23,6 +24,11 @@ const getColors = props => {
 
   if (props.isCompleted) {
     colors.border = props.theme.neutral100;
+  }
+
+  if (props.isDragging) {
+    colors.background = props.theme.blue050;
+    colors.border = props.theme.blue050;
   }
 
   return colors;
@@ -58,13 +64,18 @@ const getAnimation = props => {
   return null;
 };
 
+const StyledCopyButton = styled(CopyButton)`
+  display: none;
+  cursor: pointer;
+`;
+
 const StyledTask = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row;
   border: ${props => `1px solid ${getColors(props).border}`};
   border-radius: 4px;
-  background: ${props => getColors(props).background};
+  background-color: ${props => getColors(props).background};
   padding: 8px;
   font-size: 16px;
   margin: 4px 0;
@@ -75,10 +86,24 @@ const StyledTask = styled.div`
   animation-duration: 1s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
+
+  &:hover {
+    background-color: ${props =>
+      props.isSelected ? props.theme.yellow075 : props.theme.neutral025};
+
+    ${StyledCopyButton} {
+      display: inline-block;
+    }
+  }
 `;
 
-const TaskName = styled.span`
+const TaskTitle = styled.span`
   flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 0;
+  margin-right: 16px;
 `;
 
 const Controls = styled.div`
@@ -87,6 +112,18 @@ const Controls = styled.div`
 
   > * {
     margin-left: 4px;
+  }
+`;
+
+const Control = styled.div`
+  width: 25px;
+  height: 25px;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: ${props => props.theme.neutral100};
   }
 `;
 
@@ -106,6 +143,7 @@ const Task = ({
   storeSelectedSectionId,
   storeSelectedTaskId,
   openModal,
+  isDragging,
   children,
   ...other
 }) => (
@@ -117,20 +155,24 @@ const Task = ({
     isCompleted={isCompleted}
     onClick={onClick}
     storeSelectedSectionId={storeSelectedSectionId}
+    isDragging={isDragging}
     {...other}
   >
     <Checkbox checked={isCompleted} onChange={onCheckChange} onClick={onCheckClick} />
-    <TaskName onDoubleClick={onDoubleClick}>{children}</TaskName>
+    <TaskTitle onDoubleClick={onDoubleClick}>{children}</TaskTitle>
+    <StyledCopyButton taskTitle={children} />
     {renderControls && !isCompleted && (
       <Controls>
         <Timer taskId={taskId} sectionId={sectionId} />
-        <TaskMenu
-          taskId={taskId}
-          sectionId={sectionId}
-          storeSelectedSectionId={storeSelectedSectionId}
-          storeSelectedTaskId={storeSelectedTaskId}
-          openModal={openModal}
-        />
+        <Control>
+          <TaskMenu
+            taskId={taskId}
+            sectionId={sectionId}
+            storeSelectedSectionId={storeSelectedSectionId}
+            storeSelectedTaskId={storeSelectedTaskId}
+            openModal={openModal}
+          />
+        </Control>
       </Controls>
     )}
   </StyledTask>
@@ -165,6 +207,7 @@ Task.propTypes = {
   storeSelectedTaskId: PropTypes.func,
   storeSelectedSectionId: PropTypes.func,
   openModal: PropTypes.func,
+  isDragging: PropTypes.bool.isRequired,
 };
 
 export default Task;

@@ -53,6 +53,7 @@ export default (state = initialState, action) => {
     case types.ADD_TASK_AT_INDEX:
       return {
         ...state,
+        selected: action.sectionId,
         byId: {
           ...state.byId,
           [action.sectionId]: {

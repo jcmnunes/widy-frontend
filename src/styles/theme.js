@@ -2,6 +2,7 @@ export default {
   /* Colors */
   // Primary I
   yellow050: '#FFFBEA',
+  yellow075: '#FCF6E1',
   yellow100: '#FFF3C4',
   yellow200: '#FCE588',
   yellow300: '#FADB5F',
@@ -13,6 +14,7 @@ export default {
   yellow900: '#8D2B0B',
   yellowDisabled: '#F4D2B5',
   // Primary II
+  blue025: '#EDF6FC',
   blue050: '#DCEEFB',
   blue100: '#B6E0FE',
   blue200: '#84C5F4',
@@ -25,7 +27,9 @@ export default {
   blue900: '#003E6B',
   blueDisabled: '#A8D1EB',
   // Neutral
+  neutral025: '#F7F9FC',
   neutral050: '#F5F7FA',
+  neutral075: '#EBEEF2',
   neutral100: '#E4E7EB',
   neutral200: '#CBD2D8',
   neutral300: '#9AA5B1',
