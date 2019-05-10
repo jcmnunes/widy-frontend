@@ -3,11 +3,19 @@ import moment from 'moment';
 import { startTask } from '../../api/tasks';
 import * as types from '../../actions/tasks/types';
 import { storeActiveTask } from '../../actions/activeTask';
+import { stopTask } from '../../actions/tasks';
 
 const getDayId = state => state.days.selected;
+const getActiveTask = state => state.activeTask;
 
 export function* startTaskSaga(action) {
   const dayId = yield select(getDayId);
+  const { taskId: activeTaskId } = yield select(getActiveTask);
+
+  // If there is an active task ➜ stop it
+  if (activeTaskId) {
+    yield put(stopTask());
+  }
 
   try {
     const params = {
