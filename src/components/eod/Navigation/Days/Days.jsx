@@ -8,6 +8,9 @@ const StyledDays = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 8px;
+  overflow: auto;
+  flex: 1;
+  padding: 4px;
 `;
 
 const Days = ({ days, order, selected, onClick }) => (

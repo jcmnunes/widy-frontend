@@ -17,6 +17,9 @@ import theme from '../../../styles/theme';
 const StyledNavigation = styled.div`
   background: ${props => props.theme.neutral050};
   padding: 36px 24px 24px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 
   .header {
     display: flex;

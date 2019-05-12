@@ -6,6 +6,7 @@ import moment from 'moment';
 import Section from './Section';
 import ActionsTop from './ActionsTop';
 import LoadingBoard from './LoadingBoard';
+import NoDays from '../NoDays';
 
 const StyledBoard = styled.div`
   background: white;
@@ -68,6 +69,7 @@ class Board extends Component {
     const {
       sections: { order, day, loading },
       dayId,
+      daysOrder,
       daysLoading,
     } = this.props;
     return loading || daysLoading ? (
@@ -82,14 +84,18 @@ class Board extends Component {
                 <span>{`${moment(day).format('MMM YYYY')}`}</span>{' '}
               </>
             ) : (
-              'Select a day'
+              ''
             )}
           </Title>
-          <ActionsTop />
+          <ActionsTop noDays={daysOrder.length === 0} />
         </Header>
-        <DragDropContext onDragEnd={this.onDragEnd}>
-          {dayId && order.map(id => <Section key={id} dayId={dayId} sectionId={id} />)}
-        </DragDropContext>
+        {daysOrder.length === 0 ? (
+          <NoDays />
+        ) : (
+          <DragDropContext onDragEnd={this.onDragEnd}>
+            {dayId && order.map(id => <Section key={id} dayId={dayId} sectionId={id} />)}
+          </DragDropContext>
+        )}
       </StyledBoard>
     );
   }
@@ -106,6 +112,7 @@ Board.propTypes = {
   }).isRequired,
   dayId: PropTypes.string.isRequired,
   activeTaskId: PropTypes.string.isRequired,
+  daysOrder: PropTypes.arrayOf(PropTypes.string).isRequired,
   daysLoading: PropTypes.bool.isRequired,
   reorderTasksArray: PropTypes.func.isRequired,
   removeTask: PropTypes.func.isRequired,
