@@ -9,6 +9,7 @@ const mapStateToProps = state => ({
   dayId: state.days.selected,
   daysLoading: state.days.loading,
   activeTaskId: state.activeTask.taskId,
+  daysOrder: state.days.order,
 });
 
 export default connect(

@@ -37,8 +37,6 @@ const EOD = ({
   activeTaskStart,
   activeTaskTitle,
   updateActiveTask,
-  daysOrder,
-  daysLoading,
 }) => {
   const renderDocTitle = (inBreak, elapsedTime) => {
     if (!activeTaskId) {
@@ -80,7 +78,7 @@ const EOD = ({
     <StyledEOD>
       <MainBar />
       <Navigation />
-      {daysOrder.length === 0 && !daysLoading ? <NoDays /> : <Board />}
+      <Board />
       <Sidebar />
       <ActiveTaskPopup />
     </StyledEOD>
@@ -97,8 +95,6 @@ EOD.propTypes = {
   activeTaskTitle: PropTypes.string.isRequired,
   activeTaskStart: PropTypes.string,
   updateActiveTask: PropTypes.func.isRequired,
-  daysOrder: PropTypes.arrayOf(PropTypes.string).isRequired,
-  daysLoading: PropTypes.bool.isRequired,
 };
 
 export default EOD;
