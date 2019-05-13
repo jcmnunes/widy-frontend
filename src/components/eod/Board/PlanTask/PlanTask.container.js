@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import PlanTask from './PlanTask';
-import { openSidebar } from '../../../../actions/sidebar';
 import { openModal } from '../../../../actions/modals';
 import { storeSelectedSectionId } from '../../../../actions/sections';
 import { storeSelectedTaskId } from '../../../../actions/tasks';
@@ -12,5 +11,5 @@ const mapStateToProps = (state, ownProps) => ({
 
 export default connect(
   mapStateToProps,
-  { openSidebar, openModal, storeSelectedTaskId, storeSelectedSectionId },
+  { openModal, storeSelectedTaskId, storeSelectedSectionId },
 )(PlanTask);

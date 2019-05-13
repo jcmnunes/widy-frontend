@@ -84,7 +84,6 @@ class PlanTask extends Component {
     const { sectionId, taskId } = this.props;
     this.props.storeSelectedSectionId(sectionId);
     this.props.storeSelectedTaskId(taskId);
-    this.props.openSidebar();
   };
 
   handleLaunchClick = e => {
@@ -213,7 +212,6 @@ PlanTask.propTypes = {
   taskTitle: PropTypes.string.isRequired,
   storeSelectedTaskId: PropTypes.func.isRequired,
   storeSelectedSectionId: PropTypes.func.isRequired,
-  openSidebar: PropTypes.func.isRequired,
   theme: PropTypes.shape({
     [PropTypes.string]: PropTypes.string,
   }).isRequired,

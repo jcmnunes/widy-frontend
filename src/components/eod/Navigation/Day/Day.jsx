@@ -12,10 +12,10 @@ const StyledDay = styled.div`
   background: ${props => (props.selected ? props.theme.blue050 : 'white')};
   font-size: 14px;
   color: ${props => props.theme.neutral700};
-  padding: 0 8px 0 16px;
+  padding: ${props => (props.isSmall ? '0 8px' : '0 8px 0 16px')};
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: ${props => (props.isSmall ? 'center' : 'space-between')};
   cursor: pointer;
 
   &:hover {
@@ -36,16 +36,17 @@ class Day extends Component {
   };
 
   render() {
-    const { onClick, selected, children } = this.props;
+    const { onClick, selected, isSmall, children } = this.props;
     return (
       <StyledDay
         tabIndex="0"
         selected={selected}
         onClick={onClick}
         onKeyPress={this.hanldeOnKeyPress}
+        isSmall={isSmall}
       >
         <span>{children}</span>
-        <IconCheveronRight primaryColor={theme.neutral700} />
+        {!isSmall && <IconCheveronRight primaryColor={theme.neutral700} />}
       </StyledDay>
     );
   }
@@ -54,6 +55,7 @@ class Day extends Component {
 Day.propTypes = {
   onClick: PropTypes.func.isRequired,
   selected: PropTypes.bool.isRequired,
+  isSmall: PropTypes.bool.isRequired,
   children: PropTypes.string.isRequired,
 };
 
