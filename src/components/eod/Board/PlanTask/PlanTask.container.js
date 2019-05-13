@@ -5,8 +5,9 @@ import { openModal } from '../../../../actions/modals';
 import { storeSelectedSectionId } from '../../../../actions/sections';
 import { storeSelectedTaskId } from '../../../../actions/tasks';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, ownProps) => ({
   selectedTaskId: state.tasks.selected,
+  taskTitle: state.tasks.byId[ownProps.taskId].title,
 });
 
 export default connect(

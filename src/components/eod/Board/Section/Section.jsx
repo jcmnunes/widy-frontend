@@ -55,22 +55,14 @@ class Section extends Component {
   };
 
   renderSection = provided => {
-    const { section, tasks } = this.props;
+    const { section } = this.props;
     return (
       <Tasks ref={provided.innerRef} {...provided.droppableProps}>
         {section.tasks.map((taskId, index) => {
           if (section.isPlan) {
-            return (
-              <PlanTask key={taskId} taskId={taskId} index={index} sectionId={section.id}>
-                {tasks[taskId].title}
-              </PlanTask>
-            );
+            return <PlanTask key={taskId} taskId={taskId} index={index} sectionId={section.id} />;
           }
-          return (
-            <Task key={taskId} taskId={taskId} index={index} sectionId={section.id}>
-              {tasks[taskId].title}
-            </Task>
-          );
+          return <Task key={taskId} taskId={taskId} index={index} sectionId={section.id} />;
         })}
         {provided.placeholder}
       </Tasks>
@@ -78,8 +70,7 @@ class Section extends Component {
   };
 
   renderEmptySection = (provided, snapshot) => {
-    const { section, tasks } = this.props;
-    const noTasks = Object.keys(tasks).length === 0;
+    const { section, noTasks } = this.props;
     return (
       <EmptyTasks
         ref={provided.innerRef}
@@ -138,9 +129,7 @@ Section.propTypes = {
     tasks: PropTypes.array,
     title: PropTypes.string,
   }).isRequired,
-  tasks: PropTypes.shape({
-    [PropTypes.string]: PropTypes.object,
-  }).isRequired,
+  noTasks: PropTypes.bool.isRequired,
 };
 
 export default Section;

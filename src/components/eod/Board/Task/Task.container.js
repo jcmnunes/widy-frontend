@@ -9,6 +9,7 @@ const mapStateToProps = (state, ownProps) => ({
   selectedTaskId: state.tasks.selected,
   activeTask: state.activeTask,
   isCompleted: state.tasks.byId[ownProps.taskId].completed,
+  taskTitle: state.tasks.byId[ownProps.taskId].title,
 });
 
 export default connect(
