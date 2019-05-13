@@ -14,14 +14,10 @@ const { pomodoro } = settings();
 
 const StyledEOD = styled.div`
   display: grid;
-  grid-template-columns: 15px 254px 1fr;
+  grid-template-columns: 15px 105px 3fr 2fr;
   height: 100vh;
   transition: all 0.3s ease;
-  min-width: ${props => props.theme.bp_small};
-
-  @media (min-width: ${props => props.theme.bp_large}) {
-    grid-template-columns: 15px 254px 3fr 2fr;
-  }
+  min-width: ${props => props.theme.bp_xlarge};
 
   @media (min-width: ${props => props.theme.bp_xlarge}) {
     grid-template-columns: 15px 254px 1fr 1fr;

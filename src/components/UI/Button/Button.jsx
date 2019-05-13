@@ -201,7 +201,7 @@ const Button = ({
       )}
       <div className="content">
         {iconBefore && iconBefore}
-        {<span className="button-text">{children}</span>}
+        {children.length > 0 && <span className="button-text">{children}</span>}
         {iconAfter && iconAfter}
       </div>
     </StyledButton>

@@ -66,7 +66,8 @@ export default {
   redDisabled: '#FFBCC2',
 
   /* Breakpoints */
-  bp_xlarge: '1500px',
+  bp_xxlarge: '1500px',
+  bp_xlarge: '1220px',
   bp_large: '1050px',
   bp_medium: '920px',
   bp_small: '720px',

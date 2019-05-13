@@ -9,7 +9,6 @@ class DraggableTask extends Component {
     const { sectionId, taskId } = this.props;
     this.props.storeSelectedSectionId(sectionId);
     this.props.storeSelectedTaskId(taskId);
-    this.props.openSidebar();
   };
 
   handleTaskDoubleClick = () => {
@@ -86,7 +85,6 @@ DraggableTask.propTypes = {
   taskTitle: PropTypes.string.isRequired,
   storeSelectedTaskId: PropTypes.func.isRequired,
   storeSelectedSectionId: PropTypes.func.isRequired,
-  openSidebar: PropTypes.func.isRequired,
   openModal: PropTypes.func.isRequired,
   updateTask: PropTypes.func.isRequired,
   stopTask: PropTypes.func.isRequired,
