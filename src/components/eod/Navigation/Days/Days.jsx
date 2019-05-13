@@ -11,6 +11,7 @@ const StyledDays = styled.div`
   overflow: auto;
   flex: 1;
   padding: 4px;
+  grid-auto-rows: minmax(min-content, max-content);
 `;
 
 const Days = ({ days, order, selected, isSmall, onClick }) => (
@@ -18,7 +19,7 @@ const Days = ({ days, order, selected, isSmall, onClick }) => (
     {order.map(id => (
       <Day key={id} onClick={() => onClick(id)} selected={id === selected} isSmall={isSmall}>
         {isSmall
-          ? moment(days[id].day).format('ddd DD')
+          ? moment(days[id].day).format('MMM DD')
           : moment(days[id].day).format('ddd DD MMM YYYY')}
       </Day>
     ))}

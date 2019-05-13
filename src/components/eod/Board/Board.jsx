@@ -9,8 +9,11 @@ import LoadingBoard from './LoadingBoard';
 import NoDays from '../NoDays';
 
 const StyledBoard = styled.div`
+  position: relative;
   background: white;
-  padding: 48px;
+  padding: 0 48px 48px;
+  height: 100vh;
+  overflow-y: auto;
 `;
 
 const Title = styled.h1`
@@ -28,6 +31,12 @@ const Header = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  position: sticky;
+  z-index: 5000;
+  top: 0;
+  padding-top: 48px;
+  background: white;
 `;
 
 class Board extends Component {
