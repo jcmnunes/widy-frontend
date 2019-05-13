@@ -9,7 +9,6 @@ import Sidebar from './Sidebar';
 import ActiveTaskPopup from './ActiveTaskPopup';
 import { getCurrentPomodoroInfo } from '../../helpers/pomodoro';
 import settings from '../../helpers/settings';
-import NoDays from './NoDays';
 
 const { pomodoro } = settings();
 

@@ -130,7 +130,7 @@ class PlanTask extends Component {
   };
 
   render() {
-    const { taskId, sectionId, selectedTaskId, index, theme, children } = this.props;
+    const { taskId, sectionId, selectedTaskId, index, theme, taskTitle } = this.props;
     const { showDeleteTaskDialog, duplicate, launch, edit, trash } = this.state;
     return (
       <>
@@ -146,11 +146,11 @@ class PlanTask extends Component {
             >
               <TitleContainer onDoubleClick={this.handleTaskDoubleClick}>
                 <StyledIconRightThickArrow />
-                <Title>{children}</Title>
+                <Title>{taskTitle}</Title>
               </TitleContainer>
               <Actions>
                 <CopyToClipboard
-                  text={children}
+                  text={taskTitle}
                   onCopy={() =>
                     toast.success({
                       title: 'Success',
@@ -210,7 +210,7 @@ PlanTask.propTypes = {
   sectionId: PropTypes.string.isRequired,
   taskId: PropTypes.string.isRequired,
   selectedTaskId: PropTypes.string.isRequired,
-  children: PropTypes.string.isRequired,
+  taskTitle: PropTypes.string.isRequired,
   storeSelectedTaskId: PropTypes.func.isRequired,
   storeSelectedSectionId: PropTypes.func.isRequired,
   openSidebar: PropTypes.func.isRequired,

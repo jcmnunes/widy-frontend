@@ -28,3 +28,8 @@ export const isSelectedTaskInPlanSelector = createSelector(
     return false;
   },
 );
+
+export const noTasksSelector = createSelector(
+  tasksByIdSelector,
+  tasksById => Object.keys(tasksById).length === 0,
+);
