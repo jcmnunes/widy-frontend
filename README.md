@@ -9,7 +9,7 @@
 
 This is the frontend repo of the Widy app ([backend repo](https://github.com/jcmnunes/widy-backend)) 
 
-<img src="https://raw.githubusercontent.com/jcmnunes/widy-frontend/master/src/images/eod_screenshot.png" width="800px">
+<img src="https://raw.githubusercontent.com/jcmnunes/widy-frontend/master/src/images/eod_screenshot.png" width="100%">
 
 Widy is a productivity app. It has three main features:
 
