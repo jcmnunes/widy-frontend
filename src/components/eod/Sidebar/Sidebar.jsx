@@ -13,15 +13,12 @@ import { LAUNCH_TASK } from '../../modals/types';
 const StyledSidebar = styled.div`
   background: ${props => props.theme.yellow050};
   padding: 32px;
+  height: 100vh;
+  overflow-y: auto;
 
   @media (min-width: ${props => props.theme.bp_xlarge}) {
     padding: 48px;
   }
-`;
-
-const StyledHeading = styled.h2`
-  margin-bottom: 12px;
-  color: ${props => props.theme.neutral700};
 `;
 
 const EmptyState = styled.div`
@@ -51,7 +48,7 @@ const Sidebar = ({ selectedTaskId, isSelectedTaskInPlan, openModal, theme }) => 
       {selectedTaskId ? (
         <>
           <SidebarHeader />
-          <StyledHeading>Notes:</StyledHeading>
+          <Heading2>Notes:</Heading2>
           <NotesEditor />
           <Heading2>Time Management</Heading2>
           {isSelectedTaskInPlan ? (
