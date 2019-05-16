@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import styled from 'styled-components';
+import { SizeMe } from 'react-sizeme';
 import Days from './Days';
 import LoadingNavigation from './LoadingNavigation';
 import Button from '../../UI/Button';
@@ -11,19 +12,38 @@ import { IconAdd } from '../../../icons/Icons';
 import { IconWidy, IconWidyText } from '../../../icons/widy';
 import { storeSelectedDay, getDays, getDay, createDay } from '../../../actions/days';
 import { storeSelectedTaskId } from '../../../actions/tasks';
-import { closeSidebar } from '../../../actions/sidebar';
 import theme from '../../../styles/theme';
+import settings from '../../../helpers/settings';
+
+const { DAYS_LIST_MIN_WIDTH } = settings();
 
 const StyledNavigation = styled.div`
   background: ${props => props.theme.neutral050};
-  padding: 36px 24px 24px;
+  padding: 36px 10px 24px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 
   .header {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: 12px;
+    padding: 0 4px;
+  }
+
+  @media (min-width: ${props => props.theme.bp_xlarge}) {
+    padding: 36px 24px 24px;
+
+    .header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding: 0;
+    }
   }
 `;
 
@@ -51,7 +71,6 @@ class Navigation extends Component {
 
   createDay = () => {
     this.props.storeSelectedTaskId('');
-    this.props.closeSidebar();
     this.props.createDay();
   };
 
@@ -60,29 +79,40 @@ class Navigation extends Component {
     const today = moment().format('YYYY-MM-DD');
     const isTodayCreated = !!daysOrder.find(id => days[id].day === today);
     return (
-      <StyledNavigation>
-        <Brand>
-          <IconWidy size={30} yesterdayColor={theme.blue600} />
-          <IconWidyText size={60} textColor={theme.blue600} />
-        </Brand>
-        <div className="header">
-          <Heading1>Days</Heading1>
-          <Button
-            loading={createDayLoading}
-            disabled={isTodayCreated || loading}
-            onClick={this.createDay}
-            intent="primary"
-            iconBefore={<IconAdd primaryColor="#fff" />}
-          >
-            Add Day
-          </Button>
-        </div>
-        {loading ? (
-          <LoadingNavigation />
-        ) : (
-          <Days days={days} order={daysOrder} selected={selected} onClick={this.handleDayClick} />
+      <SizeMe>
+        {({ size }) => (
+          <StyledNavigation>
+            <Brand>
+              <IconWidy size={30} yesterdayColor={theme.blue600} />
+              <IconWidyText size={60} textColor={theme.blue600} />
+            </Brand>
+            <div className="header">
+              <Heading1>Days</Heading1>
+              <Button
+                loading={createDayLoading}
+                disabled={isTodayCreated || loading}
+                onClick={this.createDay}
+                intent="primary"
+                iconBefore={<IconAdd primaryColor="#fff" />}
+                block={size.width === DAYS_LIST_MIN_WIDTH}
+              >
+                {size.width > DAYS_LIST_MIN_WIDTH ? 'Add Day' : ''}
+              </Button>
+            </div>
+            {loading ? (
+              <LoadingNavigation />
+            ) : (
+              <Days
+                days={days}
+                order={daysOrder}
+                selected={selected}
+                isSmall={size.width === DAYS_LIST_MIN_WIDTH}
+                onClick={this.handleDayClick}
+              />
+            )}
+          </StyledNavigation>
         )}
-      </StyledNavigation>
+      </SizeMe>
     );
   }
 }
@@ -100,7 +130,6 @@ Navigation.propTypes = {
   storeSelectedDay: PropTypes.func.isRequired,
   storeSelectedTaskId: PropTypes.func.isRequired,
   createDay: PropTypes.func.isRequired,
-  closeSidebar: PropTypes.func.isRequired,
 };
 
 export const mapStateToProps = state => ({
@@ -113,5 +142,5 @@ export const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getDays, getDay, storeSelectedDay, createDay, storeSelectedTaskId, closeSidebar },
+  { getDays, getDay, storeSelectedDay, createDay, storeSelectedTaskId },
 )(Navigation);

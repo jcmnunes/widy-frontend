@@ -5,4 +5,5 @@ export default () => ({
     longBreak: 15,
     longBreakAfter: 4, // Pomodoros
   },
+  DAYS_LIST_MIN_WIDTH: 105,
 });

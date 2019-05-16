@@ -7,7 +7,6 @@ const mapStateToProps = state => ({
   activeTaskTitle: state.activeTask.title,
   activeTaskTime: state.activeTask.time,
   activeTaskStart: state.activeTask.start,
-  inBreak: state.activeTask.inBreak,
 });
 
 export default connect(

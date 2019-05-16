@@ -22,14 +22,17 @@ const StyledActionsTop = styled.div`
   }
 `;
 
-const ActionsTop = ({ logoutState: { loading }, logout, theme }) => (
+const ActionsTop = ({ logoutState: { loading }, logout, noDays, theme }) => (
   <StyledActionsTop>
     <RoundButton
       iconAfter={<IconSurvey primaryColor={theme.neutral200} secondaryColor={theme.neutral600} />}
+      disabled={noDays}
     >
       Widy Report
     </RoundButton>
-    <RoundButton iconAfter={<IconPresentation />}>Standup</RoundButton>
+    <RoundButton iconAfter={<IconPresentation />} disabled={noDays}>
+      Standup
+    </RoundButton>
     <Dropdown
       trigger={<RoundButton iconBefore={<IconCheveronDown />} iconAfter={<IconUserCircle />} />}
       position="right"
@@ -60,6 +63,7 @@ ActionsTop.propTypes = {
     loading: PropTypes.bool.isRequired,
   }).isRequired,
   logout: PropTypes.func.isRequired,
+  noDays: PropTypes.bool.isRequired,
   theme: PropTypes.shape({
     [PropTypes.string]: PropTypes.string,
   }).isRequired,

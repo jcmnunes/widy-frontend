@@ -1,6 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { getDay } from '../../api/days';
 import * as types from '../../actions/days/types';
+import { loadItem } from '../../helpers/localStorage';
 
 const normalize = data => {
   const normalized = {
@@ -39,6 +40,15 @@ export function* getDaySaga(action) {
 
     yield put({ type: types.GET_DAY_SUCCESS, sections, tasks });
   } catch (error) {
+    // If we get a 404 we probably have a wrong id in localStorage
+    // Delete it and load all days again
+    if (error.response && error.response.status === 404) {
+      if (loadItem('selectedDayId')) {
+        localStorage.removeItem('selectedDayId');
+        yield put({ type: types.GET_DAYS_REQUEST });
+      }
+      return;
+    }
     yield put({ type: types.GET_DAY_FAILURE, error });
   }
 }

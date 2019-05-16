@@ -40,8 +40,8 @@ const StyledNotesEditor = styled.div`
   border: 1px solid ${props => props.theme.neutral300};
   background: white;
   color: ${props => props.theme.neutral700};
-  min-height: 192px;
   margin-bottom: 32px;
+  height: 250px;
 
   ol {
     display: block;
@@ -122,6 +122,11 @@ const Toolbar = styled(Menu)`
   border-bottom: 2px solid #eee;
   margin-bottom: 12px;
   height: 28px;
+`;
+
+const StyledEditor = styled(Editor)`
+  height: 175px;
+  overflow-y: auto;
 `;
 
 /**
@@ -411,7 +416,7 @@ class NotesEditor extends React.Component {
           {this.renderBlockButton('numbered-list', <IconFormatListNumber size={20} />)}
           {this.renderBlockButton('bulleted-list', <IconFormatListBullet size={20} />)}
         </Toolbar>
-        <Editor
+        <StyledEditor
           spellCheck
           autoFocus
           placeholder="Enter some notes here..."

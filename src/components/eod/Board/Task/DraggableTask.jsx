@@ -9,7 +9,6 @@ class DraggableTask extends Component {
     const { sectionId, taskId } = this.props;
     this.props.storeSelectedSectionId(sectionId);
     this.props.storeSelectedTaskId(taskId);
-    this.props.openSidebar();
   };
 
   handleTaskDoubleClick = () => {
@@ -41,7 +40,7 @@ class DraggableTask extends Component {
       activeTask,
       index,
       isCompleted,
-      children,
+      taskTitle,
     } = this.props;
     return (
       <Draggable draggableId={taskId} index={index}>
@@ -65,7 +64,7 @@ class DraggableTask extends Component {
             openModal={this.props.openModal}
             isDragging={snapshot.isDragging}
           >
-            {children}
+            {taskTitle}
           </Task>
         )}
       </Draggable>
@@ -83,10 +82,9 @@ DraggableTask.propTypes = {
     inBreak: PropTypes.bool.isRequired,
   }).isRequired,
   isCompleted: PropTypes.bool.isRequired,
-  children: PropTypes.string.isRequired,
+  taskTitle: PropTypes.string.isRequired,
   storeSelectedTaskId: PropTypes.func.isRequired,
   storeSelectedSectionId: PropTypes.func.isRequired,
-  openSidebar: PropTypes.func.isRequired,
   openModal: PropTypes.func.isRequired,
   updateTask: PropTypes.func.isRequired,
   stopTask: PropTypes.func.isRequired,

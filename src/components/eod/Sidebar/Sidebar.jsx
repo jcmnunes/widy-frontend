@@ -12,31 +12,13 @@ import { LAUNCH_TASK } from '../../modals/types';
 
 const StyledSidebar = styled.div`
   background: ${props => props.theme.yellow050};
-  display: ${props => (props.isOpen ? 'block' : 'none')};
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: 350px;
-  box-shadow: 0 10px 20px hsla(0, 0%, 0%, 0.15), 0 3px 6px hsla(0, 0%, 0%, 0.1);
   padding: 32px;
-  z-index: 6000;
+  height: 100vh;
+  overflow-y: auto;
 
-  @media (min-width: ${props => props.theme.bp_large}) {
-    grid-template-columns: 8px 254px 3fr 2fr;
-    display: block;
-    position: relative;
-    width: auto;
-    top: auto;
-    right: auto;
-    height: auto;
-    box-shadow: none;
+  @media (min-width: ${props => props.theme.bp_xlarge}) {
+    padding: 48px;
   }
-`;
-
-const StyledHeading = styled.h2`
-  margin-bottom: 12px;
-  color: ${props => props.theme.neutral700};
 `;
 
 const EmptyState = styled.div`
@@ -52,14 +34,7 @@ const Title = styled.h2`
   margin-top: 24px;
 `;
 
-const Sidebar = ({
-  isOpen,
-  selectedTaskId,
-  isSelectedTaskInPlan,
-  openModal,
-  closeSidebar,
-  theme,
-}) => {
+const Sidebar = ({ selectedTaskId, isSelectedTaskInPlan, openModal, theme }) => {
   const handleLaunchClick = () => {
     openModal(LAUNCH_TASK);
   };
@@ -69,11 +44,11 @@ const Sidebar = ({
   );
 
   return (
-    <StyledSidebar isOpen={isOpen}>
+    <StyledSidebar>
       {selectedTaskId ? (
         <>
-          <SidebarHeader closeSidebar={closeSidebar} />
-          <StyledHeading>Notes:</StyledHeading>
+          <SidebarHeader />
+          <Heading2>Notes:</Heading2>
           <NotesEditor />
           <Heading2>Time Management</Heading2>
           {isSelectedTaskInPlan ? (
@@ -95,11 +70,9 @@ const Sidebar = ({
 };
 
 Sidebar.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
   selectedTaskId: PropTypes.string.isRequired,
   isSelectedTaskInPlan: PropTypes.bool.isRequired,
   openModal: PropTypes.func.isRequired,
-  closeSidebar: PropTypes.func.isRequired,
   theme: PropTypes.shape({
     [PropTypes.string]: PropTypes.string,
   }).isRequired,

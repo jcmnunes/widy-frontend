@@ -25,7 +25,9 @@ export function* getDaysSaga() {
     const selectedDayId = loadItem('selectedDayId') || order[0];
     yield put({ type: types.GET_DAYS_SUCCESS, byId, order, selectedDayId });
     yield put({ type: activeTaskTypes.ACTIVE_TASK_REQUEST });
-    yield put({ type: types.GET_DAY_REQUEST, payload: selectedDayId });
+    if (selectedDayId && order.length > 0) {
+      yield put({ type: types.GET_DAY_REQUEST, payload: selectedDayId });
+    }
   } catch (error) {
     yield put({ type: types.GET_DAYS_FAILURE, error });
   }
