@@ -12,7 +12,7 @@ jest.mock('../../../helpers/settings', () => () => ({
   },
 }));
 
-// const TestRenderer = require('react-test-renderer');
+jest.mock('../Board/Task/Task', () => () => <div data-test="Task">mockTask</div>);
 
 const defaultProps = {
   ...fixture,
@@ -20,14 +20,10 @@ const defaultProps = {
   getDay: jest.fn(),
   storeSelectedTaskId: jest.fn(),
   storeSelectedSectionId: jest.fn(),
+  stopTask: jest.fn(),
+  updateTask: jest.fn(),
 };
 
-/**
- * Factory function to create a ShallowWrapper for the ActiveTaskPopup component.
- * @function setup
- * @param {object} props - Component props specific to this setup.
- * @returns {ShallowWrapper}
- */
 const setup = (props = {}) => {
   const setupProps = { ...defaultProps, ...props };
   return shallow(<ActiveTaskPopup {...setupProps} />);

@@ -1,3 +1,5 @@
+import theme from '../../../styles/theme';
+
 export default {
   activeTask: {
     taskId: '5c7c2acdd21c2eb57ee8d1b3',
@@ -8,4 +10,5 @@ export default {
     time: 0,
   },
   selectedDayId: '5c9ee9369460ec33384b67cg',
+  theme,
 };

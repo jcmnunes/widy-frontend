@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EOD Components Section should render as expected, without crashing 1`] = `
-.c2 {
+exports[`Section should render as expected, without crashing 1`] = `
+.c3 {
   font-size: 16px;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -19,74 +19,50 @@ exports[`EOD Components Section should render as expected, without crashing 1`] 
   margin-left: 4px;
 }
 
-.c2:hover {
+.c3:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
 }
 
-.c2:focus {
+.c3:focus {
   outline: none;
   box-shadow: 0 0 0 4px;
 }
 
-.c2:disabled {
+.c3:disabled {
   cursor: not-allowed;
+}
+
+.c1 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 12px;
 }
 
 .c0 {
   margin: 32px 0;
 }
 
-.c0 h1.title {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 12px;
-}
-
-.c1 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  border: 1px solid;
-  border-radius: 4px;
-  height: 96px;
-  margin-bottom: 8px;
-  background-color: white;
-  -webkit-transition: background-color 0.2s ease;
-  transition: background-color 0.2s ease;
-  font-size: 16px;
-  font-style: italic;
+.c2 {
+  margin-top: 12px;
 }
 
 <div
   className="c0"
 >
-  <h1
-    className="title"
-  >
-    Title
-  </h1>
-  <div
+  <h2
     className="c1"
   >
-    <span>
-      No tasks in section "
-      Title
-      "
-    </span>
+    Title
+  </h2>
+  <div
+    data-test="Droppable"
+  >
+    Droppable
   </div>
   <button
-    className="c2"
+    className="c2 c3"
+    data-test="add-task-button"
     disabled={false}
     onClick={[Function]}
     size="medium"
@@ -104,7 +80,8 @@ exports[`EOD Components Section should render as expected, without crashing 1`] 
         fillRule="evenodd"
       />
     </svg>
-     Add task
+     
+    Add task
   </button>
 </div>
 `;

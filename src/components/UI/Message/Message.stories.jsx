@@ -5,7 +5,7 @@ import { withKnobs, text, select } from '@storybook/addon-knobs';
 
 import { Message, MessageReadme } from '..';
 
-storiesOf('Miscellaneous components', module)
+storiesOf('UI components', module)
   .addDecorator(withKnobs)
   .addDecorator(withDocs(MessageReadme))
   .add('Message', () => {

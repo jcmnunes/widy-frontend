@@ -152,7 +152,7 @@ class PlanTask extends Component {
                   text={taskTitle}
                   onCopy={() =>
                     toast.success({
-                      title: 'Success',
+                      title: 'Done!',
                       message: 'Task title copied',
                     })
                   }

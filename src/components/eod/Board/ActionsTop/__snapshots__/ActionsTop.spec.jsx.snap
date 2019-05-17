@@ -6,6 +6,21 @@ exports[`EOD Components ActionsTop should render as expected, without crashing 1
     bg={null}
     disabled={false}
     iconAfter={
+      <IconSurvey
+        primaryColor="#CBD2D8"
+        secondaryColor="#52616D"
+        size={24}
+      />
+    }
+    iconBefore={null}
+    loading={false}
+  >
+    Widy Report
+  </RoundButton>
+  <RoundButton
+    bg={null}
+    disabled={false}
+    iconAfter={
       <IconPresentation
         primaryColor="#52616D"
         secondaryColor="#CBD2D8"
@@ -60,6 +75,25 @@ exports[`EOD Components ActionsTop should render as expected, without crashing 1
         type="button"
       >
         Edit profile
+      </Button>
+      <Button
+        block={true}
+        disabled={false}
+        iconAfter={null}
+        iconBefore={
+          <IconCog
+            primaryColor="#CBD2D8"
+            secondaryColor="#52616D"
+            size={24}
+          />
+        }
+        intent="dropdown"
+        loading={false}
+        onClick={null}
+        size="medium"
+        type="button"
+      >
+        Settings
       </Button>
       <Button
         block={true}

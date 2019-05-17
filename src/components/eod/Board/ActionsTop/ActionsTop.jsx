@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { withTheme } from 'styled-components';
+import styled from 'styled-components';
 import {
   IconCheveronDown,
   IconCog,
@@ -62,11 +62,11 @@ ActionsTop.propTypes = {
   logoutState: PropTypes.shape({
     loading: PropTypes.bool.isRequired,
   }).isRequired,
-  logout: PropTypes.func.isRequired,
   noDays: PropTypes.bool.isRequired,
   theme: PropTypes.shape({
     [PropTypes.string]: PropTypes.string,
   }).isRequired,
+  logout: PropTypes.func.isRequired,
 };
 
-export default withTheme(ActionsTop);
+export default ActionsTop;

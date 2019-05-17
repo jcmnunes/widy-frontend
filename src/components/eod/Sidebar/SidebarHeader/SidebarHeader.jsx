@@ -6,7 +6,7 @@ import EditableInput from '../../../UI/EditableInput';
 
 const StyledSidebarHeader = styled.div`
   color: ${props => props.theme.neutral700};
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 `;
 
 const TopBar = styled.div`
@@ -14,6 +14,10 @@ const TopBar = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+`;
+
+const StyledEditableInput = styled(EditableInput)`
+  margin-left: -16px;
 `;
 
 const SidebarHeader = ({ selectedTask, selectedDay, updateTask }) => {
@@ -27,7 +31,7 @@ const SidebarHeader = ({ selectedTask, selectedDay, updateTask }) => {
       <TopBar>
         <div>{selectedDay ? moment(selectedDay.day).format('ddd DD MMM YYYY') : ''}</div>
       </TopBar>
-      <EditableInput
+      <StyledEditableInput
         initialValue={selectedTask ? selectedTask.title : ''}
         action={updateTaskTitle}
       />

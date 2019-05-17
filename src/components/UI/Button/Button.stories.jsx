@@ -9,7 +9,7 @@ import { Button, ButtonReadme } from '..';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
-storiesOf('Miscellaneous components', module)
+storiesOf('UI components', module)
   .addDecorator(withKnobs)
   .addDecorator(withDocs(ButtonReadme))
   .add('Button', () => {

@@ -16,12 +16,13 @@ const StyledYesNoButtonGroup = styled.div`
 const YesNoButtonGroup = ({ theme, cancelAction }) => {
   return (
     <StyledYesNoButtonGroup>
-      <Button size="small" type="submit">
-        <IconCheck size={22} />
-      </Button>
-      <Button size="small" type="button" onClick={cancelAction}>
-        <IconClose size={22} primaryColor={theme.red400} />
-      </Button>
+      <Button size="small" type="submit" iconBefore={<IconCheck size={22} />} />
+      <Button
+        size="small"
+        type="button"
+        onClick={cancelAction}
+        iconBefore={<IconClose size={22} primaryColor={theme.red400} />}
+      />
     </StyledYesNoButtonGroup>
   );
 };
