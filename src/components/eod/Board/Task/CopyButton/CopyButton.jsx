@@ -20,7 +20,7 @@ const CopyButton = ({ taskTitle, theme, ...other }) => {
       text={taskTitle}
       onCopy={() =>
         toast.success({
-          title: 'Success',
+          title: 'Done!',
           message: 'Task title copied',
         })
       }

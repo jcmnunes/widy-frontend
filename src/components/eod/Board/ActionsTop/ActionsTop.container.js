@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withTheme } from 'styled-components';
 import ActionsTop from './ActionsTop';
 import { logout } from '../../../../actions/auth';
 
@@ -9,4 +10,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { logout },
-)(ActionsTop);
+)(withTheme(ActionsTop));

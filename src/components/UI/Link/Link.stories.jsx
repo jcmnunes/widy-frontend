@@ -5,7 +5,7 @@ import { withKnobs, text, select, boolean } from '@storybook/addon-knobs';
 
 import { Link, LinkReadme } from '..';
 
-storiesOf('Miscellaneous components', module)
+storiesOf('UI components', module)
   .addDecorator(withKnobs)
   .addDecorator(withDocs(LinkReadme))
   .add('Link', () => {

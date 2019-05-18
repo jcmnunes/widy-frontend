@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { IconEdit } from '../../../icons/Icons';
 import { Input } from '..';
 import YesNoButtonGroup from '../YesNoButtonGroup';
 
@@ -11,13 +10,28 @@ const StyledEditableInput = styled.form`
   align-items: center;
 `;
 
-const Value = styled.span`
-  margin-right: 16px;
-  cursor: pointer;
+const Value = styled.div`
+  cursor: text;
+  padding: 12px 16px;
+  width: 100%;
+  text-align: left;
+  font-size: 18px;
+  height: 48px;
+  line-height: 24px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: ${props => props.theme.neutral100};
+  }
 `;
 
-const StyledIconEdit = styled(IconEdit)`
-  cursor: pointer;
+const StyledInput = styled(Input)`
+  width: 100%;
+  height: auto;
+  line-height: 24px;
 `;
 
 class EditableInput extends Component {
@@ -54,20 +68,33 @@ class EditableInput extends Component {
     this.setState({ editing: false });
   };
 
+  handleKeyDown = e => {
+    const { editing } = this.state;
+    if (editing) {
+      if (e.key === 'Escape') {
+        this.handleCancel();
+      }
+    }
+  };
+
   render() {
     const { editing, value } = this.state;
-    const { initialValue } = this.props;
+    const { initialValue, ...other } = this.props;
     return (
-      <StyledEditableInput onSubmit={this.handleSubmit}>
+      <StyledEditableInput
+        onSubmit={this.handleSubmit}
+        onKeyDown={this.handleKeyDown}
+        onBlur={this.handleSubmit}
+        {...other}
+      >
         {editing ? (
           <>
-            <Input value={value} onChange={this.handleOnChange} autoFocus />
+            <StyledInput value={value} onChange={this.handleOnChange} autoFocus />
             <YesNoButtonGroup cancelAction={this.handleCancel} />
           </>
         ) : (
           <>
             <Value onClick={this.startEditing}>{initialValue}</Value>
-            <StyledIconEdit onClick={this.startEditing} />
           </>
         )}
       </StyledEditableInput>

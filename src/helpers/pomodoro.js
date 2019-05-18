@@ -37,11 +37,11 @@ export const getCurrentPomodoroInfo = time => {
 };
 
 export const getTotalTime = time => {
-  const hours = Math.floor(time / 60 / 60);
+  const hours = time / 60 / 60;
 
   return {
-    hours,
-    minutes: hours > 0 ? hours % 60 : Math.floor(time / 60),
+    hours: Math.floor(hours),
+    minutes: Math.floor((hours - Math.floor(hours)) * 60),
   };
 };
 

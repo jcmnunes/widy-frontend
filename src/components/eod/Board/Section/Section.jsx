@@ -107,12 +107,12 @@ class Section extends Component {
         <Heading2>{section.title}</Heading2>
         <Droppable droppableId={section.id}>
           {(provided, snapshot) =>
-            section.tasks.length
+            section.tasks.length > 0
               ? this.renderSection(provided)
               : this.renderEmptySection(provided, snapshot)
           }
         </Droppable>
-        <StyledLink intent="secondary" onClick={this.openModal}>
+        <StyledLink intent="secondary" onClick={this.openModal} data-test="add-task-button">
           <IconAdd primaryColor={theme.neutral500} /> {section.isPlan ? 'Add to Plan' : 'Add task'}
         </StyledLink>
       </StyledSection>
@@ -123,13 +123,13 @@ class Section extends Component {
 Section.propTypes = {
   dayId: PropTypes.string.isRequired,
   sectionId: PropTypes.string.isRequired,
-  storeCreateTaskData: PropTypes.func.isRequired,
-  openModal: PropTypes.func.isRequired,
+  noTasks: PropTypes.bool.isRequired,
   section: PropTypes.shape({
     tasks: PropTypes.array,
     title: PropTypes.string,
   }).isRequired,
-  noTasks: PropTypes.bool.isRequired,
+  storeCreateTaskData: PropTypes.func.isRequired,
+  openModal: PropTypes.func.isRequired,
 };
 
 export default Section;

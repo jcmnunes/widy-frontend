@@ -5,5 +5,5 @@ export default {
     tasks: [], // List of tasks ids
     title: 'Title', // Section title
   },
-  tasks: {}, // Collection of tasks ➜ all tasks in current day :/
+  noTasks: false,
 };
