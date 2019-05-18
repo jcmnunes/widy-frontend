@@ -10,7 +10,7 @@ const StyledStats = styled.table`
 `;
 
 const Td = styled.td`
-  padding: 8px;
+  padding: 8px 8px 8px 0;
   vertical-align: middle;
 `;
 
