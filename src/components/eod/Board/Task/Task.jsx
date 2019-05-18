@@ -144,6 +144,7 @@ const Task = ({
   storeSelectedTaskId,
   openModal,
   isDragging,
+  isInActiveTaskPopup,
   children,
   ...other
 }) => (
@@ -160,7 +161,7 @@ const Task = ({
   >
     <Checkbox checked={isCompleted} onChange={onCheckChange} onClick={onCheckClick} />
     <TaskTitle onDoubleClick={onDoubleClick}>{children}</TaskTitle>
-    <StyledCopyButton taskTitle={children} />
+    {!isInActiveTaskPopup && <StyledCopyButton taskTitle={children} />}
     {renderControls && !isCompleted && (
       <Controls>
         <Timer taskId={taskId} sectionId={sectionId} />
@@ -181,6 +182,7 @@ const Task = ({
 Task.defaultProps = {
   taskRef: null,
   renderControls: true,
+  isInActiveTaskPopup: false,
   onClick: noop,
   onDoubleClick: noop,
   onCheckChange: noop,
@@ -208,6 +210,7 @@ Task.propTypes = {
   storeSelectedSectionId: PropTypes.func,
   openModal: PropTypes.func,
   isDragging: PropTypes.bool.isRequired,
+  isInActiveTaskPopup: PropTypes.bool,
 };
 
 export default Task;

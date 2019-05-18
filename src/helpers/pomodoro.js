@@ -17,6 +17,7 @@ export const getNumberOfPomodoros = time => {
 };
 
 /**
+ * Returns information about current active task time
  *
  * @param {number} time - Elapsed time (secs)
  * @returns {{ inBreak: boolean, elapsedTime: string }}
@@ -36,6 +37,17 @@ export const getCurrentPomodoroInfo = time => {
   return info;
 };
 
+/**
+ * Formats total time
+ *
+ * @example
+ *   getTotalTime(4 * 60) ➜ { hours: 0, minutes: 4 }
+ *   getTotalTime(64 * 60) ➜ { hours: 1, minutes: 4 }
+ *
+ * @param {number} time - Time in secs
+ * @returns {{ hours: number, minutes: number }} - Object containing two integers representing
+ * time in hours and minutes
+ */
 export const getTotalTime = time => {
   const hours = time / 60 / 60;
 
@@ -45,6 +57,12 @@ export const getTotalTime = time => {
   };
 };
 
+/**
+ * Converts time in secs to a formatted string (00 : 00)
+ *
+ * @param {number} time - Time to format (secs)
+ * @returns {string} - Formatted time ➜ 00 : 00
+ */
 export const formatTime = time => {
   const mins = Math.floor(time);
   const secs = Math.round((time - Math.floor(time)) * 60);

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme } from 'styled-components';
 import moment from 'moment';
@@ -30,43 +30,15 @@ const Units = styled.div`
   margin-left: 4px;
 `;
 
-// TODO 👇
-let timer = null;
-
-const Pomodoro = ({ taskId, sectionId, isTaskActive, selectedTask }) => {
-  const [time, setTime] = useState(0);
-
-  /**
-   * Responsible for updating the Pomodoro widget
-   */
-  useEffect(() => {
-    if (timer) {
-      clearInterval(timer);
-      timer = null;
-    }
-    if (isTaskActive) {
-      setTime(selectedTask.time + moment().diff(selectedTask.start, 'seconds'));
-      timer = setInterval(() => {
-        setTime(prevTime => prevTime + 1);
-      }, 1000);
-    } else {
-      setTime(selectedTask.time);
-    }
-    return () => clearInterval(timer);
-  }, [taskId, isTaskActive]);
-
-  const { inBreak, elapsedTime } = getCurrentPomodoroInfo(time);
+const Pomodoro = ({ taskId, sectionId, isTaskActive, activeTask, selectedTask }) => {
+  const { time, start } = activeTask;
+  const newTime = isTaskActive > 0 ? time + moment().diff(start, 'seconds') : selectedTask.time;
 
   const renderTime = () => {
-    if (inBreak) {
-      return `${elapsedTime} / ${pomodoro.shortBreak}`;
-    }
+    const { inBreak, elapsedTime } = getCurrentPomodoroInfo(newTime);
+    if (inBreak) return `${elapsedTime} / ${pomodoro.shortBreak}`;
     return `${elapsedTime} / ${pomodoro.length}`;
   };
-
-  // TODO ➜ remove these console.logs
-  // console.log('Task title:', selectedTask.title);
-  // console.log('time:', time);
 
   return (
     <>
@@ -79,7 +51,7 @@ const Pomodoro = ({ taskId, sectionId, isTaskActive, selectedTask }) => {
           </Time>
         </StyledPomodoro>
       )}
-      <Stats time={time} />
+      <Stats time={newTime} />
     </>
   );
 };
@@ -88,6 +60,13 @@ Pomodoro.propTypes = {
   taskId: PropTypes.string.isRequired,
   sectionId: PropTypes.string.isRequired,
   isTaskActive: PropTypes.bool.isRequired,
+  activeTask: PropTypes.shape({
+    taskId: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    sectionId: PropTypes.string.isRequired,
+    dayId: PropTypes.string.isRequired,
+    inBreak: PropTypes.bool.isRequired,
+  }).isRequired,
   selectedTask: PropTypes.shape({
     time: PropTypes.number.isRequired,
     start: PropTypes.string,
