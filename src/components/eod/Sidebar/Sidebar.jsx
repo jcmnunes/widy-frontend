@@ -9,6 +9,7 @@ import { Heading2 } from '../../UI/Typography';
 import { IconLaunch } from '../../../icons/Icons';
 import { IllustrationTodoList } from '../../../icons/Illustrations';
 import { LAUNCH_TASK } from '../../modals/types';
+import InsertTime from './InsertTime';
 
 const StyledSidebar = styled.div`
   background: ${props => props.theme.yellow050};
@@ -58,6 +59,7 @@ const Sidebar = ({ selectedTaskId, isSelectedTaskInPlan, openModal, theme }) => 
           ) : (
             <Pomodoro />
           )}
+          <InsertTime />
         </>
       ) : (
         <EmptyState>

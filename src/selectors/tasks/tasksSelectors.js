@@ -4,6 +4,7 @@ const selectedTaskIdSelector = state => state.tasks.selected;
 const tasksByIdSelector = state => state.tasks.byId;
 const planSectionIdSelector = state => state.sections.order[0];
 const sectionsByIdSelector = state => state.sections.byId;
+const activeTaskSelector = state => state.activeTask;
 
 export const selectedTaskSelector = createSelector(
   selectedTaskIdSelector,
@@ -27,6 +28,18 @@ export const isSelectedTaskInPlanSelector = createSelector(
     }
     return false;
   },
+);
+
+export const isSelectedTaskCompletedSelector = createSelector(
+  selectedTaskIdSelector,
+  tasksByIdSelector,
+  (selectedTaskId, tasksById) => (selectedTaskId ? tasksById[selectedTaskId].completed : false),
+);
+
+export const isSelectedTaskActiveSelector = createSelector(
+  selectedTaskIdSelector,
+  activeTaskSelector,
+  (selectedTaskId, activeTask) => selectedTaskId === activeTask.taskId,
 );
 
 export const noTasksSelector = createSelector(
