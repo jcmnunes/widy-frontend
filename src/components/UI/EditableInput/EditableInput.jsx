@@ -79,7 +79,7 @@ class EditableInput extends Component {
 
   render() {
     const { editing, value } = this.state;
-    const { initialValue, ...other } = this.props;
+    const { initialValue, action, ...other } = this.props;
     return (
       <StyledEditableInput
         onSubmit={this.handleSubmit}
