@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { ModalBase, Input } from '../../UI';
-import constants from './InsertTime.constants';
+import constants from './RegisterTime.constants';
 
 const { suggestions } = constants();
 
@@ -16,7 +16,7 @@ const TimeSuggestions = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin: 18px 200px 0 0;
+  margin: 24px 200px 0 0;
 `;
 
 const Suggestion = styled.span`
@@ -41,7 +41,7 @@ const Suggestion = styled.span`
   }
 `;
 
-const InsertTime = ({ selectedTaskId, updateTask, closeModal }) => {
+const RegisterTime = ({ selectedTaskId, updateTask, closeModal }) => {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
 
@@ -69,7 +69,7 @@ const InsertTime = ({ selectedTaskId, updateTask, closeModal }) => {
   };
 
   return (
-    <ModalBase actionText="Insert time" handleSubmit={handleSubmit}>
+    <ModalBase actionText="Register time" handleSubmit={handleSubmit}>
       <h1 className="title">Insert new task time:</h1>
       <div>
         <Input type="number" value={hours} min={0} max={24} step={1} onChange={handleHoursChange} />
@@ -102,10 +102,10 @@ const InsertTime = ({ selectedTaskId, updateTask, closeModal }) => {
   );
 };
 
-InsertTime.propTypes = {
+RegisterTime.propTypes = {
   selectedTaskId: PropTypes.string.isRequired,
   updateTask: PropTypes.func.isRequired,
   closeModal: PropTypes.func.isRequired,
 };
 
-export default InsertTime;
+export default RegisterTime;

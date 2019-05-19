@@ -46,3 +46,11 @@ export const noTasksSelector = createSelector(
   tasksByIdSelector,
   tasksById => Object.keys(tasksById).length === 0,
 );
+
+export const canRegisterTimeSelector = createSelector(
+  isSelectedTaskInPlanSelector,
+  isSelectedTaskActiveSelector,
+  isSelectedTaskCompletedSelector,
+  (isSelectedTaskInPlan, isSelectedTaskActive, isSelectedTaskCompleted) =>
+    !(isSelectedTaskInPlan || isSelectedTaskActive || isSelectedTaskCompleted),
+);

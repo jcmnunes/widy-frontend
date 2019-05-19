@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import InsertTime from './InsertTime';
+import RegisterTime from './RegisterTime';
 import { closeModal } from '../../../actions/modals';
 import { updateTask } from '../../../actions/tasks';
 
@@ -10,4 +10,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { closeModal, updateTask },
-)(InsertTime);
+)(RegisterTime);
