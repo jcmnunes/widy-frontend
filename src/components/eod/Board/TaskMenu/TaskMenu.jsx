@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { IconDotsHorizontal, IconEdit, IconTrash } from '../../../../icons/Icons';
+import { IconDotsHorizontal, IconEdit, IconTrash, IconTime } from '../../../../icons/Icons';
 import { Button, Dropdown, StyledDropdown } from '../../../UI';
 import { DeleteTaskDialog } from '../../../Dialogs';
-import { RENAME_TASK } from '../../../modals/types';
+import { REGISTER_TIME, RENAME_TASK } from '../../../modals/types';
 
 const StyledTaskMenu = styled.div`
   height: 24px;
@@ -14,6 +14,7 @@ const StyledTaskMenu = styled.div`
 const TaskMenu = ({
   taskId,
   sectionId,
+  canRegisterTime,
   storeSelectedSectionId,
   storeSelectedTaskId,
   openModal,
@@ -30,6 +31,10 @@ const TaskMenu = ({
     setShowDeleteTaskDialog(true);
   };
 
+  const handleRegisterTimeClick = () => {
+    openModal(REGISTER_TIME);
+  };
+
   const deleteTaskCancelAction = () => {
     setShowDeleteTaskDialog(false);
   };
@@ -39,6 +44,16 @@ const TaskMenu = ({
       <StyledTaskMenu>
         <Dropdown trigger={<IconDotsHorizontal />} position="right">
           <StyledDropdown>
+            {canRegisterTime && (
+              <Button
+                intent="dropdown"
+                iconBefore={<IconTime />}
+                block
+                onClick={handleRegisterTimeClick}
+              >
+                Register Time
+              </Button>
+            )}
             <Button intent="dropdown" iconBefore={<IconEdit />} block onClick={handleEditClick}>
               Rename
             </Button>
@@ -61,6 +76,7 @@ const TaskMenu = ({
 TaskMenu.propTypes = {
   taskId: PropTypes.string.isRequired,
   sectionId: PropTypes.string.isRequired,
+  canRegisterTime: PropTypes.bool.isRequired,
   storeSelectedSectionId: PropTypes.func.isRequired,
   storeSelectedTaskId: PropTypes.func.isRequired,
   openModal: PropTypes.func.isRequired,

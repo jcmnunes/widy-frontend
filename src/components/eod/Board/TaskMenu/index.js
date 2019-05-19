@@ -1,1 +1,1 @@
-export { default } from './TaskMenu';
+export { default } from './TaskMenu.container';

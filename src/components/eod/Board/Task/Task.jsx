@@ -155,7 +155,6 @@ const Task = ({
     isInBreak={isInBreak}
     isCompleted={isCompleted}
     onClick={onClick}
-    storeSelectedSectionId={storeSelectedSectionId}
     isDragging={isDragging}
     {...other}
   >
