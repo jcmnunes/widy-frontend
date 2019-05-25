@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { DragDropContext } from 'react-beautiful-dnd';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import moment from 'moment';
 import Section from './Section';
 import ActionsTop from './ActionsTop';

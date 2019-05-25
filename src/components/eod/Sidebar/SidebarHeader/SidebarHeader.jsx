@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import EditableInput from '../../../UI/EditableInput';
 
 const StyledSidebarHeader = styled.div`

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { IconWidy, IconWidyText } from '../../icons/widy';
 import theme from '../../styles/theme';
 

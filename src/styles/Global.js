@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components/macro';
 
 import sourceSansProRegular from './fonts/source-sans-pro-v11-latin-regular.woff';
 import sourceSansProRegularWoff2 from './fonts/source-sans-pro-v11-latin-regular.woff2';

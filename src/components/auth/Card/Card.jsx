@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import Hero from './Hero';
 import Login from '../Login';
 import Logo from '../Logo';

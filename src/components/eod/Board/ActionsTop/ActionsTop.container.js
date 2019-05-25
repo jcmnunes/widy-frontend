@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { withTheme } from 'styled-components';
+import { withTheme } from 'styled-components/macro';
 import ActionsTop from './ActionsTop';
 import { logout } from '../../../../actions/auth';
 

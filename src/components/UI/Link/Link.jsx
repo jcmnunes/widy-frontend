@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link as RRLink } from 'react-router-dom';
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components/macro';
 
 const getColors = props => {
   const colors = {

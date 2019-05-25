@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { withTheme } from 'styled-components';
+import styled, { withTheme } from 'styled-components/macro';
 import SidebarHeader from './SidebarHeader';
 import NotesEditor from './NotesEditor';
 import Pomodoro from '../Pomodoro';

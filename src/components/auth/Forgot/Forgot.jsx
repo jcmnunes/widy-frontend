@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import Logo from '../Logo';
 import { InputField, Button, Link, Message } from '../../UI';
 

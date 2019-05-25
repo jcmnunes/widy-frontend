@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components/macro';
 import noop from 'lodash.noop';
 import Timer from '../../Timer';
 import TaskMenu from '../TaskMenu';
