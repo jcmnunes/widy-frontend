@@ -3,12 +3,21 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Notifications from 'react-notification-system-redux';
+import Joyride from 'react-joyride';
 import GlobalStyle from './styles/Global';
 import Routes from './router/routes';
 import PageSpinner from './components/UI/PageSpinner';
 import { Modal } from './components/UI';
 import toastStyles from './styles/toast';
 import { version } from '../package.json';
+
+const steps = [
+  {
+    target: 'body',
+    content: 'This is my awesome feature!',
+    placement: 'center',
+  },
+];
 
 class App extends Component {
   /**
@@ -27,6 +36,7 @@ class App extends Component {
       <div data-version={version}>
         {loading ? <PageSpinner /> : <Routes />}
         <Notifications notifications={notifications} style={toastStyles} />
+        <Joyride steps={steps} />
         <Modal />
         <GlobalStyle />
       </div>
