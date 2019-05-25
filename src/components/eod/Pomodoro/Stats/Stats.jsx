@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { withTheme } from 'styled-components';
+import styled, { withTheme } from 'styled-components/macro';
 import uuidv4 from 'uuid/v4';
 import { getNumberOfPomodoros, getTotalTime } from '../../../../helpers/pomodoro';
 import { IconTime } from '../../../../icons/Icons';

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Heading2 } from '../../UI/Typography';
 import Task from '../Board/Task/Task';
 import settings from '../../../helpers/settings';

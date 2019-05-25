@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 const Heading2 = styled.h2`
   color: ${props => props.theme.neutral700};

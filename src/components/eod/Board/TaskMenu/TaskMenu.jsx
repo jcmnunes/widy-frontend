@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { IconDotsHorizontal, IconEdit, IconTrash, IconTime } from '../../../../icons/Icons';
 import { Button, Dropdown, StyledDropdown } from '../../../UI';
 import { DeleteTaskDialog } from '../../../Dialogs';

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import MainBar from './MainBar';
 import Navigation from './Navigation';
 import Board from './Board';

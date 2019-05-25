@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled, { withTheme } from 'styled-components';
+import styled, { withTheme } from 'styled-components/macro';
 import { Draggable } from 'react-beautiful-dnd';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import {

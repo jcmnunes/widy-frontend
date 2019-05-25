@@ -68,6 +68,8 @@
     "@storybook/addon-options": "^5.1.0-beta.0",
     "@storybook/addons": "^5.1.0-beta.0",
     "@storybook/react": "^5.1.0-beta.0",
+    "@types/prop-types": "^15.7.1",
+    "babel-plugin-macros": "^2.5.1",
     "enzyme-to-json": "^3.3.5",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.2.0",

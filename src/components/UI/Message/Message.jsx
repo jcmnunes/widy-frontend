@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components/macro';
 import Icon from '../../../icons/Icon';
 
 const getColors = props => {

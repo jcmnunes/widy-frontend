@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { withTheme } from 'styled-components';
+import { withTheme } from 'styled-components/macro';
 import ActiveTaskPopup from './ActiveTaskPopup';
 import { getDay, storeSelectedDay } from '../../../actions/days';
 import { stopTask, updateTask } from '../../../actions/tasks';
