@@ -28,7 +28,7 @@ const SubTitle = styled.h2`
 const NoDays = () => {
   return (
     <StyledNoDays data-test="NoDays">
-      <StyledIllustration />
+      <StyledIllustration data-onboarding="no-days" />
       <Title>
         <span role="img" aria-label="tada">
           🎉

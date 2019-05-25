@@ -33,7 +33,7 @@ const Header = styled.div`
   align-items: center;
   width: 100%;
   position: sticky;
-  z-index: 5000;
+  z-index: 90;
   top: 0;
   padding-top: 48px;
   background: white;

@@ -9,6 +9,7 @@ import PageSpinner from './components/UI/PageSpinner';
 import { Modal } from './components/UI';
 import toastStyles from './styles/toast';
 import { version } from '../package.json';
+import Onboarding from './components/onboarding';
 
 class App extends Component {
   /**
@@ -27,6 +28,7 @@ class App extends Component {
       <div data-version={version}>
         {loading ? <PageSpinner /> : <Routes />}
         <Notifications notifications={notifications} style={toastStyles} />
+        <Onboarding />
         <Modal />
         <GlobalStyle />
       </div>

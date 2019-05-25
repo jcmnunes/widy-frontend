@@ -42,6 +42,7 @@
     "react": "^16.8.6",
     "react-beautiful-dnd": "^11.0.4",
     "react-copy-to-clipboard": "^5.0.1",
+    "react-joyride": "^2.0.5",
     "react-dom": "^16.8.6",
     "react-notification-system": "^0.2.17",
     "react-notification-system-redux": "^2.0.0",

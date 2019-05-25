@@ -95,6 +95,7 @@ class Navigation extends Component {
                 intent="primary"
                 iconBefore={<IconAdd primaryColor="#fff" />}
                 block={size.width === DAYS_LIST_MIN_WIDTH}
+                className="add-day-button"
               >
                 {size.width > DAYS_LIST_MIN_WIDTH ? 'Add Day' : ''}
               </Button>

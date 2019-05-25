@@ -75,6 +75,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     line-height: 1;
+    overflow-y: hidden;
   }
   ol, ul {
     list-style: none;
