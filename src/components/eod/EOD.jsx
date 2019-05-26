@@ -20,6 +20,10 @@ const StyledEOD = styled.div`
   min-width: ${props => props.theme.bp_xlarge};
 
   @media (min-width: ${props => props.theme.bp_xlarge}) {
+    grid-template-columns: 15px 230px 3fr 2fr;
+  }
+
+  @media (min-width: ${props => props.theme.bp_xxlarge}) {
     grid-template-columns: 15px 254px 1fr 1fr;
   }
 `;
