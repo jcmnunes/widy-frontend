@@ -67,7 +67,8 @@ const EOD = ({
       timer = setInterval(updateTaskState, 1000);
     }
     return () => clearInterval(timer);
-  }, [activeTaskId, activeTaskTime, activeTaskStart]);
+    // TODO ➜ Fix linter warning below
+  }, [activeTaskId, activeTaskTime, activeTaskStart]); // eslint-disable-line
 
   return (
     <StyledEOD>
