@@ -117,6 +117,11 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
     background: none;
   }
+  
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+    box-shadow: none;
+  }
 `;
 
 export default GlobalStyle;
