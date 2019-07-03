@@ -15,7 +15,7 @@ const StyledRoundButton = styled.button`
   color: ${props => props.theme.neutral700};
   padding: 0 8px;
   position: relative;
-  opacity: ${props => (props.disabled && !props.loading ? 0.5 : 1)};
+  opacity: ${props => (props.disabled && !props.isLoading ? 0.5 : 1)};
 
   span.children {
     margin: 0 4px;
@@ -40,7 +40,7 @@ const StyledRoundButton = styled.button`
   }
 
   .content {
-    visibility: ${props => (props.loading ? 'hidden' : 'visible')};
+    visibility: ${props => (props.isLoading ? 'hidden' : 'visible')};
     display: flex;
     align-items: center;
   }
@@ -54,9 +54,9 @@ const StyledRoundButton = styled.button`
   }
 `;
 
-const RoundButton = ({ loading, disabled, iconBefore, iconAfter, children, bg, ...other }) => (
-  <StyledRoundButton loading={loading} disabled={disabled || loading} {...other} bg={bg}>
-    {loading && (
+const RoundButton = ({ isLoading, disabled, iconBefore, iconAfter, children, bg, ...other }) => (
+  <StyledRoundButton isLoading={isLoading} disabled={disabled || isLoading} {...other} bg={bg}>
+    {isLoading && (
       <span className="spinner">
         <Spinner size="small" />
       </span>
@@ -70,7 +70,7 @@ const RoundButton = ({ loading, disabled, iconBefore, iconAfter, children, bg, .
 );
 
 RoundButton.defaultProps = {
-  loading: false,
+  isLoading: false,
   disabled: false,
   iconBefore: null,
   iconAfter: null,
@@ -79,7 +79,7 @@ RoundButton.defaultProps = {
 };
 
 RoundButton.propTypes = {
-  loading: PropTypes.bool,
+  isLoading: PropTypes.bool,
   disabled: PropTypes.bool,
   iconBefore: PropTypes.element,
   iconAfter: PropTypes.element,

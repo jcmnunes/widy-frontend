@@ -139,7 +139,7 @@ const StyledButton = styled.button`
   }
 
   .content {
-    visibility: ${props => (props.loading ? 'hidden' : 'visible')};
+    visibility: ${props => (props.isLoading ? 'hidden' : 'visible')};
     display: flex;
     align-items: center;
 
@@ -160,7 +160,7 @@ const StyledButton = styled.button`
 `;
 
 const Button = ({
-  loading,
+  isLoading,
   disabled,
   iconBefore,
   iconAfter,
@@ -184,8 +184,8 @@ const Button = ({
   };
   return (
     <StyledButton
-      disabled={disabled || loading}
-      loading={loading}
+      disabled={disabled || isLoading}
+      isLoading={isLoading}
       intent={intent}
       size={size}
       onClick={handleClick}
@@ -194,7 +194,7 @@ const Button = ({
       iconAfter={iconAfter}
       {...other}
     >
-      {loading && (
+      {isLoading && (
         <span className="spinner">
           <Spinner size={size} intent={intent} />
         </span>
@@ -209,7 +209,7 @@ const Button = ({
 };
 
 Button.defaultProps = {
-  loading: false,
+  isLoading: false,
   disabled: false,
   iconBefore: null,
   iconAfter: null,
@@ -224,7 +224,7 @@ Button.defaultProps = {
 Button.propTypes = {
   intent: PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'error', 'dropdown']),
   size: PropTypes.oneOf(['small', 'medium', 'large']),
-  loading: PropTypes.bool,
+  isLoading: PropTypes.bool,
   disabled: PropTypes.bool,
   iconBefore: PropTypes.element,
   iconAfter: PropTypes.element,

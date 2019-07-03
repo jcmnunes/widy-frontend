@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components/macro';
-import Icon from '../../../icons/Icon';
+import Glyph from '../../../icons/Glyph';
 
 const getColors = props => {
   const colors = {
@@ -83,7 +83,7 @@ const StyledMessage = styled.div`
 const Message = ({ intent, children, ...other }) => (
   <StyledMessage intent={intent} {...other}>
     <span className="icon">
-      <Icon icon={intent} />
+      <Glyph icon={intent} />
     </span>
     <span className="message">{children}</span>
   </StyledMessage>

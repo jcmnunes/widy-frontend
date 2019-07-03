@@ -7,7 +7,7 @@ import { ThemeProvider } from 'styled-components/macro';
 import configureStore, { runSaga } from './store';
 import theme from './styles/theme';
 import history from './router/history';
-import { INIT_REQUEST } from './actions/auth/types';
+import { INIT_REQUEST } from './components/auth/Init/Init.types';
 
 import App from './App';
 

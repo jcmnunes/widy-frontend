@@ -89,7 +89,7 @@ class Navigation extends Component {
             <div className="header">
               <Heading1>Days</Heading1>
               <Button
-                loading={createDayLoading}
+                isLoading={createDayLoading}
                 disabled={isTodayCreated || loading}
                 onClick={this.createDay}
                 intent="primary"

@@ -11,7 +11,7 @@ import {
   IconTrash,
 } from '../../../../icons/Icons';
 import { LAUNCH_TASK, RENAME_TASK } from '../../../modals/types';
-import { DeleteTaskDialog } from '../../../Dialogs';
+import { DeleteTaskDialog } from '../../../dialogs';
 import toast from '../../../../helpers/toast';
 
 const getTaskBackground = props => {

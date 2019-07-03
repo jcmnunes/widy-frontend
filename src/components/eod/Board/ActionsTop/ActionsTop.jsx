@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
+import Logout from '../../../auth/Logout/Logout.container';
 import {
   IconCheveronDown,
   IconCog,
-  IconDoorExit,
   IconPresentation,
   IconSurvey,
   IconUser,
@@ -22,7 +22,7 @@ const StyledActionsTop = styled.div`
   }
 `;
 
-const ActionsTop = ({ logoutState: { loading }, logout, noDays, theme }) => (
+const ActionsTop = ({ noDays, theme }) => (
   <StyledActionsTop>
     <RoundButton
       iconAfter={<IconSurvey primaryColor={theme.neutral200} secondaryColor={theme.neutral600} />}
@@ -44,29 +44,17 @@ const ActionsTop = ({ logoutState: { loading }, logout, noDays, theme }) => (
         <Button intent="dropdown" iconBefore={<IconCog />} block>
           Settings
         </Button>
-        <Button
-          block
-          loading={loading}
-          intent="dropdown"
-          iconBefore={<IconDoorExit />}
-          onClick={logout}
-        >
-          Log out
-        </Button>
+        <Logout />
       </StyledDropdown>
     </Dropdown>
   </StyledActionsTop>
 );
 
 ActionsTop.propTypes = {
-  logoutState: PropTypes.shape({
-    loading: PropTypes.bool.isRequired,
-  }).isRequired,
   noDays: PropTypes.bool.isRequired,
   theme: PropTypes.shape({
     [PropTypes.string]: PropTypes.string,
   }).isRequired,
-  logout: PropTypes.func.isRequired,
 };
 
 export default ActionsTop;
