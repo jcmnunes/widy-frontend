@@ -1,8 +1,8 @@
+import axios from 'axios';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import history from '../../../router/history';
 import { loginFailure, loginSuccess } from './Login.actions';
 import { LOGIN_REQUEST } from './Login.types';
-import axios from 'axios';
 
 const getErrorMessage = error => {
   if (error.response && error.response.status === 400) {
