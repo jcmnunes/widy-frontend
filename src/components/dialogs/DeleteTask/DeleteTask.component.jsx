@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Dialog } from '../../UI';
 
-const DeleteTask = props => {
+const DeleteTaskComponent = props => {
   const deleteAction = () => {
     const { taskId, sectionId } = props;
     props.storeSelectedSectionId(sectionId);
@@ -32,7 +32,7 @@ const DeleteTask = props => {
   );
 };
 
-DeleteTask.propTypes = {
+DeleteTaskComponent.propTypes = {
   show: PropTypes.bool.isRequired,
   sectionId: PropTypes.string.isRequired,
   taskId: PropTypes.string.isRequired,
@@ -42,4 +42,4 @@ DeleteTask.propTypes = {
   deleteTask: PropTypes.func.isRequired,
 };
 
-export default DeleteTask;
+export default DeleteTaskComponent;

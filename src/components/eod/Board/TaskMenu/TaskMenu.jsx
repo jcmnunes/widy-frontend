@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
 import { IconDotsHorizontal, IconEdit, IconTrash, IconTime } from '../../../../icons/Icons';
 import { Button, Dropdown, StyledDropdown } from '../../../UI';
-import { DeleteTaskDialog } from '../../../dialogs';
+import DeleteTaskDialog from '../../../dialogs/DeleteTask/DeleteTask.container';
 import { REGISTER_TIME, RENAME_TASK } from '../../../modals/types';
 
 const StyledTaskMenu = styled.div`
