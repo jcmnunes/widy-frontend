@@ -4,9 +4,9 @@ import moment from 'moment';
 import styled from 'styled-components/macro';
 import MainBar from '../MainBar';
 import Navigation from '../Navigation';
-import Board from '../Board';
+import Board from '../Board/Board';
 import Sidebar from '../Sidebar';
-import ActiveTaskPopup from '../ActiveTaskPopup';
+import ActiveTaskPopup from '../ActiveTaskPopup/ActiveTaskPopup.container';
 import { getCurrentPomodoroInfo } from '../../../helpers/pomodoro';
 import settings from '../../../helpers/settings';
 

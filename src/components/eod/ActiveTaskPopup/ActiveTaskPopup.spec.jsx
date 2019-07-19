@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import ActiveTaskPopup from './ActiveTaskPopup';
+import ActiveTaskPopupComponent from './ActiveTaskPopup.component';
 import fixture from './ActiveTaskPopup.fixture';
 import { findByTestAttr } from '../../../helpers/testUtils';
 
@@ -26,10 +26,10 @@ const defaultProps = {
 
 const setup = (props = {}) => {
   const setupProps = { ...defaultProps, ...props };
-  return shallow(<ActiveTaskPopup {...setupProps} />);
+  return shallow(<ActiveTaskPopupComponent {...setupProps} />);
 };
 
-describe('ActiveTaskPopup', () => {
+describe('ActiveTaskPopupComponent', () => {
   describe('selected day does not contains the active task', () => {
     let wrapper;
     beforeEach(() => {

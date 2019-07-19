@@ -11,7 +11,7 @@ jest.mock('../../../../../helpers/toast', () => () => ({
 const defaultProps = { ...fixture };
 
 /**
- * Factory function to create a ShallowWrapper for the ActiveTaskPopup component.
+ * Factory function to create a ShallowWrapper for the ActiveTaskPopupComponent component.
  * @function setup
  * @param {object} props - Component props specific to this setup.
  * @returns {ShallowWrapper}

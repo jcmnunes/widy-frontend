@@ -1,15 +1,22 @@
 import { connect } from 'react-redux';
-import { withTheme } from 'styled-components/macro';
-import ActiveTaskPopup from './ActiveTaskPopup';
+import ActiveTaskPopupComponent from './ActiveTaskPopup.component';
 import { getDay, storeSelectedDay } from '../../../actions/days';
 import { stopTask, updateTask } from '../../../actions/tasks';
+import { activeTaskSelector, selectedDayIdSelector } from './ActiveTaskPopup.selectors';
 
 const mapStateToProps = state => ({
-  activeTask: state.activeTask,
-  selectedDayId: state.days.selected,
+  activeTask: activeTaskSelector(state),
+  selectedDayId: selectedDayIdSelector(state),
 });
+
+const mapDispatchToProps = {
+  storeSelectedDay,
+  getDay,
+  stopTask,
+  updateTask,
+};
 
 export default connect(
   mapStateToProps,
-  { storeSelectedDay, getDay, stopTask, updateTask },
-)(withTheme(ActiveTaskPopup));
+  mapDispatchToProps,
+)(ActiveTaskPopupComponent);
