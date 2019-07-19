@@ -1,18 +1,18 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import ActionsTop from './ActionsTop';
+import ActionsTopComponent from './ActionsTop.component';
 import fixture from './ActionsTop.fixture';
 
 describe('EOD Components', () => {
-  describe('ActionsTop', () => {
+  describe('ActionsTopComponent', () => {
     const props = {
       ...fixture,
       logout: jest.fn(),
     };
 
     it('should render as expected, without crashing', () => {
-      const wrapper = shallow(<ActionsTop {...props} />);
+      const wrapper = shallow(<ActionsTopComponent {...props} />);
       expect(wrapper).toMatchSnapshot();
     });
   });

@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
-import { withTheme } from 'styled-components/macro';
-import ActionsTop from './ActionsTop';
+import ActionsTopComponent from './ActionsTop.component';
 
 const mapStateToProps = () => ({});
 
-export default connect(mapStateToProps)(withTheme(ActionsTop));
+export default connect(mapStateToProps)(ActionsTopComponent);

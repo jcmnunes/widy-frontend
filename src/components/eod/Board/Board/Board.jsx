@@ -4,7 +4,7 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import styled from 'styled-components/macro';
 import moment from 'moment';
 import Section from '../Section';
-import ActionsTop from '../ActionsTop';
+import ActionsTop from '../ActionsTop/ActionsTop.container';
 import LoadingBoard from './LoadingBoard';
 import NoDays from '../../NoDays';
 

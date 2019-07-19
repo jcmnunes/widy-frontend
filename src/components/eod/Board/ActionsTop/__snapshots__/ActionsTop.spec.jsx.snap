@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EOD Components ActionsTop should render as expected, without crashing 1`] = `
+exports[`EOD Components ActionsTopComponent should render as expected, without crashing 1`] = `
 <styled.div>
   <RoundButton
     bg={null}

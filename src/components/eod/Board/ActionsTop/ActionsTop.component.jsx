@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components/macro';
 import Logout from '../../../auth/Logout/Logout.container';
+import { Dropdown, StyledDropdown, Button, RoundButton } from '../../../UI';
 import {
   IconCheveronDown,
   IconCog,
@@ -9,25 +9,12 @@ import {
   IconSurvey,
   IconUser,
   IconUserCircle,
-} from '../../../../icons/Icons';
-import { Dropdown, StyledDropdown, Button, RoundButton } from '../../../UI';
+  StyledActionsTop,
+} from './ActionsTop.styles';
 
-const StyledActionsTop = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  & > * {
-    margin-left: 12px;
-  }
-`;
-
-const ActionsTop = ({ noDays, theme }) => (
+const ActionsTopComponent = ({ noDays }) => (
   <StyledActionsTop>
-    <RoundButton
-      iconAfter={<IconSurvey primaryColor={theme.neutral200} secondaryColor={theme.neutral600} />}
-      disabled={noDays}
-    >
+    <RoundButton iconAfter={<IconSurvey />} disabled={noDays}>
       Widy Report
     </RoundButton>
     <RoundButton iconAfter={<IconPresentation />} disabled={noDays}>
@@ -50,11 +37,8 @@ const ActionsTop = ({ noDays, theme }) => (
   </StyledActionsTop>
 );
 
-ActionsTop.propTypes = {
+ActionsTopComponent.propTypes = {
   noDays: PropTypes.bool.isRequired,
-  theme: PropTypes.shape({
-    [PropTypes.string]: PropTypes.string,
-  }).isRequired,
 };
 
-export default ActionsTop;
+export default ActionsTopComponent;
