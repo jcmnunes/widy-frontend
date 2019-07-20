@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
 import { Droppable } from 'react-beautiful-dnd';
 import Task from '../Task';
-import PlanTask from '../PlanTask';
+import PlanTask from '../PlanTask/PlanTask.container';
 import { Link } from '../../../UI';
 import { Heading2 } from '../../../UI/Typography';
 import { ADD_TASK } from '../../../modals/types';

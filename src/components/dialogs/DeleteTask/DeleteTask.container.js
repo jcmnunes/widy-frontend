@@ -7,7 +7,13 @@ const mapStateToProps = state => ({
   selectedTaskId: state.tasks.selected,
 });
 
+const mapDispatchToProps = {
+  storeSelectedTaskId,
+  storeSelectedSectionId,
+  deleteTask,
+};
+
 export default connect(
   mapStateToProps,
-  { storeSelectedTaskId, storeSelectedSectionId, deleteTask },
+  mapDispatchToProps,
 )(DeleteTaskComponent);

@@ -1,15 +1,23 @@
 import { connect } from 'react-redux';
-import PlanTask from './PlanTask';
-import { openModal } from '../../../../actions/modals';
-import { storeSelectedSectionId } from '../../../../actions/sections';
-import { storeSelectedTaskId } from '../../../../actions/tasks';
+import PlanTask from './PlanTask.component';
+import {
+  handlePlanTaskClick,
+  handlePlanTaskLaunch,
+  handlePlanTaskRename,
+} from './PlanTask.actions';
 
 const mapStateToProps = (state, ownProps) => ({
   selectedTaskId: state.tasks.selected,
   taskTitle: state.tasks.byId[ownProps.taskId].title,
 });
 
+const mapDispatchToProps = {
+  handlePlanTaskClick,
+  handlePlanTaskRename,
+  handlePlanTaskLaunch,
+};
+
 export default connect(
   mapStateToProps,
-  { openModal, storeSelectedTaskId, storeSelectedSectionId },
+  mapDispatchToProps,
 )(PlanTask);
