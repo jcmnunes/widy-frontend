@@ -31,18 +31,6 @@ export const IconSurvey = styled(Icon).attrs({
   }
 `;
 
-export const IconPresentation = styled(Icon).attrs({
-  icon: Icon.PRESENTATION,
-})`
-  .primary {
-    fill: ${props => props.theme.neutral600};
-  }
-
-  .secondary {
-    fill: ${props => props.theme.neutral200};
-  }
-`;
-
 export const IconUserCircle = styled(Icon).attrs({
   icon: Icon.USER_CIRCLE,
 })`

@@ -5,7 +5,6 @@ import { Dropdown, StyledDropdown, Button, RoundButton } from '../../UI';
 import {
   IconCheveronDown,
   IconCog,
-  IconPresentation,
   IconSurvey,
   IconUser,
   IconUserCircle,
@@ -16,9 +15,6 @@ const ActionsTopComponent = ({ noDays }) => (
   <StyledActionsTop>
     <RoundButton iconAfter={<IconSurvey />} disabled={noDays}>
       Widy Report
-    </RoundButton>
-    <RoundButton iconAfter={<IconPresentation />} disabled={noDays}>
-      Standup
     </RoundButton>
     <Dropdown
       trigger={<RoundButton iconBefore={<IconCheveronDown />} iconAfter={<IconUserCircle />} />}
