@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Logout from '../../../auth/Logout/Logout.container';
-import { Dropdown, StyledDropdown, Button, RoundButton } from '../../../UI';
+import Logout from '../../auth/Logout/Logout.container';
+import { Dropdown, StyledDropdown, Button, RoundButton } from '../../UI';
 import {
   IconCheveronDown,
   IconCog,

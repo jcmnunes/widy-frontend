@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import Icon from '../../../../icons/Icon';
+import Icon from '../../../icons/Icon';
 
 export const StyledActionsTop = styled.div`
   display: flex;
