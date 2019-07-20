@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import ActionsTopComponent from './ActionsTop.component';
 import fixture from './ActionsTop.fixture';
 
-describe('EOD Components', () => {
+describe('Day Components', () => {
   describe('ActionsTopComponent', () => {
     const props = {
       ...fixture,

@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 import AuthRoute from './AuthRoute';
-import EOD from '../components/eod/EOD/EOD.container';
+import EOD from '../components/day/Day/Day.container';
 import Forgot from '../components/auth/Forgot/Forgot.container';
 import Reset from '../components/auth/Reset/Reset.container';
 import LoginCard from '../components/auth/LoginCard/LoginCard.component';

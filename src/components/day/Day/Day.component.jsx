@@ -12,7 +12,7 @@ import settings from '../../../helpers/settings';
 
 const { pomodoro } = settings();
 
-const StyledEOD = styled.div`
+const StyledDay = styled.div`
   display: grid;
   grid-template-columns: 15px 105px 3fr 2fr;
   height: 100vh;
@@ -26,7 +26,7 @@ const StyledEOD = styled.div`
 
 let timer = null;
 
-const EOD = ({
+const Day = ({
   activeTaskId,
   activeTaskTime,
   activeTaskStart,
@@ -71,21 +71,21 @@ const EOD = ({
   }, [activeTaskId, activeTaskTime, activeTaskStart]); // eslint-disable-line
 
   return (
-    <StyledEOD>
+    <StyledDay>
       <MainBar />
       <Navigation />
       <Board />
       <Sidebar />
       <ActiveTaskPopup />
-    </StyledEOD>
+    </StyledDay>
   );
 };
 
-EOD.defaultProps = {
+Day.defaultProps = {
   activeTaskStart: null,
 };
 
-EOD.propTypes = {
+Day.propTypes = {
   activeTaskId: PropTypes.string.isRequired,
   activeTaskTime: PropTypes.number.isRequired,
   activeTaskTitle: PropTypes.string.isRequired,
@@ -93,4 +93,4 @@ EOD.propTypes = {
   updateActiveTask: PropTypes.func.isRequired,
 };
 
-export default EOD;
+export default Day;
