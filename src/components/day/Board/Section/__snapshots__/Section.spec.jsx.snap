@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SectionComponent should render as expected, without crashing 1`] = `
+exports[`Section should render as expected, without crashing 1`] = `
 .c3 {
   font-size: 16px;
   -webkit-text-decoration: none;
@@ -80,7 +80,7 @@ exports[`SectionComponent should render as expected, without crashing 1`] = `
         fillRule="evenodd"
       />
     </svg>
-
+     
     Add task
   </button>
 </div>

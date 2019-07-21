@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import SectionComponent from './Section.component';
+import Section from './Section';
 import fixture from './Section.fixture';
 import { ADD_TASK } from '../../../modals/types';
 import { findByTestAttr } from '../../../../helpers/testUtils';
@@ -22,17 +22,17 @@ const defaultProps = {
 
 const setup = (props = {}) => {
   const setupProps = { ...defaultProps, ...props };
-  return shallow(<SectionComponent {...setupProps} />);
+  return shallow(<Section {...setupProps} />);
 };
 
-describe('SectionComponent', () => {
+describe('Section', () => {
   let wrapper;
   beforeEach(() => {
     wrapper = setup();
   });
 
   it('should render as expected, without crashing', () => {
-    const tree = TestRenderer.create(<SectionComponent {...defaultProps} />).toJSON();
+    const tree = TestRenderer.create(<Section {...defaultProps} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -43,13 +43,13 @@ describe('SectionComponent', () => {
   });
 
   // xit('should store the dayId and sectionId when adding a new task', () => {
-  //   const wrapper = shallow(<SectionComponent {...props} />);
+  //   const wrapper = shallow(<Section {...props} />);
   //   wrapper.find('Link').simulate('click');
   //   expect(props.storeCreateTaskData).toHaveBeenCalledWith(fixture.dayId, fixture.sectionId);
   // });
   //
   // xit('should render an "EmptyTasks" component when there are no tasks to render', () => {
-  //   const wrapper = shallow(<SectionComponent {...props} />);
+  //   const wrapper = shallow(<Section {...props} />);
   //   expect(wrapper.find('EmptyTasks')).toHaveLength(1);
   // });
   //
@@ -69,7 +69,7 @@ describe('SectionComponent', () => {
   //       },
   //     },
   //   };
-  //   const wrapper = shallow(<SectionComponent {...newProps} />);
+  //   const wrapper = shallow(<Section {...newProps} />);
   //   expect(wrapper.find('Tasks')).toHaveLength(1);
   //   // expect(wrapper.find(Task)).toHaveLength(2);
   //   expect(wrapper.find('EmptyTasks')).toHaveLength(0);

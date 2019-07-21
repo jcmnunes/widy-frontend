@@ -3,7 +3,7 @@ export default {
   sectionId: '5c7c2acdd21c2eb57ee8d1b4',
   section: {
     tasks: [], // List of tasks ids
-    title: 'Title', // SectionComponent title
+    title: 'Title', // Section title
   },
   noTasks: false,
 };

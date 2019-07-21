@@ -8,15 +8,11 @@ import configureStore, { runSaga } from './store';
 import theme from './styles/theme';
 import history from './router/history';
 import { INIT_REQUEST } from './components/auth/Init/Init.types';
-import initializeToaster from './helpers/toast';
 
 import App from './App';
 
 const store = configureStore();
 runSaga();
-
-// eslint-disable-next-line import/prefer-default-export
-export const toast = initializeToaster(store);
 
 store.dispatch({ type: INIT_REQUEST });
 
@@ -30,3 +26,5 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root'),
 );
+
+export default store;
