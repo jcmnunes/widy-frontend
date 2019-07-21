@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Section from './Section';
+import SectionComponent from './Section.component';
 import { openModal } from '../../../../actions/modals';
 import { storeCreateTaskData } from '../../../../actions/tasks';
 import { noTasksSelector } from '../../../../selectors/tasks/tasksSelectors';
@@ -12,4 +12,4 @@ const mapStateToProps = (state, props) => ({
 export default connect(
   mapStateToProps,
   { openModal, storeCreateTaskData },
-)(Section);
+)(SectionComponent);

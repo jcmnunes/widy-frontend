@@ -1,12 +1,11 @@
 import Notifications from 'react-notification-system-redux';
-import store from '..';
 
 const defaultOptions = {
   position: 'br',
   autoDismiss: 5,
 };
 
-export default {
+export default store => ({
   getOptions(notification) {
     let options = notification;
     if (typeof notification === 'string') {
@@ -26,4 +25,4 @@ export default {
   info(notification) {
     store.dispatch(Notifications.info(this.getOptions(notification)));
   },
-};
+});

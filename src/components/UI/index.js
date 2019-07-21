@@ -25,3 +25,4 @@ export { default as Spinner } from './Spinner';
 export { default as Modal, StyledModal } from './Modal';
 export { default as ModalBase } from './ModalBase';
 export { default as FormError } from './FormError';
+export { default as Toaster } from './Toaster/Toaster.container';

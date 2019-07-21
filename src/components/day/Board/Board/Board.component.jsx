@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { DragDropContext } from 'react-beautiful-dnd';
 import moment from 'moment';
-import Section from '../Section';
+import Section from '../Section/Section.container';
 import ActionsTop from '../../ActionsTop/ActionsTop.container';
 import LoadingBoard from './LoadingBoard';
 import NoDays from '../../NoDays';

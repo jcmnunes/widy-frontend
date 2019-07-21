@@ -47,7 +47,7 @@ const StyledLink = styled(Link)`
   margin-top: 12px;
 `;
 
-class Section extends Component {
+class SectionComponent extends Component {
   openModal = () => {
     const { dayId, sectionId } = this.props;
     this.props.storeCreateTaskData(dayId, sectionId);
@@ -120,7 +120,7 @@ class Section extends Component {
   }
 }
 
-Section.propTypes = {
+SectionComponent.propTypes = {
   dayId: PropTypes.string.isRequired,
   sectionId: PropTypes.string.isRequired,
   noTasks: PropTypes.bool.isRequired,
@@ -132,4 +132,4 @@ Section.propTypes = {
   openModal: PropTypes.func.isRequired,
 };
 
-export default Section;
+export default SectionComponent;
