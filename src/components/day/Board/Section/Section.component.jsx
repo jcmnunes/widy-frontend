@@ -4,10 +4,8 @@ import { Droppable } from 'react-beautiful-dnd';
 import Task from '../Task';
 import PlanTask from '../PlanTask/PlanTask.container';
 import { Heading2 } from '../../../UI/Typography';
-import { IconAdd } from '../../../../icons/Icons';
-import theme from '../../../../styles/theme';
 import { IllustrationPlan } from '../../../../icons/Illustrations';
-import { SectionWithNoTasks, StyledLink, StyledSection, Tasks } from './Section.styles';
+import { IconAdd, SectionWithNoTasks, StyledLink, StyledSection, Tasks } from './Section.styles';
 
 class SectionComponent extends Component {
   renderSection = provided => {
@@ -73,7 +71,7 @@ class SectionComponent extends Component {
           onClick={openCreateTaskModal(dayId, sectionId)}
           data-test="add-task-button"
         >
-          <IconAdd primaryColor={theme.neutral500} /> {section.isPlan ? 'Add to Plan' : 'Add task'}
+          <IconAdd /> {section.isPlan ? 'Add to Plan' : 'Add task'}
         </StyledLink>
       </StyledSection>
     );

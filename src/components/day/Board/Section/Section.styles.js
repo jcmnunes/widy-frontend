@@ -1,5 +1,6 @@
 import styled from 'styled-components/macro';
 import { Link } from '../../../UI';
+import Icon from '../../../../icons/Icon';
 
 export const StyledSection = styled.div`
   margin: 32px 0;
@@ -33,4 +34,12 @@ export const Tasks = styled.div`
 
 export const StyledLink = styled(Link)`
   margin-top: 12px;
+`;
+
+export const IconAdd = styled(Icon).attrs({
+  icon: Icon.ADD,
+})`
+  .primary {
+    fill: ${props => props.theme.neutral500};
+  }
 `;
