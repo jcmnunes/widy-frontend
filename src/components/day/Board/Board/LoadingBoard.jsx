@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import styled, { withTheme } from 'styled-components/macro';
+import styled from 'styled-components/macro';
 import { LoadingElement } from '../../../UI';
+import theme from '../../../../styles/theme';
 
 const StyledLoadingBoard = styled.div`
   background: white;
@@ -33,7 +33,7 @@ const Section = styled.div`
   }
 `;
 
-const LoadingBoard = ({ theme }) => {
+const LoadingBoard = () => {
   return (
     <StyledLoadingBoard>
       <Header>
@@ -61,10 +61,4 @@ const LoadingBoard = ({ theme }) => {
   );
 };
 
-LoadingBoard.propTypes = {
-  theme: PropTypes.shape({
-    [PropTypes.object]: PropTypes.object,
-  }).isRequired,
-};
-
-export default withTheme(LoadingBoard);
+export default LoadingBoard;
