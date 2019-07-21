@@ -1,5 +1,5 @@
 import Notifications from 'react-notification-system-redux';
-import store from '..';
+import store from '../store';
 
 const defaultOptions = {
   position: 'br',

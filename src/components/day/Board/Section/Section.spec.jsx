@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Section from './Section';
+import SectionComponent from './Section.component';
 import fixture from './Section.fixture';
 import { ADD_TASK } from '../../../modals/types';
 import { findByTestAttr } from '../../../../helpers/testUtils';
@@ -22,17 +22,17 @@ const defaultProps = {
 
 const setup = (props = {}) => {
   const setupProps = { ...defaultProps, ...props };
-  return shallow(<Section {...setupProps} />);
+  return shallow(<SectionComponent {...setupProps} />);
 };
 
-describe('Section', () => {
+describe('SectionComponent', () => {
   let wrapper;
   beforeEach(() => {
     wrapper = setup();
   });
 
   it('should render as expected, without crashing', () => {
-    const tree = TestRenderer.create(<Section {...defaultProps} />).toJSON();
+    const tree = TestRenderer.create(<SectionComponent {...defaultProps} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -43,13 +43,13 @@ describe('Section', () => {
   });
 
   // xit('should store the dayId and sectionId when adding a new task', () => {
-  //   const wrapper = shallow(<Section {...props} />);
+  //   const wrapper = shallow(<SectionComponent {...props} />);
   //   wrapper.find('Link').simulate('click');
   //   expect(props.storeCreateTaskData).toHaveBeenCalledWith(fixture.dayId, fixture.sectionId);
   // });
   //
   // xit('should render an "EmptyTasks" component when there are no tasks to render', () => {
-  //   const wrapper = shallow(<Section {...props} />);
+  //   const wrapper = shallow(<SectionComponent {...props} />);
   //   expect(wrapper.find('EmptyTasks')).toHaveLength(1);
   // });
   //
@@ -69,7 +69,7 @@ describe('Section', () => {
   //       },
   //     },
   //   };
-  //   const wrapper = shallow(<Section {...newProps} />);
+  //   const wrapper = shallow(<SectionComponent {...newProps} />);
   //   expect(wrapper.find('Tasks')).toHaveLength(1);
   //   // expect(wrapper.find(Task)).toHaveLength(2);
   //   expect(wrapper.find('EmptyTasks')).toHaveLength(0);

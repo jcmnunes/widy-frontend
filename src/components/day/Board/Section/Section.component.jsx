@@ -1,59 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components/macro';
 import { Droppable } from 'react-beautiful-dnd';
 import Task from '../Task';
 import PlanTask from '../PlanTask/PlanTask.container';
-import { Link } from '../../../UI';
 import { Heading2 } from '../../../UI/Typography';
-import { ADD_TASK } from '../../../modals/types';
 import { IconAdd } from '../../../../icons/Icons';
 import theme from '../../../../styles/theme';
 import { IllustrationPlan } from '../../../../icons/Illustrations';
+import { SectionWithNoTasks, StyledLink, StyledSection, Tasks } from './Section.styles';
 
-const StyledSection = styled.div`
-  margin: 32px 0;
-`;
-
-const EmptyTasks = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid ${props => props.theme.neutral100};
-  border-radius: 4px;
-  height: ${props => (props.isPlan && props.noTasks ? '275px' : '96px')};
-  background-color: ${props => (props.isDraggingOver ? props.theme.neutral050 : 'white')};
-  transition: background-color 0.2s ease;
-  font-size: 16px;
-  color: ${props => props.theme.neutral300};
-  font-style: italic;
-  cursor: pointer;
-
-  &:hover {
-    background: ${props => props.theme.neutral050};
-  }
-`;
-EmptyTasks.displayName = 'EmptyTasks';
-
-const Tasks = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-Tasks.displayName = 'Tasks';
-
-const StyledLink = styled(Link)`
-  margin-top: 12px;
-`;
-
-class Section extends Component {
-  openModal = () => {
-    const { dayId, sectionId } = this.props;
-    this.props.storeCreateTaskData(dayId, sectionId);
-    this.props.openModal(ADD_TASK);
-  };
-
+class SectionComponent extends Component {
   renderSection = provided => {
     const { section } = this.props;
     return (
@@ -70,14 +26,14 @@ class Section extends Component {
   };
 
   renderEmptySection = (provided, snapshot) => {
-    const { section, noTasks } = this.props;
+    const { section, noTasks, dayId, sectionId, openCreateTaskModal } = this.props;
     return (
-      <EmptyTasks
+      <SectionWithNoTasks
         ref={provided.innerRef}
         {...provided.droppableProps}
         isDraggingOver={snapshot.isDraggingOver}
         isPlan={section.isPlan}
-        onClick={this.openModal}
+        onClick={openCreateTaskModal(dayId, sectionId)}
         noTasks={noTasks}
       >
         {section.isPlan && (
@@ -96,12 +52,12 @@ class Section extends Component {
           ) : (
             <span>No tasks in section &quot;{section.title}&quot;</span>
           ))}
-      </EmptyTasks>
+      </SectionWithNoTasks>
     );
   };
 
   render() {
-    const { section } = this.props;
+    const { section, dayId, sectionId, openCreateTaskModal } = this.props;
     return (
       <StyledSection>
         <Heading2>{section.title}</Heading2>
@@ -112,7 +68,11 @@ class Section extends Component {
               : this.renderEmptySection(provided, snapshot)
           }
         </Droppable>
-        <StyledLink intent="secondary" onClick={this.openModal} data-test="add-task-button">
+        <StyledLink
+          intent="secondary"
+          onClick={openCreateTaskModal(dayId, sectionId)}
+          data-test="add-task-button"
+        >
           <IconAdd primaryColor={theme.neutral500} /> {section.isPlan ? 'Add to Plan' : 'Add task'}
         </StyledLink>
       </StyledSection>
@@ -120,7 +80,7 @@ class Section extends Component {
   }
 }
 
-Section.propTypes = {
+SectionComponent.propTypes = {
   dayId: PropTypes.string.isRequired,
   sectionId: PropTypes.string.isRequired,
   noTasks: PropTypes.bool.isRequired,
@@ -128,8 +88,7 @@ Section.propTypes = {
     tasks: PropTypes.array,
     title: PropTypes.string,
   }).isRequired,
-  storeCreateTaskData: PropTypes.func.isRequired,
-  openModal: PropTypes.func.isRequired,
+  openCreateTaskModal: PropTypes.func.isRequired,
 };
 
-export default Section;
+export default SectionComponent;
