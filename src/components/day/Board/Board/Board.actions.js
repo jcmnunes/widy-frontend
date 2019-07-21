@@ -3,7 +3,7 @@ import { moveTask, updateTaskInStore } from '../../../../actions/tasks';
 import { resetActiveTask } from '../../../../actions/activeTask';
 
 // eslint-disable-next-line import/prefer-default-export
-export const onDragEnd = dispatch => (sectionsById, activeTaskId) => result => {
+export const onDragEnd = (result, sectionsById, activeTaskId) => dispatch => {
   const { destination, source, draggableId } = result;
 
   if (!destination) return;

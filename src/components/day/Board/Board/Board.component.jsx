@@ -18,8 +18,10 @@ const BoardComponent = ({
   daysLoading,
   activeTaskId,
   onDragEnd,
-}) =>
-  sectionsLoading || daysLoading ? (
+}) => {
+  const handleDragEnd = result => onDragEnd(result, sectionsById, activeTaskId);
+
+  return sectionsLoading || daysLoading ? (
     <LoadingBoard />
   ) : (
     <StyledBoard>
@@ -39,7 +41,7 @@ const BoardComponent = ({
       {daysOrder.length === 0 ? (
         <NoDays />
       ) : (
-        <DragDropContext onDragEnd={onDragEnd(sectionsById, activeTaskId)}>
+        <DragDropContext onDragEnd={handleDragEnd}>
           {dayId &&
             sectionsOrder.map(sectionId => (
               <Section key={sectionId} dayId={dayId} sectionId={sectionId} />
@@ -48,6 +50,7 @@ const BoardComponent = ({
       )}
     </StyledBoard>
   );
+};
 
 BoardComponent.propTypes = {
   sectionsOrder: PropTypes.arrayOf(PropTypes.string).isRequired,
