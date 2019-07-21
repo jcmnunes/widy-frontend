@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Draggable } from 'react-beautiful-dnd';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 import DeleteTaskDialog from '../../../dialogs/DeleteTask/DeleteTask.container';
-import toast from '../../../../helpers/toast';
+import TaskCopyButton from '../TaskCopyButton/TaskCopyButton.component';
 import {
   Actions,
-  IconDuplicate,
   IconEdit,
   IconLaunch,
   IconTrash,
@@ -22,13 +20,6 @@ class PlanTaskComponent extends Component {
   handleTrashClick = event => {
     event.stopPropagation();
     this.setState({ showDeleteTaskDialog: true });
-  };
-
-  handleOnTaskTitleCopy = () => {
-    toast.success({
-      title: 'Done!',
-      message: 'Task title copied',
-    });
   };
 
   deleteTaskCancelAction = () => {
@@ -56,23 +47,19 @@ class PlanTaskComponent extends Component {
               {...provided.dragHandleProps}
               ref={provided.innerRef}
               isSelected={taskId === selectedTaskId}
-              onClick={handlePlanTaskClick(sectionId, taskId)}
+              onClick={handlePlanTaskClick}
               isDragging={snapshot.isDragging}
             >
-              <TitleContainer onDoubleClick={handlePlanTaskRename()}>
+              <TitleContainer onDoubleClick={handlePlanTaskRename}>
                 <StyledIconRightThickArrow />
                 <Title>{taskTitle}</Title>
               </TitleContainer>
               <Actions>
-                <CopyToClipboard text={taskTitle} onCopy={this.handleOnTaskTitleCopy}>
-                  <button type="button" onClick={event => event.stopPropagation()}>
-                    <IconDuplicate />
-                  </button>
-                </CopyToClipboard>
-                <button type="button" onClick={handlePlanTaskLaunch()}>
+                <TaskCopyButton taskTitle={taskTitle} />
+                <button type="button" onClick={handlePlanTaskLaunch}>
                   <IconLaunch />
                 </button>
-                <button type="button" onClick={handlePlanTaskRename()}>
+                <button type="button" onClick={handlePlanTaskRename}>
                   <IconEdit />
                 </button>
                 <button type="button" onClick={this.handleTrashClick}>

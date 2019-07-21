@@ -1,3 +1,13 @@
+export default {
+  byId: {},
+  createTask: {
+    dayId: '',
+    sectionId: '',
+    loading: false,
+  },
+  selected: '',
+};
+
 export const tasksFixture = {
   createTask: {
     dayId: '5c7c2acdd21c2eb57ee8d1b4',
@@ -17,14 +27,4 @@ export const tasksFixture = {
     },
   },
   selected: '5c7c2acdd21c2eb57ee8d1b4',
-};
-
-export default {
-  byId: {},
-  createTask: {
-    dayId: '',
-    sectionId: '',
-    loading: false,
-  },
-  selected: '',
 };

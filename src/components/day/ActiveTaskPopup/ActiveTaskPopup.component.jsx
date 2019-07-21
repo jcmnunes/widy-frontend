@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { Heading2 } from '../../UI/Typography';
-import Task from '../Board/Task/Task';
+import TaskComponent from '../Board/Task/Task.component';
 import settings from '../../../helpers/settings';
 import { getCurrentPomodoroInfo } from '../../../helpers/pomodoro';
 import {
@@ -60,7 +60,7 @@ const ActiveTaskPopupComponent = ({
           {renderTime()} <Units>min</Units>
         </Time>
       </Header>
-      <Task
+      <TaskComponent
         taskId={activeTask.taskId}
         isCompleted={false}
         sectionId={activeTask.sectionId}
@@ -76,7 +76,7 @@ const ActiveTaskPopupComponent = ({
         data-test="task"
       >
         {activeTask.title}
-      </Task>
+      </TaskComponent>
       <StopButton onClick={handlePlayButtonClick}>
         <StyledIconStop icon={Icon.STOP} isInBreak={activeTask.inBreak} />
       </StopButton>

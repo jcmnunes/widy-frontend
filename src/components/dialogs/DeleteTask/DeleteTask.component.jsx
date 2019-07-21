@@ -17,7 +17,7 @@ const DeleteTaskComponent = props => {
       action: props.handleClose,
     },
     {
-      name: 'Delete Task',
+      name: 'Delete',
       intent: 'error',
       action: deleteAction,
     },

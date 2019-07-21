@@ -1,38 +1,33 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components/macro';
-import { IconDotsHorizontal, IconEdit, IconTrash, IconTime } from '../../../../icons/Icons';
 import { Button, Dropdown, StyledDropdown } from '../../../UI';
 import DeleteTaskDialog from '../../../dialogs/DeleteTask/DeleteTask.container';
-import { REGISTER_TIME, RENAME_TASK } from '../../../modals/types';
+import {
+  IconDotsHorizontal,
+  IconEdit,
+  IconTime,
+  IconTrash,
+  StyledTaskMenu,
+  StyledTrigger,
+} from './TaskMenu.styles';
 
-const StyledTaskMenu = styled.div`
-  height: 24px;
-  cursor: pointer;
-`;
+const MenuTrigger = props => (
+  <StyledTrigger type="button" {...props}>
+    <IconDotsHorizontal />
+  </StyledTrigger>
+);
 
-const TaskMenu = ({
+const TaskMenuComponent = ({
   taskId,
   sectionId,
   canRegisterTime,
-  storeSelectedSectionId,
-  storeSelectedTaskId,
-  openModal,
+  handleTaskRename,
+  handleRegisterTimeClick,
 }) => {
   const [showDeleteTaskDialog, setShowDeleteTaskDialog] = useState(false);
 
-  const handleEditClick = () => {
-    storeSelectedSectionId(sectionId);
-    storeSelectedTaskId(taskId);
-    openModal(RENAME_TASK);
-  };
-
   const handleDeleteClick = () => {
     setShowDeleteTaskDialog(true);
-  };
-
-  const handleRegisterTimeClick = () => {
-    openModal(REGISTER_TIME);
   };
 
   const deleteTaskCancelAction = () => {
@@ -42,7 +37,7 @@ const TaskMenu = ({
   return (
     <>
       <StyledTaskMenu>
-        <Dropdown trigger={<IconDotsHorizontal />} position="right">
+        <Dropdown trigger={<MenuTrigger />} position="right">
           <StyledDropdown>
             {canRegisterTime && (
               <Button
@@ -54,7 +49,7 @@ const TaskMenu = ({
                 Register Time
               </Button>
             )}
-            <Button intent="dropdown" iconBefore={<IconEdit />} block onClick={handleEditClick}>
+            <Button intent="dropdown" iconBefore={<IconEdit />} block onClick={handleTaskRename}>
               Rename
             </Button>
             <Button intent="dropdown" iconBefore={<IconTrash />} block onClick={handleDeleteClick}>
@@ -73,13 +68,12 @@ const TaskMenu = ({
   );
 };
 
-TaskMenu.propTypes = {
+TaskMenuComponent.propTypes = {
   taskId: PropTypes.string.isRequired,
   sectionId: PropTypes.string.isRequired,
   canRegisterTime: PropTypes.bool.isRequired,
-  storeSelectedSectionId: PropTypes.func.isRequired,
-  storeSelectedTaskId: PropTypes.func.isRequired,
-  openModal: PropTypes.func.isRequired,
+  handleTaskRename: PropTypes.func.isRequired,
+  handleRegisterTimeClick: PropTypes.func.isRequired,
 };
 
-export default TaskMenu;
+export default TaskMenuComponent;

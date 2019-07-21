@@ -13,9 +13,9 @@ const mapStateToProps = state => ({
   daysOrder: state.days.order,
 });
 
-const mapDispatchToProps = {
-  onDragEnd,
-};
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  onDragEnd: onDragEnd(dispatch, ownProps),
+});
 
 export default connect(
   mapStateToProps,

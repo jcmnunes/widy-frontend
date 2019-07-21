@@ -61,33 +61,6 @@ export const StyledPlanTask = styled.div`
   }
 `;
 
-// primaryColor={trash ? theme.neutral400 : theme.neutral300}
-// secondaryColor={trash ? theme.neutral300 : theme.neutral200}
-
-export const IconDuplicate = styled(Icon).attrs({
-  icon: Icon.DUPLICATE,
-})`
-  .primary {
-    fill: ${props => props.theme.neutral300};
-    transition: ${props => props.theme.transitionAll};
-  }
-
-  .secondary {
-    fill: ${props => props.theme.neutral200};
-    transition: ${props => props.theme.transitionAll};
-  }
-
-  &:hover {
-    .primary {
-      fill: ${props => props.theme.neutral400};
-    }
-
-    .secondary {
-      fill: ${props => props.theme.neutral300};
-    }
-  }
-`;
-
 export const IconEdit = styled(Icon).attrs({
   icon: Icon.EDIT,
 })`

@@ -8,9 +8,9 @@ const mapStateToProps = (state, props) => ({
   noTasks: noTasksSelector(state),
 });
 
-const mapDispatchToProps = {
-  openCreateTaskModal,
-};
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  openCreateTaskModal: openCreateTaskModal(dispatch, ownProps),
+});
 
 export default connect(
   mapStateToProps,

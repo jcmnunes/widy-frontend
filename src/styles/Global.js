@@ -119,6 +119,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     width: auto;
     overflow: visible;
+    cursor: pointer;
 
     background: transparent;
 

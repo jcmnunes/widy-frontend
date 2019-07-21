@@ -1,76 +1,42 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Draggable } from 'react-beautiful-dnd';
-import Task from './Task';
-import { RENAME_TASK } from '../../../modals/types';
+import TaskComponent from './Task.component';
 
-class DraggableTask extends Component {
-  handleTaskClick = () => {
-    const { sectionId, taskId } = this.props;
-    this.props.storeSelectedSectionId(sectionId);
-    this.props.storeSelectedTaskId(taskId);
-  };
-
-  handleTaskDoubleClick = () => {
-    const { sectionId, taskId } = this.props;
-    this.props.storeSelectedSectionId(sectionId);
-    this.props.storeSelectedTaskId(taskId);
-    this.props.openModal(RENAME_TASK);
-  };
-
-  handleTaskCheckboxChange = () => {
-    const { activeTask, sectionId, taskId, isCompleted } = this.props;
-    this.props.storeSelectedSectionId(sectionId);
-    this.props.storeSelectedTaskId(taskId);
-    if (activeTask.taskId === taskId) {
-      this.props.stopTask(taskId, sectionId);
-    }
-    this.props.updateTask(taskId, { completed: !isCompleted, start: null });
-  };
-
-  handleTaskCheckboxClick = e => {
-    e.stopPropagation();
-  };
-
-  render() {
-    const {
-      taskId,
-      sectionId,
-      selectedTaskId,
-      activeTask,
-      index,
-      isCompleted,
-      taskTitle,
-    } = this.props;
-    return (
-      <Draggable draggableId={taskId} index={index}>
-        {(provided, snapshot) => (
-          <Task
-            taskRef={provided.innerRef}
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-            taskId={taskId}
-            sectionId={sectionId}
-            isSelected={taskId === selectedTaskId}
-            isCompleted={isCompleted}
-            isActive={activeTask.taskId === taskId && !activeTask.inBreak}
-            isInBreak={activeTask.taskId === taskId && activeTask.inBreak}
-            onClick={this.handleTaskClick}
-            onDoubleClick={this.handleTaskDoubleClick}
-            onCheckChange={this.handleTaskCheckboxChange}
-            onCheckClick={this.handleTaskCheckboxClick}
-            storeSelectedSectionId={this.props.storeSelectedSectionId}
-            storeSelectedTaskId={this.props.storeSelectedTaskId}
-            openModal={this.props.openModal}
-            isDragging={snapshot.isDragging}
-          >
-            {taskTitle}
-          </Task>
-        )}
-      </Draggable>
-    );
-  }
-}
+const DraggableTask = ({
+  taskId,
+  sectionId,
+  selectedTaskId,
+  activeTask,
+  index,
+  isCompleted,
+  taskTitle,
+  handleTaskClick,
+  handleTaskRename,
+  handleTaskCompletedStateChange,
+}) => (
+  <Draggable draggableId={taskId} index={index}>
+    {(provided, snapshot) => (
+      <TaskComponent
+        taskRef={provided.innerRef}
+        taskId={taskId}
+        sectionId={sectionId}
+        isSelected={taskId === selectedTaskId}
+        isCompleted={isCompleted}
+        isActive={activeTask.taskId === taskId}
+        isInBreak={activeTask.taskId === taskId && activeTask.inBreak}
+        isDragging={snapshot.isDragging}
+        handleTaskClick={handleTaskClick}
+        handleTaskRename={handleTaskRename}
+        handleTaskCompletedStateChange={handleTaskCompletedStateChange}
+        {...provided.draggableProps}
+        {...provided.dragHandleProps}
+      >
+        {taskTitle}
+      </TaskComponent>
+    )}
+  </Draggable>
+);
 
 DraggableTask.propTypes = {
   index: PropTypes.number.isRequired,
@@ -83,11 +49,9 @@ DraggableTask.propTypes = {
   }).isRequired,
   isCompleted: PropTypes.bool.isRequired,
   taskTitle: PropTypes.string.isRequired,
-  storeSelectedTaskId: PropTypes.func.isRequired,
-  storeSelectedSectionId: PropTypes.func.isRequired,
-  openModal: PropTypes.func.isRequired,
-  updateTask: PropTypes.func.isRequired,
-  stopTask: PropTypes.func.isRequired,
+  handleTaskClick: PropTypes.func.isRequired,
+  handleTaskRename: PropTypes.func.isRequired,
+  handleTaskCompletedStateChange: PropTypes.func.isRequired,
 };
 
 export default DraggableTask;

@@ -11,11 +11,11 @@ const mapStateToProps = (state, ownProps) => ({
   taskTitle: state.tasks.byId[ownProps.taskId].title,
 });
 
-const mapDispatchToProps = {
-  handlePlanTaskClick,
-  handlePlanTaskRename,
-  handlePlanTaskLaunch,
-};
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  handlePlanTaskClick: handlePlanTaskClick(dispatch, ownProps),
+  handlePlanTaskRename: handlePlanTaskRename(dispatch),
+  handlePlanTaskLaunch: handlePlanTaskLaunch(dispatch),
+});
 
 export default connect(
   mapStateToProps,

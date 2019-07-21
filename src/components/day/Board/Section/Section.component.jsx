@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Droppable } from 'react-beautiful-dnd';
-import Task from '../Task';
+import Task from '../Task/Task.container';
 import PlanTask from '../PlanTask/PlanTask.container';
 import { Heading2 } from '../../../UI/Typography';
 import { IllustrationPlan } from '../../../../icons/Illustrations';
@@ -24,14 +24,14 @@ class SectionComponent extends Component {
   };
 
   renderEmptySection = (provided, snapshot) => {
-    const { section, noTasks, dayId, sectionId, openCreateTaskModal } = this.props;
+    const { section, noTasks, openCreateTaskModal } = this.props;
     return (
       <SectionWithNoTasks
         ref={provided.innerRef}
         {...provided.droppableProps}
         isDraggingOver={snapshot.isDraggingOver}
         isPlan={section.isPlan}
-        onClick={openCreateTaskModal(dayId, sectionId)}
+        onClick={openCreateTaskModal}
         noTasks={noTasks}
       >
         {section.isPlan && (
@@ -55,7 +55,7 @@ class SectionComponent extends Component {
   };
 
   render() {
-    const { section, dayId, sectionId, openCreateTaskModal } = this.props;
+    const { section, openCreateTaskModal } = this.props;
     return (
       <StyledSection>
         <Heading2>{section.title}</Heading2>
@@ -66,11 +66,7 @@ class SectionComponent extends Component {
               : this.renderEmptySection(provided, snapshot)
           }
         </Droppable>
-        <StyledLink
-          intent="secondary"
-          onClick={openCreateTaskModal(dayId, sectionId)}
-          data-test="add-task-button"
-        >
+        <StyledLink intent="secondary" onClick={openCreateTaskModal} data-test="add-task-button">
           <IconAdd /> {section.isPlan ? 'Add to Plan' : 'Add task'}
         </StyledLink>
       </StyledSection>
@@ -79,8 +75,6 @@ class SectionComponent extends Component {
 }
 
 SectionComponent.propTypes = {
-  dayId: PropTypes.string.isRequired,
-  sectionId: PropTypes.string.isRequired,
   noTasks: PropTypes.bool.isRequired,
   section: PropTypes.shape({
     tasks: PropTypes.array,

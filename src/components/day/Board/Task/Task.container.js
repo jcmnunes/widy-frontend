@@ -1,8 +1,6 @@
 import { connect } from 'react-redux';
 import DraggableTask from './DraggableTask';
-import { storeSelectedSectionId } from '../../../../actions/sections';
-import { stopTask, storeSelectedTaskId, updateTask } from '../../../../actions/tasks';
-import { openModal } from '../../../../actions/modals';
+import { handleTaskClick, handleTaskCompletedStateChange, handleTaskRename } from './Task.actions';
 
 const mapStateToProps = (state, ownProps) => ({
   selectedTaskId: state.tasks.selected,
@@ -11,7 +9,13 @@ const mapStateToProps = (state, ownProps) => ({
   taskTitle: state.tasks.byId[ownProps.taskId].title,
 });
 
+const mapDispatchToProps = dispatch => ({
+  handleTaskClick: handleTaskClick(dispatch),
+  handleTaskRename: handleTaskRename(dispatch),
+  handleTaskCompletedStateChange: handleTaskCompletedStateChange(dispatch),
+});
+
 export default connect(
   mapStateToProps,
-  { storeSelectedTaskId, storeSelectedSectionId, openModal, updateTask, stopTask },
+  mapDispatchToProps,
 )(DraggableTask);
