@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import toast from '../../../../helpers/toast';
+import { Toaster } from '../../../UI/Toaster/Toaster';
 import { StyledButton, IconDuplicate } from './TaskCopyButton.styles';
 
 const TaskCopyButtonComponent = ({ taskTitle, shouldStopPropagation, ...other }) => {
@@ -9,7 +9,7 @@ const TaskCopyButtonComponent = ({ taskTitle, shouldStopPropagation, ...other })
     <CopyToClipboard
       text={taskTitle}
       onCopy={() =>
-        toast.success({
+        Toaster.success({
           title: 'Done!',
           message: 'Task title copied',
         })
