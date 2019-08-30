@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { all } from 'redux-saga/effects';
 import fetchDay from './days/getDay';
 import fetchDays from './days/getDays';
@@ -10,11 +11,11 @@ import startTask from './tasks/startTask';
 import stopTask from './tasks/stopTask';
 import launchTask from './tasks/launchTask';
 import getActiveTask from './activeTask/getActiveTask';
-import login from './auth/login';
-import logout from './auth/logout';
-import forgot from './auth/forgot';
-import reset from './auth/reset';
-import init from './auth/init';
+import login from '../components/auth/Login/Login.saga';
+import logout from '../components/auth/Logout/Logout.saga';
+import forgot from '../components/auth/Forgot/Forgot.sagas';
+import reset from '../components/auth/Reset/Reset.saga';
+import init from '../components/auth/Init/Init.saga';
 
 export default function* rootSaga() {
   yield all([

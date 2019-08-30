@@ -48,16 +48,16 @@ storiesOf('UI components', module)
     defaultValue = 'Action';
     const buttonText = text(label, defaultValue);
 
-    label = 'loading';
+    label = 'isLoading';
     defaultValue = false;
-    const loading = boolean(label, defaultValue);
+    const isLoading = boolean(label, defaultValue);
 
     label = 'disabled';
     defaultValue = false;
     const disabled = boolean(label, defaultValue);
 
     return (
-      <Button intent={intent} size={size} type={type} loading={loading} disabled={disabled}>
+      <Button intent={intent} size={size} type={type} isLoading={isLoading} disabled={disabled}>
         {buttonText}
       </Button>
     );

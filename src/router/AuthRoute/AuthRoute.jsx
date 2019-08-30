@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 
+// TODO ➜ Fix the linter error below
+// eslint-disable-next-line react/prop-types
 const AuthRoute = ({ component: Component, authenticated, ...rest }) => (
   <Route
     {...rest}
@@ -14,7 +16,6 @@ const AuthRoute = ({ component: Component, authenticated, ...rest }) => (
 );
 
 AuthRoute.propTypes = {
-  component: PropTypes.func.isRequired,
   authenticated: PropTypes.bool.isRequired,
 };
 
