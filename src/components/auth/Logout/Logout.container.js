@@ -7,9 +7,9 @@ export const mapStateToProps = state => ({
   loading: loadingSelector(state),
 });
 
-const mapDispatchToProps = dispatch => ({
-  logoutRequest: () => dispatch(logoutRequest()),
-});
+const mapDispatchToProps = {
+  logoutRequest,
+};
 
 export default connect(
   mapStateToProps,

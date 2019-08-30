@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import EOD from './Day.component';
+import Day from './Day.component';
 import { updateActiveTask } from '../../../actions/activeTask';
 
 const mapStateToProps = state => ({
@@ -12,4 +12,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { updateActiveTask },
-)(EOD);
+)(Day);

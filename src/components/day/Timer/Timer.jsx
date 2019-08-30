@@ -53,9 +53,6 @@ Timer.propTypes = {
     taskId: PropTypes.string.isRequired,
     inBreak: PropTypes.bool.isRequired,
   }).isRequired,
-  theme: PropTypes.shape({
-    [PropTypes.string]: PropTypes.string,
-  }).isRequired,
   startTask: PropTypes.func.isRequired,
   stopTask: PropTypes.func.isRequired,
   size: PropTypes.number,

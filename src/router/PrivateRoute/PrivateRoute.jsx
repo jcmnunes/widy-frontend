@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+// TODO ➜ Fix the linter error below
 // eslint-disable-next-line react/prop-types
 const PrivateRoute = ({ component: Component, authenticated, ...rest }) => (
   <Route
@@ -15,7 +16,6 @@ const PrivateRoute = ({ component: Component, authenticated, ...rest }) => (
 );
 
 PrivateRoute.propTypes = {
-  // component: PropTypes.element.isRequired,
   authenticated: PropTypes.bool.isRequired,
   location: PropTypes.shape({
     hash: PropTypes.string,
