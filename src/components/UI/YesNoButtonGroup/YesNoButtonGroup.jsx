@@ -29,7 +29,7 @@ const YesNoButtonGroup = ({ theme, cancelAction }) => {
 
 YesNoButtonGroup.propTypes = {
   theme: PropTypes.shape({
-    [PropTypes.string]: PropTypes.string,
+    red400: PropTypes.string,
   }).isRequired,
   cancelAction: PropTypes.func.isRequired,
 };

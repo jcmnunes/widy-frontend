@@ -45,6 +45,7 @@ SidebarHeader.defaultProps = {
 
 SidebarHeader.propTypes = {
   selectedTask: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
   }).isRequired,
   selectedDay: PropTypes.shape({

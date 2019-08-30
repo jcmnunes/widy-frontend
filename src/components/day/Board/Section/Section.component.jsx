@@ -77,8 +77,10 @@ class SectionComponent extends Component {
 SectionComponent.propTypes = {
   noTasks: PropTypes.bool.isRequired,
   section: PropTypes.shape({
+    id: PropTypes.string,
     tasks: PropTypes.array,
     title: PropTypes.string,
+    isPlan: PropTypes.bool,
   }).isRequired,
   openCreateTaskModal: PropTypes.func.isRequired,
 };
