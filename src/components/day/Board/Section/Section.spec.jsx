@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import SectionComponent from './Section.component';
+import SectionComponent from './Section';
 import fixture from './Section.fixture';
 import { ADD_TASK } from '../../../modals/types';
 import { findByTestAttr } from '../../../../helpers/testUtils';

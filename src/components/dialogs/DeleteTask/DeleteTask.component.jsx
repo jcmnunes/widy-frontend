@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Dialog } from '../../UI';
+import Dialog from '../../UI/Dialog';
+// import { Dialog } from '@binarycapsule/ui-capsules';
 
 const DeleteTaskComponent = props => {
   const deleteAction = () => {
@@ -30,6 +31,17 @@ const DeleteTaskComponent = props => {
       </Dialog>
     )
   );
+
+  // return (
+  //   <Dialog
+  //     isOpen={props.show}
+  //     onRequestClose={props.handleClose}
+  //     contentLabel="Example dialog"
+  //     actions={actions}
+  //   >
+  //     Are you sure you want to delete?
+  //   </Dialog>
+  // );
 };
 
 DeleteTaskComponent.propTypes = {

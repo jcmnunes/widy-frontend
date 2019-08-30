@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import ActiveTaskPopupComponent from './ActiveTaskPopup.component';
+import ActiveTaskPopup from './ActiveTaskPopup';
 import fixture from './ActiveTaskPopup.fixture';
 import { findByTestAttr } from '../../../helpers/testUtils';
 
@@ -28,7 +28,7 @@ const defaultProps = {
 
 const setup = (props = {}) => {
   const setupProps = { ...defaultProps, ...props };
-  return shallow(<ActiveTaskPopupComponent {...setupProps} />);
+  return shallow(<ActiveTaskPopup {...setupProps} />);
 };
 
 describe('ActiveTaskPopupComponent', () => {

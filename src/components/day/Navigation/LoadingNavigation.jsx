@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import { LoadingElement } from '../../UI';
+import { LoadingMask } from '@binarycapsule/ui-capsules';
 
 const StyledLoadingNavigation = styled.div`
   & > * {
@@ -11,10 +11,10 @@ const StyledLoadingNavigation = styled.div`
 const LoadingNavigation = () => {
   return (
     <StyledLoadingNavigation>
-      <LoadingElement width="100%" height="40px" />
-      <LoadingElement width="100%" height="40px" />
-      <LoadingElement width="100%" height="40px" />
-      <LoadingElement width="100%" height="40px" />
+      <LoadingMask width="100%" height="40px" />
+      <LoadingMask width="100%" height="40px" />
+      <LoadingMask width="100%" height="40px" />
+      <LoadingMask width="100%" height="40px" />
     </StyledLoadingNavigation>
   );
 };

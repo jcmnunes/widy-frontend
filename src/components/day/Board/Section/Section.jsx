@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Droppable } from 'react-beautiful-dnd';
+import { Button } from '@binarycapsule/ui-capsules';
 import Task from '../Task/Task.container';
 import PlanTask from '../PlanTask/PlanTask.container';
-import { Heading2 } from '../../../UI/Typography';
+import { Heading2 } from '../../../common/Typography';
 import { IllustrationPlan } from '../../../../icons/Illustrations';
-import { IconAdd, SectionWithNoTasks, StyledLink, StyledSection, Tasks } from './Section.styles';
+import { SectionWithNoTasks, StyledSection, Tasks } from './Section.styles';
 
-class SectionComponent extends Component {
+class Section extends Component {
   renderSection = provided => {
     const { section } = this.props;
     return (
@@ -66,15 +67,21 @@ class SectionComponent extends Component {
               : this.renderEmptySection(provided, snapshot)
           }
         </Droppable>
-        <StyledLink intent="secondary" onClick={openCreateTaskModal} data-test="add-task-button">
-          <IconAdd /> {section.isPlan ? 'Add to Plan' : 'Add task'}
-        </StyledLink>
+        <Button
+          appearance="minimal"
+          iconBefore="PLUS"
+          onClick={openCreateTaskModal}
+          style={{ marginTop: 8 }}
+          data-test="add-task-button"
+        >
+          {section.isPlan ? 'Add to Plan' : 'Add task'}
+        </Button>
       </StyledSection>
     );
   }
 }
 
-SectionComponent.propTypes = {
+Section.propTypes = {
   noTasks: PropTypes.bool.isRequired,
   section: PropTypes.shape({
     id: PropTypes.string,
@@ -85,4 +92,4 @@ SectionComponent.propTypes = {
   openCreateTaskModal: PropTypes.func.isRequired,
 };
 
-export default SectionComponent;
+export default Section;

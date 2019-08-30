@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { Toaster } from '../../../UI/Toaster/Toaster';
-import { StyledButton, IconDuplicate } from './TaskCopyButton.styles';
+import { Toaster, IconButton } from '@binarycapsule/ui-capsules';
 
-const TaskCopyButtonComponent = ({ taskTitle, shouldStopPropagation, ...other }) => {
+const TaskCopyButton = ({ taskTitle, shouldStopPropagation, ...other }) => {
   return (
     <CopyToClipboard
       text={taskTitle}
@@ -17,23 +16,18 @@ const TaskCopyButtonComponent = ({ taskTitle, shouldStopPropagation, ...other })
       data-test="copy-button"
       {...other}
     >
-      <StyledButton
-        type="button"
-        onClick={event => shouldStopPropagation && event.stopPropagation()}
-      >
-        <IconDuplicate />
-      </StyledButton>
+      <IconButton icon="COPY" onClick={event => shouldStopPropagation && event.stopPropagation()} />
     </CopyToClipboard>
   );
 };
 
-TaskCopyButtonComponent.defaultProps = {
+TaskCopyButton.defaultProps = {
   shouldStopPropagation: true,
 };
 
-TaskCopyButtonComponent.propTypes = {
+TaskCopyButton.propTypes = {
   taskTitle: PropTypes.string.isRequired,
   shouldStopPropagation: PropTypes.bool,
 };
 
-export default TaskCopyButtonComponent;
+export default TaskCopyButton;

@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Draggable } from 'react-beautiful-dnd';
+import { IconButton } from '@binarycapsule/ui-capsules';
 import DeleteTaskDialog from '../../../dialogs/DeleteTask/DeleteTask.container';
-import TaskCopyButton from '../TaskCopyButton/TaskCopyButton.component';
+import TaskCopyButton from '../TaskCopyButton/TaskCopyButton';
 import {
   Actions,
-  IconEdit,
-  IconLaunch,
-  IconTrash,
   StyledIconRightThickArrow,
   StyledPlanTask,
   Title,
@@ -56,15 +54,9 @@ class PlanTaskComponent extends Component {
               </TitleContainer>
               <Actions>
                 <TaskCopyButton taskTitle={taskTitle} />
-                <button type="button" onClick={handlePlanTaskLaunch}>
-                  <IconLaunch />
-                </button>
-                <button type="button" onClick={handlePlanTaskRename}>
-                  <IconEdit />
-                </button>
-                <button type="button" onClick={this.handleTrashClick}>
-                  <IconTrash />
-                </button>
+                <IconButton icon="LAUNCH" onClick={handlePlanTaskLaunch} />
+                <IconButton icon="EDIT" onClick={handlePlanTaskRename} />
+                <IconButton icon="TRASH" onClick={this.handleTrashClick} />
               </Actions>
             </StyledPlanTask>
           )}

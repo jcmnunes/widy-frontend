@@ -1,21 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Dropdown, StyledDropdown } from '../../../UI';
+import { Dropdown, DropdownItem, IconButton } from '@binarycapsule/ui-capsules';
 import DeleteTaskDialog from '../../../dialogs/DeleteTask/DeleteTask.container';
-import {
-  IconDotsHorizontal,
-  IconEdit,
-  IconTime,
-  IconTrash,
-  StyledTaskMenu,
-  StyledTrigger,
-} from './TaskMenu.styles';
-
-const MenuTrigger = props => (
-  <StyledTrigger type="button" {...props}>
-    <IconDotsHorizontal />
-  </StyledTrigger>
-);
+import { StyledTaskMenu } from './TaskMenu.styles';
 
 const TaskMenuComponent = ({
   taskId,
@@ -34,28 +21,16 @@ const TaskMenuComponent = ({
     setShowDeleteTaskDialog(false);
   };
 
+  // TODO ➜ Remove the onClick handler from the trigger
   return (
     <>
       <StyledTaskMenu>
-        <Dropdown trigger={<MenuTrigger />} position="right">
-          <StyledDropdown>
-            {canRegisterTime && (
-              <Button
-                intent="dropdown"
-                iconBefore={<IconTime />}
-                block
-                onClick={handleRegisterTimeClick}
-              >
-                Register Time
-              </Button>
-            )}
-            <Button intent="dropdown" iconBefore={<IconEdit />} block onClick={handleTaskRename}>
-              Rename
-            </Button>
-            <Button intent="dropdown" iconBefore={<IconTrash />} block onClick={handleDeleteClick}>
-              Delete
-            </Button>
-          </StyledDropdown>
+        <Dropdown trigger={<IconButton icon="DOTS_H" onClick={() => {}} />} placement="right">
+          {canRegisterTime ? (
+            <DropdownItem text="Register Time" icon="TIME" handleAction={handleRegisterTimeClick} />
+          ) : null}
+          <DropdownItem text="Rename" icon="EDIT" handleAction={handleTaskRename} />
+          <DropdownItem text="Delete" icon="TRASH" handleAction={handleDeleteClick} />
         </Dropdown>
       </StyledTaskMenu>
       <DeleteTaskDialog

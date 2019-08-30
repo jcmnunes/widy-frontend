@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import styled from 'styled-components/macro';
-import EditableInput from '../../../UI/EditableInput';
+import { EditableInput } from '@binarycapsule/ui-capsules';
 
 const StyledSidebarHeader = styled.div`
   color: ${props => props.theme.neutral700};
@@ -16,10 +16,6 @@ const TopBar = styled.div`
   justify-content: space-between;
 `;
 
-const StyledEditableInput = styled(EditableInput)`
-  margin-left: -16px;
-`;
-
 const SidebarHeader = ({ selectedTask, selectedDay, updateTask }) => {
   const updateTaskTitle = title => {
     const payload = { title };
@@ -31,10 +27,13 @@ const SidebarHeader = ({ selectedTask, selectedDay, updateTask }) => {
       <TopBar>
         <div>{selectedDay ? moment(selectedDay.day).format('ddd DD MMM YYYY') : ''}</div>
       </TopBar>
-      <StyledEditableInput
-        initialValue={selectedTask ? selectedTask.title : ''}
-        action={updateTaskTitle}
-      />
+      <div style={{ marginLeft: -14 }}>
+        <EditableInput
+          size="large"
+          value={selectedTask ? selectedTask.title : ''}
+          action={updateTaskTitle}
+        />
+      </div>
     </StyledSidebarHeader>
   );
 };

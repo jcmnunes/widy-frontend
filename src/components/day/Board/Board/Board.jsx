@@ -8,7 +8,7 @@ import LoadingBoard from './LoadingBoard';
 import NoDays from '../../NoDays';
 import { Header, LargeText, StyledBoard, Title } from './Boards.styles';
 
-const BoardComponent = ({
+const Board = ({
   sectionsOrder,
   day,
   sectionsLoading,
@@ -52,7 +52,7 @@ const BoardComponent = ({
   );
 };
 
-BoardComponent.propTypes = {
+Board.propTypes = {
   sectionsOrder: PropTypes.arrayOf(PropTypes.string).isRequired,
   day: PropTypes.string.isRequired,
   sectionsLoading: PropTypes.bool.isRequired,
@@ -66,4 +66,4 @@ BoardComponent.propTypes = {
   onDragEnd: PropTypes.func.isRequired,
 };
 
-export default BoardComponent;
+export default Board;

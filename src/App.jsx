@@ -6,7 +6,6 @@ import Notifications from './components/UI/Toaster/Toaster';
 import PageSpinner from './components/UI/PageSpinner';
 import { Modal } from './components/UI';
 import Routes from './router/routes';
-import GlobalStyle from './styles/Global';
 import { version } from '../package.json';
 
 class App extends Component {
@@ -27,7 +26,6 @@ class App extends Component {
         {loading ? <PageSpinner /> : <Routes />}
         <Modal />
         <Notifications />
-        <GlobalStyle />
       </div>
     );
   }

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { Heading2 } from '../../UI/Typography';
-import TaskComponent from '../Board/Task/Task.component';
+import { Checkbox, Tooltip } from '@binarycapsule/ui-capsules';
+import { Heading2 } from '../../common/Typography';
 import settings from '../../../helpers/settings';
 import { getCurrentPomodoroInfo } from '../../../helpers/pomodoro';
 import {
@@ -14,10 +14,11 @@ import {
   Units,
 } from './ActiveTaskPopup.styles';
 import Icon from '../../../icons/Icon';
+import { StyledTask, TaskTitle } from '../Board/Task/Task.styles';
 
 const { pomodoro } = settings();
 
-const ActiveTaskPopupComponent = ({
+const ActiveTaskPopup = ({
   activeTask,
   selectedDayId,
   storeSelectedDay,
@@ -60,31 +61,34 @@ const ActiveTaskPopupComponent = ({
           {renderTime()} <Units>min</Units>
         </Time>
       </Header>
-      <TaskComponent
-        taskId={activeTask.taskId}
-        isCompleted={false}
-        sectionId={activeTask.sectionId}
-        isSelected
+      <StyledTask
         isActive
+        isSelected
+        isCompleted={false}
         isInBreak={activeTask.inBreak}
-        renderControls={false}
         onClick={handleTaskClick}
-        onCheckClick={handleCheckClick}
-        onCheckChange={handleCheckChange}
-        isDragging={false}
-        isInActiveTaskPopup
-        data-test="task"
       >
-        {activeTask.title}
-      </TaskComponent>
-      <StopButton onClick={handlePlayButtonClick}>
-        <StyledIconStop icon={Icon.STOP} isInBreak={activeTask.inBreak} />
-      </StopButton>
+        <Tooltip placement="top" tooltip="Complete the task">
+          <Checkbox
+            size="large"
+            checked={false}
+            onChange={handleCheckChange}
+            onClick={handleCheckClick}
+            style={{ display: 'block' }}
+          />
+        </Tooltip>
+        <TaskTitle>{activeTask.title}</TaskTitle>
+        <Tooltip placement="top" tooltip="Stop the task">
+          <StopButton onClick={handlePlayButtonClick}>
+            <StyledIconStop icon={Icon.STOP} isInBreak={activeTask.inBreak} />
+          </StopButton>
+        </Tooltip>
+      </StyledTask>
     </StyledPopup>
   ) : null;
 };
 
-ActiveTaskPopupComponent.propTypes = {
+ActiveTaskPopup.propTypes = {
   activeTask: PropTypes.shape({
     taskId: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -101,4 +105,4 @@ ActiveTaskPopupComponent.propTypes = {
   updateTask: PropTypes.func.isRequired,
 };
 
-export default ActiveTaskPopupComponent;
+export default ActiveTaskPopup;

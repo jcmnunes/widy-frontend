@@ -12,6 +12,7 @@ export const Actions = styled.div`
   height: 24px;
 
   & > * {
+    color: ${props => props.theme.neutral400};
     cursor: pointer;
     margin-left: 8px;
   }

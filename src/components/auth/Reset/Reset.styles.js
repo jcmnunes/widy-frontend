@@ -43,3 +43,9 @@ export const Footer = styled.div`
   text-align: center;
   margin-top: 48px;
 `;
+
+export const InputField = styled.label`
+  margin-bottom: 16px;
+  display: block;
+  font-size: 18px;
+`;

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Footer, Helper, StyledForm, Title } from './Forgot.styles';
-import { InputField, Button, Link, Message } from '../../UI';
+import { Button, Input, Message } from '@binarycapsule/ui-capsules';
+import Link from '../../common/Link/Link';
+import { Container, Footer, Helper, StyledForm, Title, InputField } from './Forgot.styles';
 import Logo from '../Logo/Logo.component';
 
 class Forgot extends Component {
@@ -69,25 +70,27 @@ class Forgot extends Component {
             Enter your email address below. We’ll email instructions on how to reset your password.
           </Helper>
           {message.length > 0 && (
-            <Message intent="success" style={{ marginBottom: 24 }}>
+            <Message appearance="success" style={{ marginBottom: 24 }}>
               {message}
             </Message>
           )}
-          <InputField
-            placeholder="Email address"
-            value={this.state.email}
-            name="email"
-            type="text"
-            error={emailError}
-            onChange={this.handleOnChange}
-          />
-          <Button type="submit" intent="primary" size="large" isLoading={loading} block>
+          <InputField>
+            Email:
+            <Input
+              placeholder="you@example.com"
+              value={this.state.email}
+              name="email"
+              type="text"
+              error={emailError}
+              size="large"
+              onChange={this.handleOnChange}
+            />
+          </InputField>
+          <Button type="submit" appearance="primary" size="large" isLoading={loading} isBlock>
             Reset password
           </Button>
           <Footer>
-            <Link to="/login" size="large">
-              Back to Login
-            </Link>
+            <Link to="/login">Back to Login</Link>
           </Footer>
         </StyledForm>
       </Container>
