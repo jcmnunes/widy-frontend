@@ -1,6 +1,7 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { updateTask } from '../../api/tasks';
 import * as types from '../../actions/tasks/types';
+// eslint-disable-next-line import/no-cycle
 import toast from '../../helpers/toast';
 
 const getDayId = state => state.days.selected;

@@ -1,4 +1,5 @@
 import Notifications from 'react-notification-system-redux';
+// eslint-disable-next-line import/no-cycle
 import store from '../store';
 
 const defaultOptions = {

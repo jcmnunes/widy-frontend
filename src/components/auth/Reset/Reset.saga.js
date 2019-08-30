@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import history from '../../../router/history';
+// eslint-disable-next-line import/no-cycle
 import toast from '../../../helpers/toast';
 import { RESET_REQUEST } from './Reset.types';
 import { resetFailure, resetSuccess } from './Reset.actions';

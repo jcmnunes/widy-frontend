@@ -1,34 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { withTheme } from 'styled-components/macro';
 import moment from 'moment';
 import Timer from '../Timer';
 import Stats from './Stats';
 import { getCurrentPomodoroInfo } from '../../../helpers/pomodoro';
 import settings from '../../../helpers/settings';
+import { StyledPomodoro, Time, Units } from './Pomodoro.styles';
 
 const { pomodoro } = settings();
-
-const StyledPomodoro = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 48px;
-`;
-
-const Time = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  margin-left: 8px;
-  font-size: 24px;
-  color: ${props => props.theme.neutral700};
-`;
-
-const Units = styled.div`
-  font-size: 16px;
-  margin-left: 4px;
-`;
 
 const Pomodoro = ({ taskId, sectionId, isTaskActive, activeTask, selectedTask }) => {
   const { time, start } = activeTask;
@@ -66,6 +45,8 @@ Pomodoro.propTypes = {
     sectionId: PropTypes.string.isRequired,
     dayId: PropTypes.string.isRequired,
     inBreak: PropTypes.bool.isRequired,
+    time: PropTypes.number.isRequired,
+    start: PropTypes.string,
   }).isRequired,
   selectedTask: PropTypes.shape({
     time: PropTypes.number.isRequired,
@@ -74,4 +55,4 @@ Pomodoro.propTypes = {
   }).isRequired,
 };
 
-export default withTheme(Pomodoro);
+export default Pomodoro;

@@ -12,7 +12,9 @@ jest.mock('../../../helpers/settings', () => () => ({
   },
 }));
 
-jest.mock('../BoardComponent/TaskComponent/TaskComponent', () => () => <div data-test="Task">mockTask</div>);
+jest.mock('../BoardComponent/TaskComponent/TaskComponent', () => () => (
+  <div data-test="Task">mockTask</div>
+));
 
 const defaultProps = {
   ...fixture,
