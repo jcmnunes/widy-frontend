@@ -434,7 +434,8 @@ class NotesEditor extends React.Component {
 
 NotesEditor.propTypes = {
   theme: PropTypes.shape({
-    [PropTypes.string]: PropTypes.string,
+    neutral600: PropTypes.string,
+    yellow700: PropTypes.string,
   }).isRequired,
   updateTask: PropTypes.func.isRequired,
   selectedTask: PropTypes.shape({

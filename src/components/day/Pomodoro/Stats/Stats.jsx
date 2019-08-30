@@ -62,9 +62,6 @@ const Stats = ({ time }) => {
 
 Stats.propTypes = {
   time: PropTypes.number.isRequired,
-  theme: PropTypes.shape({
-    [PropTypes.string]: PropTypes.string,
-  }).isRequired,
 };
 
 export default Stats;

@@ -91,6 +91,8 @@ ActiveTaskPopupComponent.propTypes = {
     sectionId: PropTypes.string.isRequired,
     dayId: PropTypes.string.isRequired,
     inBreak: PropTypes.bool.isRequired,
+    time: PropTypes.number.isRequired,
+    start: PropTypes.string,
   }).isRequired,
   selectedDayId: PropTypes.string.isRequired,
   storeSelectedDay: PropTypes.func.isRequired,
