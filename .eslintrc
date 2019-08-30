@@ -12,7 +12,22 @@
       {
         "devDependencies": [".storybook/**", "src/components/UI/**/*.stories.jsx"]
       }
-    ]
+    ],
+    "no-restricted-imports": [
+      "error",
+      {
+        "paths": [
+          {
+            "name": "styled-components",
+            "message": "Please import from styled-components/macro."
+          }
+        ],
+        "patterns": ["!styled-components/macro"]
+      }
+    ],
+    "react/jsx-props-no-spreading": 0,
+    "react/state-in-constructor": 0,
+    "react/jsx-curly-newline": 0
   },
   "settings": {
     "import/resolver": {

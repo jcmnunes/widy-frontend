@@ -72,4 +72,7 @@ export default {
   bp_medium: '920px',
   bp_small: '720px',
   bp_mobile: '450px',
+
+  /* Transitions */
+  transitionAll: 'all 0.2s ease',
 };

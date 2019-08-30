@@ -54,7 +54,7 @@ class ModalBase extends Component {
               <Button type="button" intent="secondary" size="large" onClick={this.props.closeModal}>
                 Cancel
               </Button>
-              <Button type="submit" loading={loading} intent="primary" size="large">
+              <Button type="submit" isLoading={loading} intent="primary" size="large">
                 {actionText}
               </Button>
             </div>

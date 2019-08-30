@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 const getColors = props => {
   const colors = {};
@@ -29,6 +29,7 @@ const CustomRadio = styled.span`
   width: 25px;
   background-color: ${props => props.theme.neutral100};
   border-radius: 50%;
+  transition: all 0.2s ease;
 
   &:after {
     position: absolute;
@@ -59,6 +60,13 @@ const StyledInput = styled.input`
   position: absolute;
   opacity: 0;
   cursor: pointer;
+
+  &:focus {
+    & ~ ${CustomRadio} {
+      outline: none;
+      box-shadow: 0 0 0 4px ${props => props.theme.blue100};
+    }
+  }
 
   &:checked {
     ~ ${CustomRadio} {

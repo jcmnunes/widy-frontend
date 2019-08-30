@@ -1,6 +1,7 @@
 export const sectionsFixture = {
   loading: true,
   selected: '5c7c2acdd21c2eb57ee8d1b4',
+  day: '2019-07-20',
   byId: {
     '5c7c2acdd21c2eb57ee8d1b4': {
       title: 'Plan',
@@ -17,6 +18,7 @@ export const sectionsFixture = {
 export default {
   loading: false,
   selected: '',
+  day: '',
   byId: {},
   order: [],
 };

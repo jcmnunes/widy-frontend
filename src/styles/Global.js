@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components/macro';
 
 import sourceSansProRegular from './fonts/source-sans-pro-v11-latin-regular.woff';
 import sourceSansProRegularWoff2 from './fonts/source-sans-pro-v11-latin-regular.woff2';
@@ -114,8 +114,39 @@ const GlobalStyle = createGlobalStyle`
     color: black;
   }
   button {
-    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
-    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    cursor: pointer;
+
+    background: transparent;
+
+    /* inherit font & color from ancestor */
+    color: inherit;
+    font: inherit;
+
+    /* Normalize \`line-height\`. Cannot be changed from \`normal\` in Firefox 4+. */
+    line-height: normal;
+
+    /* Corrects font smoothing for webkit */
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+
+    /* Corrects inability to style clickable \`input\` types in iOS */
+    -webkit-appearance: none;
+
+    /* Remove excess padding and border in Firefox 4+ */
+    &::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
+  }
+  
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+    box-shadow: none;
   }
 `;
 

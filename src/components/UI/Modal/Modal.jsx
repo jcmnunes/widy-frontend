@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
-import { AddTask, LaunchTask, RenameTask } from '../../modals';
+import styled from 'styled-components/macro';
+import { AddTask, LaunchTask, RenameTask, RegisterTime } from '../../modals';
 import * as types from '../../modals/types';
 
 export const StyledModal = styled.div`
@@ -78,6 +78,8 @@ const Modal = ({ modal }) => {
       return <LaunchTask />;
     case types.RENAME_TASK:
       return <RenameTask />;
+    case types.REGISTER_TIME:
+      return <RegisterTime />;
     default:
       return null;
   }

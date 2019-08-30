@@ -25,9 +25,9 @@ storiesOf('UI components', module)
     defaultValue = true;
     const iconAfter = boolean(label, defaultValue);
 
-    label = 'loading';
+    label = 'isLoading';
     defaultValue = false;
-    const loading = boolean(label, defaultValue);
+    const isLoading = boolean(label, defaultValue);
 
     label = 'disabled';
     defaultValue = false;
@@ -37,7 +37,7 @@ storiesOf('UI components', module)
       <RoundButton
         iconBefore={iconBefore ? <IconCheveronDown /> : null}
         iconAfter={iconAfter ? <IconUserCircle /> : null}
-        loading={loading}
+        isLoading={isLoading}
         disabled={disabled}
       >
         {buttonText}

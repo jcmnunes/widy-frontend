@@ -1,13 +1,19 @@
 import { connect } from 'react-redux';
-import Forgot from './Forgot';
-import { forgot, resetForgotMessage } from '../../../actions/auth';
+import Forgot from './Forgot.component';
+import { loadingSelector, messageSelector } from './Forgot.selectors';
+import { forgotRequest, resetForgotMessage } from './Forgot.actions';
 
 export const mapStateToProps = state => ({
-  loading: state.auth.forgot.loading,
-  message: state.auth.forgot.message,
+  loading: loadingSelector(state),
+  message: messageSelector(state),
 });
+
+const mapDispatchToProps = {
+  forgotRequest,
+  resetForgotMessage,
+};
 
 export default connect(
   mapStateToProps,
-  { forgot, resetForgotMessage },
+  mapDispatchToProps,
 )(Forgot);

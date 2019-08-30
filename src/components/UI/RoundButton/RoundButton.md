@@ -1,7 +1,7 @@
 # RoundButton
 
 A special kind of button. It was designed originally to be used in the actions
-bar inside the Board.
+bar inside the BoardComponent.
 
 ### Usage
 
