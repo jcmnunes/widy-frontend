@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 import { Checkbox } from '@binarycapsule/ui-capsules';
 import Timer from '../../Timer';
 import TaskMenu from '../TaskMenu/TaskMenu.container';
-import TaskCopyButton from '../TaskCopyButton/TaskCopyButton';
-import { Control, Controls, StyledCopyButton, StyledTask, TaskTitle } from './Task.styles';
+import { Control, Controls, StyledTask, TaskTitle } from './Task.styles';
 
-const TaskComponent = ({
+const Task = ({
   taskRef,
   taskId,
   sectionId,
@@ -37,9 +36,11 @@ const TaskComponent = ({
       onChange={() => handleTaskCompletedStateChange(isActive, isCompleted, taskId, sectionId)}
     />
     <TaskTitle onDoubleClick={() => handleTaskRename()}>{children}</TaskTitle>
+    {/*
     <StyledCopyButton>
       <TaskCopyButton taskTitle={children} />
     </StyledCopyButton>
+    */}
     {!isCompleted && (
       <Controls>
         <Timer taskId={taskId} sectionId={sectionId} />
@@ -51,11 +52,11 @@ const TaskComponent = ({
   </StyledTask>
 );
 
-TaskComponent.defaultProps = {
+Task.defaultProps = {
   taskRef: null,
 };
 
-TaskComponent.propTypes = {
+Task.propTypes = {
   taskRef: PropTypes.func,
   taskId: PropTypes.string.isRequired,
   sectionId: PropTypes.string.isRequired,
@@ -70,4 +71,4 @@ TaskComponent.propTypes = {
   handleTaskCompletedStateChange: PropTypes.func.isRequired,
 };
 
-export default TaskComponent;
+export default Task;

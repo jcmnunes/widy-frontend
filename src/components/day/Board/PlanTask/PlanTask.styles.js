@@ -1,6 +1,5 @@
 import styled from 'styled-components/macro';
 import { IconRightThickArrow } from '../../../../icons/Icons';
-import Icon from '../../../../icons/Icon';
 
 const getTaskBackground = props => {
   if (props.isDragging) return props.theme.blue050;
@@ -62,74 +61,14 @@ export const StyledPlanTask = styled.div`
   }
 `;
 
-export const IconEdit = styled(Icon).attrs({
-  icon: Icon.EDIT,
-})`
-  .primary {
-    fill: ${props => props.theme.neutral300};
-    transition: ${props => props.theme.transitionAll};
-  }
-
-  .secondary {
-    fill: ${props => props.theme.neutral200};
-    transition: ${props => props.theme.transitionAll};
-  }
+export const Control = styled.div`
+  width: 25px;
+  height: 25px;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.2s ease;
 
   &:hover {
-    .primary {
-      fill: ${props => props.theme.neutral400};
-    }
-
-    .secondary {
-      fill: ${props => props.theme.neutral300};
-    }
-  }
-`;
-
-export const IconLaunch = styled(Icon).attrs({
-  icon: Icon.LAUNCH,
-})`
-  .primary {
-    fill: ${props => props.theme.neutral300};
-    transition: ${props => props.theme.transitionAll};
-  }
-
-  .secondary {
-    fill: ${props => props.theme.neutral200};
-    transition: ${props => props.theme.transitionAll};
-  }
-
-  &:hover {
-    .primary {
-      fill: ${props => props.theme.neutral400};
-    }
-
-    .secondary {
-      fill: ${props => props.theme.neutral300};
-    }
-  }
-`;
-
-export const IconTrash = styled(Icon).attrs({
-  icon: Icon.TRASH,
-})`
-  .primary {
-    fill: ${props => props.theme.neutral300};
-    transition: ${props => props.theme.transitionAll};
-  }
-
-  .secondary {
-    fill: ${props => props.theme.neutral200};
-    transition: ${props => props.theme.transitionAll};
-  }
-
-  &:hover {
-    .primary {
-      fill: ${props => props.theme.neutral400};
-    }
-
-    .secondary {
-      fill: ${props => props.theme.neutral300};
-    }
+    background-color: ${props => props.theme.neutral100};
   }
 `;

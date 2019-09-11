@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Draggable } from 'react-beautiful-dnd';
-import { IconButton } from '@binarycapsule/ui-capsules';
+import { IconButton, Tooltip } from '@binarycapsule/ui-capsules';
 import DeleteTaskDialog from '../../../dialogs/DeleteTask/DeleteTask.container';
-import TaskCopyButton from '../TaskCopyButton/TaskCopyButton';
 import {
   Actions,
+  Control,
   StyledIconRightThickArrow,
   StyledPlanTask,
   Title,
   TitleContainer,
 } from './PlanTask.styles';
+import PlanTaskMenu from './PlanTaskMenu';
+import theme from '../../../../styles/theme';
 
-class PlanTaskComponent extends Component {
+class PlanTask extends Component {
   state = { showDeleteTaskDialog: false };
 
-  handleTrashClick = event => {
-    event.stopPropagation();
+  handleTrashClick = () => {
     this.setState({ showDeleteTaskDialog: true });
   };
 
@@ -53,10 +54,22 @@ class PlanTaskComponent extends Component {
                 <Title>{taskTitle}</Title>
               </TitleContainer>
               <Actions>
+                {/*
                 <TaskCopyButton taskTitle={taskTitle} />
-                <IconButton icon="LAUNCH" onClick={handlePlanTaskLaunch} />
-                <IconButton icon="EDIT" onClick={handlePlanTaskRename} />
-                <IconButton icon="TRASH" onClick={this.handleTrashClick} />
+                */}
+                <Tooltip tooltip="Start working on this task" delayShow={1000}>
+                  <IconButton
+                    icon="LAUNCH"
+                    onClick={handlePlanTaskLaunch}
+                    colors={[theme.neutral200, theme.neutral400, theme.blue100, theme.blue500]}
+                  />
+                </Tooltip>
+                <Control>
+                  <PlanTaskMenu
+                    handleTrashClick={this.handleTrashClick}
+                    handlePlanTaskRename={handlePlanTaskRename}
+                  />
+                </Control>
               </Actions>
             </StyledPlanTask>
           )}
@@ -72,7 +85,7 @@ class PlanTaskComponent extends Component {
   }
 }
 
-PlanTaskComponent.propTypes = {
+PlanTask.propTypes = {
   index: PropTypes.number.isRequired,
   taskId: PropTypes.string.isRequired,
   taskTitle: PropTypes.string.isRequired,
@@ -83,4 +96,4 @@ PlanTaskComponent.propTypes = {
   handlePlanTaskLaunch: PropTypes.func.isRequired,
 };
 
-export default PlanTaskComponent;
+export default PlanTask;

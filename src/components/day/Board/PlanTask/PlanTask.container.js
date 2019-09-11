@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import PlanTask from './PlanTask.component';
+import PlanTask from './PlanTask';
 import {
   handlePlanTaskClick,
   handlePlanTaskLaunch,
@@ -8,7 +8,7 @@ import {
 
 const mapStateToProps = (state, ownProps) => ({
   selectedTaskId: state.tasks.selected,
-  taskTitle: state.tasks.byId[ownProps.taskId].title,
+  taskTitle: state.tasks.byId[ownProps.taskId] ? state.tasks.byId[ownProps.taskId].title : '',
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
