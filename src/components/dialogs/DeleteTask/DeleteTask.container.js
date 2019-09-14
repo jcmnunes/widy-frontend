@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import DeleteTaskComponent from './DeleteTask.component';
+import DeleteTask from './DeleteTask';
 import { deleteTask, storeSelectedTaskId } from '../../../actions/tasks';
 import { storeSelectedSectionId } from '../../../actions/sections';
 
@@ -16,4 +16,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(DeleteTaskComponent);
+)(DeleteTask);
