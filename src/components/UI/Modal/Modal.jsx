@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components/macro';
-import { AddTask, LaunchTask, RenameTask, RegisterTime } from '../../modals';
+import { AddTask, LaunchTask, RegisterTime } from '../../modals';
 import * as types from '../../modals/types';
 
 export const StyledModal = styled.div`
