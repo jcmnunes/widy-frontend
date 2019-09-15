@@ -7,11 +7,15 @@ import {
   normalSectionsRadiosSelector,
   selectedTaskIndexSelector,
 } from '../../../selectors/sections/sectionsSelectors';
+import * as types from '../types';
 
 const mapStateToProps = state => ({
+  isOpen: state.modals.modal === types.LAUNCH_TASK,
   sectionsRadios: normalSectionsRadiosSelector(state),
   selectedTaskId: state.tasks.selected,
-  taskTitle: state.tasks.byId[state.tasks.selected].title,
+  taskTitle: state.tasks.byId[state.tasks.selected]
+    ? state.tasks.byId[state.tasks.selected].title
+    : '',
   planSectionId: state.sections.order[0],
   selectedTaskIndex: selectedTaskIndexSelector(state),
 });

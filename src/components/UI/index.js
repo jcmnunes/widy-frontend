@@ -22,6 +22,4 @@ export { default as LoadingElementReadme } from './LoadingElement/LoadingElement
 export { default as Dialog } from './Dialog';
 export { default as DialogReadme } from './Dialog/Dialog.md';
 export { default as Spinner } from './Spinner';
-export { default as Modal, StyledModal } from './Modal';
-export { default as ModalBase } from './ModalBase';
 export { default as FormError } from './FormError';

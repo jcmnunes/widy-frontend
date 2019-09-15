@@ -21,5 +21,7 @@ export const selectedTaskIndexSelector = createSelector(
   selectedSectionIdSelector,
   sectionsByIdSelector,
   (selectedTaskId, selectedSectionId, sectionsById) =>
-    sectionsById[selectedSectionId].tasks.indexOf(selectedTaskId),
+    selectedTaskId && selectedSectionId
+      ? sectionsById[selectedSectionId].tasks.indexOf(selectedTaskId)
+      : null,
 );
