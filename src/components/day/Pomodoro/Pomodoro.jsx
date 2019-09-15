@@ -23,7 +23,7 @@ const Pomodoro = ({ taskId, sectionId, isTaskActive, activeTask, selectedTask })
     <>
       {!selectedTask.completed && (
         <StyledPomodoro>
-          <Timer size={48} taskId={taskId} sectionId={sectionId} />
+          <Timer size="48px" taskId={taskId} sectionId={sectionId} />
           <Time>
             {renderTime()}
             <Units>min</Units>

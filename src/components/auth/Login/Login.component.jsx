@@ -1,33 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components/macro';
-import { InputField, Button, Link, Message } from '../../UI';
-
-const FormContainer = styled.div`
-  position: relative;
-  height: 100%;
-  display: grid;
-  grid-gap: 48px;
-  align-content: center;
-  justify-items: start;
-`;
-
-const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-`;
-
-const Title = styled.h1`
-  font-size: 30px;
-  color: ${props => props.theme.neutral700};
-  margin-bottom: 32px;
-`;
-
-const Footer = styled.div`
-  width: 100%;
-  text-align: center;
-`;
+import { Button, Message, Input } from '@binarycapsule/ui-capsules';
+import Link from '../../common/Link/Link';
+import { Footer, FormContainer, InputField, StyledForm, Title } from './Login.styles';
 
 class LoginComponent extends Component {
   state = {
@@ -107,34 +82,40 @@ class LoginComponent extends Component {
         <StyledForm onSubmit={this.handleSubmit}>
           <Title>Login to your account</Title>
           {loginError.length > 0 && (
-            <Message intent="error" style={{ marginBottom: 24 }}>
+            <Message appearance="error" style={{ marginBottom: 24 }}>
               {loginError}
             </Message>
           )}
-          <InputField
-            placeholder="Email address"
-            value={this.state.email}
-            name="email"
-            type="text"
-            error={emailError}
-            onChange={this.handleOnChange}
-          />
-          <InputField
-            placeholder="Password"
-            value={this.state.password}
-            name="password"
-            type="password"
-            error={passwordError}
-            onChange={this.handleOnChange}
-          />
-          <Button type="submit" intent="primary" size="large" isLoading={loading}>
+          <InputField>
+            Email:
+            <Input
+              placeholder="you@example.com"
+              value={this.state.email}
+              name="email"
+              type="text"
+              error={emailError}
+              size="large"
+              onChange={this.handleOnChange}
+            />
+          </InputField>
+          <InputField>
+            Password:
+            <Input
+              placeholder="Enter your password"
+              value={this.state.password}
+              name="password"
+              type="password"
+              error={passwordError}
+              size="large"
+              onChange={this.handleOnChange}
+            />
+          </InputField>
+          <Button type="submit" appearance="primary" size="large" isLoading={loading} isBlock>
             Login
           </Button>
         </StyledForm>
         <Footer>
-          <Link to="/forgot" size="large">
-            Forgot password?
-          </Link>
+          <Link to="/forgot">Forgot password?</Link>
         </Footer>
       </FormContainer>
     );

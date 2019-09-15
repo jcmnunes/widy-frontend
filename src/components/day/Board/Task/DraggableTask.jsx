@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Draggable } from 'react-beautiful-dnd';
-import TaskComponent from './Task.component';
+import Task from './Task';
 
 const DraggableTask = ({
   taskId,
@@ -17,7 +17,7 @@ const DraggableTask = ({
 }) => (
   <Draggable draggableId={taskId} index={index}>
     {(provided, snapshot) => (
-      <TaskComponent
+      <Task
         taskRef={provided.innerRef}
         taskId={taskId}
         sectionId={sectionId}
@@ -33,7 +33,7 @@ const DraggableTask = ({
         {...provided.dragHandleProps}
       >
         {taskTitle}
-      </TaskComponent>
+      </Task>
     )}
   </Draggable>
 );

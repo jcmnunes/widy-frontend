@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import BoardComponent from './Board.component';
+import Board from './Board';
 import { onDragEnd } from './Board.actions';
 
 const mapStateToProps = state => ({
@@ -20,4 +20,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(BoardComponent);
+)(Board);

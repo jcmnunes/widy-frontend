@@ -60,7 +60,7 @@ export default (state = initialState, action) => {
           },
         },
       };
-    case types.DELETE_TASK_REQUEST: {
+    case types.DELETE_TASK_SUCCESS: {
       const { [action.taskId]: val, ...newTasksById } = state.byId;
       return {
         ...state,

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import SectionComponent from './Section.component';
+import Section from './Section';
 import { openCreateTaskModal } from './Section.actions';
 import { noTasksSelector } from '../../../../selectors/tasks/tasksSelectors';
 
@@ -15,4 +15,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(SectionComponent);
+)(Section);

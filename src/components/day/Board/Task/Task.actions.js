@@ -3,22 +3,22 @@ import { stopTask, storeSelectedTaskId, updateTask } from '../../../../actions/t
 import { openModal } from '../../../../actions/modals';
 import { RENAME_TASK } from '../../../modals/types';
 
-export const handleTaskClick = dispatch => (sectionId, taskId) => () => {
+export const handleTaskClick = (taskId, sectionId) => dispatch => {
   dispatch(storeSelectedSectionId(sectionId));
   dispatch(storeSelectedTaskId(taskId));
 };
 
-export const handleTaskRename = dispatch => () => {
+export const handleTaskRename = () => dispatch => {
   dispatch(openModal(RENAME_TASK));
 };
 
-export const handleTaskCompletedStateChange = dispatch => (
-  isTaskActive,
-  sectionId,
-  taskId,
+export const handleTaskCompletedStateChange = (
+  isActive,
   isCompleted,
-) => () => {
-  if (isTaskActive) {
+  taskId,
+  sectionId,
+) => dispatch => {
+  if (isActive) {
     dispatch(stopTask(taskId, sectionId));
   }
   dispatch(updateTask(taskId, { completed: !isCompleted, start: null }));

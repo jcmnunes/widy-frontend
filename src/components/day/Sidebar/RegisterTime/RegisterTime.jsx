@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
-import { IconTime } from '../../../../icons/Icons';
-import { Button } from '../../../UI';
+import { Button } from '@binarycapsule/ui-capsules';
 import { REGISTER_TIME } from '../../../modals/types';
 
 const StyledInsertTime = styled.div`
@@ -14,7 +13,7 @@ const RegisterTime = ({ canRegisterTime, openModal }) => {
 
   return canRegisterTime ? (
     <StyledInsertTime>
-      <Button iconBefore={<IconTime />} onClick={handleOnClick}>
+      <Button iconBefore="TIME" onClick={handleOnClick}>
         Register Time
       </Button>
     </StyledInsertTime>

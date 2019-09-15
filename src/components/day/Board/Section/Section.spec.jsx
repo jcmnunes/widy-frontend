@@ -1,14 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import SectionComponent from './Section.component';
+import SectionComponent from './Section';
 import fixture from './Section.fixture';
 import { ADD_TASK } from '../../../modals/types';
 import { findByTestAttr } from '../../../../helpers/testUtils';
 
 const TestRenderer = require('react-test-renderer');
 
-jest.mock('../TaskComponent', () => () => <div data-test="Task">Task__mock</div>);
+jest.mock('../Task', () => () => <div data-test="Task">Task__mock</div>);
 jest.mock('../PlanTask', () => () => <div data-test="PlanTask">PlanTask__mock</div>);
 jest.mock('react-beautiful-dnd', () => ({
   Droppable: () => <div data-test="Droppable">Droppable</div>,
@@ -62,16 +62,16 @@ describe('SectionComponent', () => {
   //     },
   //     tasks: {
   //       '5c9ee9369460ec33384b67df': {
-  //         title: 'TaskComponent 1',
+  //         title: 'Task 1',
   //       },
   //       '5c9ee9369460ec33384b67hf': {
-  //         title: 'TaskComponent 2 ',
+  //         title: 'Task 2 ',
   //       },
   //     },
   //   };
   //   const wrapper = shallow(<SectionComponent {...newProps} />);
   //   expect(wrapper.find('Tasks')).toHaveLength(1);
-  //   // expect(wrapper.find(TaskComponent)).toHaveLength(2);
+  //   // expect(wrapper.find(Task)).toHaveLength(2);
   //   expect(wrapper.find('EmptyTasks')).toHaveLength(0);
   // });
 });

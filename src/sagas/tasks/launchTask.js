@@ -1,5 +1,4 @@
 import { takeLatest } from 'redux-saga/effects';
-// eslint-disable-next-line import/no-cycle
 import { moveTaskSaga } from './moveTask';
 import { startTaskSaga } from './startTask';
 import * as types from '../../actions/tasks/types';

@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button } from '@binarycapsule/ui-capsules';
 import SidebarHeader from './SidebarHeader';
 import NotesEditor from './NotesEditor';
 import Pomodoro from '../Pomodoro';
-import { Button } from '../../UI';
-import { Heading2 } from '../../UI/Typography';
+import { Heading2 } from '../../common/Typography';
 import { IllustrationTodoList } from '../../../icons/Illustrations';
 import { LAUNCH_TASK } from '../../modals/types';
 import RegisterTime from './RegisterTime';
-import { EmptyState, StyledSidebar, Title, IconLaunch } from './SidebarStyles';
+import { EmptyState, StyledSidebar, Title } from './SidebarStyles';
 
 const Sidebar = ({ selectedTaskId, isSelectedTaskInPlan, openModal }) => {
   const handleLaunchClick = () => {
@@ -24,7 +24,7 @@ const Sidebar = ({ selectedTaskId, isSelectedTaskInPlan, openModal }) => {
           <NotesEditor />
           <Heading2>Time Management</Heading2>
           {isSelectedTaskInPlan ? (
-            <Button iconBefore={<IconLaunch />} onClick={handleLaunchClick}>
+            <Button iconBefore="ROCKET" onClick={handleLaunchClick}>
               Launch task
             </Button>
           ) : (

@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import Notifications from './components/UI/Toaster/Toaster';
-import PageSpinner from './components/UI/PageSpinner';
-import { Modal } from './components/UI';
+import { PageSpinner } from '@binarycapsule/ui-capsules';
+import Modals from './components/modals/Modals';
 import Routes from './router/routes';
-import GlobalStyle from './styles/Global';
 import { version } from '../package.json';
+import theme from './styles/theme';
+import { IconWidyText } from './icons/widy';
 
 class App extends Component {
   /**
@@ -24,10 +24,14 @@ class App extends Component {
     const { loading } = this.props;
     return (
       <div data-version={version}>
-        {loading ? <PageSpinner /> : <Routes />}
-        <Modal />
-        <Notifications />
-        <GlobalStyle />
+        {loading ? (
+          <PageSpinner>
+            <IconWidyText size={125} textColor={theme.blue600} />
+          </PageSpinner>
+        ) : (
+          <Routes />
+        )}
+        <Modals />
       </div>
     );
   }
