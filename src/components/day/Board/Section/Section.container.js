@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import SectionComponent from './Section.component';
+import SectionComponent from './Section';
 import { openCreateTaskModal } from './Section.actions';
 import { noTasksSelector } from '../../../../selectors/tasks/tasksSelectors';
 

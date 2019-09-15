@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import uuidv4 from 'uuid/v4';
+import { Icon24 } from '@binarycapsule/ui-capsules';
 import { getNumberOfPomodoros, getTotalTime } from '../../../../helpers/pomodoro';
-import { IconTime } from '../../../../icons/Icons';
 import { Empty, Multiplier, Pomodoros, StyledStats, Td, Units, Value } from './Stats.styles';
 
 const Stats = ({ time }) => {
@@ -29,7 +29,7 @@ const Stats = ({ time }) => {
       return (
         <Pomodoros>
           <Multiplier>{numPomodoros} x</Multiplier>
-          <IconTime key={uuidv4()} size={18} />
+          <Icon24 icon="TIME" />
         </Pomodoros>
       );
     }
@@ -38,7 +38,7 @@ const Stats = ({ time }) => {
         {Array(numPomodoros)
           .fill('')
           .map(() => (
-            <IconTime key={uuidv4()} size={18} />
+            <Icon24 key={uuidv4()} icon="TIME" />
           ))}
       </Pomodoros>
     );

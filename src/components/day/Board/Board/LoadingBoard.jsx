@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import { LoadingElement } from '../../../UI';
+import { LoadingMask } from '@binarycapsule/ui-capsules';
 import theme from '../../../../styles/theme';
 
 const StyledLoadingBoard = styled.div`
@@ -38,24 +38,24 @@ const LoadingBoard = () => {
     <StyledLoadingBoard>
       <Header>
         <div>
-          <LoadingElement width="170px" height="30px" />
+          <LoadingMask width="170px" height="30px" />
         </div>
         <FlexRow>
-          <LoadingElement width="30px" height="30px" circular />
-          <LoadingElement width="30px" height="30px" circular />
+          <LoadingMask width="30px" height="30px" circular />
+          <LoadingMask width="30px" height="30px" circular />
         </FlexRow>
       </Header>
       <Section>
-        <LoadingElement width="100px" height="30px" background={theme.neutral200} />
-        <LoadingElement width="100%" height="30px" />
-        <LoadingElement width="100%" height="30px" />
-        <LoadingElement width="100%" height="30px" />
-        <LoadingElement width="100%" height="30px" />
+        <LoadingMask width="100px" height="30px" background={theme.neutral200} />
+        <LoadingMask width="100%" height="30px" />
+        <LoadingMask width="100%" height="30px" />
+        <LoadingMask width="100%" height="30px" />
+        <LoadingMask width="100%" height="30px" />
       </Section>
       <Section>
-        <LoadingElement width="100px" height="30px" background={theme.neutral200} />
-        <LoadingElement width="100%" height="30px" />
-        <LoadingElement width="100%" height="30px" />
+        <LoadingMask width="100px" height="30px" background={theme.neutral200} />
+        <LoadingMask width="100%" height="30px" />
+        <LoadingMask width="100%" height="30px" />
       </Section>
     </StyledLoadingBoard>
   );

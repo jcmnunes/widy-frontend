@@ -4,11 +4,10 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import styled from 'styled-components/macro';
 import { SizeMe } from 'react-sizeme';
+import { Button } from '@binarycapsule/ui-capsules';
 import Days from './Days';
 import LoadingNavigation from './LoadingNavigation';
-import Button from '../../UI/Button';
-import { Heading1 } from '../../UI/Typography';
-import { IconAdd } from '../../../icons/Icons';
+import { Heading1 } from '../../common/Typography';
 import { IconWidy, IconWidyText } from '../../../icons/widy';
 import { storeSelectedDay, getDays, getDay, createDay } from '../../../actions/days';
 import { storeSelectedTaskId } from '../../../actions/tasks';
@@ -90,11 +89,11 @@ class Navigation extends Component {
               <Heading1>Days</Heading1>
               <Button
                 isLoading={createDayLoading}
-                disabled={isTodayCreated || loading}
+                isDisabled={isTodayCreated || loading}
                 onClick={this.createDay}
-                intent="primary"
-                iconBefore={<IconAdd primaryColor="#fff" />}
-                block={size.width === DAYS_LIST_MIN_WIDTH}
+                appearance="primary"
+                iconBefore="PLUS"
+                isBlock={size.width === DAYS_LIST_MIN_WIDTH}
               >
                 {size.width > DAYS_LIST_MIN_WIDTH ? 'Add Day' : ''}
               </Button>
@@ -107,7 +106,7 @@ class Navigation extends Component {
                 order={daysOrder}
                 selected={selected}
                 isSmall={size.width === DAYS_LIST_MIN_WIDTH}
-                onClick={this.handleDayClick}
+                handleDayClick={this.handleDayClick}
               />
             )}
           </StyledNavigation>

@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Radios, ModalBase } from '../../UI';
+import {
+  Button,
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalTitle,
+  Radio,
+} from '@binarycapsule/ui-capsules';
+import { Error, Radios } from './LaunchTask.styles';
 
-const LaunchTask = ({
+const LaunchTaskBak = ({
+  isOpen,
   sectionsRadios,
   planSectionId,
   removeTask,
@@ -36,20 +45,41 @@ const LaunchTask = ({
   };
 
   return (
-    <ModalBase actionText="Launch task" handleSubmit={handleSubmit}>
-      <h1 className="title">Choose a section:</h1>
-      <Radios
-        intent="primary"
-        checkedId={checkedId}
-        data={sectionsRadios}
-        error={error}
-        onChange={handleOnChange}
-      />
-    </ModalBase>
+    <Modal isOpen={isOpen} onRequestClose={closeModal} contentLabel="Modal - Add a new task">
+      <form onSubmit={handleSubmit}>
+        <ModalBody>
+          <ModalTitle>Choose a section:</ModalTitle>
+          <Radios>
+            {sectionsRadios.map(({ id, label }) => (
+              <Radio
+                appearance="primary"
+                key={id}
+                value={id}
+                onChange={handleOnChange}
+                checked={id === checkedId}
+                size="large"
+              >
+                {label}
+              </Radio>
+            ))}
+          </Radios>
+          {!!error && <Error>{error}</Error>}
+        </ModalBody>
+        <ModalFooter>
+          <Button appearance="secondary" size="large" onClick={closeModal}>
+            Cancel
+          </Button>
+          <Button type="submit" appearance="primary" size="large">
+            Launch task
+          </Button>
+        </ModalFooter>
+      </form>
+    </Modal>
   );
 };
 
-LaunchTask.propTypes = {
+LaunchTaskBak.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
   sectionsRadios: PropTypes.arrayOf(PropTypes.object).isRequired,
   planSectionId: PropTypes.string.isRequired,
   removeTask: PropTypes.func.isRequired,
@@ -61,4 +91,4 @@ LaunchTask.propTypes = {
   launchTask: PropTypes.func.isRequired,
 };
 
-export default LaunchTask;
+export default LaunchTaskBak;

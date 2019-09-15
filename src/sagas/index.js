@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import { all } from 'redux-saga/effects';
 import fetchDay from './days/getDay';
 import fetchDays from './days/getDays';

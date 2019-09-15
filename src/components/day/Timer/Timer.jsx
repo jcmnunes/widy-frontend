@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
-import { IconPlay, IconStop } from './Timer.styles';
+import { IconButton } from '@binarycapsule/ui-capsules';
+import theme from '@binarycapsule/ui-capsules/esm/theme';
 
-const StyledTimer = styled.div`
-  cursor: pointer;
-  height: ${props => (props.size ? `${props.size}px` : '24px')};
+const StyledIconButton = styled(IconButton)`
+  svg {
+    width: ${({ size }) => size} !important;
+  }
 `;
 
 const Timer = ({
@@ -26,17 +28,23 @@ const Timer = ({
     }
   };
 
-  const renderPlayButton = () => {
+  const renderColors = () => {
     if (activeTask.taskId === taskId) {
-      return <IconStop inBreak={activeTask.inBreak} size={size} />;
+      if (activeTask.inBreak) {
+        return [theme.blue100, theme.blue200, theme.blue700, theme.blue800];
+      }
+      return [theme.yellow400, theme.yellow900, theme.yellow500, theme.yellow900];
     }
-    return <IconPlay size={size} />;
+    return undefined;
   };
 
   return (
-    <StyledTimer onClick={handleClick} size={size}>
-      {renderPlayButton()}
-    </StyledTimer>
+    <StyledIconButton
+      colors={renderColors()}
+      icon={activeTask.taskId === taskId ? 'STOP' : 'PLAY'}
+      onClick={handleClick}
+      size={size}
+    />
   );
 };
 
@@ -55,7 +63,7 @@ Timer.propTypes = {
   }).isRequired,
   startTask: PropTypes.func.isRequired,
   stopTask: PropTypes.func.isRequired,
-  size: PropTypes.number,
+  size: PropTypes.string,
 };
 
 export default Timer;

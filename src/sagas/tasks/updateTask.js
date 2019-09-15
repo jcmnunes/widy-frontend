@@ -1,8 +1,7 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
+import { Toaster } from '@binarycapsule/ui-capsules';
 import { updateTask } from '../../api/tasks';
 import * as types from '../../actions/tasks/types';
-// eslint-disable-next-line import/no-cycle
-import toast from '../../helpers/toast';
 
 const getDayId = state => state.days.selected;
 const getSectionId = state => state.sections.selected;
@@ -23,7 +22,7 @@ export function* updateTaskSaga(action) {
     }
     yield call(updateTask, action.taskId, params);
   } catch (error) {
-    yield toast.error({
+    yield Toaster.error({
       title: 'Could not update the task',
       message: 'Something went wrong while updating the task.',
     });

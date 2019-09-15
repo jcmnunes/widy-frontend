@@ -1,6 +1,17 @@
 import { connect } from 'react-redux';
-import ActionsTopComponent from './ActionsTop.component';
+import ActionsTop from './ActionsTop';
+import { isLoadingSelector as isLogoutLoadingSelector } from '../../auth/Logout/Logout.selectors';
+import { logoutRequest } from '../../auth/Logout/Logout.actions';
 
-const mapStateToProps = () => ({});
+const mapStateToProps = state => ({
+  isLogoutLoading: isLogoutLoadingSelector(state),
+});
 
-export default connect(mapStateToProps)(ActionsTopComponent);
+const mapDispatchToProps = {
+  logoutRequest,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ActionsTop);

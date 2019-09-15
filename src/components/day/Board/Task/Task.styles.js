@@ -57,6 +57,11 @@ const getAnimation = props => {
   return null;
 };
 
+export const StyledCopyButton = styled.div`
+  display: none;
+  height: 24px;
+`;
+
 export const StyledTask = styled.div`
   display: flex;
   align-items: center;
@@ -78,6 +83,10 @@ export const StyledTask = styled.div`
   &:hover {
     background-color: ${props =>
       props.isSelected ? props.theme.yellow075 : props.theme.neutral025};
+
+    ${StyledCopyButton} {
+      display: block;
+    }
   }
 `;
 

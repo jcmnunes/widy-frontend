@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import { Message, Input, Button } from '@binarycapsule/ui-capsules';
+import Link from '../../common/Link/Link';
 import LogoComponent from '../Logo/Logo.component';
-import { InputField, Button, Link, Message } from '../../UI';
-import { Container, Footer, Helper, StyledForm, Title } from './Reset.styles';
+import { Container, Footer, Helper, InputField, StyledForm, Title } from './Reset.styles';
 
 class Reset extends Component {
   state = {
@@ -88,33 +89,37 @@ class Reset extends Component {
           <Title>Reset your password</Title>
           <Helper>Choose a new password for your account.</Helper>
           {error.length > 0 && (
-            <Message intent="error" style={{ marginBottom: 24 }}>
+            <Message appearance="error" style={{ marginBottom: 24 }}>
               {error}
             </Message>
           )}
-          <InputField
-            placeholder="New password"
-            value={this.state.password}
-            name="password"
-            type="password"
-            error={passwordError}
-            onChange={this.handleOnChange}
-          />
-          <InputField
-            placeholder="Confirm new password"
-            value={this.state.confirm}
-            name="confirm"
-            type="password"
-            error={confirmError}
-            onChange={this.handleOnChange}
-          />
-          <Button type="submit" intent="primary" size="large" isLoading={loading} block>
+          <InputField>
+            New password:
+            <Input
+              value={this.state.password}
+              name="password"
+              type="password"
+              error={passwordError}
+              size="large"
+              onChange={this.handleOnChange}
+            />
+          </InputField>
+          <InputField>
+            Confirm new password:
+            <Input
+              value={this.state.confirm}
+              name="confirm"
+              type="password"
+              error={confirmError}
+              size="large"
+              onChange={this.handleOnChange}
+            />
+          </InputField>
+          <Button type="submit" appearance="primary" size="large" isLoading={loading} isBlock>
             Change password
           </Button>
           <Footer>
-            <Link to="/login" size="large">
-              Back to Login
-            </Link>
+            <Link to="/login">Back to Login</Link>
           </Footer>
         </StyledForm>
       </Container>

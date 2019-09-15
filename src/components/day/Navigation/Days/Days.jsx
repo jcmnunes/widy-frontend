@@ -14,10 +14,10 @@ const StyledDays = styled.div`
   grid-auto-rows: minmax(min-content, max-content);
 `;
 
-const Days = ({ days, order, selected, isSmall, onClick }) => (
+const Days = ({ days, order, selected, isSmall, handleDayClick }) => (
   <StyledDays>
     {order.map(id => (
-      <Day key={id} onClick={() => onClick(id)} selected={id === selected} isSmall={isSmall}>
+      <Day key={id} onClick={() => handleDayClick(id)} selected={id === selected} isSmall={isSmall}>
         {isSmall
           ? moment(days[id].day).format('MMM DD')
           : moment(days[id].day).format('ddd DD MMM YYYY')}
@@ -32,7 +32,7 @@ Days.propTypes = {
   }).isRequired,
   order: PropTypes.arrayOf(PropTypes.string).isRequired,
   selected: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  handleDayClick: PropTypes.func.isRequired,
   isSmall: PropTypes.bool.isRequired,
 };
 

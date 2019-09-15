@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import ActiveTaskPopupComponent from './ActiveTaskPopup.component';
+import ActiveTaskPopup from './ActiveTaskPopup';
 import fixture from './ActiveTaskPopup.fixture';
 import { findByTestAttr } from '../../../helpers/testUtils';
 
@@ -12,9 +12,7 @@ jest.mock('../../../helpers/settings', () => () => ({
   },
 }));
 
-jest.mock('../BoardComponent/TaskComponent/TaskComponent', () => () => (
-  <div data-test="Task">mockTask</div>
-));
+jest.mock('../BoardComponent/Task/Task', () => () => <div data-test="Task">mockTask</div>);
 
 const defaultProps = {
   ...fixture,
@@ -28,7 +26,7 @@ const defaultProps = {
 
 const setup = (props = {}) => {
   const setupProps = { ...defaultProps, ...props };
-  return shallow(<ActiveTaskPopupComponent {...setupProps} />);
+  return shallow(<ActiveTaskPopup {...setupProps} />);
 };
 
 describe('ActiveTaskPopupComponent', () => {

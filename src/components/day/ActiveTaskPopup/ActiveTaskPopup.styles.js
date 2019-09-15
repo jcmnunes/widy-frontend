@@ -30,9 +30,7 @@ export const Units = styled.span`
 `;
 
 export const StopButton = styled.button`
-  position: absolute;
-  right: 32px;
-  bottom: 32px;
+  display: block;
   cursor: pointer;
   height: 24px;
 `;
