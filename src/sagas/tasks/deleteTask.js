@@ -1,10 +1,9 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
+import { Toaster } from '@binarycapsule/ui-capsules';
 import { deleteTask } from '../../api/tasks';
 import * as tasksTypes from '../../actions/tasks/types';
 import * as sectionsTypes from '../../actions/sections/types';
 import * as activeTaskTypes from '../../actions/activeTask/types';
-// eslint-disable-next-line import/no-cycle
-import toast from '../../helpers/toast';
 
 const getDayId = state => state.days.selected;
 const getSectionId = state => state.sections.selected;
@@ -30,7 +29,7 @@ export function* deleteTaskSaga(action) {
     yield call(deleteTask, taskId, params);
     yield put({ type: tasksTypes.DELETE_TASK_SUCCESS, taskId });
   } catch (error) {
-    yield toast.error({
+    yield Toaster.error({
       title: 'Could not delete the task',
       message: 'Something went wrong while deleting the task.',
     });

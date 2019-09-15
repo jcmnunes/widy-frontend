@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { PageSpinner } from '@binarycapsule/ui-capsules';
-import Notifications from './components/UI/Toaster/Toaster';
 import Modals from './components/modals/Modals';
 import Routes from './router/routes';
 import { version } from '../package.json';
@@ -33,7 +32,6 @@ class App extends Component {
           <Routes />
         )}
         <Modals />
-        <Notifications />
       </div>
     );
   }
