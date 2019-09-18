@@ -4,14 +4,13 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import styled from 'styled-components/macro';
 import { SizeMe } from 'react-sizeme';
-import { Button } from '@binarycapsule/ui-capsules';
+import { Button, theme } from '@binarycapsule/ui-capsules';
 import Days from './Days';
 import LoadingNavigation from './LoadingNavigation';
 import { Heading1 } from '../../common/Typography';
 import { IconWidy, IconWidyText } from '../../../icons/widy';
 import { storeSelectedDay, getDays, getDay, createDay } from '../../../actions/days';
 import { storeSelectedTaskId } from '../../../actions/tasks';
-import theme from '../../../styles/theme';
 import settings from '../../../helpers/settings';
 
 const { DAYS_LIST_MIN_WIDTH } = settings();

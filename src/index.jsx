@@ -5,10 +5,9 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components/macro';
-import { WithToasts, ReactModal } from '@binarycapsule/ui-capsules';
+import { WithToasts, ReactModal, theme } from '@binarycapsule/ui-capsules';
 import App from './App';
 import store, { runSaga } from './store';
-import theme from './styles/theme';
 import history from './router/history';
 import { INIT_REQUEST } from './components/auth/Init/Init.types';
 

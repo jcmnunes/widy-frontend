@@ -1,5 +1,4 @@
 import styled from 'styled-components/macro';
-import Icon from '../../../icons/Icon';
 
 export const Container = styled.div`
   flex: 1;
@@ -35,7 +34,7 @@ export const IconWrapper = styled.div`
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: ${props => props.theme.neutral100};
+  background: ${props => props.theme.neutral075};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,14 +48,4 @@ export const ItemTitle = styled.h2`
 export const ItemDescription = styled.p`
   color: ${props => props.theme.neutral300};
   font-size: 18px;
-`;
-
-export const StyledIcon = styled(Icon)`
-  .primary {
-    fill: ${props => props.theme.neutral300};
-  }
-
-  .secondary {
-    fill: ${props => props.theme.neutral400};
-  }
 `;

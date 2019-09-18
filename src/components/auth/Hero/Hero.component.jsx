@@ -1,15 +1,7 @@
 import React from 'react';
+import { Icon24 } from '@binarycapsule/ui-capsules';
 import LogoComponent from '../Logo/Logo.component';
-import Icon from '../../../icons/Icon';
-import {
-  Container,
-  IconWrapper,
-  Item,
-  ItemDescription,
-  ItemTitle,
-  StyledIcon,
-  Title,
-} from './Hero.styles';
+import { Container, IconWrapper, Item, ItemDescription, ItemTitle, Title } from './Hero.styles';
 
 const HeroComponent = () => (
   <Container>
@@ -17,7 +9,7 @@ const HeroComponent = () => (
     <Title>What I Did Yesterday?</Title>
     <Item>
       <IconWrapper>
-        <StyledIcon icon={Icon.CHART} size="32px" />
+        <Icon24 icon="CHART" size="32px" />
       </IconWrapper>
       <div>
         <ItemTitle>Keep track of what you do</ItemTitle>
@@ -26,7 +18,7 @@ const HeroComponent = () => (
     </Item>
     <Item>
       <IconWrapper>
-        <StyledIcon icon={Icon.TIME} size="32px" />
+        <Icon24 icon="TIME" size="32px" />
       </IconWrapper>
       <div>
         <ItemTitle>Stay in the flow</ItemTitle>
@@ -35,7 +27,7 @@ const HeroComponent = () => (
     </Item>
     <Item>
       <IconWrapper>
-        <StyledIcon icon={Icon.SURVEY} size="32px" />
+        <Icon24 icon="SURVEY" size="32px" />
       </IconWrapper>
       <div>
         <ItemTitle>Get handy reports easily</ItemTitle>

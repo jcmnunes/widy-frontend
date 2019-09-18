@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Draggable } from 'react-beautiful-dnd';
-import { IconButton, Tooltip } from '@binarycapsule/ui-capsules';
+import { IconButton, Tooltip, theme } from '@binarycapsule/ui-capsules';
 import DeleteTaskDialog from '../../../dialogs/DeleteTask/DeleteTask.container';
 import {
   Actions,
@@ -12,7 +12,6 @@ import {
   TitleContainer,
 } from './PlanTask.styles';
 import PlanTaskMenu from './PlanTaskMenu';
-import theme from '../../../../styles/theme';
 
 class PlanTask extends Component {
   state = { showDeleteTaskDialog: false };

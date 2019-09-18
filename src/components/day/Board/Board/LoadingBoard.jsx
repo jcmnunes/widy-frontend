@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import { LoadingMask } from '@binarycapsule/ui-capsules';
-import theme from '../../../../styles/theme';
+import { LoadingMask, theme } from '@binarycapsule/ui-capsules';
 
 const StyledLoadingBoard = styled.div`
   background: white;

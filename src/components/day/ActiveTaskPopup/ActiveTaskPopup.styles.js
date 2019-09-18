@@ -1,5 +1,4 @@
 import styled from 'styled-components/macro';
-import Icon from '../../../icons/Icon';
 
 export const StyledPopup = styled.div`
   position: fixed;
@@ -9,7 +8,6 @@ export const StyledPopup = styled.div`
   right: 32px;
   bottom: 32px;
   border-radius: 4px;
-  border: 1px solid ${props => props.theme.neutral300};
   z-index: 7000;
   background: white;
 `;
@@ -27,32 +25,4 @@ export const Time = styled.div`
 
 export const Units = styled.span`
   font-size: 12px;
-`;
-
-export const StopButton = styled.button`
-  display: block;
-  cursor: pointer;
-  height: 24px;
-`;
-
-export const StyledIconStop = styled(Icon)`
-  .primary {
-    fill: ${props => (props.isInBreak ? props.theme.blue100 : props.theme.yellow400)};
-    transition: fill 0.2s ease;
-  }
-
-  .secondary {
-    fill: ${props => (props.isInBreak ? props.theme.blue700 : props.theme.yellow900)};
-    transition: fill 0.2s ease;
-  }
-
-  &:hover {
-    .primary {
-      fill: ${props => (props.isInBreak ? props.theme.blue200 : props.theme.yellow500)};
-    }
-
-    .secondary {
-      fill: ${props => (props.isInBreak ? props.theme.blue800 : props.theme.yellow900)};
-    }
-  }
 `;
