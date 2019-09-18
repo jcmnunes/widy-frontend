@@ -21,11 +21,10 @@ const TaskMenuComponent = ({
     setShowDeleteTaskDialog(false);
   };
 
-  // TODO ➜ Remove the onClick handler from the trigger
   return (
     <>
       <StyledTaskMenu>
-        <Dropdown trigger={<IconButton icon="DOTS_H" onClick={() => {}} />} placement="right">
+        <Dropdown trigger={<IconButton icon="DOTS_H" />} placement="right">
           {canRegisterTime ? (
             <DropdownItem text="Register Time" icon="TIME" handleAction={handleRegisterTimeClick} />
           ) : null}
