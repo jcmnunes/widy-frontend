@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import { reducer as notifications } from 'react-notification-system-redux';
 import auth from './auth/authReducer';
 import modals from './modals';
 import days from './days/daysReducer';
@@ -14,7 +13,6 @@ const rootReducer = combineReducers({
   sections,
   tasks,
   activeTask,
-  notifications,
 });
 
 export default rootReducer;

@@ -10,7 +10,7 @@ import {
 } from '@binarycapsule/ui-capsules';
 import { Error, Radios } from './LaunchTask.styles';
 
-const LaunchTaskBak = ({
+const LaunchTask = ({
   isOpen,
   sectionsRadios,
   planSectionId,
@@ -78,7 +78,7 @@ const LaunchTaskBak = ({
   );
 };
 
-LaunchTaskBak.propTypes = {
+LaunchTask.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   sectionsRadios: PropTypes.arrayOf(PropTypes.object).isRequired,
   planSectionId: PropTypes.string.isRequired,
@@ -91,4 +91,4 @@ LaunchTaskBak.propTypes = {
   launchTask: PropTypes.func.isRequired,
 };
 
-export default LaunchTaskBak;
+export default LaunchTask;

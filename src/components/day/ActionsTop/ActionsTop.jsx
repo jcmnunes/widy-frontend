@@ -8,7 +8,7 @@ const ActionsTop = ({ isLogoutLoading, logoutRequest }) => (
     <IconButton text="Widy report" icon="SURVEY" isRound hasBackground onClick={() => {}} />
     <Dropdown
       placement="right"
-      trigger={<IconButton hasBackground hasChev icon="USER_CIRCLE" isRound onClick={() => {}} />}
+      trigger={<IconButton hasBackground hasChev icon="USER_CIRCLE" isRound />}
     >
       <DropdownItem
         text="Log out"

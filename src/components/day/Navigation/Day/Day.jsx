@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
-import { IconCheveronRight } from '../../../../icons/Icons';
-import theme from '../../../../styles/theme';
+import { Icon20 } from '@binarycapsule/ui-capsules';
 
 const StyledDay = styled.div`
   height: 42px;
@@ -46,7 +45,7 @@ class Day extends Component {
         isSmall={isSmall}
       >
         <span>{children}</span>
-        {!isSmall && <IconCheveronRight primaryColor={theme.neutral700} />}
+        {!isSmall && <Icon20 icon="CHEV_RIGHT" />}
       </StyledDay>
     );
   }
