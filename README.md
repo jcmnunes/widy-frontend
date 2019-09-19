@@ -7,7 +7,8 @@
     <a href="https://github.com/styled-components/styled-components"><img src="https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e" /></a>
 </div>
 
-This is the frontend repo of the Widy app ([backend repo](https://github.com/jcmnunes/widy-backend)) 
+This is the frontend repo of the Widy app
+([backend repo](https://github.com/jcmnunes/widy-backend))
 
 <img src="https://raw.githubusercontent.com/jcmnunes/widy-frontend/master/src/images/eod_screenshot.png" width="100%">
 
@@ -17,7 +18,7 @@ Widy is a productivity app. It has three main features:
 2. It helps you stay focused.
 3. It generates handy reports.
 
-Main techs used: React | Redux | Redux-Saga | Slate | React-Beautiful-DND | Storybook
+UI components are from the [UI-Capsules kit](https://uic.binarycapsule.tech/).
 
 ## Available npm scripts
 
@@ -49,18 +50,6 @@ To run unit-tests with coverage report:
 
 ```
 $ npm run coverage
-```
-
-To run Storybook:
-
-```
-$ npm run sb
-```
-
-To build Storybook:
-
-```
-$ npm run build-storybook
 ```
 
 To run ESLint:

@@ -1,5 +1,4 @@
 import styled from 'styled-components/macro';
-import Icon from '../../../../icons/Icon';
 
 export const StyledStats = styled.table`
   margin-top: 16px;
@@ -36,16 +35,4 @@ export const Empty = styled.span`
 
 export const Multiplier = styled.span`
   font-size: 14px;
-`;
-
-export const IconTime = styled(Icon).attrs({
-  icon: Icon.TIME,
-})`
-  .primary {
-    fill: ${({ theme }) => theme.neutral200};
-  }
-
-  .secondary {
-    fill: ${({ theme }) => theme.neutral500};
-  }
 `;

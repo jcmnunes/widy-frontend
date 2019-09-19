@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { PageSpinner } from '@binarycapsule/ui-capsules';
+import { PageSpinner, theme } from '@binarycapsule/ui-capsules';
 import Modals from './components/modals/Modals';
 import Routes from './router/routes';
 import { version } from '../package.json';
-import theme from './styles/theme';
 import { IconWidyText } from './icons/widy';
 
 class App extends Component {

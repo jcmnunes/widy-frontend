@@ -1,19 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { Checkbox, Tooltip } from '@binarycapsule/ui-capsules';
+import { Checkbox, Tooltip, IconButton, theme } from '@binarycapsule/ui-capsules';
 import { Heading2 } from '../../common/Typography';
 import settings from '../../../helpers/settings';
 import { getCurrentPomodoroInfo } from '../../../helpers/pomodoro';
-import {
-  Header,
-  StopButton,
-  StyledIconStop,
-  StyledPopup,
-  Time,
-  Units,
-} from './ActiveTaskPopup.styles';
-import Icon from '../../../icons/Icon';
+import { Header, StyledPopup, Time, Units } from './ActiveTaskPopup.styles';
 import { StyledTask, TaskTitle } from '../Board/Task/Task.styles';
 
 const { pomodoro } = settings();
@@ -57,7 +49,7 @@ const ActiveTaskPopup = ({
     <StyledPopup data-test="active-task-popup">
       <Header>
         <Heading2>Working on:</Heading2>
-        <Time data-test="time-indicator">
+        <Time>
           {renderTime()} <Units>min</Units>
         </Time>
       </Header>
@@ -79,9 +71,11 @@ const ActiveTaskPopup = ({
         </Tooltip>
         <TaskTitle>{activeTask.title}</TaskTitle>
         <Tooltip placement="top" tooltip="Stop the task">
-          <StopButton onClick={handlePlayButtonClick}>
-            <StyledIconStop icon={Icon.STOP} isInBreak={activeTask.inBreak} />
-          </StopButton>
+          <IconButton
+            icon="STOP"
+            colors={[theme.yellow400, theme.yellow900, theme.yellow500, theme.yellow900]}
+            onClick={handlePlayButtonClick}
+          />
         </Tooltip>
       </StyledTask>
     </StyledPopup>

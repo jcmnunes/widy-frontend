@@ -4,7 +4,7 @@ import { Button, ModalBody, ModalFooter, ModalTitle, Select } from '@binarycapsu
 import { SUGGESTIONS } from './RegisterTime.constants';
 import { H3, Inputs, Label, StyledInput, StyledModal } from './RegisterTime.styles';
 
-const RegisterTimeBak = ({ isOpen, selectedTaskId, updateTask, closeModal }) => {
+const RegisterTime = ({ isOpen, selectedTaskId, updateTask, closeModal }) => {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [suggestion, setSuggestion] = useState(null);
@@ -84,11 +84,11 @@ const RegisterTimeBak = ({ isOpen, selectedTaskId, updateTask, closeModal }) => 
   );
 };
 
-RegisterTimeBak.propTypes = {
+RegisterTime.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   selectedTaskId: PropTypes.string.isRequired,
   updateTask: PropTypes.func.isRequired,
   closeModal: PropTypes.func.isRequired,
 };
 
-export default RegisterTimeBak;
+export default RegisterTime;
