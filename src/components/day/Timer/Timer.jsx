@@ -31,7 +31,7 @@ const Timer = ({
   const renderColors = () => {
     if (activeTask.taskId === taskId) {
       if (activeTask.inBreak) {
-        return [theme.blue100, theme.blue200, theme.blue700, theme.blue800];
+        return [theme.blue100, theme.blue700, theme.blue200, theme.blue800];
       }
       return [theme.yellow400, theme.yellow900, theme.yellow500, theme.yellow900];
     }
