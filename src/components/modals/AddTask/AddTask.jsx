@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Modal,
@@ -27,6 +27,13 @@ const AddTask = ({ isOpen, isLoading, startCreateTaskRequest, closeModal }) => {
       startCreateTaskRequest(title);
     }
   };
+
+  useEffect(() => {
+    if (!isOpen) {
+      setTitle('');
+      setError('');
+    }
+  }, [isOpen]);
 
   return (
     <Modal isOpen={isOpen} onRequestClose={closeModal} contentLabel="Modal - Add a new task">

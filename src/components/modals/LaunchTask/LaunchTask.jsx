@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Button,
@@ -30,6 +30,11 @@ const LaunchTask = ({
     setCheckedId(value);
     setError('');
   };
+
+  useEffect(() => {
+    setCheckedId('');
+    setError('');
+  }, [isOpen]);
 
   const handleSubmit = e => {
     e.preventDefault();
