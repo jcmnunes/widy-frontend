@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, ModalBody, ModalFooter, ModalTitle, Select } from '@binarycapsule/ui-capsules';
 import { SUGGESTIONS } from './RegisterTime.constants';
@@ -32,6 +32,12 @@ const RegisterTime = ({ isOpen, selectedTaskId, updateTask, closeModal }) => {
     setMinutes(min);
     setSuggestion(opt);
   };
+
+  useEffect(() => {
+    setHours(0);
+    setMinutes(0);
+    setSuggestion(null);
+  }, [isOpen]);
 
   return (
     <StyledModal
