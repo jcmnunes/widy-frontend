@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
 import Editor from '@binarycapsule/editor';
 import { Value } from 'slate';
+import MarkdownInstructions from './MarkdownInstructions/MarkdownInstructions';
 import initialValue from './value.json';
+
+const Wrapper = styled.div`
+  margin-bottom: 32px;
+`;
 
 const StyledNotesEditor = styled.div`
   padding: 16px;
@@ -11,7 +16,7 @@ const StyledNotesEditor = styled.div`
   border: 1px solid ${props => props.theme.neutral300};
   background: white;
   color: ${props => props.theme.neutral700};
-  margin-bottom: 32px;
+  margin-bottom: 2px;
   min-height: 250px;
 `;
 
@@ -65,13 +70,16 @@ class NotesEditor extends React.Component {
   render() {
     const { value } = this.state;
     return (
-      <StyledNotesEditor>
-        <StyledEditor
-          placeholder="Enter some notes here..."
-          value={value}
-          onChange={this.onChange}
-        />
-      </StyledNotesEditor>
+      <Wrapper>
+        <StyledNotesEditor>
+          <StyledEditor
+            placeholder="Enter some notes here..."
+            value={value}
+            onChange={this.onChange}
+          />
+        </StyledNotesEditor>
+        <MarkdownInstructions />
+      </Wrapper>
     );
   }
 }
