@@ -6,6 +6,10 @@ const getColors = props => {
     background: 'white',
   };
 
+  if (props.isCompleted) {
+    colors.border = props.theme.neutral100;
+  }
+
   if (props.isSelected) {
     colors.border = props.theme.yellow500;
     colors.background = props.theme.yellow050;
@@ -13,10 +17,6 @@ const getColors = props => {
 
   if (props.isInBreak) {
     colors.border = props.theme.blue200;
-  }
-
-  if (props.isCompleted) {
-    colors.border = props.theme.neutral100;
   }
 
   if (props.isDragging) {
@@ -73,7 +73,6 @@ export const StyledTask = styled.div`
   font-size: 16px;
   margin: 4px 0;
   color: ${props => (props.isCompleted ? props.theme.neutral300 : props.theme.neutral700)};
-  text-decoration: ${props => (props.isCompleted ? 'line-through' : 'none')};
   cursor: pointer;
   animation: ${props => getAnimation(props)};
   animation-duration: 1s;
