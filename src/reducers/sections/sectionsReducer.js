@@ -46,7 +46,11 @@ export default (state = initialState, action) => {
           ...state.byId,
           [action.sectionId]: {
             ...state.byId[action.sectionId],
-            tasks: remove(state.byId[action.sectionId].tasks, action.index),
+            // If no index is specified ➜ assume it is the last task
+            tasks: remove(
+              state.byId[action.sectionId].tasks,
+              action.index === null ? state.byId[action.sectionId].tasks.length - 1 : action.index,
+            ),
           },
         },
       };
@@ -59,6 +63,18 @@ export default (state = initialState, action) => {
           [action.sectionId]: {
             ...state.byId[action.sectionId],
             tasks: insert(state.byId[action.sectionId].tasks, action.index, action.taskId),
+          },
+        },
+      };
+    case types.APPEND_TASK:
+      return {
+        ...state,
+        selected: action.sectionId,
+        byId: {
+          ...state.byId,
+          [action.sectionId]: {
+            ...state.byId[action.sectionId],
+            tasks: [...state.byId[action.sectionId].tasks, action.taskId],
           },
         },
       };

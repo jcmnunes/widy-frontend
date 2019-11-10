@@ -24,3 +24,9 @@ export const addTaskAtIndex = (sectionId, index, taskId) => ({
   index,
   taskId,
 });
+
+export const appendTask = (sectionId, taskId) => ({
+  type: types.APPEND_TASK,
+  sectionId,
+  taskId,
+});

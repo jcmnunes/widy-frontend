@@ -15,7 +15,7 @@ const LaunchTask = ({
   sectionsRadios,
   planSectionId,
   removeTask,
-  addTaskAtIndex,
+  appendTask,
   selectedTaskIndex,
   selectedTaskId,
   taskTitle,
@@ -42,10 +42,17 @@ const LaunchTask = ({
       setError('You need to select a section.');
     } else {
       removeTask(planSectionId, selectedTaskIndex);
-      addTaskAtIndex(checkedId, 0, selectedTaskId);
+      appendTask(checkedId, selectedTaskId);
       closeModal();
 
-      launchTask(selectedTaskId, taskTitle, 0, planSectionId, checkedId, selectedTaskIndex, 0);
+      launchTask({
+        taskId: selectedTaskId,
+        taskTitle,
+        taskTime: 0,
+        fromSectionId: planSectionId,
+        toSectionId: checkedId,
+        fromIndex: selectedTaskIndex,
+      });
     }
   };
 
@@ -88,7 +95,7 @@ LaunchTask.propTypes = {
   sectionsRadios: PropTypes.arrayOf(PropTypes.object).isRequired,
   planSectionId: PropTypes.string.isRequired,
   removeTask: PropTypes.func.isRequired,
-  addTaskAtIndex: PropTypes.func.isRequired,
+  appendTask: PropTypes.func.isRequired,
   selectedTaskIndex: PropTypes.number.isRequired,
   selectedTaskId: PropTypes.string.isRequired,
   taskTitle: PropTypes.string.isRequired,

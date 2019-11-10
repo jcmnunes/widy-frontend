@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { launchTask } from '../../../actions/tasks';
 import LaunchTask from './LaunchTask';
-import { addTaskAtIndex, removeTask } from '../../../actions/sections';
+import { appendTask, removeTask } from '../../../actions/sections';
 import { closeModal } from '../../../actions/modals';
 import {
   normalSectionsRadiosSelector,
@@ -22,5 +22,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { removeTask, addTaskAtIndex, closeModal, launchTask },
+  { removeTask, appendTask, closeModal, launchTask },
 )(LaunchTask);
