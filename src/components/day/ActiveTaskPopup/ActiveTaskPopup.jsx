@@ -26,7 +26,7 @@ const ActiveTaskPopup = ({
     return `${elapsedTime} / ${pomodoro.length}`;
   };
 
-  const handlePlayButtonClick = e => {
+  const handleStopButtonClick = e => {
     e.stopPropagation();
     stopTask();
   };
@@ -43,6 +43,13 @@ const ActiveTaskPopup = ({
     const { taskId, sectionId, dayId } = activeTask;
     stopTask();
     updateTask(taskId, { completed: true, start: null }, { sectionId, dayId });
+  };
+
+  const getStopButtonColors = () => {
+    if (activeTask.inBreak) {
+      return [theme.blue100, theme.blue700, theme.blue200, theme.blue800];
+    }
+    return [theme.yellow400, theme.yellow900, theme.yellow500, theme.yellow900];
   };
 
   return selectedDayId && activeTask.dayId && selectedDayId !== activeTask.dayId ? (
@@ -71,11 +78,7 @@ const ActiveTaskPopup = ({
         </Tooltip>
         <TaskTitle>{activeTask.title}</TaskTitle>
         <Tooltip placement="top" tooltip="Stop the task">
-          <IconButton
-            icon="STOP"
-            colors={[theme.yellow400, theme.yellow900, theme.yellow500, theme.yellow900]}
-            onClick={handlePlayButtonClick}
-          />
+          <IconButton icon="STOP" colors={getStopButtonColors()} onClick={handleStopButtonClick} />
         </Tooltip>
       </StyledTask>
     </StyledPopup>
