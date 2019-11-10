@@ -63,15 +63,15 @@ export const stopTask = () => ({
   type: types.STOP_TASK_REQUEST,
 });
 
-export const launchTask = (
+export const launchTask = ({
   taskId,
   taskTitle,
   taskTime,
   fromSectionId,
   toSectionId,
   fromIndex,
-  toIndex,
-) => ({
+  toIndex = null,
+}) => ({
   type: types.LAUNCH_TASK_REQUEST,
   taskId,
   taskTitle,
