@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import moment from 'moment';
 import styled from 'styled-components/macro';
 import MainBar from '../MainBar';
@@ -8,9 +9,7 @@ import Board from '../Board/Board/Board.container';
 import Sidebar from '../Sidebar';
 import ActiveTaskPopup from '../ActiveTaskPopup/ActiveTaskPopup.container';
 import { getCurrentPomodoroInfo } from '../../../helpers/pomodoro';
-import settings from '../../../helpers/settings';
-
-const { pomodoro } = settings();
+import { pomodoroSettingsSelector } from '../../../selectors/settings/settingsSelectors';
 
 const StyledDay = styled.div`
   display: grid;
@@ -33,6 +32,8 @@ const Day = ({
   activeTaskTitle,
   updateActiveTask,
 }) => {
+  const pomodoro = useSelector(pomodoroSettingsSelector);
+
   const renderDocTitle = (inBreak, elapsedTime) => {
     if (!activeTaskId) {
       document.title = 'WIDY';
@@ -40,7 +41,7 @@ const Day = ({
     }
     let renderedTime;
     let symbol;
-    renderedTime = `${elapsedTime} / ${pomodoro.length}`;
+    renderedTime = `${elapsedTime} / ${pomodoro.pomodoroLength}`;
     symbol = '🔶';
     if (inBreak) {
       renderedTime = `${elapsedTime} / ${pomodoro.shortBreak}`;
@@ -51,7 +52,7 @@ const Day = ({
 
   const updateTaskState = () => {
     const time = activeTaskTime + moment().diff(activeTaskStart, 'seconds');
-    const { inBreak, elapsedTime } = getCurrentPomodoroInfo(time);
+    const { inBreak, elapsedTime } = getCurrentPomodoroInfo(time, pomodoro);
     renderDocTitle(inBreak, elapsedTime);
     updateActiveTask({ inBreak }); // TODO ➜ Dispatch only when inBreak changes
   };

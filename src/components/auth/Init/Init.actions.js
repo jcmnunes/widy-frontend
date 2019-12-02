@@ -4,8 +4,9 @@ export const initRequest = () => ({
   type: INIT_REQUEST,
 });
 
-export const initSuccess = () => ({
+export const initSuccess = user => ({
   type: INIT_SUCCESS,
+  user,
 });
 
 export const initFailure = () => ({

@@ -6,9 +6,10 @@ import {
   SAVE_POMODORO_SETTINGS_REQUEST,
   SAVE_POMODORO_SETTINGS_SUCCESS,
 } from './Pomodoro.actions';
+import { INIT_SUCCESS } from '../../../auth/Init/Init.types';
 
 const initialState = {
-  isFetchingPomodoroSettings: true,
+  isFetchingPomodoroSettings: false,
   isSavingPomodoroSettings: false,
   pomodoroSettings: {
     pomodoroLength: null,
@@ -20,6 +21,11 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case INIT_SUCCESS:
+      return {
+        ...state,
+        pomodoroSettings: action.user.settings.pomodoro,
+      };
     case FETCH_POMODORO_SETTINGS_SUCCESS:
       return {
         ...state,
@@ -40,6 +46,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isSavingPomodoroSettings: false,
+        pomodoroSettings: action.pomodoroSettings,
       };
     case SAVE_POMODORO_SETTINGS_FAILURE:
       return {
@@ -47,7 +54,11 @@ export default (state = initialState, action) => {
         isSavingPomodoroSettings: false,
       };
     case RESET_STATE:
-      return initialState;
+      return {
+        ...state,
+        isFetchingPomodoroSettings: false,
+        isSavingPomodoroSettings: false,
+      };
     default:
       return state;
   }

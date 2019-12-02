@@ -44,7 +44,7 @@ export function* savePomodoroSettingsSaga(action) {
   try {
     const params = { pomodoroSettings: action.values };
     yield call(() => savePomodoroSettingsApi(params));
-    yield put({ type: SAVE_POMODORO_SETTINGS_SUCCESS });
+    yield put({ type: SAVE_POMODORO_SETTINGS_SUCCESS, pomodoroSettings: action.values });
     action.helpers.resetForm({ values: { ...action.values } });
   } catch (error) {
     yield put({ type: SAVE_POMODORO_SETTINGS_FAILURE });

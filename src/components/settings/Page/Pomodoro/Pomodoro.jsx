@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PomodoroLoading from './Pomodoro.loading';
-import { fetchPomodoroSettings, resetState } from './Pomodoro.actions';
+import { resetState } from './Pomodoro.actions';
 import { isFetchingPomodoroSettingsSelector, pomodoroSettingsSelector } from './Pomodoro.selector';
 import { PageDescription, PageTitle } from '../Page.styles';
 import PomodoroForm from './Pomodoro.form';
@@ -11,11 +11,7 @@ const Pomodoro = () => {
   const isFetchingPomodoroSettings = useSelector(isFetchingPomodoroSettingsSelector);
   const pomodoroSettings = useSelector(pomodoroSettingsSelector);
 
-  useEffect(() => {
-    dispatch(fetchPomodoroSettings());
-
-    return () => dispatch(resetState());
-  }, [dispatch]);
+  useEffect(() => () => dispatch(resetState()), [dispatch]);
 
   return (
     <div>

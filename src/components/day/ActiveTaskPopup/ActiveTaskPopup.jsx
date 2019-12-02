@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import moment from 'moment';
 import { Checkbox, Tooltip, IconButton, theme } from '@binarycapsule/ui-capsules';
 import { Heading2 } from '../../common/Typography';
-import settings from '../../../helpers/settings';
 import { getCurrentPomodoroInfo } from '../../../helpers/pomodoro';
 import { Header, StyledPopup, Time, Units } from './ActiveTaskPopup.styles';
 import { StyledTask, TaskTitle } from '../Board/Task/Task.styles';
-
-const { pomodoro } = settings();
+import { pomodoroSettingsSelector } from '../../../selectors/settings/settingsSelectors';
 
 const ActiveTaskPopup = ({
   activeTask,
@@ -18,12 +17,14 @@ const ActiveTaskPopup = ({
   stopTask,
   updateTask,
 }) => {
+  const pomodoro = useSelector(pomodoroSettingsSelector);
+
   const renderTime = () => {
     const { time, start } = activeTask;
     const newTime = time + moment().diff(start, 'seconds');
-    const { inBreak, elapsedTime } = getCurrentPomodoroInfo(newTime);
+    const { inBreak, elapsedTime } = getCurrentPomodoroInfo(newTime, pomodoro);
     if (inBreak) return `${elapsedTime} / ${pomodoro.shortBreak}`;
-    return `${elapsedTime} / ${pomodoro.length}`;
+    return `${elapsedTime} / ${pomodoro.pomodoroLength}`;
   };
 
   const handleStopButtonClick = e => {

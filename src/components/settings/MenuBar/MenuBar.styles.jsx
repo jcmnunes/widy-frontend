@@ -9,7 +9,7 @@ export const StyledMenuBar = styled.div`
   padding: 36px 24px 24px;
 `;
 
-export const Brand = styled.div`
+export const Brand = styled(Link)`
   margin-bottom: 24px;
   display: flex;
   align-items: flex-end;

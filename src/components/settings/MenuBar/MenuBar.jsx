@@ -10,7 +10,7 @@ const MenuBar = () => {
 
   return (
     <StyledMenuBar>
-      <Brand>
+      <Brand to="/">
         <IconWidy size={30} yesterdayColor={theme.blue600} />
         <IconWidyText size={60} textColor={theme.blue600} />
       </Brand>
@@ -22,6 +22,8 @@ const MenuBar = () => {
         <StyledLink to="/settings/pomodoro" isActive={pageId === 'pomodoro'}>
           Pomodoro
         </StyledLink>
+        <hr />
+        <StyledLink to="/">Exit Settings</StyledLink>
       </Links>
     </StyledMenuBar>
   );
