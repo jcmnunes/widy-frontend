@@ -1,7 +1,9 @@
 import { INIT_FAILURE, INIT_REQUEST, INIT_SUCCESS } from './Init.types';
+import { LOGOUT_SUCCESS } from '../Logout/Logout.types';
 
 const initialState = {
   loading: false,
+  user: null,
 };
 
 export default (state = initialState, action) => {
@@ -12,6 +14,8 @@ export default (state = initialState, action) => {
       return { ...state, loading: false };
     case INIT_FAILURE:
       return { ...state, loading: false };
+    case LOGOUT_SUCCESS:
+      return initialState;
     default:
       return state;
   }

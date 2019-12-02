@@ -21,7 +21,16 @@
     ],
     "react/jsx-props-no-spreading": 0,
     "react/state-in-constructor": 0,
-    "react/jsx-curly-newline": 0
+    "react/jsx-curly-newline": 0,
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "labelComponents": ["Label"],
+        "labelAttributes": ["label"],
+        "controlComponents": ["Input", "StyledInput"],
+        "depth": 3
+      }
+    ]
   },
   "settings": {
     "import/resolver": {
