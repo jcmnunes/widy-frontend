@@ -3,7 +3,7 @@ import { theme } from '@binarycapsule/ui-capsules';
 import { useParams } from 'react-router';
 import Heading1 from '../../common/Typography/Heading1';
 import { IconWidy, IconWidyText } from '../../../icons/widy';
-import { Brand, Links, StyledMenuBar, StyledLink } from './MenuBar.styles';
+import { Brand, Links, StyledMenuBar, StyledLink, Separator } from './MenuBar.styles';
 
 const MenuBar = () => {
   const { pageId } = useParams();
@@ -22,7 +22,7 @@ const MenuBar = () => {
         <StyledLink to="/settings/pomodoro" isActive={pageId === 'pomodoro'}>
           Pomodoro
         </StyledLink>
-        <hr />
+        <Separator />
         <StyledLink to="/">Exit Settings</StyledLink>
       </Links>
     </StyledMenuBar>
