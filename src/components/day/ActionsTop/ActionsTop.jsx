@@ -17,7 +17,7 @@ const ActionsTop = ({ isLogoutLoading, logoutRequest }) => {
         <DropdownItem
           text="Settings"
           icon="SETTINGS"
-          handleAction={() => history.push('/settings/pomodoro')}
+          handleAction={() => history.push('/settings/account')}
         />
         <DropdownItem
           text="Log out"

@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Button, Input } from '@binarycapsule/ui-capsules';
 import { savePomodoroSettings } from './Pomodoro.actions';
-import { isSavingPomodoroSettingsSelector } from './Pomodoro.selector';
-import { Actions, StyledForm, StyledLabel } from './Pomodoro.styles';
+import { Actions, StyledForm, StyledLabel } from '../Page.styles';
 
 const validationSchema = Yup.object().shape({
   pomodoroLength: Yup.number()
@@ -42,14 +41,14 @@ const PomodoroForm = ({
       longBreakAfter,
     },
     validationSchema,
-    onSubmit: (values, { resetForm }) => {
-      dispatch(savePomodoroSettings(values, formik.initialValues, { resetForm }));
+    onSubmit: (values, { resetForm, setSubmitting }) => {
+      dispatch(savePomodoroSettings(values, formik.initialValues, { resetForm, setSubmitting }));
     },
   });
 
   const dispatch = useDispatch();
 
-  const isSavingPomodoroSettings = useSelector(isSavingPomodoroSettingsSelector);
+  const isSavingPomodoroSettings = formik.isSubmitting;
 
   return (
     <StyledForm onSubmit={formik.handleSubmit}>

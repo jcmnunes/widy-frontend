@@ -9,6 +9,11 @@ export const StyledMenuBar = styled.div`
   padding: 36px 24px 24px;
 `;
 
+export const Separator = styled.div`
+  margin: 8px 0;
+  width: 100%;
+`;
+
 export const Brand = styled(Link)`
   margin-bottom: 24px;
   display: flex;

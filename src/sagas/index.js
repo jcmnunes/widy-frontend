@@ -15,10 +15,8 @@ import logout from '../components/auth/Logout/Logout.saga';
 import forgot from '../components/auth/Forgot/Forgot.sagas';
 import reset from '../components/auth/Reset/Reset.saga';
 import init from '../components/auth/Init/Init.saga';
-import {
-  watchFetchPomodoroSettingsSaga as fetchPomodoroSettingsSaga,
-  watchSavePomodoroSettingsSaga as savePomodoroSettingsSaga,
-} from '../components/settings/Page/Pomodoro/Pomodoro.actions';
+import { watchSavePomodoroSettingsSaga as savePomodoroSettingsSaga } from '../components/settings/Page/Pomodoro/Pomodoro.actions';
+import { watchSaveAccountSettingsSaga as saveAccountSettingsSaga } from '../components/settings/Page/Account/Account.actions';
 
 export default function* rootSaga() {
   yield all([
@@ -38,7 +36,7 @@ export default function* rootSaga() {
     forgot(),
     reset(),
     init(),
-    fetchPomodoroSettingsSaga(),
     savePomodoroSettingsSaga(),
+    saveAccountSettingsSaga(),
   ]);
 }
