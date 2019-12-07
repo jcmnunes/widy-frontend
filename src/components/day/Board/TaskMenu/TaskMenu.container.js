@@ -12,7 +12,4 @@ const mapDispatchToProps = dispatch => ({
   handleRegisterTimeClick: handleRegisterTimeClick(dispatch),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(TaskMenuComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(TaskMenuComponent);

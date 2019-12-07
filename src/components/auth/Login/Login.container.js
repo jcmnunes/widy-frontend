@@ -13,7 +13,4 @@ const mapDispatchToProps = dispatch => ({
   resetLoginError: () => dispatch(resetLoginError()),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

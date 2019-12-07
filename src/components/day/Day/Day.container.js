@@ -9,7 +9,4 @@ const mapStateToProps = state => ({
   activeTaskStart: state.activeTask.start,
 });
 
-export default connect(
-  mapStateToProps,
-  { updateActiveTask },
-)(Day);
+export default connect(mapStateToProps, { updateActiveTask })(Day);

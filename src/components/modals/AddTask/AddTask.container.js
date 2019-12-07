@@ -14,7 +14,4 @@ const mapDispatchToProps = {
   startCreateTaskRequest,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(AddTask);
+export default connect(mapStateToProps, mapDispatchToProps)(AddTask);

@@ -16,7 +16,4 @@ const mapDispatchToProps = {
   updateTask,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(ActiveTaskPopup);
+export default connect(mapStateToProps, mapDispatchToProps)(ActiveTaskPopup);

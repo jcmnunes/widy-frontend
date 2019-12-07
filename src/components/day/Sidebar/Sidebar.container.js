@@ -8,7 +8,4 @@ const mapStateToProps = state => ({
   isSelectedTaskInPlan: isSelectedTaskInPlanSelector(state),
 });
 
-export default connect(
-  mapStateToProps,
-  { openModal },
-)(Sidebar);
+export default connect(mapStateToProps, { openModal })(Sidebar);

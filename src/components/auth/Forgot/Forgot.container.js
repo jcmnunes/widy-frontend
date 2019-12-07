@@ -13,7 +13,4 @@ const mapDispatchToProps = {
   resetForgotMessage,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Forgot);
+export default connect(mapStateToProps, mapDispatchToProps)(Forgot);

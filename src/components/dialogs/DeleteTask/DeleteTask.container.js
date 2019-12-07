@@ -13,7 +13,4 @@ const mapDispatchToProps = {
   deleteTask,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(DeleteTask);
+export default connect(mapStateToProps, mapDispatchToProps)(DeleteTask);

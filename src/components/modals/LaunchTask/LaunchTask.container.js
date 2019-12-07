@@ -20,7 +20,6 @@ const mapStateToProps = state => ({
   selectedTaskIndex: selectedTaskIndexSelector(state),
 });
 
-export default connect(
-  mapStateToProps,
-  { removeTask, appendTask, closeModal, launchTask },
-)(LaunchTask);
+export default connect(mapStateToProps, { removeTask, appendTask, closeModal, launchTask })(
+  LaunchTask,
+);

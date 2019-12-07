@@ -17,7 +17,4 @@ const mapDispatchToProps = {
   onDragEnd,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Board);
+export default connect(mapStateToProps, mapDispatchToProps)(Board);

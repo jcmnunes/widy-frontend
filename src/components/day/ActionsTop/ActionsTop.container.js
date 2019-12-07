@@ -11,7 +11,4 @@ const mapDispatchToProps = {
   logoutRequest,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(ActionsTop);
+export default connect(mapStateToProps, mapDispatchToProps)(ActionsTop);

@@ -19,7 +19,4 @@ const mapDispatchToProps = {
   handleTaskRename,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(DraggableTask);
+export default connect(mapStateToProps, mapDispatchToProps)(DraggableTask);

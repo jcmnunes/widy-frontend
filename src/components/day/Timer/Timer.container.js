@@ -8,7 +8,4 @@ const mapStateToProps = (state, ownProps) => ({
   taskTime: state.tasks.byId[ownProps.taskId].time,
 });
 
-export default connect(
-  mapStateToProps,
-  { startTask, stopTask },
-)(Timer);
+export default connect(mapStateToProps, { startTask, stopTask })(Timer);
