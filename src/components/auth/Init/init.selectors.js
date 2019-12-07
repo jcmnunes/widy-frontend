@@ -7,7 +7,4 @@ export const accountInformationSelector = createSelector(
   ({ firstName, lastName, email }) => ({ firstName, lastName, email }),
 );
 
-export const settingsSelector = createSelector(
-  userSelector,
-  ({ settings }) => settings,
-);
+export const settingsSelector = createSelector(userSelector, ({ settings }) => settings);

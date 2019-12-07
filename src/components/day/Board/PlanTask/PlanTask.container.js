@@ -17,7 +17,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   handlePlanTaskLaunch: handlePlanTaskLaunch(dispatch),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(PlanTask);
+export default connect(mapStateToProps, mapDispatchToProps)(PlanTask);

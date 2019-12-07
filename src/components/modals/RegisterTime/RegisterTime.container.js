@@ -9,7 +9,4 @@ const mapStateToProps = state => ({
   selectedTaskId: state.tasks.selected,
 });
 
-export default connect(
-  mapStateToProps,
-  { closeModal, updateTask },
-)(RegisterTime);
+export default connect(mapStateToProps, { closeModal, updateTask })(RegisterTime);

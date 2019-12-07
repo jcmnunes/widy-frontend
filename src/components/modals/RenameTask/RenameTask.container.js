@@ -16,7 +16,4 @@ const mapDispatchToProps = {
   updateTask,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(RenameTask);
+export default connect(mapStateToProps, mapDispatchToProps)(RenameTask);

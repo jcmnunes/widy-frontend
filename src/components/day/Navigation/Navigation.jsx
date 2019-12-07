@@ -138,7 +138,10 @@ export const mapStateToProps = state => ({
   createDayLoading: state.days.createDayLoading,
 });
 
-export default connect(
-  mapStateToProps,
-  { getDays, getDay, storeSelectedDay, createDay, storeSelectedTaskId },
-)(Navigation);
+export default connect(mapStateToProps, {
+  getDays,
+  getDay,
+  storeSelectedDay,
+  createDay,
+  storeSelectedTaskId,
+})(Navigation);

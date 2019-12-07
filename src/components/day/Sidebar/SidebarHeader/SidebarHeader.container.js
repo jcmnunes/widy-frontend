@@ -9,7 +9,4 @@ const mapStateToProps = state => ({
   selectedDay: selectedDaySelector(state),
 });
 
-export default connect(
-  mapStateToProps,
-  { updateTask },
-)(SidebarHeader);
+export default connect(mapStateToProps, { updateTask })(SidebarHeader);
