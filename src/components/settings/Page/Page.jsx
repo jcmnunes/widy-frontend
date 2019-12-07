@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import { Route, Switch } from 'react-router';
 import Account from './Account/Account';
+import ChangePassword from './ChangePassword/ChangePassword';
 import Pomodoro from './Pomodoro/Pomodoro';
 
 const StyledPage = styled.div`
@@ -14,6 +15,9 @@ const Page = () => (
     <Switch>
       <Route path="/settings/account">
         <Account />
+      </Route>
+      <Route path="/settings/changePassword">
+        <ChangePassword />
       </Route>
       <Route path="/settings/pomodoro">
         <Pomodoro />
