@@ -1,18 +1,17 @@
-import settings from './settings';
-
 /**
  * Returns the total number of Pomodoros
  *
  * @param {number} time - Elapsed time in seconds
+ * @param {object} settings - Pomodoro settings
  * @returns {number} - Number of Pomodoros
  */
-export const getNumberOfPomodoros = time => {
+export const getNumberOfPomodoros = (time, settings) => {
   const timeInMinutes = time / 60;
-  const { length, shortBreak } = settings().pomodoro;
-  if (timeInMinutes < length) return 0;
+  const { pomodoroLength, shortBreak } = settings;
+  if (timeInMinutes < pomodoroLength) return 0;
 
-  let pomodoros = Math.floor(timeInMinutes / (length + shortBreak));
-  if (timeInMinutes % (length + shortBreak) >= length) pomodoros += 1;
+  let pomodoros = Math.floor(timeInMinutes / (pomodoroLength + shortBreak));
+  if (timeInMinutes % (pomodoroLength + shortBreak) >= pomodoroLength) pomodoros += 1;
   return pomodoros;
 };
 
@@ -20,18 +19,19 @@ export const getNumberOfPomodoros = time => {
  * Returns information about current active task time
  *
  * @param {number} time - Elapsed time (secs)
+ * @param {object} settings - Pomodoro settings
  * @returns {{ inBreak: boolean, elapsedTime: string }}
  */
-export const getCurrentPomodoroInfo = time => {
+export const getCurrentPomodoroInfo = (time, settings) => {
   const timeInMinutes = time / 60;
-  const { length, shortBreak } = settings().pomodoro;
-  const remainingTime = timeInMinutes % (length + shortBreak);
+  const { pomodoroLength, shortBreak } = settings;
+  const remainingTime = timeInMinutes % (pomodoroLength + shortBreak);
 
   const info = { inBreak: false, elapsedTime: formatTime(remainingTime) };
 
-  if (remainingTime >= length) {
+  if (remainingTime >= pomodoroLength) {
     info.inBreak = true;
-    info.elapsedTime = formatTime(remainingTime - length);
+    info.elapsedTime = formatTime(remainingTime - pomodoroLength);
   }
 
   return info;

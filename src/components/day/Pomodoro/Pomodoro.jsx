@@ -1,22 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import moment from 'moment';
 import Timer from '../Timer';
 import Stats from './Stats';
 import { getCurrentPomodoroInfo } from '../../../helpers/pomodoro';
-import settings from '../../../helpers/settings';
+import { pomodoroSettingsSelector } from '../../../selectors/settings/settingsSelectors';
 import { StyledPomodoro, Time, Units } from './Pomodoro.styles';
-
-const { pomodoro } = settings();
 
 const Pomodoro = ({ taskId, sectionId, isTaskActive, activeTask, selectedTask }) => {
   const { time, start } = activeTask;
   const newTime = isTaskActive > 0 ? time + moment().diff(start, 'seconds') : selectedTask.time;
+  const pomodoro = useSelector(pomodoroSettingsSelector);
 
   const renderTime = () => {
-    const { inBreak, elapsedTime } = getCurrentPomodoroInfo(newTime);
+    const { inBreak, elapsedTime } = getCurrentPomodoroInfo(newTime, pomodoro);
     if (inBreak) return `${elapsedTime} / ${pomodoro.shortBreak}`;
-    return `${elapsedTime} / ${pomodoro.length}`;
+    return `${elapsedTime} / ${pomodoro.pomodoroLength}`;
   };
 
   return (

@@ -12,7 +12,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   openCreateTaskModal: openCreateTaskModal(dispatch, ownProps),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Section);
+export default connect(mapStateToProps, mapDispatchToProps)(Section);

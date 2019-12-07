@@ -7,7 +7,4 @@ const mapStateToProps = state => ({
   canRegisterTime: canRegisterTimeSelector(state),
 });
 
-export default connect(
-  mapStateToProps,
-  { openModal },
-)(RegisterTime);
+export default connect(mapStateToProps, { openModal })(RegisterTime);

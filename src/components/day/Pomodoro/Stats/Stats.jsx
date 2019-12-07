@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import uuidv4 from 'uuid/v4';
 import { Icon24 } from '@binarycapsule/ui-capsules';
+import { pomodoroSettingsSelector } from '../../../../selectors/settings/settingsSelectors';
 import { getNumberOfPomodoros, getTotalTime } from '../../../../helpers/pomodoro';
 import { Empty, Multiplier, Pomodoros, StyledStats, Td, Units, Value } from './Stats.styles';
 
 const Stats = ({ time }) => {
+  const pomodoro = useSelector(pomodoroSettingsSelector);
+
   const renderTime = () => {
     const timeMinutesHours = getTotalTime(time);
     return (
@@ -23,7 +27,7 @@ const Stats = ({ time }) => {
   };
 
   const renderPomodoros = () => {
-    const numPomodoros = getNumberOfPomodoros(time);
+    const numPomodoros = getNumberOfPomodoros(time, pomodoro);
     if (numPomodoros === 0) return <Empty>---</Empty>;
     if (numPomodoros > 5) {
       return (
