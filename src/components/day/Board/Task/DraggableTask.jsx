@@ -14,6 +14,7 @@ const DraggableTask = ({
   handleTaskClick,
   handleTaskRename,
   handleTaskCompletedStateChange,
+  scopeCode,
 }) => (
   <Draggable draggableId={taskId} index={index}>
     {(provided, snapshot) => (
@@ -21,6 +22,7 @@ const DraggableTask = ({
         taskRef={provided.innerRef}
         taskId={taskId}
         sectionId={sectionId}
+        scopeCode={scopeCode}
         isSelected={taskId === selectedTaskId}
         isCompleted={isCompleted}
         isActive={activeTask.taskId === taskId}
@@ -38,10 +40,15 @@ const DraggableTask = ({
   </Draggable>
 );
 
+DraggableTask.defaultProps = {
+  scopeCode: null,
+};
+
 DraggableTask.propTypes = {
   index: PropTypes.number.isRequired,
   sectionId: PropTypes.string.isRequired,
   taskId: PropTypes.string.isRequired,
+  scopeCode: PropTypes.string,
   selectedTaskId: PropTypes.string.isRequired,
   activeTask: PropTypes.shape({
     taskId: PropTypes.string.isRequired,
