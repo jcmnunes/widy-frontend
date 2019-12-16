@@ -5,7 +5,10 @@ import { SAVE_POMODORO_SETTINGS_SUCCESS } from '../../settings/Page/Pomodoro/Pom
 
 const initialState = {
   loading: false,
-  user: null,
+  user: {
+    scopes: [],
+    archivedScopes: [],
+  },
 };
 
 export default (state = initialState, action) => {

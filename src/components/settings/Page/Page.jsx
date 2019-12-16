@@ -10,6 +10,7 @@ const StyledPage = styled.div`
   padding: 48px 32px;
 `;
 
+// TODO ➜ Replace for correct scope page
 const Page = () => (
   <StyledPage>
     <Switch>
@@ -18,6 +19,9 @@ const Page = () => (
       </Route>
       <Route path="/settings/changePassword">
         <ChangePassword />
+      </Route>
+      <Route path="/settings/scopes">
+        <div>Scopes</div>
       </Route>
       <Route path="/settings/pomodoro">
         <Pomodoro />
