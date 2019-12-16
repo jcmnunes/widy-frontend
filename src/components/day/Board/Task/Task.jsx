@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Checkbox } from '@binarycapsule/ui-capsules';
 import Timer from '../../Timer';
 import TaskMenu from '../TaskMenu/TaskMenu.container';
+import ScopeCode from '../../../common/ScopeCode/ScopeCode';
 import { Control, Controls, StyledTask, TaskTitle } from './Task.styles';
 
 const Task = ({
@@ -18,6 +19,7 @@ const Task = ({
   handleTaskRename,
   handleTaskCompletedStateChange,
   children,
+  scopeCode,
   ...other
 }) => (
   <StyledTask
@@ -41,6 +43,7 @@ const Task = ({
       <TaskCopyButton taskTitle={children} />
     </StyledCopyButton>
     */}
+    <ScopeCode scopeCode={scopeCode} style={{ lineHeight: '23px' }} />
     {!isCompleted && (
       <Controls>
         <Timer taskId={taskId} sectionId={sectionId} />
@@ -60,6 +63,7 @@ Task.propTypes = {
   taskRef: PropTypes.func,
   taskId: PropTypes.string.isRequired,
   sectionId: PropTypes.string.isRequired,
+  scopeCode: PropTypes.string.isRequired,
   isCompleted: PropTypes.bool.isRequired,
   isSelected: PropTypes.bool.isRequired,
   isActive: PropTypes.bool.isRequired,
