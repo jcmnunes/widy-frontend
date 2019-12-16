@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import {
   Modal,
   ModalBody,
@@ -7,11 +9,20 @@ import {
   ModalFooter,
   Input,
   Button,
+  Select,
 } from '@binarycapsule/ui-capsules';
+import CustomLabel from './components/CustomLabel';
+import { FormHeading, Section } from './AddTask.styles';
+import { scopesOptionsSelector } from '../../../selectors/scopes/scopesSelectors';
 
 const AddTask = ({ isOpen, isLoading, startCreateTaskRequest, closeModal }) => {
   const [title, setTitle] = useState('');
+  const [scope, setScope] = useState(null);
   const [error, setError] = useState('');
+
+  const scopesOptions = useSelector(scopesOptionsSelector);
+
+  const history = useHistory();
 
   const handleOnChange = e => {
     const { value } = e.target;
@@ -24,7 +35,7 @@ const AddTask = ({ isOpen, isLoading, startCreateTaskRequest, closeModal }) => {
     if (!title) {
       setError('You need to enter the task name.');
     } else {
-      startCreateTaskRequest(title);
+      startCreateTaskRequest(title, scope ? scope.value : null);
     }
   };
 
@@ -32,6 +43,7 @@ const AddTask = ({ isOpen, isLoading, startCreateTaskRequest, closeModal }) => {
     if (!isOpen) {
       setTitle('');
       setError('');
+      setScope(null);
     }
   }, [isOpen]);
 
@@ -39,16 +51,40 @@ const AddTask = ({ isOpen, isLoading, startCreateTaskRequest, closeModal }) => {
     <Modal isOpen={isOpen} onRequestClose={closeModal} contentLabel="Modal - Add a new task">
       <form onSubmit={handleSubmit}>
         <ModalBody>
-          <ModalTitle>What will you be working on?</ModalTitle>
-          <Input
-            type="text"
-            value={title}
-            placeholder="Task name"
-            onChange={handleOnChange}
-            size="large"
-            autoFocus
-            error={error}
+          <Section>
+            <ModalTitle>What will you be working on?</ModalTitle>
+            <Input
+              type="text"
+              value={title}
+              placeholder="Task name"
+              onChange={handleOnChange}
+              size="large"
+              autoFocus
+              error={error}
+            />
+          </Section>
+          <FormHeading>Task scope</FormHeading>
+          <Select
+            isClearable
+            value={scope}
+            options={scopesOptions}
+            placeholder="No scope"
+            onChange={opt => setScope(opt)}
+            formatOptionLabel={CustomLabel}
+            menuPortalTarget={document.body}
           />
+          <div style={{ marginTop: 8 }}>
+            <Button
+              onClick={() => {
+                closeModal();
+                history.push('/settings/scopes');
+              }}
+              appearance="link"
+              size="small"
+            >
+              Create new scope
+            </Button>
+          </div>
         </ModalBody>
         <ModalFooter>
           <Button appearance="secondary" size="large" onClick={closeModal}>

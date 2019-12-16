@@ -19,6 +19,7 @@ export function* createTaskSaga(action) {
         time: 0,
         start: null,
         completed: false,
+        scopeId: action.scopeId,
       },
     };
     const { data } = yield call(createTask, params);
@@ -34,6 +35,7 @@ export function* createTaskSaga(action) {
           time: data.task.time,
           start: data.task.start,
           completed: data.task.completed,
+          scopeId: data.task.scopeId,
         },
       },
     });

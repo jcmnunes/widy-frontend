@@ -6,9 +6,10 @@ export const storeCreateTaskData = (dayId, sectionId) => ({
   sectionId,
 });
 
-export const startCreateTaskRequest = title => ({
+export const startCreateTaskRequest = (title, scopeId) => ({
   type: types.CREATE_TASK_REQUEST,
   title,
+  scopeId,
 });
 
 export const storeSelectedTaskId = taskId => ({
