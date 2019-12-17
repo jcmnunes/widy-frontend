@@ -14,11 +14,11 @@ const normalize = data => {
       byId: {},
     },
   };
-  data.sections.forEach(({ title, tasks, _id: id, isPlan }) => {
-    const tasksArray = tasks.map(task => task._id);
+  data.sections.forEach(({ title, tasks, id, isPlan }) => {
+    const tasksArray = tasks.map(task => task.id);
     normalized.sections.byId[id] = { id, title, isPlan, tasks: tasksArray };
     normalized.sections.order.push(id);
-    tasks.forEach(({ title: taskTitle, _id: taskId, notes, time, start, completed, scopeId }) => {
+    tasks.forEach(({ title: taskTitle, id: taskId, notes, time, start, completed, scopeId }) => {
       normalized.tasks.byId[taskId] = {
         id: taskId,
         title: taskTitle,

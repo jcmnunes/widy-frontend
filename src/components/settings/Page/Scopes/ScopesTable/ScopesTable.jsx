@@ -56,7 +56,7 @@ const ScopesTable = () => {
     <>
       <StyledScopesTable>
         {scopes.map(scope => (
-          <Row key={scope._id}>
+          <Row key={scope.id}>
             <ScopeCode scopeCode={scope.shortCode} onClick={() => setSelectedScope(scope)} />
             <ScopeName onClick={() => setSelectedScope(scope)}>{scope.name}</ScopeName>
             <DotsMenu>

@@ -7,6 +7,6 @@
  */
 // eslint-disable-next-line import/prefer-default-export
 export const findScopeCode = (scopeId, scopes) => {
-  const scope = scopes.find(({ _id }) => _id === scopeId);
+  const scope = scopes.find(({ id }) => id === scopeId);
   return scope ? scope.shortCode : null;
 };

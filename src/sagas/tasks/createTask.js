@@ -29,7 +29,7 @@ export function* createTaskSaga(action) {
         dayId,
         sectionId,
         task: {
-          id: data.task._id,
+          id: data.task.id,
           title: data.task.title,
           notes: data.task.notes,
           time: data.task.time,

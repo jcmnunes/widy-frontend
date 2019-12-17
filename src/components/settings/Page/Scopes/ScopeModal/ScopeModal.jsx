@@ -12,7 +12,7 @@ import {
 } from '@binarycapsule/ui-capsules';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { createScope } from './ScopeModal.actions';
+import { createScope, updateScope } from './ScopeModal.actions';
 
 export const InputField = styled.label`
   display: block;
@@ -38,8 +38,12 @@ const ScopeModal = ({ scope, closeModal }) => {
       shortCode: scope ? scope.shortCode : '',
     },
     validationSchema,
-    onSubmit: (values, { setFieldError }) => {
-      dispatch(createScope(values, { closeModal, setFieldError }));
+    onSubmit: (values, { setFieldError, setSubmitting }) => {
+      if (scope) {
+        dispatch(updateScope(scope.id, values, { closeModal, setFieldError, setSubmitting }));
+      } else {
+        dispatch(createScope(values, { closeModal, setFieldError, setSubmitting }));
+      }
     },
   });
 
@@ -78,10 +82,15 @@ const ScopeModal = ({ scope, closeModal }) => {
           </InputField>
         </ModalBody>
         <ModalFooter>
-          <Button appearance="secondary" size="large" onClick={closeModal}>
+          <Button
+            appearance="secondary"
+            size="large"
+            onClick={closeModal}
+            isDisabled={formik.isSubmitting}
+          >
             Cancel
           </Button>
-          <Button type="submit" appearance="primary" size="large">
+          <Button type="submit" appearance="primary" size="large" isLoading={formik.isSubmitting}>
             {scope ? 'Save Changes' : 'Create Scope'}
           </Button>
         </ModalFooter>
@@ -96,7 +105,7 @@ ScopeModal.defaultProps = {
 
 ScopeModal.propTypes = {
   scope: PropTypes.shape({
-    _id: PropTypes.string,
+    id: PropTypes.string,
     name: PropTypes.string,
     shortCode: PropTypes.string,
   }),

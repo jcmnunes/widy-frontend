@@ -2,7 +2,10 @@ import { INIT_FAILURE, INIT_REQUEST, INIT_SUCCESS } from './Init.types';
 import { LOGOUT_SUCCESS } from '../Logout/Logout.types';
 import { SAVE_ACCOUNT_SETTINGS_SUCCESS } from '../../settings/Page/Account/Account.actions';
 import { SAVE_POMODORO_SETTINGS_SUCCESS } from '../../settings/Page/Pomodoro/Pomodoro.actions';
-import { CREATE_SCOPE_SUCCESS } from '../../settings/Page/Scopes/ScopeModal/ScopeModal.actions';
+import {
+  CREATE_SCOPE_SUCCESS,
+  UPDATE_SCOPE_SUCCESS,
+} from '../../settings/Page/Scopes/ScopeModal/ScopeModal.actions';
 
 const initialState = {
   loading: false,
@@ -45,6 +48,19 @@ export default (state = initialState, action) => {
         user: {
           ...state.user,
           scopes: [action.scope, ...state.user.scopes],
+        },
+      };
+    case UPDATE_SCOPE_SUCCESS:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          scopes: state.user.scopes.map(scope => {
+            if (scope.id === action.scope.id) {
+              return action.scope;
+            }
+            return scope;
+          }),
         },
       };
     case LOGOUT_SUCCESS:
