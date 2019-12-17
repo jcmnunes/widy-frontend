@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { DropdownItem } from '@binarycapsule/ui-capsules';
 import ScopeCode from '../../../../common/ScopeCode/ScopeCode';
 import DotsMenu from '../../../../common/DotsMenu/DotsMenu';
 import ScopeModal from '../ScopeModal/ScopeModal';
-import { scopesSelector } from '../../../../../selectors/scopes/scopesSelectors';
+import { archiveScope, unarchiveScope } from './ScopesTable.actions';
 
 const StyledScopesTable = styled.div`
   border: 1px solid ${props => props.theme.neutral200};
@@ -47,10 +48,11 @@ const Row = styled.div`
   }
 `;
 
-const ScopesTable = () => {
+const ScopesTable = ({ isArchived, scopes }) => {
   const [selectedScope, setSelectedScope] = useState(null);
+  const [isArchivingScope, setIsArchivingScope] = useState(false);
 
-  const scopes = useSelector(scopesSelector);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -61,7 +63,18 @@ const ScopesTable = () => {
             <ScopeName onClick={() => setSelectedScope(scope)}>{scope.name}</ScopeName>
             <DotsMenu>
               <DropdownItem text="Edit" icon="EDIT" handleAction={() => setSelectedScope(scope)} />
-              <DropdownItem text="Archive" icon="TRASH" handleAction={() => {}} />
+              <DropdownItem
+                text={isArchived ? 'Unarchive' : 'Archive'}
+                icon="TRASH"
+                isLoading={isArchivingScope}
+                handleAction={() => {
+                  isArchived
+                    ? dispatch(unarchiveScope(scope.id, { setIsArchivingScope }))
+                    : dispatch(archiveScope(scope.id, { setIsArchivingScope }));
+                  setIsArchivingScope(true);
+                }}
+                closeOnAction={false}
+              />
             </DotsMenu>
           </Row>
         ))}
@@ -71,6 +84,15 @@ const ScopesTable = () => {
       )}
     </>
   );
+};
+
+ScopesTable.defaultProps = {
+  isArchived: false,
+};
+
+ScopesTable.propTypes = {
+  isArchived: PropTypes.bool,
+  scopes: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 export default ScopesTable;

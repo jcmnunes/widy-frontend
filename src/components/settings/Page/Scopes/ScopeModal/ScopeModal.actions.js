@@ -46,13 +46,12 @@ export function* createScopeSaga(action) {
     if (data && data.field && data.error) {
       action.helpers.setFieldError(data.field, data.error);
     } else {
+      action.helpers.setSubmitting();
       Toaster.error({
         title: 'Something went wrong',
         message: 'Scope could not be created',
       });
     }
-  } finally {
-    action.helpers.setSubmitting();
   }
 }
 
@@ -74,9 +73,8 @@ export function* updateScopeSaga(action) {
         title: 'Something went wrong',
         message: 'Scope could not be updated',
       });
+      action.helpers.setSubmitting();
     }
-  } finally {
-    action.helpers.setSubmitting();
   }
 }
 

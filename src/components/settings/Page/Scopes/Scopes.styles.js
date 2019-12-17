@@ -14,3 +14,7 @@ export const ActionsTop = styled.div`
 export const ScopesSearch = styled.div`
   max-width: 222px;
 `;
+
+export const ShowArchiveScopesToggle = styled.div`
+  margin-top: 24px;
+`;

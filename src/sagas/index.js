@@ -22,6 +22,10 @@ import {
   watchCreateScopeSaga as createScope,
   watchUpdateScopeSaga as updateScope,
 } from '../components/settings/Page/Scopes/ScopeModal/ScopeModal.actions';
+import {
+  watchArchiveScopeSaga as archiveScope,
+  watchUnarchiveScopeSaga as unarchiveScope,
+} from '../components/settings/Page/Scopes/ScopesTable/ScopesTable.actions';
 
 export default function* rootSaga() {
   yield all([
@@ -46,5 +50,7 @@ export default function* rootSaga() {
     changePassword(),
     createScope(),
     updateScope(),
+    archiveScope(),
+    unarchiveScope(),
   ]);
 }

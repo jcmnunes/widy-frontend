@@ -1,12 +1,26 @@
 import React, { useState } from 'react';
-import { Button, Input } from '@binarycapsule/ui-capsules';
+import { useSelector } from 'react-redux';
+import { Button, Input, Checkbox } from '@binarycapsule/ui-capsules';
 import ScopesTable from './ScopesTable/ScopesTable';
-import { ActionsTop, ScopesPageWrapper, ScopesSearch } from './Scopes.styles';
 import { PageDescription, PageTitle } from '../Page.styles';
 import ScopeModal from './ScopeModal/ScopeModal';
+import {
+  archivedScopesSelector,
+  scopesSelector,
+} from '../../../../selectors/scopes/scopesSelectors';
+import {
+  ActionsTop,
+  ScopesPageWrapper,
+  ScopesSearch,
+  ShowArchiveScopesToggle,
+} from './Scopes.styles';
 
 const Scopes = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showArchivedScopes, setShowArchivedScopes] = useState(false);
+
+  const scopes = useSelector(scopesSelector);
+  const archivedScopes = useSelector(archivedScopesSelector);
 
   return (
     <>
@@ -27,7 +41,17 @@ const Scopes = () => {
               <Input onChange={() => {}} placeholder="Search scopes" size="large" value="" />
             </ScopesSearch>
           </ActionsTop>
-          <ScopesTable />
+          <ScopesTable scopes={scopes} />
+          <ShowArchiveScopesToggle>
+            <Checkbox
+              appearance="primary"
+              checked={showArchivedScopes}
+              onChange={() => setShowArchivedScopes(!showArchivedScopes)}
+            >
+              Show archived scopes
+            </Checkbox>
+          </ShowArchiveScopesToggle>
+          {showArchivedScopes && <ScopesTable isArchived scopes={archivedScopes} />}
         </ScopesPageWrapper>
       </div>
       {isOpen && <ScopeModal closeModal={() => setIsOpen(false)} />}

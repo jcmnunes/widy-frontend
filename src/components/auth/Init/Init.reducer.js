@@ -6,6 +6,10 @@ import {
   CREATE_SCOPE_SUCCESS,
   UPDATE_SCOPE_SUCCESS,
 } from '../../settings/Page/Scopes/ScopeModal/ScopeModal.actions';
+import {
+  ARCHIVE_SCOPE_SUCCESS,
+  UNARCHIVE_SCOPE_SUCCESS,
+} from '../../settings/Page/Scopes/ScopesTable/ScopesTable.actions';
 
 const initialState = {
   loading: false,
@@ -60,6 +64,34 @@ export default (state = initialState, action) => {
               return action.scope;
             }
             return scope;
+          }),
+          archivedScopes: state.user.archivedScopes.map(scope => {
+            if (scope.id === action.scope.id) {
+              return action.scope;
+            }
+            return scope;
+          }),
+        },
+      };
+    case ARCHIVE_SCOPE_SUCCESS:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          scopes: state.user.scopes.filter(scope => {
+            return scope.id !== action.scope.id;
+          }),
+          archivedScopes: [action.scope, ...state.user.archivedScopes],
+        },
+      };
+    case UNARCHIVE_SCOPE_SUCCESS:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          scopes: [action.scope, ...state.user.scopes],
+          archivedScopes: state.user.archivedScopes.filter(scope => {
+            return scope.id !== action.scope.id;
           }),
         },
       };
