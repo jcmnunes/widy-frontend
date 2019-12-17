@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router';
 import Account from './Account/Account';
 import ChangePassword from './ChangePassword/ChangePassword';
 import Pomodoro from './Pomodoro/Pomodoro';
+import Scopes from './Scopes/Scopes';
 
 const StyledPage = styled.div`
   flex: 1;
@@ -21,7 +22,7 @@ const Page = () => (
         <ChangePassword />
       </Route>
       <Route path="/settings/scopes">
-        <div>Scopes</div>
+        <Scopes />
       </Route>
       <Route path="/settings/pomodoro">
         <Pomodoro />
