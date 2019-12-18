@@ -9,9 +9,9 @@ import Scopes from './Scopes/Scopes';
 const StyledPage = styled.div`
   flex: 1;
   padding: 48px 32px;
+  overflow-y: auto;
 `;
 
-// TODO ➜ Replace for correct scope page
 const Page = () => (
   <StyledPage>
     <Switch>

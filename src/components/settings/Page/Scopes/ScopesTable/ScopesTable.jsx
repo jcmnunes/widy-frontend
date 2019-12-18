@@ -7,6 +7,7 @@ import ScopeCode from '../../../../common/ScopeCode/ScopeCode';
 import DotsMenu from '../../../../common/DotsMenu/DotsMenu';
 import ScopeModal from '../ScopeModal/ScopeModal';
 import { archiveScope, unarchiveScope } from './ScopesTable.actions';
+import EmptyScopesTable from '../EmptyScopesTable/EmptyScopesTable';
 
 const StyledScopesTable = styled.div`
   border: 1px solid ${props => props.theme.neutral200};
@@ -53,6 +54,12 @@ const ScopesTable = ({ isArchived, scopes }) => {
   const [isArchivingScope, setIsArchivingScope] = useState(false);
 
   const dispatch = useDispatch();
+
+  if (scopes.length === 0) {
+    return (
+      <EmptyScopesTable message={isArchived ? 'No archived scopes found' : 'No scopes found'} />
+    );
+  }
 
   return (
     <>

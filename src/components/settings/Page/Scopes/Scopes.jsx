@@ -18,9 +18,19 @@ import {
 const Scopes = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showArchivedScopes, setShowArchivedScopes] = useState(false);
+  const [filter, setFilter] = useState('');
 
   const scopes = useSelector(scopesSelector);
   const archivedScopes = useSelector(archivedScopesSelector);
+
+  const filterScopes = scopesToFilter => {
+    return scopesToFilter.filter(({ name, shortCode }) => {
+      if (filter) {
+        return name.toLowerCase().includes(filter) || shortCode.toLowerCase().includes(filter);
+      }
+      return true;
+    });
+  };
 
   return (
     <>
@@ -38,10 +48,15 @@ const Scopes = () => {
               Create new scope
             </Button>
             <ScopesSearch>
-              <Input onChange={() => {}} placeholder="Search scopes" size="large" value="" />
+              <Input
+                value={filter}
+                onChange={({ target: { value } }) => setFilter(value)}
+                placeholder="Search scopes"
+                size="large"
+              />
             </ScopesSearch>
           </ActionsTop>
-          <ScopesTable scopes={scopes} />
+          <ScopesTable scopes={filterScopes(scopes)} />
           <ShowArchiveScopesToggle>
             <Checkbox
               appearance="primary"
@@ -51,7 +66,9 @@ const Scopes = () => {
               Show archived scopes
             </Checkbox>
           </ShowArchiveScopesToggle>
-          {showArchivedScopes && <ScopesTable isArchived scopes={archivedScopes} />}
+          {showArchivedScopes && (
+            <ScopesTable isArchived scopes={filterScopes(archivedScopes)} filter={filter} />
+          )}
         </ScopesPageWrapper>
       </div>
       {isOpen && <ScopeModal closeModal={() => setIsOpen(false)} />}
