@@ -9,7 +9,7 @@ const normalize = data => {
     byId: {},
     order: [],
   };
-  data.forEach(({ day, _id: id }) => {
+  data.forEach(({ day, id }) => {
     normalized.byId[id] = { id, day };
     normalized.order.push(id);
   });

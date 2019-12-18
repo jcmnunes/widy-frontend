@@ -10,7 +10,7 @@ export function* createDaySaga() {
     } = yield call(createDay, moment().format('YYYY-MM-DD'));
 
     yield put({ type: types.CREATE_DAY_SUCCESS, day });
-    yield put({ type: types.GET_DAY_REQUEST, payload: day._id });
+    yield put({ type: types.GET_DAY_REQUEST, payload: day.id });
   } catch (error) {
     yield put({ type: types.CREATE_DAY_FAILURE, error });
   }

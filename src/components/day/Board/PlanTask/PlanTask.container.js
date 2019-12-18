@@ -5,11 +5,19 @@ import {
   handlePlanTaskLaunch,
   handlePlanTaskRename,
 } from './PlanTask.actions';
+import { scopesSelector } from '../../../../selectors/scopes/scopesSelectors';
+import { findScopeCode } from '../../../../helpers/scopes';
 
-const mapStateToProps = (state, ownProps) => ({
-  selectedTaskId: state.tasks.selected,
-  taskTitle: state.tasks.byId[ownProps.taskId] ? state.tasks.byId[ownProps.taskId].title : '',
-});
+const mapStateToProps = (state, ownProps) => {
+  const task = state.tasks.byId[ownProps.taskId];
+  const scopes = scopesSelector(state);
+
+  return {
+    selectedTaskId: state.tasks.selected,
+    taskTitle: task ? task.title : '',
+    scopeCode: findScopeCode(task.scopeId, scopes),
+  };
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   handlePlanTaskClick: handlePlanTaskClick(dispatch, ownProps),

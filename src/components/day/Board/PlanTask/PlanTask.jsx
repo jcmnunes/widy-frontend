@@ -12,6 +12,7 @@ import {
   TitleContainer,
 } from './PlanTask.styles';
 import PlanTaskMenu from './PlanTaskMenu';
+import ScopeCode from '../../../common/ScopeCode/ScopeCode';
 
 class PlanTask extends Component {
   state = { showDeleteTaskDialog: false };
@@ -30,6 +31,7 @@ class PlanTask extends Component {
       taskId,
       taskTitle,
       sectionId,
+      scopeCode,
       selectedTaskId,
       handlePlanTaskClick,
       handlePlanTaskRename,
@@ -53,6 +55,7 @@ class PlanTask extends Component {
                 <Title>{taskTitle}</Title>
               </TitleContainer>
               <Actions>
+                <ScopeCode scopeCode={scopeCode} />
                 {/*
                 <TaskCopyButton taskTitle={taskTitle} />
                 */}
@@ -84,11 +87,16 @@ class PlanTask extends Component {
   }
 }
 
+PlanTask.defaultProps = {
+  scopeCode: null,
+};
+
 PlanTask.propTypes = {
   index: PropTypes.number.isRequired,
   taskId: PropTypes.string.isRequired,
   taskTitle: PropTypes.string.isRequired,
   sectionId: PropTypes.string.isRequired,
+  scopeCode: PropTypes.string,
   selectedTaskId: PropTypes.string.isRequired,
   handlePlanTaskClick: PropTypes.func.isRequired,
   handlePlanTaskRename: PropTypes.func.isRequired,

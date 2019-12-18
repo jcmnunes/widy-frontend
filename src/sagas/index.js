@@ -18,6 +18,14 @@ import init from '../components/auth/Init/Init.saga';
 import { watchSavePomodoroSettingsSaga as savePomodoroSettings } from '../components/settings/Page/Pomodoro/Pomodoro.actions';
 import { watchSaveAccountSettingsSaga as saveAccountSettings } from '../components/settings/Page/Account/Account.actions';
 import { watchChangePasswordSaga as changePassword } from '../components/settings/Page/ChangePassword/ChangePassword.actions';
+import {
+  watchCreateScopeSaga as createScope,
+  watchUpdateScopeSaga as updateScope,
+} from '../components/settings/Page/Scopes/ScopeModal/ScopeModal.actions';
+import {
+  watchArchiveScopeSaga as archiveScope,
+  watchUnarchiveScopeSaga as unarchiveScope,
+} from '../components/settings/Page/Scopes/ScopesTable/ScopesTable.actions';
 
 export default function* rootSaga() {
   yield all([
@@ -40,5 +48,9 @@ export default function* rootSaga() {
     savePomodoroSettings(),
     saveAccountSettings(),
     changePassword(),
+    createScope(),
+    updateScope(),
+    archiveScope(),
+    unarchiveScope(),
   ]);
 }

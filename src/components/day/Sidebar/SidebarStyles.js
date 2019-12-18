@@ -23,3 +23,7 @@ export const Title = styled.h2`
   color: ${props => props.theme.neutral400};
   margin-top: 24px;
 `;
+
+export const ScopeWrapper = styled.div`
+  margin-bottom: 24px;
+`;

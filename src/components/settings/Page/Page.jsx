@@ -4,10 +4,12 @@ import { Route, Switch } from 'react-router';
 import Account from './Account/Account';
 import ChangePassword from './ChangePassword/ChangePassword';
 import Pomodoro from './Pomodoro/Pomodoro';
+import Scopes from './Scopes/Scopes';
 
 const StyledPage = styled.div`
   flex: 1;
   padding: 48px 32px;
+  overflow-y: auto;
 `;
 
 const Page = () => (
@@ -18,6 +20,9 @@ const Page = () => (
       </Route>
       <Route path="/settings/changePassword">
         <ChangePassword />
+      </Route>
+      <Route path="/settings/scopes">
+        <Scopes />
       </Route>
       <Route path="/settings/pomodoro">
         <Pomodoro />

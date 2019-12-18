@@ -22,6 +22,9 @@ const MenuBar = () => {
         <StyledLink to="/settings/changePassword" isActive={pageId === 'changePassword'}>
           Change Password
         </StyledLink>
+        <StyledLink to="/settings/scopes" isActive={pageId === 'scopes'}>
+          Scopes
+        </StyledLink>
         <StyledLink to="/settings/pomodoro" isActive={pageId === 'pomodoro'}>
           Pomodoro
         </StyledLink>
