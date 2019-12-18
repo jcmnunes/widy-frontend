@@ -23,9 +23,9 @@ export default (state = initialState, action) => {
       return {
         ...state,
         createDayLoading: false,
-        selected: action.day._id,
-        order: [action.day._id, ...state.order],
-        byId: { ...state.byId, [action.day._id]: action.day },
+        selected: action.day.id,
+        order: [action.day.id, ...state.order],
+        byId: { ...state.byId, [action.day.id]: action.day },
       };
     case types.CREATE_DAY_FAILURE:
       return { ...state, createDayLoading: false };

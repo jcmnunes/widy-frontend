@@ -47,6 +47,16 @@ const AddTask = ({ isOpen, isLoading, startCreateTaskRequest, closeModal }) => {
     }
   }, [isOpen]);
 
+  const filterScopes = ({ data: { label, shortCode } }, input) => {
+    if (input) {
+      return (
+        label.toLowerCase().includes(input.toLowerCase()) ||
+        shortCode.toLowerCase().includes(input.toLowerCase())
+      );
+    }
+    return true;
+  };
+
   return (
     <Modal isOpen={isOpen} onRequestClose={closeModal} contentLabel="Modal - Add a new task">
       <form onSubmit={handleSubmit}>
@@ -72,6 +82,7 @@ const AddTask = ({ isOpen, isLoading, startCreateTaskRequest, closeModal }) => {
             onChange={opt => setScope(opt)}
             formatOptionLabel={CustomLabel}
             menuPortalTarget={document.body}
+            filterOption={filterScopes}
           />
           <div style={{ marginTop: 8 }}>
             <Button
