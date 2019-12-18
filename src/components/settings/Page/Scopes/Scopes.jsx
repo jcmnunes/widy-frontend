@@ -53,6 +53,7 @@ const Scopes = () => {
                 onChange={({ target: { value } }) => setFilter(value)}
                 placeholder="Search scopes"
                 size="large"
+                iconBefore="SEARCH"
               />
             </ScopesSearch>
           </ActionsTop>
