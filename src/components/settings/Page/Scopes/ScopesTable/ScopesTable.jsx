@@ -72,7 +72,7 @@ const ScopesTable = ({ isArchived, scopes }) => {
               <DropdownItem text="Edit" icon="EDIT" handleAction={() => setSelectedScope(scope)} />
               <DropdownItem
                 text={isArchived ? 'Unarchive' : 'Archive'}
-                icon="TRASH"
+                icon={isArchived ? 'UNARCHIVE' : 'ARCHIVE'}
                 isLoading={isArchivingScope}
                 handleAction={() => {
                   isArchived

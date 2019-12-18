@@ -40,7 +40,7 @@ export function* archiveScopeSaga(action) {
   } catch (error) {
     Toaster.error({
       title: 'Something went wrong',
-      message: 'Scope could not be updated',
+      message: 'Scope could not be archived',
     });
   } finally {
     action.helpers.setIsArchivingScope(false);
@@ -54,7 +54,7 @@ export function* unarchiveScopeSaga(action) {
   } catch (error) {
     Toaster.error({
       title: 'Something went wrong',
-      message: 'Scope could not be updated',
+      message: 'Scope could not be unarchived',
     });
   } finally {
     action.helpers.setIsArchivingScope(false);
