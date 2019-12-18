@@ -5,10 +5,11 @@ import SidebarHeader from './SidebarHeader';
 import NotesEditor from './NotesEditor';
 import Pomodoro from '../Pomodoro';
 import { Heading2 } from '../../common/Typography';
+import RegisterTime from './RegisterTime';
+import ScopeSelect from '../ScopeSelect/ScopeSelect';
 import { IllustrationTodoList } from '../../../icons/Illustrations';
 import { LAUNCH_TASK } from '../../modals/types';
-import RegisterTime from './RegisterTime';
-import { EmptyState, StyledSidebar, Title } from './SidebarStyles';
+import { EmptyState, ScopeWrapper, StyledSidebar, Title } from './SidebarStyles';
 
 const Sidebar = ({ selectedTaskId, isSelectedTaskInPlan, openModal }) => {
   const handleLaunchClick = () => {
@@ -20,6 +21,10 @@ const Sidebar = ({ selectedTaskId, isSelectedTaskInPlan, openModal }) => {
       {selectedTaskId ? (
         <>
           <SidebarHeader />
+          <ScopeWrapper>
+            <Heading2>Scope:</Heading2>
+            <ScopeSelect />
+          </ScopeWrapper>
           <Heading2>Notes:</Heading2>
           <NotesEditor />
           <Heading2>Time Management</Heading2>
