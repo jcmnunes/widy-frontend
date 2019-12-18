@@ -11,9 +11,9 @@ import {
   Button,
   Select,
 } from '@binarycapsule/ui-capsules';
-import CustomLabel from './components/CustomLabel';
-import { FormHeading, Section } from './AddTask.styles';
+import CustomLabel from '../../day/ScopeSelect/components/CustomLabel';
 import { scopesOptionsSelector } from '../../../selectors/scopes/scopesSelectors';
+import { FormHeading, Section } from './AddTask.styles';
 
 const AddTask = ({ isOpen, isLoading, startCreateTaskRequest, closeModal }) => {
   const [title, setTitle] = useState('');
