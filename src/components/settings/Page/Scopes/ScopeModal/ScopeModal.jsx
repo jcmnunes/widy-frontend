@@ -20,13 +20,24 @@ export const InputField = styled.label`
   font-size: 16px;
 `;
 
+export const ShortCodeLabel = styled.div`
+  line-height: 18px;
+`;
+
+export const ShortCodeHelper = styled.div`
+  color: ${props => props.theme.neutral300};
+  font-size: 12px;
+  line-height: 14px;
+  margin-bottom: 4px;
+`;
+
 export const ShortCodeWrapper = styled.div`
   width: 128px;
 `;
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Please enter the scope's name"),
-  shortCode: Yup.string().required('Please enter a short-code'),
+  shortCode: Yup.string().required('Please enter a code'),
 });
 
 const ScopeModal = ({ scope, closeModal }) => {
@@ -65,14 +76,24 @@ const ScopeModal = ({ scope, closeModal }) => {
             />
           </InputField>
           <InputField>
-            Short Code
+            <ShortCodeLabel>Short Code</ShortCodeLabel>
+            <ShortCodeHelper>Choose a short code to identify this scope.</ShortCodeHelper>
             <ShortCodeWrapper>
               <Input
                 placeholder="Scope code"
                 id="shortCode"
                 name="shortCode"
                 onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
+                onBlur={evt => {
+                  const { shortCode } = formik.values;
+                  const newShortCode = shortCode
+                    .replace(/\s+/g, '-')
+                    .replace(/-+/g, '-')
+                    .replace(/[^a-zA-Z0-9-]/g, '')
+                    .toUpperCase();
+                  formik.setFieldValue('shortCode', newShortCode);
+                  formik.handleBlur(evt);
+                }}
                 value={formik.values.shortCode}
                 error={
                   formik.errors.shortCode && formik.touched.shortCode ? formik.errors.shortCode : ''
