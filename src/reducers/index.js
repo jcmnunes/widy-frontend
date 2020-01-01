@@ -5,6 +5,7 @@ import days from './days/daysReducer';
 import sections from './sections/sectionsReducer';
 import tasks from './tasks/tasksReducer';
 import activeTask from './activeTask/activeTaskReducer';
+import report from '../components/report/Report.reducer';
 
 const rootReducer = combineReducers({
   auth,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   sections,
   tasks,
   activeTask,
+  report,
 });
 
 export default rootReducer;
