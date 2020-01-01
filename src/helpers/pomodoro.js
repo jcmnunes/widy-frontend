@@ -66,7 +66,7 @@ export const getTotalTime = time => {
 export const formatTotalTime = time => {
   const { hours, minutes } = getTotalTime(time);
 
-  return `${hours > 0 ? `${hours} h : ` : ''}${minutes} min`;
+  return `${hours > 0 ? `${hours} h ` : ''}${minutes} min`;
 };
 
 /**

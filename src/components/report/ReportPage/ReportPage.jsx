@@ -1,10 +1,18 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { IconButton } from '@binarycapsule/ui-capsules';
 import TaskPerSectionChart from './TaskPerSectionChart/TaskPerSectionChart';
 import { getReport } from '../Report.actions';
-import { reportSelector, timePerSectionPieChartDataSelector } from '../Report.selectors';
 import {
+  reportSelector,
+  tasksTableDataSelector,
+  timePerSectionPieChartDataSelector,
+} from '../Report.selectors';
+import {
+  ActionsContainer,
+  ActionsTop,
   ChartsContainer,
   ReportDescription,
   ReportTitle,
@@ -16,12 +24,16 @@ import {
 } from './ReportPage.styles';
 import { formatTotalTime } from '../../../helpers/pomodoro';
 import { formatDay } from '../../../helpers/dates';
+import TasksTable from './TasksTable/TasksTable';
+import UserDropdown from '../../common/UserDropdown/UserDropdown';
 
 const ReportPage = ({ dayId }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const { totalTime, completedTasks, totalTasks, day } = useSelector(reportSelector);
   const timePerSectionPieChartData = useSelector(timePerSectionPieChartDataSelector);
+  const tasksTableData = useSelector(tasksTableDataSelector);
 
   useEffect(() => {
     dispatch(getReport(dayId));
@@ -29,8 +41,16 @@ const ReportPage = ({ dayId }) => {
 
   return (
     <StyledReportPage>
-      <ReportTitle>Report</ReportTitle>
-      <ReportDescription>{formatDay(day)}</ReportDescription>
+      <ActionsTop>
+        <div>
+          <ReportTitle>Report</ReportTitle>
+          <ReportDescription>{formatDay(day)}</ReportDescription>
+        </div>
+        <ActionsContainer>
+          <IconButton icon="LOGOUT" isRound onClick={() => history.push('/')} text="Exit Report" />
+          <UserDropdown />
+        </ActionsContainer>
+      </ActionsTop>
       <StatsContainer>
         <Stat>
           <StatValue>{formatTotalTime(totalTime)}</StatValue>
@@ -44,6 +64,7 @@ const ReportPage = ({ dayId }) => {
       <ChartsContainer>
         <TaskPerSectionChart data={timePerSectionPieChartData} />
       </ChartsContainer>
+      <TasksTable data={tasksTableData} />
     </StyledReportPage>
   );
 };

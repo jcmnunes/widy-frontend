@@ -10,7 +10,7 @@ const TaskPerSectionChart = ({ data }) => {
       data={data}
       innerRadius={0.5}
       colors={[theme.blue100, theme.blue200]}
-      margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+      margin={{ top: 40, right: 40, bottom: 40, left: 40 }}
       borderWidth={1}
       borderColor={{ from: 'color', modifiers: [['darker', 0.3]] }}
       cornerRadius={3}

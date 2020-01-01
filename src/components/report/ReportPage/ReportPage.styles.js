@@ -51,3 +51,19 @@ export const StatLabel = styled.div`
   font-size: 16px;
   color: ${props => props.theme.neutral300};
 `;
+
+export const ActionsTop = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+`;
+
+export const ActionsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  > * + * {
+    margin-left: 12px;
+  }
+`;
