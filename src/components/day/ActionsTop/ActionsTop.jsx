@@ -4,12 +4,18 @@ import { Dropdown, DropdownItem, IconButton } from '@binarycapsule/ui-capsules';
 import { useHistory } from 'react-router-dom';
 import { StyledActionsTop } from './ActionsTop.styles';
 
-const ActionsTop = ({ isLogoutLoading, logoutRequest }) => {
+const ActionsTop = ({ selectedDayId, isLogoutLoading, logoutRequest }) => {
   const history = useHistory();
 
   return (
     <StyledActionsTop>
-      <IconButton text="Widy report" icon="SURVEY" isRound hasBackground onClick={() => {}} />
+      <IconButton
+        text="Widy report"
+        icon="SURVEY"
+        isRound
+        hasBackground
+        onClick={() => history.push(`/report/${selectedDayId}`)}
+      />
       <Dropdown
         placement="right"
         trigger={<IconButton hasBackground hasChev icon="USER_CIRCLE" isRound />}
@@ -32,6 +38,7 @@ const ActionsTop = ({ isLogoutLoading, logoutRequest }) => {
 };
 
 ActionsTop.propTypes = {
+  selectedDayId: PropTypes.string.isRequired,
   isLogoutLoading: PropTypes.bool.isRequired,
   logoutRequest: PropTypes.func.isRequired,
 };
