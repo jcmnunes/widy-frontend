@@ -5,15 +5,15 @@ import { Table, Icon20 } from '@binarycapsule/ui-capsules';
 import { formatTotalTime } from '../../../../helpers/pomodoro';
 
 const ScopeRow = styled(Table.Row)`
-  background: ${props => props.theme.neutral500} !important;
-  color: #fff;
+  background: ${props => props.theme.neutral100} !important;
+  color: ${props => props.theme.neutral600};
   font-weight: 700;
 `;
 
 const TaskRow = styled(Table.Row)`
-  background: ${props => (props.isEven ? props.theme.neutral050 : '#fff')} !important;
+  background: #fff !important;
 
-  > td {
+  > td:first-child {
     padding-left: 24px;
   }
 `;
