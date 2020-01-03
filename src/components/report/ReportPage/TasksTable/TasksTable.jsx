@@ -14,7 +14,7 @@ const TaskRow = styled(Table.Row)`
   background: #fff !important;
 
   > td:first-child {
-    padding-left: 24px;
+    padding-left: 32px;
   }
 `;
 
@@ -38,7 +38,9 @@ const TasksTable = ({ data }) => {
               {scope.tasks.map(({ id, title, completed, time }, index) => (
                 <TaskRow key={id} isEven={index % 2}>
                   <Table.Cell>{title}</Table.Cell>
-                  <Table.Cell>{completed ? <Icon20 icon="CHECK" /> : ''}</Table.Cell>
+                  <Table.Cell style={{ textAlign: 'center' }}>
+                    {completed ? <Icon20 icon="CHECK" /> : ''}
+                  </Table.Cell>
                   <Table.Cell>{formatTotalTime(time)}</Table.Cell>
                 </TaskRow>
               ))}

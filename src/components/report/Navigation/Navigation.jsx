@@ -12,7 +12,7 @@ const Navigation = () => {
         <IconWidy size={30} yesterdayColor={theme.blue600} />
         <IconWidyText size={60} textColor={theme.blue600} />
       </Brand>
-      <Heading1>Days</Heading1>
+      <Heading1 style={{ marginBottom: 16 }}>Days</Heading1>
       <Days />
     </StyledNavigation>
   );
