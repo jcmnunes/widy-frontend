@@ -27,26 +27,27 @@ const TasksTable = ({ data }) => {
         <Table.HeaderCell>Time</Table.HeaderCell>
       </Table.Head>
       <Table.Body>
-        {data.map(scope => (
-          <React.Fragment key={scope.id}>
-            <ScopeRow>
-              <Table.Cell>{scope.scopeTitle}</Table.Cell>
-              <Table.Cell />
-              <Table.Cell>{formatTotalTime(scope.time)}</Table.Cell>
-            </ScopeRow>
-            <>
-              {scope.tasks.map(({ id, title, completed, time }, index) => (
-                <TaskRow key={id} isEven={index % 2}>
-                  <Table.Cell>{title}</Table.Cell>
-                  <Table.Cell style={{ textAlign: 'center' }}>
-                    {completed ? <Icon20 icon="CHECK" /> : ''}
-                  </Table.Cell>
-                  <Table.Cell>{formatTotalTime(time)}</Table.Cell>
-                </TaskRow>
-              ))}
-            </>
-          </React.Fragment>
-        ))}
+        {data.map(
+          scope =>
+            scope.tasks.length > 0 && (
+              <React.Fragment key={scope.id}>
+                <ScopeRow>
+                  <Table.Cell>{scope.scopeTitle}</Table.Cell>
+                  <Table.Cell />
+                  <Table.Cell>{formatTotalTime(scope.time)}</Table.Cell>
+                </ScopeRow>
+                {scope.tasks.map(({ id, title, completed, time }, index) => (
+                  <TaskRow key={id} isEven={index % 2}>
+                    <Table.Cell>{title}</Table.Cell>
+                    <Table.Cell style={{ textAlign: 'center' }}>
+                      {completed ? <Icon20 icon="CHECK" /> : ''}
+                    </Table.Cell>
+                    <Table.Cell>{formatTotalTime(time)}</Table.Cell>
+                  </TaskRow>
+                ))}
+              </React.Fragment>
+            ),
+        )}
       </Table.Body>
     </Table>
   );

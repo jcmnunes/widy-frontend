@@ -5,6 +5,8 @@ import { useHistory } from 'react-router-dom';
 import { IconButton, Spinner } from '@binarycapsule/ui-capsules';
 import styled from 'styled-components/macro';
 import TaskPerSectionChart from './TaskPerSectionChart/TaskPerSectionChart';
+import TasksTable from './TasksTable/TasksTable';
+import UserDropdown from '../../common/UserDropdown/UserDropdown';
 import { getReport } from '../Report.actions';
 import {
   reportLoadingSelector,
@@ -12,10 +14,15 @@ import {
   tasksTableDataSelector,
   timePerSectionPieChartDataSelector,
 } from '../Report.selectors';
+import { formatTotalTime } from '../../../helpers/pomodoro';
+import { formatDay } from '../../../helpers/dates';
+import { IllustrationBoss } from '../../../icons/Illustrations';
 import {
   ActionsContainer,
   ActionsTop,
   ChartsContainer,
+  EmptyStateContainer,
+  EmptyStateText,
   ReportDescription,
   ReportTitle,
   Stat,
@@ -24,10 +31,6 @@ import {
   StatValue,
   StyledReportPage,
 } from './ReportPage.styles';
-import { formatTotalTime } from '../../../helpers/pomodoro';
-import { formatDay } from '../../../helpers/dates';
-import TasksTable from './TasksTable/TasksTable';
-import UserDropdown from '../../common/UserDropdown/UserDropdown';
 
 const LoadingReport = styled.div`
   flex-direction: column;
@@ -86,10 +89,19 @@ const ReportPage = ({ dayId }) => {
               <StatLabel>Tasks completed/total</StatLabel>
             </Stat>
           </StatsContainer>
-          <ChartsContainer>
-            <TaskPerSectionChart data={timePerSectionPieChartData} />
-          </ChartsContainer>
-          <TasksTable data={tasksTableData} />
+          {totalTime === 0 ? (
+            <EmptyStateContainer>
+              <IllustrationBoss size={260} />
+              <EmptyStateText>You have not tracked any time on this day</EmptyStateText>
+            </EmptyStateContainer>
+          ) : (
+            <>
+              <ChartsContainer>
+                <TaskPerSectionChart data={timePerSectionPieChartData} />
+              </ChartsContainer>
+              {totalTasks > 0 && <TasksTable data={tasksTableData} />}
+            </>
+          )}
         </>
       )}
     </StyledReportPage>
