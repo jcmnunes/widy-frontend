@@ -24,7 +24,7 @@ const UserDropdown = () => {
       <DropdownItem
         text="Log out"
         icon="LOGOUT"
-        handleAction={() => dispatch(logoutRequest)}
+        handleAction={() => dispatch(logoutRequest())}
         isLoading={isLogoutLoading}
         closeOnAction={false}
       />
