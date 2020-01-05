@@ -30,7 +30,8 @@
         "controlComponents": ["Input", "StyledInput"],
         "depth": 3
       }
-    ]
+    ],
+    "import/prefer-default-export": 0
   },
   "settings": {
     "import/resolver": {

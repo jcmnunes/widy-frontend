@@ -9,11 +9,6 @@ export const StyledMenuBar = styled.div`
   padding: 36px 24px 24px;
 `;
 
-export const Separator = styled.div`
-  margin: 8px 0;
-  width: 100%;
-`;
-
 export const Brand = styled(Link)`
   margin-bottom: 24px;
   display: flex;
@@ -36,4 +31,5 @@ export const Links = styled.div`
 
 export const StyledLink = styled(({ isActive, ...other }) => <Link {...other} />)`
   font-weight: ${({ isActive }) => (isActive ? 700 : 400)};
+  line-height: 28px;
 `;

@@ -58,6 +58,18 @@ export const getTotalTime = time => {
 };
 
 /**
+ * Converts time in secs to a formatted string (00 h 00 min)
+ *
+ * @param {number} time - Time to format (secs)
+ * @returns {string} - Formatted time ➜ 00 h 00 min
+ */
+export const formatTotalTime = time => {
+  const { hours, minutes } = getTotalTime(time);
+
+  return `${hours > 0 ? `${hours} h ` : ''}${minutes} min`;
+};
+
+/**
  * Converts time in secs to a formatted string (00 : 00)
  *
  * @param {number} time - Time to format (secs)
