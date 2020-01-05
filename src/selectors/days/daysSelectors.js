@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-const selectedDayIdSelector = state => state.days.selected;
+export const selectedDayIdSelector = state => state.days.selected;
 const daysByIdSelector = state => state.days.byId;
 
 // eslint-disable-next-line
