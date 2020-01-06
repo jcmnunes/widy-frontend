@@ -5,6 +5,8 @@ export const StyledNavigation = styled.div`
   width: 254px;
   height: 100%;
   padding: 36px 24px 24px;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Brand = styled.div`

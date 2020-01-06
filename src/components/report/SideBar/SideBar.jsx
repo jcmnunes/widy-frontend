@@ -4,7 +4,7 @@ import { Icon24, theme } from '@binarycapsule/ui-capsules';
 
 const StyledSideBar = styled.div`
   background: ${props => props.theme.yellow050};
-  flex: 1;
+  flex: 0.5;
   display: none;
   flex-direction: row;
   justify-content: center;
@@ -12,6 +12,10 @@ const StyledSideBar = styled.div`
 
   @media (min-width: ${props => props.theme.bp_xlarge}) {
     display: flex;
+  }
+
+  @media (min-width: ${props => props.theme.bp_xxlarge}) {
+    flex: 1;
   }
 `;
 
