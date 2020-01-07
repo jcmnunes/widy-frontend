@@ -40,7 +40,7 @@ const validationSchema = Yup.object().shape({
   shortCode: Yup.string().required('Please enter a code'),
 });
 
-const ScopeModal = ({ scope, closeModal }) => {
+const ScopeModal = ({ scope, closeModal, onCreateScope }) => {
   const dispatch = useDispatch();
 
   const formik = useFormik({
@@ -53,7 +53,7 @@ const ScopeModal = ({ scope, closeModal }) => {
       if (scope) {
         dispatch(updateScope(scope.id, values, { closeModal, setFieldError, setSubmitting }));
       } else {
-        dispatch(createScope(values, { closeModal, setFieldError, setSubmitting }));
+        dispatch(createScope(values, { closeModal, setFieldError, setSubmitting, onCreateScope }));
       }
     },
   });
@@ -122,6 +122,7 @@ const ScopeModal = ({ scope, closeModal }) => {
 
 ScopeModal.defaultProps = {
   scope: null,
+  onCreateScope: () => {},
 };
 
 ScopeModal.propTypes = {
@@ -131,6 +132,7 @@ ScopeModal.propTypes = {
     shortCode: PropTypes.string,
   }),
   closeModal: PropTypes.func.isRequired,
+  onCreateScope: PropTypes.func,
 };
 
 export default ScopeModal;

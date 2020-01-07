@@ -38,6 +38,7 @@ export function* createScopeSaga(action) {
   try {
     const { data: scope } = yield call(() => createScopeApi(action.values));
     yield put(createScopeSuccess(scope));
+    action.helpers.onCreateScope(scope);
     action.helpers.closeModal();
   } catch (error) {
     const {
