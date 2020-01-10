@@ -23,7 +23,7 @@ const TasksTable = ({ data }) => {
     <Table>
       <Table.Head>
         <Table.HeaderCell>Tasks</Table.HeaderCell>
-        <Table.HeaderCell>Completed</Table.HeaderCell>
+        <Table.HeaderCell style={{ textAlign: 'center' }}>Completed</Table.HeaderCell>
         <Table.HeaderCell>Time</Table.HeaderCell>
       </Table.Head>
       <Table.Body>
