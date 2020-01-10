@@ -53,7 +53,7 @@ export const getTotalTime = time => {
 
   return {
     hours: Math.floor(hours),
-    minutes: Math.floor((hours - Math.floor(hours)) * 60),
+    minutes: Math.round((hours - Math.floor(hours)) * 60),
   };
 };
 
@@ -66,7 +66,9 @@ export const getTotalTime = time => {
 export const formatTotalTime = time => {
   const { hours, minutes } = getTotalTime(time);
 
-  return `${hours > 0 ? `${hours} h ` : ''}${minutes} min`;
+  return `${hours > 0 ? `${hours} h ` : ''}${
+    hours > 0 ? minutes.toString().padStart(2, '0') : minutes
+  } min`;
 };
 
 /**
