@@ -19,7 +19,10 @@ const ScopeName = styled.span`
   display: inline-block;
   font-size: 16px;
   flex: 1;
-  margin-left: 12px;
+  margin: 0 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const Row = styled.div`
