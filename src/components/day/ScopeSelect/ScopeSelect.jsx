@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Select } from '@binarycapsule/ui-capsules';
 import CustomLabel from './components/CustomLabel';
-import { scopesOptionsSelector, scopesSelector } from '../../../selectors/scopes/scopesSelectors';
+import {
+  allScopesSelector,
+  scopesOptionsSelector,
+} from '../../../selectors/scopes/scopesSelectors';
 import { selectedTaskSelector } from '../../../selectors/tasks/tasksSelectors';
 import { updateTask } from '../../../actions/tasks';
 import ScopeModal from '../../settings/Page/Scopes/ScopeModal/ScopeModal';
@@ -12,7 +15,7 @@ const ScopeSelect = () => {
 
   const scopesOptions = useSelector(scopesOptionsSelector);
   const task = useSelector(selectedTaskSelector);
-  const scopes = useSelector(scopesSelector);
+  const scopes = useSelector(allScopesSelector);
   const scope = scopes.find(({ id }) => id === task.scopeId);
 
   const dispatch = useDispatch();
