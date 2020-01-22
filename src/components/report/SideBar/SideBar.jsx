@@ -23,10 +23,10 @@ const SideBar = () => {
   return (
     <StyledSideBar>
       <Icon24
-        icon="CHART"
+        icon="PIE"
         size="128px"
         primaryColor={theme.yellow100}
-        secondaryColor={theme.yellow050}
+        secondaryColor={theme.yellow100}
       />
     </StyledSideBar>
   );
