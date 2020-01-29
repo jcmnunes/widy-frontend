@@ -6,6 +6,11 @@ export const archivedScopesSelector = createSelector(
   meSelector,
   ({ archivedScopes }) => archivedScopes,
 );
+export const allScopesSelector = createSelector(
+  scopesSelector,
+  archivedScopesSelector,
+  (scopes, archivedScopes) => [...scopes, ...archivedScopes],
+);
 
 export const scopesOptionsSelector = createSelector(scopesSelector, scopes =>
   scopes.map(({ id, name, shortCode }) => ({

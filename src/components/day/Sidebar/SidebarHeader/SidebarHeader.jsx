@@ -29,6 +29,7 @@ const SidebarHeader = ({ selectedTask, selectedDay, updateTask }) => {
       </TopBar>
       <div style={{ marginLeft: -14 }}>
         <EditableInput
+          key={selectedTask.id} // Use a key to prevent WDY-250
           size="large"
           value={selectedTask ? selectedTask.title : ''}
           action={updateTaskTitle}

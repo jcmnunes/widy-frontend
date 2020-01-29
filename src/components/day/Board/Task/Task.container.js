@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import DraggableTask from './DraggableTask';
 import { handleTaskClick, handleTaskCompletedStateChange, handleTaskRename } from './Task.actions';
-import { scopesSelector } from '../../../../selectors/scopes/scopesSelectors';
+import { allScopesSelector } from '../../../../selectors/scopes/scopesSelectors';
 import { findScopeCode } from '../../../../helpers/scopes';
 
 const mapStateToProps = (state, ownProps) => {
   const task = state.tasks.byId[ownProps.taskId];
-  const scopes = scopesSelector(state);
+  const scopes = allScopesSelector(state);
 
   return {
     selectedTaskId: state.tasks.selected,

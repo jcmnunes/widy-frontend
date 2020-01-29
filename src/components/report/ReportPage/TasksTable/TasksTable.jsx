@@ -23,7 +23,7 @@ const TasksTable = ({ data }) => {
     <Table>
       <Table.Head>
         <Table.HeaderCell>Tasks</Table.HeaderCell>
-        <Table.HeaderCell>Completed</Table.HeaderCell>
+        <Table.HeaderCell textAlign="center">Completed</Table.HeaderCell>
         <Table.HeaderCell>Time</Table.HeaderCell>
       </Table.Head>
       <Table.Body>
@@ -34,15 +34,19 @@ const TasksTable = ({ data }) => {
                 <ScopeRow>
                   <Table.Cell>{scope.scopeTitle}</Table.Cell>
                   <Table.Cell />
-                  <Table.Cell>{formatTotalTime(scope.time)}</Table.Cell>
+                  <Table.Cell style={{ whiteSpace: 'nowrap' }}>
+                    {formatTotalTime(scope.time)}
+                  </Table.Cell>
                 </ScopeRow>
                 {scope.tasks.map(({ id, title, completed, time }, index) => (
                   <TaskRow key={id} isEven={index % 2}>
                     <Table.Cell>{title}</Table.Cell>
-                    <Table.Cell style={{ textAlign: 'center' }}>
+                    <Table.Cell textAlign="center">
                       {completed ? <Icon20 icon="CHECK" /> : ''}
                     </Table.Cell>
-                    <Table.Cell>{formatTotalTime(time)}</Table.Cell>
+                    <Table.Cell style={{ whiteSpace: 'nowrap' }}>
+                      {formatTotalTime(time)}
+                    </Table.Cell>
                   </TaskRow>
                 ))}
               </React.Fragment>

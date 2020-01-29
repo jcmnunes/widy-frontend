@@ -57,7 +57,12 @@ const LaunchTask = ({
   };
 
   return (
-    <Modal isOpen={isOpen} onRequestClose={closeModal} contentLabel="Modal - Add a new task">
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={closeModal}
+      width="384px"
+      contentLabel="Modal - Add a new task"
+    >
       <form onSubmit={handleSubmit}>
         <ModalBody>
           <ModalTitle>Choose a section:</ModalTitle>
