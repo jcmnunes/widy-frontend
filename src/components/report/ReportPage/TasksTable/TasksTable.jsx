@@ -34,7 +34,9 @@ const TasksTable = ({ data }) => {
                 <ScopeRow>
                   <Table.Cell>{scope.scopeTitle}</Table.Cell>
                   <Table.Cell />
-                  <Table.Cell>{formatTotalTime(scope.time)}</Table.Cell>
+                  <Table.Cell style={{ whiteSpace: 'nowrap' }}>
+                    {formatTotalTime(scope.time)}
+                  </Table.Cell>
                 </ScopeRow>
                 {scope.tasks.map(({ id, title, completed, time }, index) => (
                   <TaskRow key={id} isEven={index % 2}>
@@ -42,7 +44,9 @@ const TasksTable = ({ data }) => {
                     <Table.Cell textAlign="center">
                       {completed ? <Icon20 icon="CHECK" /> : ''}
                     </Table.Cell>
-                    <Table.Cell>{formatTotalTime(time)}</Table.Cell>
+                    <Table.Cell style={{ whiteSpace: 'nowrap' }}>
+                      {formatTotalTime(time)}
+                    </Table.Cell>
                   </TaskRow>
                 ))}
               </React.Fragment>
