@@ -24,27 +24,25 @@ const SubTitle = styled.h2`
   line-height: 20px;
 `;
 
-const NoInternet = () => {
-  return (
-    <Offline>
-      <Modal contentLabel="Offline-modal" isOpen width="340px">
-        <ModalBody>
-          <Content>
-            <Icon24
-              icon="WIFI_OFF"
-              primaryColor={theme.neutral300}
-              secondaryColor={theme.red500}
-              size="138px"
-            />
-            <Title>No internet connection</Title>
-            <SubTitle>
-              Please, make sure you have an internet connection to continue using Widy
-            </SubTitle>
-          </Content>
-        </ModalBody>
-      </Modal>
-    </Offline>
-  );
-};
+const NoInternet = () => (
+  <Offline>
+    <Modal contentLabel="Offline-modal" isOpen width="340px">
+      <ModalBody>
+        <Content>
+          <Icon24
+            icon="WIFI_OFF"
+            primaryColor={theme.neutral300}
+            secondaryColor={theme.red500}
+            size="138px"
+          />
+          <Title>No internet connection</Title>
+          <SubTitle>
+            Please, make sure you have an internet connection to continue using Widy
+          </SubTitle>
+        </Content>
+      </ModalBody>
+    </Modal>
+  </Offline>
+);
 
 export default NoInternet;
