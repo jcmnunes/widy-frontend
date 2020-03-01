@@ -10,7 +10,8 @@
     "coverage": "npm run test -- --coverage",
     "eject": "react-scripts eject",
     "lint": "eslint './src/**/*.{js,jsx}' --fix --max-warnings=0",
-    "format": "pretty-quick --staged"
+    "format": "pretty-quick --staged",
+    "semantic-release": "semantic-release"
   },
   "browserslist": [
     ">0.2%",
@@ -67,7 +68,8 @@
     "husky": "^4.2.1",
     "lint-staged": "^10.0.4",
     "prettier": "^1.19.1",
-    "pretty-quick": "^2.0.1"
+    "pretty-quick": "^2.0.1",
+    "semantic-release": "^17.0.4"
   },
   "husky": {
     "hooks": {
