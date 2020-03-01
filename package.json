@@ -10,7 +10,8 @@
     "coverage": "npm run test -- --coverage",
     "eject": "react-scripts eject",
     "lint": "eslint './src/**/*.{js,jsx}' --fix --max-warnings=0",
-    "format": "pretty-quick --staged"
+    "format": "pretty-quick --staged",
+    "semantic-release": "semantic-release"
   },
   "browserslist": [
     ">0.2%",
